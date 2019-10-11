@@ -49,13 +49,6 @@
             <div class="site-branding navbar-collapse collapse animate affix-top">
                <div class="container">
                    <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" class="logo animate" alt="" style="height: 40px;"></a>
-                   <?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'primary',
-                        'menu_class'     => 'navbar-nav u-header__navbar-nav',
-                        'walker'         => new WP_Bootstrap_Navwalker(),
-                    ) );
-                    ?>
                </div>
             </div><!-- .site-branding -->
 
