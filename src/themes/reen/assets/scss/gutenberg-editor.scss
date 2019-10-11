@@ -1,0 +1,18 @@
+
+$size__spacing-unit: 1rem;
+
+/** === Content Width === */
+.wp-block {
+    width: calc(100vw - (2 * #{$size__spacing-unit}));
+    max-width: 100%;
+
+    // Only the top level blocks need specific widths, therefore override for every nested block.
+    .wp-block {
+        width: 100%;
+    }
+
+    // Only the top level blocks need specific widths, therefore override for every nested block.
+    .wp-block {
+        width: 100%;
+    }
+}

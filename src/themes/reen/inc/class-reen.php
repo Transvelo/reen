@@ -26,6 +26,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'after_setup_theme', array( $this, 'setup' ) );
             add_action( 'after_setup_theme', array( $this, 'reen_template_debug_mode' ) );
             add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+            add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
         }
@@ -125,6 +126,8 @@ if ( ! class_exists( 'Reen' ) ) :
                 apply_filters(
                     'reen_register_nav_menus', array(
 						'menu-1' => esc_html__( 'Primary', 'reen' ),
+                        'top_right' => esc_html__( 'Tob Right Menu', 'reen' ),
+                        'top_left' => esc_html__( 'Top Left Menu', 'reen' ),
 					)
                 )
             );
@@ -155,6 +158,11 @@ if ( ! class_exists( 'Reen' ) ) :
              * Declare support for selective refreshing of widgets.
              */
             add_theme_support( 'customize-selective-refresh-widgets' );
+
+            /**
+             * Enqueue editor styles.
+             */
+            add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
         }
 
         /**
@@ -162,7 +170,7 @@ if ( ! class_exists( 'Reen' ) ) :
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
 		 */
-		function reen_widgets_init() {
+		public function widgets_init() {
 
 			register_sidebar( array(
 				'name'          => esc_html__( 'Sidebar', 'reen' ),
@@ -192,6 +200,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
@@ -210,7 +219,7 @@ if ( ! class_exists( 'Reen' ) ) :
             /**
              * Scripts
              */
-            $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+            $suffix = '.min';
 
             wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
@@ -270,6 +279,28 @@ if ( ! class_exists( 'Reen' ) ) :
             $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 
             return $fonts_url;
+        }
+
+        /**
+         * Enqueue supplemental block editor assets.
+         *
+         * @since 1.0.0
+         */
+        public function block_editor_assets() {
+            global $reen_version;
+
+            // Styles.
+            $vendors = apply_filters( 'reen_editor_vendor_styles', array(
+                'animate'                    => 'animate.css/animate.min.css',
+                'aos'                        => 'aos/aos.css',
+                'bootstrap'                  => 'bootstrap/bootstrap.css',
+                'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'fontello'                   => 'fontello/css/fontello.css',
+            ) );
+
+            foreach( $vendors as $key => $vendor ) {
+                wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
+            }
         }
 
 
