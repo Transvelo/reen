@@ -1,0 +1,7 @@
+article.post {
+    .date-wrapper {
+        .updated:not(.published) {
+            display: none;
+        }
+    }
+}  

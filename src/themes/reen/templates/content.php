@@ -9,14 +9,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-ren' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( ); ?>>
     <?php
     /**
-     * Functions hooked in to front_loop_post action.
+     * Functions hooked in to reen_loop_post action.
      *
-     * @hooked front_post_header          - 10
-     * @hooked front_post_meta            - 20
-     * @hooked front_post_content         - 30
+     * @hooked reen_post_header          - 10
+     * @hooked reen_post_meta            - 20
+     * @hooked reen_post_content         - 30
      */
     do_action( 'reen_loop_post' );
     ?>

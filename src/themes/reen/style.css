@@ -5641,4 +5641,10 @@ body:before {
 a.changecolor {
   cursor: pointer; }
 
+/*------------------------------------
+  File for your custom SCSS style
+------------------------------------*/
+article.post .date-wrapper .updated:not(.published) {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */
