@@ -156,6 +156,11 @@ if ( ! class_exists( 'Reen' ) ) :
              * Declare support for selective refreshing of widgets.
              */
             add_theme_support( 'customize-selective-refresh-widgets' );
+
+            /**
+             * Enqueue editor styles.
+             */
+            add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
         }
 
         /**
@@ -293,12 +298,6 @@ if ( ! class_exists( 'Reen' ) ) :
 
             foreach( $vendors as $key => $vendor ) {
                 wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
-            }
-
-            // Scripts
-            $theme_scripts = self::get_theme_scripts();
-            foreach ( $theme_scripts as $handle => $props ) {
-                wp_enqueue_script( $handle, $props['src'], $props['dep'], $reen_version );
             }
         }
 
