@@ -213,7 +213,7 @@ if ( ! class_exists( 'Reen' ) ) :
             /**
              * Scripts
              */
-            $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+            $suffix = '.min';
 
             wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
@@ -273,6 +273,34 @@ if ( ! class_exists( 'Reen' ) ) :
             $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 
             return $fonts_url;
+        }
+
+        /**
+         * Enqueue supplemental block editor assets.
+         *
+         * @since 1.0.0
+         */
+        public function block_editor_assets() {
+            global $reen_version;
+
+            // Styles.
+            $vendors = apply_filters( 'reen_editor_vendor_styles', array(
+                'animate'                    => 'animate.css/animate.min.css',
+                'aos'                        => 'aos/aos.css',
+                'bootstrap'                  => 'bootstrap/bootstrap.css',
+                'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'fontello'                   => 'fontello/css/fontello.css',
+            ) );
+
+            foreach( $vendors as $key => $vendor ) {
+                wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
+            }
+
+            // Scripts
+            $theme_scripts = self::get_theme_scripts();
+            foreach ( $theme_scripts as $handle => $props ) {
+                wp_enqueue_script( $handle, $props['src'], $props['dep'], $reen_version );
+            }
         }
 
 
