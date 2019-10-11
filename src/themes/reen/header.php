@@ -61,18 +61,18 @@
             <div class="site-branding navbar-collapse collapse animate affix-top">
                <div class="container">
                    <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" class="logo animate" alt="" style="height: 40px;"></a>
+                   <?php
+                   wp_nav_menu( array(
+                        'theme_location'     => 'primary',
+                        'depth'              => 0,
+                        'container'          => false,
+                        'menu_class'         => 'nav navbar-nav',
+                        'fallback_cb'        => 'WP_Bootstrap_Navwalker::fallback',
+                        'walker'             => new WP_Bootstrap_Navwalker(),
+                    ) );
+                   ?>
                </div>
             </div><!-- .site-branding -->
-
-            <nav id="site-navigation" class="main-navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'reen' ); ?></button>
-                <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'menu-1',
-                    'menu_id'        => 'primary-menu',
-                ) );
-                ?>
-            </nav><!-- #site-navigation -->
         </div>
     </header><!-- #masthead -->
 
