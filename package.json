@@ -16,5 +16,37 @@
   "bugs": {
     "url": "https://github.com/Transvelo/reen/issues"
   },
-  "homepage": "https://github.com/Transvelo/reen#readme"
+  "homepage": "https://github.com/Transvelo/reen#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "bootstrap": "^4.3.1",
+    "gh-pages": "~0.5.0",
+    "grunt": "^1.0.4",
+    "grunt-checktextdomain": "^1.0.1",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-compress": "^1.5.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "~2.1.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-uglify": "~2.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-gh-pages": "^1.0.0",
+    "grunt-jsbeautifier": "^0.2.13",
+    "grunt-postcss": "^0.8.0",
+    "grunt-rtlcss": "~2.0.1",
+    "grunt-sass": "^2.1.0",
+    "grunt-stylelint": "~0.9.0",
+    "grunt-version": "~1.0.0",
+    "grunt-wp-i18n": "^1.0.3",
+    "node-sass": "^4.12.0",
+    "stylelint": "~8.2.0"
+  },
+  "dependencies": {
+    "load-grunt-config": "^0.19.2",
+    "time-grunt": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.1.0"
+  }
 }
