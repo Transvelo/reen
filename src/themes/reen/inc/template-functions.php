@@ -54,6 +54,9 @@ function reen_separate_linkmods_and_icons_from_classes( $classes, &$linkmod_clas
             // Font Awesome.
             $icon_classes[] = $class;
             unset( $classes[ $key ] );
+        } elseif ( preg_match( '/^icon-(\S*)?$/i', $class )) {
+            $icon_classes[] = $class;
+            unset( $classes[ $key ] );
         } elseif ( preg_match( '/^glyphicon-(\S*)?|^glyphicon(\s?)$/i', $class ) ) {
             // Glyphicons.
             $icon_classes[] = $class;
