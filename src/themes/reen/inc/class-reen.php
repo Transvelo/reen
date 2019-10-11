@@ -26,6 +26,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'after_setup_theme', array( $this, 'setup' ) );
             add_action( 'after_setup_theme', array( $this, 'reen_template_debug_mode' ) );
             add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+            add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
         }
