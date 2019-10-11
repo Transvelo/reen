@@ -61,6 +61,21 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * SocialMedia Navwalker
+ */
+require get_template_directory() . '/classes/class-reen-social-media-walker.php';
+
+/**
+ * Topbar Navwalker
+ */
+require get_template_directory() . '/classes/class-reen-topbar-walker.php';
+
+/**
+ * Nav Menu related functions.
+ */
+require get_template_directory() . '/inc/reen-menu-functions.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {

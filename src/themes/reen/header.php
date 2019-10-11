@@ -24,24 +24,48 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'reen' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<header>
+		<div class="navbar">
+			<div class="navbar-header">
+				<div class="container">
+					<?php
+					wp_nav_menu( array(
+						'theme_location' => 'topbar_left',
+						'menu_id'        => 'top-left-menu',
+						'menu_class'   => 'info',
+						'walker'             => new Reen_Topbar_Walker(),
+					) );
+					?>
+					<?php
+					wp_nav_menu( array(
+						'theme_location' => 'topbar_right',
+						'menu_id'        => 'top-right-menu',
+						'menu_class'   => 'social',
+						'walker'             => new Reen_SocialMedia_Walker(),
+					) );
+					?>
+				</div>
+			</div>
+		</div>
+		<div class="yamm">
+			<div class="affix-wrapper" style="min-height: 112px;">
 				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$reen_description = get_bloginfo( 'description', 'display' );
-			if ( $reen_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $reen_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
+				the_custom_logo();
+				if ( is_front_page() && is_home() ) :
+					?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+				else :
+					?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+					<?php
+				endif;
+				$reen_description = get_bloginfo( 'description', 'display' );
+				if ( $reen_description || is_customize_preview() ) :
+					?>
+					<p class="site-description"><?php echo $reen_description; /* WPCS: xss ok. */ ?></p>
+				<?php endif; ?>
+			</div>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
