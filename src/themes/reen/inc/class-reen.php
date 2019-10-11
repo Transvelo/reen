@@ -192,6 +192,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
