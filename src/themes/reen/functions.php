@@ -62,9 +62,38 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Functions used in Front
+ */
+require get_template_directory() . '/inc/reen-functions.php';
+ 
+require get_template_directory() . '/classes/class-reen-social-media-walker.php';
+
+/**
+ * Topbar Navwalker
+ */
+require get_template_directory() . '/classes/class-reen-topbar-walker.php';
+
+/**
+ * Nav Menu related functions.
+ */
+require get_template_directory() . '/inc/reen-menu-functions.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+if ( reen_is_jetpack_activated() ) {
+    $reen->jetpack = require_once get_template_directory() . '/inc/jetpack/reen-jetpack-functions.php';
+    require_once get_template_directory() . '/inc/jetpack/reen-jetpack-template-functions.php';
+    require_once get_template_directory() . '/inc/jetpack/reen-jetpack-template-hooks.php';
+}
+
+if ( reen_is_redux_activated() ) {
+    require_once get_template_directory() . '/inc/redux-framework/reen-options.php';
+    require_once get_template_directory() . '/inc/redux-framework/functions.php';
+    require_once get_template_directory() . '/inc/redux-framework/hooks.php';
 }
 
