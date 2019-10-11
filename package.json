@@ -1,0 +1,20 @@
+{
+  "name": "reen",
+  "version": "0.0.1",
+  "description": "Made For Designers",
+  "main": "Gruntfile.js",
+  "startDate": "11-Oct-2019",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Transvelo/reen.git"
+  },
+  "author": "MadrasThemes",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Transvelo/reen/issues"
+  },
+  "homepage": "https://github.com/Transvelo/reen#readme"
+}
