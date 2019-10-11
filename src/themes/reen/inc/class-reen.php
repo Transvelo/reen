@@ -162,7 +162,7 @@ if ( ! class_exists( 'Reen' ) ) :
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
 		 */
-		function reen_widgets_init() {
+		public function widgets_init() {
 
 			register_sidebar( array(
 				'name'          => esc_html__( 'Sidebar', 'reen' ),

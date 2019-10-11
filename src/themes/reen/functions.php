@@ -39,7 +39,8 @@ function reen_content_width() {
 }
 add_action( 'after_setup_theme', 'reen_content_width', 0 );
 
-
+require_once get_template_directory() . '/inc/reen-template-functions.php';
+require_once get_template_directory() . '/inc/reen-template-hooks.php';
 /**
  * Implement the Custom Header feature.
  */
