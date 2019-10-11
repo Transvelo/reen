@@ -33,7 +33,11 @@
                         wp_nav_menu( array(
                             'theme_location' => 'topbar_left',
                             'menu_id'        => 'top-left-menu',
+                            'container'      => false,
+                            'depth'          => 1,
                             'menu_class'     => 'info',
+                            'menu_id'        => 'jumpToDropdown',
+                            'items_wrap'     => '<div id="%1$s" class="%2$s" aria-labelledby="jumpToDropdownInvoker">%3$s</div>',
                             'walker'         => new Reen_Topbar_Walker(),
                         ) );
                     }
@@ -43,7 +47,11 @@
                         wp_nav_menu( array(
                             'theme_location' => 'topbar_right',
                             'menu_id'        => 'top-right-menu',
+                            'container'    => false,
                             'menu_class'     => 'social',
+                            'icon_class'   => array( 'btn-icon__inner' ),
+                            'item_class'   => array( 'list-inline-item' ),
+                            'depth'        => 0,
                             'walker'         => new Reen_SocialMedia_Walker(),
                         ) );
                     }
