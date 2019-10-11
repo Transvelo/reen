@@ -5,7 +5,7 @@
 
 if ( ! function_exists( 'reen_loop_wrap_open' ) ) {
     function reen_loop_wrap_open() {
-        ?><div class="posts"><?php
+        ?><div class="posts classic-blog"><?php
     }
 }
 
@@ -87,7 +87,7 @@ if ( ! function_exists( 'reen_post_featured_image' ) ) {
             </div><?php
 
         } elseif( apply_filters( 'reen_enable_post_icon_placeholder', false ) ) {
-            echo sprintf( '<a class="post-icon-link" href="%s" rel="bookmark">', esc_url( get_permalink() ) );
+            echo sprintf( '<figure class="icon-overlay icn-link post-media"><a class="post-icon-link" href="%s" rel="bookmark">', esc_url( get_permalink() ) );
 
             reen_post_icon();
 

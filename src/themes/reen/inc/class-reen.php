@@ -26,6 +26,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'after_setup_theme', array( $this, 'setup' ) );
             add_action( 'after_setup_theme', array( $this, 'reen_template_debug_mode' ) );
             add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+            add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
         }
@@ -157,6 +158,11 @@ if ( ! class_exists( 'Reen' ) ) :
              * Declare support for selective refreshing of widgets.
              */
             add_theme_support( 'customize-selective-refresh-widgets' );
+
+            /**
+             * Enqueue editor styles.
+             */
+            add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
         }
 
         /**
@@ -294,12 +300,6 @@ if ( ! class_exists( 'Reen' ) ) :
 
             foreach( $vendors as $key => $vendor ) {
                 wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
-            }
-
-            // Scripts
-            $theme_scripts = self::get_theme_scripts();
-            foreach ( $theme_scripts as $handle => $props ) {
-                wp_enqueue_script( $handle, $props['src'], $props['dep'], $reen_version );
             }
         }
 

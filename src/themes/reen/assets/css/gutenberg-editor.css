@@ -1,0 +1,10 @@
+/** === Content Width === */
+.wp-block {
+  width: calc(100vw - (2 * 1rem));
+  max-width: 100%; }
+  .wp-block .wp-block {
+    width: 100%; }
+  .wp-block .wp-block {
+    width: 100%; }
+
+/*# sourceMappingURL=gutenberg-editor.css.map */

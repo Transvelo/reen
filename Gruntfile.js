@@ -77,7 +77,7 @@ module.exports = function( grunt ) {
                     // '<%= dirs.theme %>/style-editor.css': '<%= dirs.theme %>/style-editor.scss',
                     // '<%= dirs.themeCSS %>/colors/green.css': '<%= dirs.themeSASS %>/colors/green.scss',
                     // '<%= dirs.themeCSS %>/jetpack/jetpack.css': '<%= dirs.themeSASS %>/jetpack.scss',
-                    // '<%= dirs.themeCSS %>/gutenberg-editor.css': '<%= dirs.themeSASS %>/gutenberg-editor.scss',
+                     '<%= dirs.themeCSS %>/gutenberg-editor.css': '<%= dirs.themeSASS %>/gutenberg-editor.scss',
                     // '<%= dirs.extensionsCSS %>/admin/admin.css': '<%= dirs.extensionsSASS %>/admin.scss',
                 }]
             }
