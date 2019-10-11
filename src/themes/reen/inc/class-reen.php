@@ -126,8 +126,8 @@ if ( ! class_exists( 'Reen' ) ) :
                 apply_filters(
                     'reen_register_nav_menus', array(
 						'menu-1' => esc_html__( 'Primary', 'reen' ),
-                        'top_right' => esc_html__( 'Tob Right Menu', 'reen' ),
-                        'top_left' => esc_html__( 'Top Left Menu', 'reen' ),
+                        'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
+                        'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
 					)
                 )
             );

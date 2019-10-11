@@ -29,20 +29,24 @@
             <div class="navbar-header">
                 <div class="container">
                     <?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'topbar_left',
-                        'menu_id'        => 'top-left-menu',
-                        'menu_class'     => 'info',
-                        'walker'         => new Reen_Topbar_Walker(),
-                    ) );
+                    if ( has_nav_menu( 'topbar_left' ) ) {
+                        wp_nav_menu( array(
+                            'theme_location' => 'topbar_left',
+                            'menu_id'        => 'top-left-menu',
+                            'menu_class'     => 'info',
+                            'walker'         => new Reen_Topbar_Walker(),
+                        ) );
+                    }
                     ?>
                     <?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'topbar_right',
-                        'menu_id'        => 'top-right-menu',
-                        'menu_class'     => 'social',
-                        'walker'         => new Reen_SocialMedia_Walker(),
-                    ) );
+                    if ( has_nav_menu( 'topbar_right' ) ) {
+                        wp_nav_menu( array(
+                            'theme_location' => 'topbar_right',
+                            'menu_id'        => 'top-right-menu',
+                            'menu_class'     => 'social',
+                            'walker'         => new Reen_SocialMedia_Walker(),
+                        ) );
+                    }
                     ?>
                 </div>
             </div>
