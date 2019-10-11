@@ -164,7 +164,7 @@ if ( ! class_exists( 'Reen' ) ) :
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
 		 */
-		function reen_widgets_init() {
+		public function widgets_init() {
 
 			register_sidebar( array(
 				'name'          => esc_html__( 'Sidebar', 'reen' ),
@@ -194,6 +194,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
