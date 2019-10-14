@@ -50,29 +50,5 @@ $header_options = apply_filters( 'reen_header_options_args', array(
             'type'      => 'section',
             'indent'    => false,
         ),
-
-        array(
-            'title'     => esc_html__( 'Logo', 'reen' ),
-            'id'        => 'logo_start',
-            'type'      => 'section',
-            'indent'    => true
-        ),
-
-        array(
-            'title'     => esc_html__( 'Logo SVG', 'reen' ),
-            'subtitle'  => esc_html__( 'Enable to display svg logo instead of site title.', 'reen' ),
-            'desc'      => esc_html__( 'This will not work when you use site logo in customizer.', 'reen' ),
-            'id'        => 'logo_svg',
-            'type'      => 'switch',
-            'on'        => esc_html__( 'Enabled', 'reen' ),
-            'off'       => esc_html__( 'Disabled', 'reen' ),
-            'default'   => 1,
-        ),
-
-        array(
-            'id'        => 'logo_end',
-            'type'      => 'section',
-            'indent'    => false
-        ),
     )
 ) );
