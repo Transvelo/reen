@@ -63,7 +63,7 @@
                    <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" class="logo animate" alt="" style="height: 40px;"></a>
                    <?php
                    wp_nav_menu( array(
-                        'theme_location'     => 'primary',
+                        'theme_location'     => 'menu-1',
                         'depth'              => 0,
                         'container'          => false,
                         'menu_class'         => 'nav navbar-nav',
@@ -71,7 +71,9 @@
                         'walker'             => new WP_Bootstrap_Navwalker(),
                     ) );
                    ?>
+            </nav><!-- #site-navigation -->
                </div>
+
             </div><!-- .site-branding -->
         </div>
     </header><!-- #masthead -->
