@@ -27,21 +27,21 @@
     <header>
         <div class="navbar">
             <div class="navbar-header">
-                <div class="container">
+                <div class="container">              
                     <?php
-                    if ( has_nav_menu( 'topbar_left' ) ) {
-                        wp_nav_menu( array(
-                            'theme_location' => 'topbar_left',
-                            'menu_id'        => 'top-left-menu',
-                            'container'      => false,
-                            'depth'          => 1,
-                            'menu_class'     => 'info',
-                            'menu_id'        => 'jumpToDropdown',
-                            'items_wrap'     => '<div id="%1$s" class="%2$s" aria-labelledby="jumpToDropdownInvoker">%3$s</div>',
-                            'walker'         => new Reen_Topbar_Walker(),
-                        ) );
-                    }
-                    ?>
+                        if ( has_nav_menu( 'topbar_left' ) ) {
+                            wp_nav_menu( array(
+                                'theme_location' => 'topbar_left',
+                                'menu_id'        => 'top-left-menu',
+                                'container'      => false,
+                                'depth'          => 1,
+                                'menu_class'     => 'info',
+                                'menu_id'        => 'jumpToDropdown',
+                                'items_wrap'     => '<div id="%1$s" class="%2$s" aria-labelledby="jumpToDropdownInvoker">%3$s</div>',
+                                'walker'         => new Reen_Topbar_Walker(),
+                            ) );
+                        }
+                        ?>
                     <?php
                     if ( has_nav_menu( 'topbar_right' ) ) {
                         wp_nav_menu( array(
@@ -60,8 +60,12 @@
             </div>
             <div class="site-branding navbar-collapse collapse animate affix-top">
                <div class="container">
-                   <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" class="logo animate" alt="" style="height: 40px;"></a>
-                   <?php
+                    <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
+                    <?php the_custom_logo(); ?>
+                    <?php else : ?> 
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                    <?php endif; ?>
+                    <?php
                    wp_nav_menu( array(
                         'theme_location'     => 'menu-1',
                         'depth'              => 0,
