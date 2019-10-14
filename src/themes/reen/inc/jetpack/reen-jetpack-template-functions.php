@@ -64,8 +64,8 @@ if ( ! function_exists( 'reen_portfolio_header' ) ) {
         <div class="row">
             <div class="col-lg-8 col-md-9 mx-auto text-center">
                 <header class="page-header">
-                    <h1 class="page-title"><?php reen_portfolio_title();?></h1>
-                    <p><?php reen_portfolio_archive_content(); ?></p>
+                    <h1 class="page-title"><?php echo wp_kses_post( apply_filters( 'reen_portfolio_page_title', 'Title' ) ); ?></h1>
+                    <p><?php echo wp_kses_post( apply_filters( 'reen_portfolio_page_description', 'description' ) ); ?></p>
                 </header>
             </div>
         </div>
@@ -559,42 +559,8 @@ if ( ! function_exists( 'reen_site_content_page_subtitle' ) ) {
     }
 }
 
-if ( ! function_exists( 'reen_page_header' ) ) {
-    function reen_page_header() {
-        if ( is_page() && apply_filters( 'reen_show_site_content_page_header', true ) ) : ?>
-            <?php if ( apply_filters( 'reen_show_site_content_page_title', true ) ) : ?>
-            <div class="container inner">
-                <div class="row">
-                    <div class="col-lg-8 col-md-9 mx-auto text-center">       
-                        <header>
-                            <h1><?php echo esc_html( apply_filters( 'reen_site_content_page_title', get_the_title() ) ); ?></h1>
-                            <p><?php echo esc_html( apply_filters( 'reen_site_content_page_subtitle', get_the_title() ) );?></p>
-                        </header>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
-        <?php endif;
-    }
-}
-
-if ( ! function_exists( 'reen_page_content' ) ) {
-    function reen_page_content() { ?>
-        <div class="container">
-            <div class="col-lg-12 "> 
-                <div class="page__content">
-                    <?php the_content(); ?>
-                </div><?php
-                 if ( comments_open() || '0' != get_comments_number() ) :
-                    comments_template();
-            ?></div><?php   
-            endif;
-        ?></div><?php
-    }
-}
-
 if ( ! function_exists( 'reen_more_works' ) ) {
-    function reen_more_works() { 
+    function reen_more_works() {
        
         $more_works = new WP_Query( array( 'post_type' => 'jetpack-portfolio','post_per_page' => '16', 'post__not_in' => array( get_the_ID() ), 'orderby' => 'rand' ) );
 

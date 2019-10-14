@@ -65,13 +65,3 @@ add_action( 'reen_portfolio_single_image_2', 'reen_portfolio_post_image_2_media'
 add_action( 'reen_portfolio_single_image_2', 'reen_portfolio_post_image_2_content',             20 );
 
 add_action( 'reen_portfolio_single_post_image_2_bottom', 'reen_more_works',                     10 );
-
-
-/**
-*  Portfolio page 
-*/
-add_filter( 'reen_site_content_page_title',    'reen_page_site_content_page_title'  );
-add_filter( 'reen_site_content_page_subtitle', 'reen_site_content_page_subtitle'  );
-
-add_action( 'reen_page', 'reen_page_header',           10 );
-add_action( 'reen_page', 'reen_page_content',          20 );

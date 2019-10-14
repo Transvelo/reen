@@ -35,5 +35,23 @@
                 array('portfolio_view','not','fullscreen' ),
             ),
         ),
+
+     array(
+
+            'type'         => 'text',
+            'id'           => 'reen_portfolio_page_title',
+            'title'        => esc_html__( 'Portfolio', 'reen' ),
+            'subtitle'     => esc_html__( 'Title for portfolio page', 'reen' ),
+            'default'      => '3 Columns grid portfolio'
+        ),
+
+     array(
+
+            'type'         => 'text',
+            'id'           => 'reen_portfolio_page_description',
+            'title'        => esc_html__( 'Portfolio', 'reen' ),
+            'subtitle'     => esc_html__( 'Description for portfolio page', 'reen' ),
+            'default'      => 'Magnis modipsae voloratati andigen daepeditem quiate re porem que aut labor. Laceaque eictemperum quiae sitiorem rest non restibusaes.'
+        ),
     )
  ) );
