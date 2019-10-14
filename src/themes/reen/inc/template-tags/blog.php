@@ -3,23 +3,84 @@
  * Template tags used in Blog Pages
  */
 
-if ( ! function_exists( 'reen_loop_wrap_open' ) ) {
-    function reen_loop_wrap_open() {
-        ?><div class="classic-blog"><div class="posts sidemeta"><?php
+if ( ! function_exists( 'reen_format_filter' ) ) {
+    /**
+     * Displays format filter
+     */
+    function reen_format_filter() {
+        if ( ! is_singular() ) :
+        ?><div class="row inner-bottom-xs">
+            <div class="col-md-12"> 
+                <ul class="format-filter text-center">
+                    <li><a class="active" href="#" data-filter="*" title="All" data-rel="tooltip" data-placement="top"><i class="icon-th"></i></a></li>
+                        <?php 
+                            $post_formats = get_theme_support( 'post-formats' );
+                              if (isset($post_formats[0]) && is_array( $post_formats[0] ) ) {
+                                   foreach ( $post_formats[0] as $post_format ) : ?>
+                                        <li><a href="#" data-filter=".format-<?php echo esc_attr($post_format);?>"><?php echo esc_html($post_format);?></a></li>
+                                    <?php endforeach; 
+                        
+                            }
+                        ?>
+                </ul><!-- /.format-filter -->
+            </div><!-- /.col -->
+        </div><!-- /.row --><?php
+        endif;
     }
 }
 
-if ( ! function_exists( 'reen_loop_wrap_close' ) ) {
-    function reen_loop_wrap_close() {
-        ?></div></div><?php
+if ( ! function_exists( 'reen_get_post_format_icon' ) ) {
+    /**
+     *
+     */
+    function reen_get_post_format_icon( $format = '' ) {
+        $supported_post_formats = apply_filters( 'reen_supported_post_formats', array( 
+            'image'   => 'icon-picture-1',
+            'gallery' => 'icon-picture',
+            'video'   => 'icon-video-1',
+            'audio'   => 'icon-music-1',
+            'quote'   => 'icon-quote',
+            'link'    => 'icon-popup'
+        ) );
+        $format = empty( $format ) ? get_post_format() : $format ;
+        $format_icon = isset( $supported_post_formats[ $format ] ) ? $supported_post_formats[ $format ] : 'icon-edit';
+        return $format_icon;
     }
 }
 
-if ( ! function_exists( 'reen_post_date_wrapper' ) ) {
-    function reen_post_date_wrapper() {
-        ?><div class="date-wrapper">
-        <?php reen_posted_on(); ?>
-        </div><?php
+if ( ! function_exists( 'reen_loop_wrap_start' ) ) {
+    function reen_loop_wrap_start() {
+        ?>
+        <section id="blog" class="light-bg">
+            <div class="container inner-top-sm inner-bottom classic-blog">
+                <?php if( apply_filters( 'reen_enable_format_filter', true ) ) {
+                    reen_format_filter(); 
+                } ?>
+                <div class="row">
+                    <div class="col-lg-9 inner-right-sm">
+                        <div class="posts sidemeta">
+
+
+
+
+        <?php
+    }
+}
+
+if ( ! function_exists( 'reen_loop_wrap_end' ) ) {
+    function reen_loop_wrap_end() {
+        ?>          </div><!-- /.posts -->
+                </div><!-- /.col-lg-9 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+     </div><!-- /.light-bg -->
+     <?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_date' ) ) {
+    function reen_post_date() {
+        reen_posted_on(); 
     }
 }
 
@@ -32,77 +93,64 @@ if ( ! function_exists( 'reen_posted_on' ) ) {
         }
 
         $time_string = sprintf( $time_string,
-            esc_attr( get_the_date( 'j, F') ),
+            esc_attr( get_the_date( 'c') ),
             esc_html( get_the_date('j') ),
-            esc_html( get_the_date('F') ),
+            esc_html( get_the_date('M') ),
             esc_attr( get_the_modified_date( 'c' ) ),
             esc_html( get_the_modified_date() )
         );
 
-        $posted_on = sprintf(
-            _x( '%s', 'post date', 'reen' ),
-            '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-        );
-
-        echo wp_kses( apply_filters( 'reen_posted_on_html', '<div class="date">' . $posted_on . '</div>', $posted_on ), array(
-            'span' => array(
-                'class'  => array(),
-            ),
-            // 'a'    => array(
-            //     'href'  => array(),
-            //     'title' => array(),
-            //     'rel'   => array(),
-            // ),
-            'time' => array(
-                'datetime' => array(),
-                'class'    => array(),
-            ),
-        ) );
+        printf(
+            '<div class="date-wrapper"><a class="article__date--link" href="%1$s">%2$s</a></div>',
+            esc_url( get_permalink() ),
+            $time_string
+        ); 
     }
 }
 
-if ( ! function_exists( 'reen_post_body_wrap_start' ) ) {
-    function reen_post_body_wrap_start() {
-    	?><div class="post-content"><?php
-	}
+if ( ! function_exists( 'reen_post_summary_start' ) ) {
+    function reen_post_summary_start() {
+        ?><div class="post-content"><?php
+    }
 }
 
-if ( ! function_exists( 'reen_post_body_wrap_end' ) ) {
-    function reen_post_body_wrap_end() {
-    	?></div><?php
-	}
+if ( ! function_exists( 'reen_post_summary_end' ) ) {
+    function reen_post_summary_end() {
+        ?></div><?php
+    }
 }
 
-if ( ! function_exists( 'reen_post_featured_image' ) ) {
-    function reen_post_featured_image() {
+if ( ! function_exists( 'reen_loop_post_video' ) ) {
+    function reen_loop_post_video() {
         global $post;
 
         $image_path = get_template_directory_uri() . '/assets/images/art/photograph04-lg.jpg';
 
         if ( has_post_thumbnail() ) {
-            ?><div class="entry-featured-image"><?php
             $featured_image_size = 'medium';
 
-            $post_thumbnail_url = get_the_post_thumbnail_url( $post->ID, $featured_image_size );
-            ?><div class="post-image"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo the_post_thumbnail();?></a></div><?php
-            ?>
-            </div><?php
+            $post_thumbnail_url = get_the_post_thumbnail_url( $post->ID, $featured_image_size );?>
+            <figure class="icon-overlay icn-link post-media"><a href="<?php echo esc_url( get_permalink() ); ?>"><span class="icn-more"></span><?php echo the_post_thumbnail();?></a></figure>
+            <?php
 
-        } else {
-            echo sprintf( '<figure class="icon-overlay icn-link post-media"><a href="%s" rel="bookmark"><span class="icn-more"></span><img src="%s" alt=""/></a></figure>', esc_url( get_permalink() ), esc_url( $image_path ) );
-
-        }
+        } 
     }
 }
+
+
 
 if ( ! function_exists( 'reen_post_title' ) ) {
     function reen_post_title() {
-        the_title( sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+        if ( is_singular() ) :
+            the_title( '<h1 class="post-title entry-title">', '</h1>' );
+        else :
+            the_title( sprintf( '<h2 class="post-title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+        endif;
     }
 }
 
-if ( ! function_exists( 'reen_post_icon' ) ) {
-    function reen_post_icon() {
+if ( ! function_exists( 'reen_post_format' ) ) {
+    function reen_post_format() {
         $post_format = get_post_format();
         switch( $post_format ) {
             case 'aside':
@@ -133,10 +181,255 @@ if ( ! function_exists( 'reen_post_icon' ) ) {
                 $icon = 'far fa-comments';
             break;
             default:
-                $icon = 'icon-th';
+                $icon = 'icon-edit';
         }
 
         $post_icon = apply_filters( 'reen_post_icon', $icon, $post_format );
         ?><div class="format-wrapper"><a href="#"><i class="<?php echo esc_attr( $post_icon ); ?>"></i></a></div><?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_meta' ) ) {
+    function reen_post_meta() {
+        ?><ul class="meta"><?php 
+            do_action( 'reen_post_meta' );
+        ?></ul><?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_summary' ) ) {
+    function reen_post_summary() {
+        do_action( 'reen_post_summary' ); ?>
+        <?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_side_meta' ) ) {
+    function reen_post_side_meta() {
+        do_action( 'reen_post_side_meta' ); ?>
+        <?php
+    }
+}
+
+
+if ( ! function_exists( 'reen_post_categories' ) ) {
+    function reen_post_categories( $post_id = false, $return = false ) {
+        /* translators: used between list items, there is a space after the comma */
+        $categories_list = get_the_category_list( esc_html__( ', ', 'reen' ), '', $post_id );
+
+        if ( $categories_list ) {
+            $categories_list = '<li class="categories">' . $categories_list . '</li>';
+
+            if ( ! $return ) {
+            
+                echo wp_kses_post( $categories_list );   
+            
+            } else {
+            
+                return $categories_list;
+            
+            }
+        }
+    }
+}
+
+if ( ! function_exists( 'reen_post_comments' ) ) {
+    function reen_post_comments() {
+        if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
+            <li class="comments">
+                <span class="comments-link"><?php comments_popup_link( esc_html__( 'Leave a comment', 'reen' ), esc_html__( '1 Comment', 'reen' ), esc_html__( '% Comments', 'reen' ) ); ?></span>
+            </li>
+        <?php endif;
+    }
+}
+
+if ( ! function_exists( 'reen_post_excerpt' ) ) {
+    function reen_post_excerpt() {
+        the_excerpt();
+    }
+}
+
+if( ! function_exists( 'reen_post_readmore' ) ) {
+
+    function reen_post_readmore() {
+        ?>
+        <a href="<?php the_permalink(); ?>" class="btn btn--post-readmore"><?php echo apply_filters( 'reen_blog_post_readmore_text', esc_html__( 'Read More', 'reen' ) ); ?></a>
+        <?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_media' ) ) {
+    /**
+     *
+     */
+    function reen_post_media() {
+        $post_format = get_post_format();
+
+        if ( reen_can_show_post_thumbnail() ) {
+            reen_has_post_thumbnail();
+        } else {
+            if ( 'video' === $post_format ) {
+                reen_post_video();    
+            } elseif ( 'audio' == $post_format ) {
+                reen_post_audio();
+            } elseif ( 'gallery' == $post_format ) {
+                reen_post_gallery();
+            }
+        }
+    }
+}
+
+if ( ! function_exists( 'reen_has_post_thumbnail' ) ) :
+    /**
+     * Displays an optional post thumbnail.
+     *
+     * Wraps the post thumbnail in an anchor element on index views, or a div
+     * element when on single views.
+     */
+    function reen_has_post_thumbnail() {
+        if ( ! reen_can_show_post_thumbnail() ) {
+            return;
+        }
+
+        if ( is_singular() ) :
+            ?>
+
+            <figure class="post-thumbnail icon-overlay icn-link post-media article__media">
+                <?php the_post_thumbnail(); ?>
+            </figure><!-- .post-thumbnail -->
+
+            <?php
+        else :
+            ?>
+
+        <figure class="post-thumbnail icon-overlay icn-link post-media article__media">
+            <a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+                <span class="icn-more"></span>
+                <?php the_post_thumbnail( 'post-thumbnail' ); ?>
+            </a>
+        </figure>
+
+            <?php
+        endif; // End is_singular().
+    }
+endif;
+
+if ( ! function_exists( 'reen_post_the_content' ) ) {
+    /**
+     * Displays post content
+     */
+    function reen_post_the_content() {
+        ?><div class="post__content-inner"><?php
+        the_content(
+            sprintf(
+                wp_kses_post( __( 'Continue reading %s', 'reen' ) ),
+                '<span class="screen-reader-text">' . get_the_title() . '</span>'
+            )
+        ); ?></div><!-- /.article__content-inner --><?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_gallery' ) ) {
+    /**
+     * Displays post gallery when applicable
+     */
+    function reen_post_gallery() {
+        global $post;
+
+        $attachment_ids = '';
+        // if there is a gallery block do this
+        if ( has_block( 'gallery', $post->post_content ) ) {
+            $post_blocks = parse_blocks( $post->post_content );
+            if ( isset( $post_blocks[0]['attrs']['ids'] ) ) {
+                $attachment_ids = $post_blocks[0]['attrs']['ids'];    
+            }
+        } 
+        // if there is not a gallery block do this
+        else {
+            // gets the gallery info
+            $gallery = get_post_gallery( $post->ID, false );
+            
+            if ( isset( $gallery['ids'] ) ) {
+                // makes an array of image ids
+                $attachment_ids = explode ( ',', $gallery['ids'] );
+            }
+        }
+
+        if ( ! empty( $attachment_ids ) ) :
+
+            // wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
+            // wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
+
+            // wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
+
+            $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
+                'autoPlay'        => 5000,
+                'slideSpeed'      => 200,
+                'paginationSpeed' => 600,
+                'rewindSpeed'     => 800,
+                'stopOnHover'     => true,
+                'navigation'      => true,
+                'pagination'      => true,
+                'rewindNav'       => true,
+                'singleItem'      => true,
+                'autoHeight'      => true,
+                'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+            ), $post->ID );
+
+        ?><div id="owl-work" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="article__attachment--gallery article__media owl-carousel owl-inner-pagination owl-inner-nav post-media"><?php 
+            foreach( $attachment_ids as $attachment_id ) : ?>
+                <div class="item">
+                    <figure>
+                        <?php echo wp_get_attachment_image( $attachment_id, 'post-thumbnail' ); ?>
+                    </figure>
+                </div><?php 
+            endforeach; ?></div><?php
+        endif;
+    }
+}
+
+if ( ! function_exists( 'reen_post_audio' ) ) {
+    /**
+     * Displays post audio when applicable
+     */
+    function reen_post_audio() {
+        $content = apply_filters( 'the_content', get_the_content() );
+        $audio   = false;
+
+        // Only get audio from the content if a playlist isn't present.
+        if ( false === strpos( $content, 'wp-playlist-script' ) ) {
+            $audio = get_media_embedded_in_content( $content, array( 'audio', 'object', 'embed', 'iframe' ) );
+        }
+
+        if ( ! empty( $audio ) ) {
+            foreach ( $audio as $audio_html ) {
+                ?><div class="article__media post-media article__attachment--audio"><?php 
+                    echo ( $audio_html ); 
+                ?></div><!-- .article__attachment--audio --><?php
+            }
+        }
+    }
+}
+
+if ( ! function_exists( 'reen_post_video' ) ) {
+    /**
+     * Displays post video when applicable
+     */
+    function reen_post_video() {
+        $content = apply_filters( 'the_content', get_the_content() );
+        $video   = false;
+
+        // Only get video from the content if a playlist isn't present.
+        if ( false === strpos( $content, 'wp-playlist-script' ) ) {
+            $video = get_media_embedded_in_content( $content, array( 'video', 'object', 'embed', 'iframe' ) );
+        }
+
+        if ( ! empty( $video ) ) {
+            foreach ( $video as $video_html ) {
+                ?><div class="video-container post-media article__media article__attachment--video"><?php 
+                    echo ( $video_html ); 
+                ?></div><!-- .article__attachment--video --><?php
+            }
+        }
     }
 }
