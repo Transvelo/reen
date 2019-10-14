@@ -125,7 +125,7 @@ if ( ! class_exists( 'Reen' ) ) :
 			register_nav_menus(
                 apply_filters(
                     'reen_register_nav_menus', array(
-						'menu-1' => esc_html__( 'Primary', 'reen' ),
+						'primary' => esc_html__( 'Primary', 'reen' ),
                         'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
                         'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
 					)
@@ -158,6 +158,11 @@ if ( ! class_exists( 'Reen' ) ) :
              * Declare support for selective refreshing of widgets.
              */
             add_theme_support( 'customize-selective-refresh-widgets' );
+
+            /**
+             * Declare support for editor styles.
+             */
+            add_theme_support( 'editor-styles' );
 
             /**
              * Enqueue editor styles.
@@ -200,7 +205,6 @@ if ( ! class_exists( 'Reen' ) ) :
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl-carousel.css',
-                'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
@@ -209,6 +213,8 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_style( 'reen-style', get_template_directory_uri() . '/style.css', '', $reen_version );
             wp_style_add_data( 'reen-style', 'rtl', 'replace' );
+
+            wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
 
             /**
              * Fonts
@@ -264,6 +270,7 @@ if ( ! class_exists( 'Reen' ) ) :
          * @return string Google fonts URL for the theme.
          */
         public function google_fonts() {
+
             $google_fonts = apply_filters(
                 'reen_google_font_families', array(
                     'lato' => 'Lato:300,400,500,700,900',

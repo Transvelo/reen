@@ -32,3 +32,4 @@ function redux_queue_font_awesome() {
 }
 
 require_once get_template_directory() . '/inc/redux-framework/functions/portfolio-functions.php';
+require_once get_template_directory() . '/inc/redux-framework/functions/header-functions.php';

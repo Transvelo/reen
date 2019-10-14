@@ -1,3 +1,6 @@
+body {
+  background-color: #fff !important; }
+
 /** === Content Width === */
 .wp-block {
   width: calc(100vw - (2 * 1rem));

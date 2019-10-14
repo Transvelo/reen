@@ -74,6 +74,11 @@ require get_template_directory() . '/classes/class-reen-social-media-walker.php'
 require get_template_directory() . '/classes/class-reen-topbar-walker.php';
 
 /**
+ * Nav Bar Navwalker
+ */
+require get_template_directory() . '/classes/class-reen-wp-bootstrap-navwalker.php';
+
+/**
  * Nav Menu related functions.
  */
 require get_template_directory() . '/inc/reen-menu-functions.php';
