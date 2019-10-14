@@ -113,7 +113,7 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
             $before = '
             <div class="container inner-bottom">
                 <div class="row">
-                    <div class="col-md-12 portfolio">';
+                    <div class="col-md-12 portfolio aos-init aos-animate">';
         }
 
         echo wp_kses_post( $before );
