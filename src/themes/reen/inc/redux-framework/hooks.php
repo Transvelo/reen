@@ -18,3 +18,8 @@ add_filter( 'reen_portfolio_grid_columns', 'reen_redux_change_portfolio_grid_col
 /**
  * Header Filters
  */
+
+add_filter( 'reen_topbar_view', 'redux_toggle_topbar_view'      );
+add_filter( 'reen_topbar_right', 'redux_toggle_topbar_right'    );
+add_filter( 'reen_topbar_left', 'redux_toggle_topbar_left'      );
+add_filter( 'reen_site_logo_svg',  'redux_toggle_logo_svg'      );
