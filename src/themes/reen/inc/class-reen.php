@@ -126,7 +126,7 @@ if ( ! class_exists( 'Reen' ) ) :
             register_nav_menus(
                 apply_filters(
                     'reen_register_nav_menus', array(
-                        'menu-1' => esc_html__( 'Primary', 'reen' ),
+						'primary' => esc_html__( 'Primary', 'reen' ),
                         'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
                         'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
                     )
@@ -159,6 +159,11 @@ if ( ! class_exists( 'Reen' ) ) :
              * Declare support for selective refreshing of widgets.
              */
             add_theme_support( 'customize-selective-refresh-widgets' );
+
+            /**
+             * Declare support for editor styles.
+             */
+            add_theme_support( 'editor-styles' );
 
             /**
              * Enqueue editor styles.

@@ -180,9 +180,6 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 } elseif ( isset( $args->has_children ) && $args->has_children ) {
                     $classes[] = 'hs-has-sub-menu';
                 }
-                if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) ) {
-                    $classes[] = 'active';
-                }
 
                 // Add some additional default classes to the item.
                 $classes[] = 'menu-item-' . $item->ID;
@@ -266,7 +263,6 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                     $atts['href']          = $item->url;
                     $atts['aria-haspopup'] = 'true';
                     $atts['aria-expanded'] = 'false';
-                    $atts['class']         = 'nav-link u-header__nav-link u-header__nav-link-toggle';
                     $atts['id']            = 'menu-item-dropdown-' . $item->ID;
                 } else {
                     $atts['href'] = ! empty( $item->url ) ? $item->url : '#';
@@ -278,8 +274,6 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                             $atts['class'] .= ' u-header__sub-menu-nav-link-toggle';
                         }
 
-                    } else {
-                        $atts['class'] = 'nav-link u-header__nav-link';
                     }
                 }
 
