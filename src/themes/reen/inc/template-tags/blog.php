@@ -3,6 +3,18 @@
  * Template tags used in Blog Pages
  */
 
+if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
+    function reen_loop_container_wrap_start() {
+        ?><section id="blog" class="light-bg"><div class="container inner-top-sm inner-bottom classic-blog"><?php
+    }
+}
+
+if ( ! function_exists( 'reen_loop_container_wrap_end' ) ) {
+    function reen_loop_container_wrap_end() {
+        ?></div></section><?php
+    }
+}
+
 if ( ! function_exists( 'reen_format_filter' ) ) {
     /**
      * Displays format filter
@@ -29,6 +41,44 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
     }
 }
 
+
+if ( ! function_exists( 'reen_loop_row_wrap_start' ) ) {
+    function reen_loop_row_wrap_start() {
+        $blog_col_classes = 'col-lg-9 inner-right-sm';
+        ?><div class="row"><div class="blog-column <?php echo esc_attr( $blog_col_classes ); ?>"><?php
+    }
+}
+
+if ( ! function_exists( 'reen_loop_row_wrap_end' ) ) {
+    function reen_loop_row_wrap_end() {
+        ?></div></div><?php
+    }
+}
+
+if ( ! function_exists( 'reen_loop_posts_wrap_start' ) ) {
+    /**
+     * Open posts <div>
+     */
+    function reen_loop_posts_wrap_start() {
+
+        $posts_wrap_class = apply_filters( 'reen_posts_wrap_class', 'sidemeta ' ); ?>
+            <div class="posts <?php echo esc_attr( $posts_wrap_class ); ?>"><?php
+    }
+
+}
+
+if ( ! function_exists( 'reen_loop_posts_wrap_end' ) ) {
+    /**
+     * Close posts <div>
+     */
+    function reen_loop_posts_wrap_end() {
+
+        ?></div><?php
+    }
+
+}
+
+
 if ( ! function_exists( 'reen_get_post_format_icon' ) ) {
     /**
      *
@@ -45,36 +95,6 @@ if ( ! function_exists( 'reen_get_post_format_icon' ) ) {
         $format = empty( $format ) ? get_post_format() : $format ;
         $format_icon = isset( $supported_post_formats[ $format ] ) ? $supported_post_formats[ $format ] : 'icon-edit';
         return $format_icon;
-    }
-}
-
-if ( ! function_exists( 'reen_loop_wrap_start' ) ) {
-    function reen_loop_wrap_start() {
-        ?>
-        <section id="blog" class="light-bg">
-            <div class="container inner-top-sm inner-bottom classic-blog">
-                <?php if( apply_filters( 'reen_enable_format_filter', true ) ) {
-                    reen_format_filter(); 
-                } ?>
-                <div class="row">
-                    <div class="col-lg-9 inner-right-sm">
-                        <div class="posts sidemeta">
-
-
-
-
-        <?php
-    }
-}
-
-if ( ! function_exists( 'reen_loop_wrap_end' ) ) {
-    function reen_loop_wrap_end() {
-        ?>          </div><!-- /.posts -->
-                </div><!-- /.col-lg-9 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-     </div><!-- /.light-bg -->
-     <?php
     }
 }
 
@@ -119,25 +139,6 @@ if ( ! function_exists( 'reen_post_summary_end' ) ) {
         ?></div><?php
     }
 }
-
-if ( ! function_exists( 'reen_loop_post_video' ) ) {
-    function reen_loop_post_video() {
-        global $post;
-
-        $image_path = get_template_directory_uri() . '/assets/images/art/photograph04-lg.jpg';
-
-        if ( has_post_thumbnail() ) {
-            $featured_image_size = 'medium';
-
-            $post_thumbnail_url = get_the_post_thumbnail_url( $post->ID, $featured_image_size );?>
-            <figure class="icon-overlay icn-link post-media"><a href="<?php echo esc_url( get_permalink() ); ?>"><span class="icn-more"></span><?php echo the_post_thumbnail();?></a></figure>
-            <?php
-
-        } 
-    }
-}
-
-
 
 if ( ! function_exists( 'reen_post_title' ) ) {
     function reen_post_title() {
@@ -431,5 +432,22 @@ if ( ! function_exists( 'reen_post_video' ) ) {
                 ?></div><!-- .article__attachment--video --><?php
             }
         }
+    }
+}
+
+if ( ! function_exists( 'reen_paging_nav' ) ) {
+    /**
+     * Display navigation to next/previous set of posts when applicable.
+     */
+    function reen_paging_nav() {
+        global $wp_query;
+        
+        $args = array(
+            'type'      => 'list',
+            'next_text' => _x( 'Next', 'Next post', 'reen' ),
+            'prev_text' => _x( 'Prev', 'Previous post', 'reen' ),
+        );
+        
+        the_posts_pagination( $args );
     }
 }
