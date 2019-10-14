@@ -15,9 +15,8 @@ get_header(); ?>
 
 	            do_action( 'reen_portfolio_single_post_before' );
 
-	            $post_format     = get_post_format();
-	            $portfolio_style = get_post_meta( get_the_ID(), 'portfolio_style', true );
-	            $portfolio_style = empty( $portfolio_style ) ? 'image-2' : $portfolio_style ;
+	            $post_format     = 'video';
+	            
 
 	            if ( 'audio' === $post_format || 'video' === $post_format ) {
 	                    get_template_part( 'templates/portfolio/content',  $post_format . '-portfolio-single' );
