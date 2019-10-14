@@ -14,3 +14,7 @@ add_action( 'redux/page/reen_options/enqueue', 'redux_queue_font_awesome'   );
  */
 add_filter( 'reen_portfolio_view', 'reen_redux_change_portfolio_view'      );
 add_filter( 'reen_portfolio_grid_columns', 'reen_redux_change_portfolio_grid_columns'    );
+
+/**
+ * Header Filters
+ */
