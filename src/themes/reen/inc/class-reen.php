@@ -200,7 +200,6 @@ if ( ! class_exists( 'Reen' ) ) :
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl-carousel.css',
-                'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
@@ -209,6 +208,8 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_style( 'reen-style', get_template_directory_uri() . '/style.css', '', $reen_version );
             wp_style_add_data( 'reen-style', 'rtl', 'replace' );
+
+            wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
 
             /**
              * Fonts
@@ -264,6 +265,7 @@ if ( ! class_exists( 'Reen' ) ) :
          * @return string Google fonts URL for the theme.
          */
         public function google_fonts() {
+
             $google_fonts = apply_filters(
                 'reen_google_font_families', array(
                     'lato' => 'Lato:300,400,500,700,900',
