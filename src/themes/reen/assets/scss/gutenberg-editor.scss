@@ -1,6 +1,10 @@
 
 $size__spacing-unit: 1rem;
 
+body {
+    background-color: #fff !important;
+}
+
 /** === Content Width === */
 .wp-block {
     width: calc(100vw - (2 * #{$size__spacing-unit}));

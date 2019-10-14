@@ -160,6 +160,11 @@ if ( ! class_exists( 'Reen' ) ) :
             add_theme_support( 'customize-selective-refresh-widgets' );
 
             /**
+             * Declare support for editor styles.
+             */
+            add_theme_support( 'editor-styles' );
+
+            /**
              * Enqueue editor styles.
              */
             add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
