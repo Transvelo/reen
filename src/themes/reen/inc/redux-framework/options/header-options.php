@@ -15,7 +15,7 @@ $header_options = apply_filters( 'reen_header_options_args', array(
 
         array(
             'title'     => esc_html__( 'Enable Topbar', 'reen' ),
-            'id'        => 'header_enable_topbar',
+            'id'        => 'enable_topbar_view',
             'subtitle'  => esc_html__( 'Enable to display top bar in header', 'reen' ),
             'on'        => esc_html__('Yes', 'reen'),
             'off'       => esc_html__('No', 'reen'),
@@ -30,7 +30,7 @@ $header_options = apply_filters( 'reen_header_options_args', array(
             'on'        => esc_html__('Yes', 'reen'),
             'off'       => esc_html__('No', 'reen'),
             'type'      => 'switch',
-            'required'  => array( 'header_enable_topbar', 'equals', true ),
+            'required'  => array( 'enable_topbar_view', 'equals', true ),
             'default'   => true,
         ),
 
@@ -41,7 +41,7 @@ $header_options = apply_filters( 'reen_header_options_args', array(
             'on'        => esc_html__('Yes', 'reen'),
             'off'       => esc_html__('No', 'reen'),
             'type'      => 'switch',
-            'required'  => array( 'header_enable_topbar', 'equals', true ),
+            'required'  => array( 'enable_topbar_view', 'equals', true ),
             'default'   => true,
         ),
 
@@ -53,77 +53,26 @@ $header_options = apply_filters( 'reen_header_options_args', array(
 
         array(
             'title'     => esc_html__( 'Logo', 'reen' ),
-            'id'        => 'header_logo_section_start',
+            'id'        => 'logo_start',
             'type'      => 'section',
-            'indent'    => true,
+            'indent'    => true
         ),
 
         array(
-            'type'         => 'select',
-            'id'           => 'header_logo_align',
-            'title'        => esc_html__( 'Logo Align', 'reen' ),
-            'options'      => array(
-                'left'      => esc_html__( 'Left', 'reen' ),
-                'center'    => esc_html__( 'Center', 'reen' ),
-            ),
-            'default'  => 'left'
+            'title'     => esc_html__( 'Logo SVG', 'reen' ),
+            'subtitle'  => esc_html__( 'Enable to display svg logo instead of site title.', 'reen' ),
+            'desc'      => esc_html__( 'This will not work when you use site logo in customizer.', 'reen' ),
+            'id'        => 'logo_svg',
+            'type'      => 'switch',
+            'on'        => esc_html__( 'Enabled', 'reen' ),
+            'off'       => esc_html__( 'Disabled', 'reen' ),
+            'default'   => 1,
         ),
 
         array(
-            'type'         => 'select',
-            'id'           => 'header_logo_align_breakpoint',
-            'title'        => esc_html__( 'Logo Align Breakpoint', 'reen' ),
-            'options'      => array(
-                'all-screens'   => esc_html__( 'All Screens', 'reen' ),
-                'sm'            => esc_html__( 'sm', 'reen' ),
-                'md'            => esc_html__( 'md', 'reen' ),
-                'lg'            => esc_html__( 'lg', 'reen' ),
-                'xl'            => esc_html__( 'xl', 'reen' ),
-            ),
-            'required'  => array( 'header_logo_align', 'equals', 'center' ),
-            'default'  => 'all-screens'
-        ),
-
-        array(
-            'title'     => esc_html__( 'Upload scroll Logo', 'reen' ),
-            'subtitle'  => esc_html__( 'Upload your header scroll logo image.', 'reen' ),
-            'id'        => 'header_logo_scroll_image',
-            'type'      => 'media',
-            // 'required'  => array(
-            //     array( 'header_show_hide_scroll_behavior', 'equals', 'changing-logo-on-scroll' ),
-            //     array( 'header_sticky_scroll_behavior', 'equals', 'changing-logo-on-scroll' )
-            // ),
-        ),
-
-        array(
-            'id'        => 'header_logo_section_end',
+            'id'        => 'logo_end',
             'type'      => 'section',
-            'indent'    => false,
-        ),
-
-        array(
-            'title'     => esc_html__( 'Navbar', 'reen' ),
-            'id'        => 'header_navbar_section_start',
-            'type'      => 'section',
-            'indent'    => true,
-        ),
-
-        array(
-            'type'         => 'select',
-            'id'           => 'header_navbar_responsive_type',
-            'title'        => esc_html__( 'Responsive Type', 'reen' ),
-            'options'      => array(
-                'none'          => esc_html__( 'None', 'reen' ),
-                'collapse'      => esc_html__( 'Collapse', 'reen' ),
-                'scroll'        => esc_html__( 'Scroll', 'reen' ),
-            ),
-            'default'  => 'collapse'
-        ),
-
-        array(
-            'id'        => 'header_navbar_section_end',
-            'type'      => 'section',
-            'indent'    => false,
+            'indent'    => false
         ),
     )
 ) );

@@ -2,41 +2,61 @@
 /**
  * Filter functions for Header of Theme Options
  */
-
-if ( ! function_exists( 'reen_redux_apply_header_args' ) ) {
-    function reen_redux_apply_header_args( $args ) {
-
+if ( ! function_exists( 'redux_toggle_topbar_view' ) ) {
+    function redux_toggle_topbar_view( $enable_topbar_view ) {
         global $reen_options;
 
-        if ( isset( $reen_options['header_enable_topbar'] ) ) {
-            $args['enableTopBar'] = $reen_options['header_enable_topbar'];
-
-            if ( isset( $reen_options['header_enable_topbar_left'] ) ) {
-                $args['enableTopBarLeft'] = $reen_options['header_enable_topbar_left'];
-            }
-
-            if ( isset( $reen_options['header_enable_topbar_right'] ) ) {
-                $args['enableTopBarRight'] = $reen_options['header_enable_topbar_right'];
-            }
+        if ( isset( $reen_options['enable_topbar_view'] ) && $reen_options['enable_topbar_view'] ) {
+            $enable_topbar_view = true;
+        } else {
+            $enable_topbar_view = false;
         }
 
-        if ( ! empty( $reen_options['header_logo_align'] ) ) {
-            $args['logoAlign'] = $reen_options['header_logo_align'];
+        return $enable_topbar_view;
+    }
+}
 
-            if ( $reen_options['header_logo_align'] == 'center' && ! empty( $reen_options['header_logo_align_breakpoint'] ) ) {
-                $args['logoAlignBreakpoint'] = $reen_options['header_logo_align_breakpoint'];
-            }
+
+if ( ! function_exists( 'redux_toggle_topbar_left' ) ) {
+    function redux_toggle_topbar_left( $header_enable_topbar_left ) {
+        global $reen_options;
+
+        if ( isset( $reen_options['header_enable_topbar_left'] ) && $reen_options['header_enable_topbar_left'] ) {
+            $header_enable_topbar_left = true;
+        } else {
+            $header_enable_topbar_left = false;
         }
 
-        if ( ! empty( $reen_options['
-            '] ) ) {
-            $args['navbarAlign'] = $reen_options['header_navbar_align'];
+        return $header_enable_topbar_left;
+    }
+}
+
+
+if ( ! function_exists( 'redux_toggle_topbar_right' ) ) {
+    function redux_toggle_topbar_right( $header_enable_topbar_right ) {
+        global $reen_options;
+
+        if ( isset( $reen_options['header_enable_topbar_right'] ) && $reen_options['header_enable_topbar_right'] ) {
+            $header_enable_topbar_right = true;
+        } else {
+            $header_enable_topbar_right = false;
         }
 
-        if ( ! empty( $reen_options['header_navbar_dropdown_trigger'] ) ) {
-            $args['navbarDropdownTrigger'] = $reen_options['header_navbar_dropdown_trigger'];
+        return $header_enable_topbar_right;
+    }
+}
+
+
+if( ! function_exists( 'redux_toggle_logo_svg' ) ) {
+    function redux_toggle_logo_svg() {
+        global $reen_options;
+
+        if( isset( $reen_options['reen_site_logo_svg'] ) && $reen_options['reen_site_logo_svg'] == '1' ) {
+            $reen_site_logo_svg = true;
+        } else {
+            $reen_site_logo_svg = false;
         }
 
-        return $args;
+        return $reen_site_logo_svg;
     }
 }

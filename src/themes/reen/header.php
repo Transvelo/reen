@@ -26,10 +26,11 @@
 
     <header>
         <div class="navbar">
-            <div class="navbar-header">
+            <?php if ( apply_filters( 'reen_topbar_view', true ) ): ?>
+             <div class="navbar-header">
                 <div class="container">              
                     <?php
-                        if ( has_nav_menu( 'topbar_left' ) ) {
+                        if ( apply_filters( 'reen_topbar_left', true ) && has_nav_menu( 'topbar_left' ) ) {
                             wp_nav_menu( array(
                                 'theme_location' => 'topbar_left',
                                 'menu_id'        => 'top-left-menu',
@@ -43,7 +44,7 @@
                         }
                         ?>
                     <?php
-                    if ( has_nav_menu( 'topbar_right' ) ) {
+                    if ( apply_filters( 'reen_topbar_right', true ) && has_nav_menu( 'topbar_right' ) ) {
                         wp_nav_menu( array(
                             'theme_location' => 'topbar_right',
                             'menu_id'        => 'top-right-menu',
@@ -58,16 +59,17 @@
                     ?>
                 </div>
             </div>
+            <?php endif ?>
             <div class="site-branding navbar-collapse collapse animate affix-top">
                <div class="container">
-                    <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
+                    <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
                     <?php the_custom_logo(); ?>
                     <?php else : ?> 
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
                     <?php endif; ?>
                     <?php
                    wp_nav_menu( array(
-                        'theme_location'     => 'menu-1',
+                        'theme_location'     => 'primary',
                         'depth'              => 0,
                         'container'          => false,
                         'menu_class'         => 'nav navbar-nav',
@@ -75,8 +77,8 @@
                         'walker'             => new WP_Bootstrap_Navwalker(),
                     ) );
                    ?>
-            </nav><!-- #site-navigation -->
-               </div>
+                </div><!-- #site-navigation -->
+           </div>
 
             </div><!-- .site-branding -->
         </div>
