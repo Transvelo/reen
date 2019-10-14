@@ -45,18 +45,3 @@ if ( ! function_exists( 'redux_toggle_topbar_right' ) ) {
         return $header_enable_topbar_right;
     }
 }
-
-
-if( ! function_exists( 'redux_toggle_logo_svg' ) ) {
-    function redux_toggle_logo_svg() {
-        global $reen_options;
-
-        if( isset( $reen_options['reen_site_logo_svg'] ) && $reen_options['reen_site_logo_svg'] == '1' ) {
-            $reen_site_logo_svg = true;
-        } else {
-            $reen_site_logo_svg = false;
-        }
-
-        return $reen_site_logo_svg;
-    }
-}

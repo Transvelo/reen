@@ -14,7 +14,8 @@ if ( ! class_exists( 'REEN_Options' ) ) {
         }
 
         public function load_config() {
-            $options = array( 'portfolio', 'Header' );
+
+            $options = array( 'portfolio', 'header' );
             $options_dir    = get_template_directory() . '/inc/redux-framework/options';
             
             foreach ( $options as $option ) {

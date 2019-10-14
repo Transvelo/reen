@@ -22,7 +22,7 @@ get_header(); ?>
 
         else :
 
-            get_template_part( 'templates/content', 'none' );
+            get_template_part( 'templates/contents/content', 'none' );
 
         endif;
         ?>

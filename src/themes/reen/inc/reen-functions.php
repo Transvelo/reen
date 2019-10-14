@@ -23,3 +23,10 @@ if ( ! function_exists( 'reen_is_redux_activated' ) ) {
         return class_exists( 'ReduxFramework' );
     }
 }
+
+/**
+ * Determines if post thumbnail can be displayed.
+ */
+function reen_can_show_post_thumbnail() {
+    return apply_filters( 'reen_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
+}
