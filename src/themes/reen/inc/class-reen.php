@@ -24,6 +24,7 @@ if ( ! class_exists( 'Reen' ) ) :
          */
         public function __construct() {
             add_action( 'after_setup_theme', array( $this, 'setup' ) );
+            add_action( 'after_setup_theme', array( $this, 'content_width' ), 0 );
             add_action( 'after_setup_theme', array( $this, 'reen_template_debug_mode' ) );
             add_action( 'widgets_init', array( $this, 'widgets_init' ) );
             add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
@@ -60,25 +61,25 @@ if ( ! class_exists( 'Reen' ) ) :
              */
             add_theme_support( 'post-thumbnails' );
 
-			// Set up the WordPress core custom background feature.
-			add_theme_support( 'custom-background', apply_filters( 'reen_custom_background_args', array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			) ) );
+            // Set up the WordPress core custom background feature.
+            add_theme_support( 'custom-background', apply_filters( 'reen_custom_background_args', array(
+                'default-color' => 'ffffff',
+                'default-image' => '',
+            ) ) );
 
-			/**
-			 * Add support for core custom logo.
-			 *
-			 * @link https://codex.wordpress.org/Theme_Logo
-			 */
+            /**
+             * Add support for core custom logo.
+             *
+             * @link https://codex.wordpress.org/Theme_Logo
+             */
 
-			add_theme_support(
+            add_theme_support(
                 'custom-logo', apply_filters(
                     'reen_custom_logo_args', array(
                         'height'      => 250,
-						'width'       => 250,
-						'flex-width'  => true,
-						'flex-height' => true,
+                        'width'       => 250,
+                        'flex-width'  => true,
+                        'flex-height' => true,
                     )
                 )
             );
@@ -122,13 +123,13 @@ if ( ! class_exists( 'Reen' ) ) :
              */
 
              // This theme uses wp_nav_menu() in one location.
-			register_nav_menus(
+            register_nav_menus(
                 apply_filters(
                     'reen_register_nav_menus', array(
 						'primary' => esc_html__( 'Primary', 'reen' ),
                         'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
                         'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
-					)
+                    )
                 )
             );
 
@@ -171,21 +172,35 @@ if ( ! class_exists( 'Reen' ) ) :
         }
 
         /**
-		 * Register widget area.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
-		 */
-		public function widgets_init() {
+         * Set the content width in pixels, based on the theme's design and stylesheet.
+         *
+         * Priority 0 to make it available to lower priority callbacks.
+         *
+         * @global int $content_width Content width.
+         */
+        function content_width() {
+            // This variable is intended to be overruled from themes.
+            // Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+            $GLOBALS['content_width'] = apply_filters( 'reen_content_width', 640 );
+        }
 
-			register_sidebar( array(
-				'name'          => esc_html__( 'Sidebar', 'reen' ),
-				'id'            => 'sidebar-1',
-				'description'   => esc_html__( 'Add widgets here.', 'reen' ),
-				'before_widget' => '<section id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</section>',
-				'before_title'  => '<h2 class="widget-title">',
-				'after_title'   => '</h2>',
-			) );
+        /**
+         * Register widget area.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+         */
+        public function widgets_init() {
+
+            register_sidebar( array(
+                'name'          => esc_html__( 'Sidebar', 'reen' ),
+                'id'            => 'sidebar-1',
+                'description'   => esc_html__( 'Add widgets here.', 'reen' ),
+                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'after_widget'  => '</section>',
+                'before_title'  => '<h2 class="widget-title">',
+                'after_title'   => '</h2>',
+            ) );
             
         }
 
@@ -204,7 +219,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
-                'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'owl-carousel'               => 'owl-carousel/owl.carousel.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
@@ -214,7 +229,9 @@ if ( ! class_exists( 'Reen' ) ) :
             wp_enqueue_style( 'reen-style', get_template_directory_uri() . '/style.css', '', $reen_version );
             wp_style_add_data( 'reen-style', 'rtl', 'replace' );
 
+
             wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
+            wp_style_add_data( 'reen-icons', 'rtl', 'replace' );
 
             /**
              * Fonts
@@ -241,11 +258,13 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'aos', get_template_directory_uri() . '/assets/js/aos.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'owl.carousel', get_template_directory_uri() . '/assets/js/owl.carousel' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'jquery.isotope', get_template_directory_uri() . '/assets/js/jquery.isotope' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/assets/js/jquery.isotope' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'jquery.easytabs', get_template_directory_uri() . '/assets/js/jquery.easytabs' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'imagesloaded-pkgd', get_template_directory_uri() . '/assets/js/imagesloaded.pkgd.min.js', array( 'jquery-isotope' ), $reen_version, true );
+
+            wp_enqueue_script( 'jquery-easytabs', get_template_directory_uri() . '/assets/js/jquery.easytabs' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
             wp_enqueue_script( 'viewport-units-buggyfill', get_template_directory_uri() . '/assets/js/viewport-units-buggyfill' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
@@ -253,11 +272,11 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'reen-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-			wp_enqueue_script( 'reen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+            wp_enqueue_script( 'reen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
-			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-				wp_enqueue_script( 'comment-reply' );
-			}
+            if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+                wp_enqueue_script( 'comment-reply' );
+            }
 
              wp_enqueue_script( 'reen-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $reen_version, true );
 
