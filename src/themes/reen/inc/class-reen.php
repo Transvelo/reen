@@ -200,8 +200,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 'after_widget'  => '</section>',
                 'before_title'  => '<h2 class="widget-title">',
                 'after_title'   => '</h2>',
-            ) );
-            
+            ) );            
         }
 
         /**
