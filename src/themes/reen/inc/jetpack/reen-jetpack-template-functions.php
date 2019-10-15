@@ -35,16 +35,13 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
 
         if ( $portfolio_view === 'fullscreen' ) {
             $wrapper_class .= ' fullscreen';
-            $before = '<div class="portfolio">';
+            ?><div class="portfolio"><?php
         } else {
             $wrapper_class .= ' col-' . $portfolio_columns . '-custom';
-            $before = '
-            <div class="container inner-bottom">
+            ?><div class="container inner-bottom">
                 <div class="row">
-                    <div class="col-md-12 portfolio">';
+                    <div class="col-md-12 portfolio"><?php
         }
-
-        echo wp_kses_post( $before );
 
         $portfolio_cats = array();        
 
@@ -91,12 +88,10 @@ if ( ! function_exists( 'reen_portfolio_info' ) ) {
             $before = '<h4>';
             $after  = '</h4>';
         }
-        add_filter( 'term_links-jetpack-portfolio-type', 'reen_portfolio_type_strip_tags' );
         ?><div class="info">
             <?php the_title( $before, $after ); ?>
-            <p><?php echo get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ); ?></p>
+            <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
         </div><?php
-        remove_filter( 'term_links-jetpack-portfolio-type', 'reen_portfolio_type_strip_tags' );
     }
 }
 
@@ -129,15 +124,6 @@ if ( ! function_exists( 'reen_portfolio_figcaption' ) ) {
     }   
 }
 
-if ( ! function_exists( 'reen_portfolio_type_strip_tags' ) ) {
-    function reen_portfolio_type_strip_tags( $links ) {
-        foreach ( $links as $key => $link ) {
-            $links[$key] = wp_strip_all_tags( $link );
-        }
-        return $links;
-    }
-}
-
 function reen_portfolio_thumbnail() {
     the_post_thumbnail( 'reen-portfolio-featured-image' );
 }
@@ -147,17 +133,14 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_end' ) ) {
         $portfolio_view    = reen_get_portfolio_view();
 
         if ( $portfolio_view === 'fullscreen' ) {
-            $after = '</div><!-- /.portfolio -->';
+            ?></div><!-- /.portfolio --><?php
         } else {
-            $after = '
-                    </div><!-- /.portfolio -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->';
-        }
+                ?></div><!-- /.portfolio -->
+            </div><!-- /.row -->
+        </div><!-- /.container --><?php
+    }
 
         ?></ul><?php
-
-        echo wp_kses_post( $after );
     }
 }
 
@@ -206,8 +189,8 @@ if ( ! function_exists( 'reen_portfolio_post_audio' ) ) {
 
 if ( ! function_exists( 'reen_portfolio_audio_post_content-close' ) ) {
     function reen_portfolio_audio_post_content_close() {?>
-                </div>
-            </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
         </section><?php
     }
 }
@@ -274,7 +257,7 @@ if ( ! function_exists( 'reen_portfolio_video_post_content_close' ) ) {
 
 if ( ! function_exists( 'reen_portfolio_video_post_wrap_end' ) ) {
     function reen_portfolio_video_post_wrap_end() {?>
-        </div>
+        </div><!-- /.container -->
         </section><?php
     }
 }
@@ -288,11 +271,6 @@ if ( ! function_exists( 'reen_portfolio_post_slider_wrap_open' ) ) {
 if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
     function reen_portfolio_post_slider_1() {?>
         <div class="col-md-12"><?php
-
-        wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-        wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
-
-        wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
             $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
                 'autoPlay'        => 5000,
@@ -339,10 +317,6 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
     function reen_portfolio_post_slider_2() {?>
         <div class="col-md-8"><?php
 
-        wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-        wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
-        wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
-
             $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
                 'autoPlay'        => 5000,
                 'slideSpeed'      => 200,
@@ -384,7 +358,7 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2_content' ) ) {
 
 if ( ! function_exists( 'reen_portfolio_post_slider_wrap_close' ) ) {
     function reen_portfolio_post_slider_wrap_close() {?>
-        </div><?php
+        </div><!-- /.row --><?php
     }
 } 
 
@@ -468,8 +442,7 @@ if ( ! function_exists( 'reen_portfolio_meta' ) ) :
                 
                     sanitize_title( $key ),
                     sprintf( _x( '%s:', 'Post custom field name' ), $key ),
-                    $value
-
+                    $key == 'project-url' ?  '<a href="'. esc_url( $value ) .'">' . $value . '</a>' : wp_strip_all_tags( $value, true )
             );
             $li_html .= apply_filters( 'reen_meta_key', $html, $key, $value );
         }
@@ -480,37 +453,6 @@ if ( ! function_exists( 'reen_portfolio_meta' ) ) :
     }
 
 endif;
-
-if ( ! function_exists( 'reen_page_site_content_page_title' ) ) {
-    function reen_page_site_content_page_title( $page_title ) {
-
-        if( is_page() ) {
-            global $post;
-            $clean_page_meta_values = get_post_meta( $post->ID, '_reen_page_metabox', true );
-            $page_meta_values = maybe_unserialize( $clean_page_meta_values );
-            if ( isset( $page_meta_values['page_title'] ) && ! empty( $page_meta_values['page_title'] ) ) {
-                $page_title = $page_meta_values['page_title'];
-            }
-        }
-
-        return $page_title;
-    }
-}
-
-if ( ! function_exists( 'reen_site_content_page_subtitle' ) ) {
-    function reen_site_content_page_subtitle( $page_subtitle ) {
-
-        if( is_page() ) {
-            global $post;
-            $clean_page_meta_values = get_post_meta( $post->ID, '_reen_page_metabox', true );
-            $page_meta_values = maybe_unserialize( $clean_page_meta_values );
-            if ( isset( $page_meta_values['page_subtitle'] ) && ! empty( $page_meta_values['page_subtitle'] ) ) {
-                $page_subtitle = $page_meta_values['page_subtitle'];
-            }
-        }
-        return $page_subtitle;
-    }
-}
 
 if ( ! function_exists( 'reen_more_works' ) ) {
     function reen_more_works() {
