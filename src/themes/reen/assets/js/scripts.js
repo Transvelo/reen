@@ -981,9 +981,9 @@ $(document).ready(function () {
 /*	CONVERTING iOS SAFARI VIEWPORT UNITS (BUGGY) INTO PIXELS
 /*===================================================================================*/
 
-$(document).ready(function () {
-	window.viewportUnitsBuggyfill.init();
-});
+// $(document).ready(function () {
+// 	window.viewportUnitsBuggyfill.init();
+// });
 
 
 /*===================================================================================*/
@@ -1054,4 +1054,14 @@ $(document).ready(function() {
 if ($("[rel=tooltip]").length) {
     $("[rel=tooltip]").tooltip();
 }
+
+	/**
+     * Owl carousel
+     */
+    $ ( '[data-ride="owl-carousel"]' ).each( function() {
+        var $owlElement = $(this), owlCarouselParams = $owlElement.data( 'owlparams' );
+        $owlElement.owlCarousel( owlCarouselParams );
+    });
+
+
 })(jQuery);

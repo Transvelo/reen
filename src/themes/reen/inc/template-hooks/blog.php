@@ -2,12 +2,13 @@
 /**
  * Hooks used for Posts
  */
+add_action( 'reen_loop_before', 'reen_popular_posts',                      10 );
 
-add_action( 'reen_loop_before', 'reen_loop_container_wrap_start',      10 );
-add_action( 'reen_loop_before', 'reen_format_filter',      	 30 );
-add_action( 'reen_loop_before', 'reen_loop_row_wrap_start',      	 40 );
-add_action( 'reen_loop_before', 'reen_loop_posts_wrap_start',      	 50 );
-add_action( 'reen_loop_before', 'reen_toggle_post_side_meta_hooks',  60 );
+add_action( 'reen_loop_before', 'reen_loop_container_wrap_start',          20 );
+add_action( 'reen_loop_before', 'reen_format_filter',      	 		       30 );
+add_action( 'reen_loop_before', 'reen_loop_row_wrap_start',      	       40 );
+add_action( 'reen_loop_before', 'reen_loop_posts_wrap_start',      	       50 );
+add_action( 'reen_loop_before', 'reen_toggle_post_side_meta_hooks',        60 );
 
 add_action( 'reen_loop_post', 	'reen_post_side_meta', 						10 );
 add_action( 'reen_loop_post', 	'reen_post_summary_start', 				    20 );

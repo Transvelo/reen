@@ -4226,6 +4226,9 @@ input:focus:-ms-input-placeholder {
 .bs-tooltip-right .arrow::before {
   border-right-color: #1ABB9C; }
 
+.tooltip-arrow {
+  visibility: visible; }
+
 /*===================================================================================*/
 /*	PAGINATION
 /*===================================================================================*/
@@ -5701,5 +5704,90 @@ ul.page-numbers > li > a:focus {
 ul.page-numbers > li:first-child > a,
 ul.page-numbers > li:last-child > a {
   border-radius: 3px; }
+
+.owl-nav {
+  display: none; }
+
+.owl-prev,
+.owl-next {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  color: #FFF;
+  background-color: #506A85;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: auto;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+  opacity: 0; }
+
+.owl-prev {
+  left: -35px; }
+
+.owl-next {
+  right: -35px; }
+
+.owl-carousel:hover .owl-prev {
+  left: -40px;
+  opacity: .25; }
+
+.owl-carousel:hover .owl-next {
+  right: -40px;
+  opacity: .25; }
+
+.owl-carousel:hover .owl-prev:hover,
+.owl-carousel:hover .owl-next:hover {
+  color: #1ABB9C;
+  opacity: 1; }
+
+.owl-dots {
+  position: relative;
+  line-height: 30px; }
+
+.owl-carousel .owl-nav .owl-prev,
+.owl-carousel .owl-nav .owl-next,
+.owl-carousel .owl-dot {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel button.owl-dot {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit; }
+
+.owl-dots .owl-dot span {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #506A85;
+  border: none;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 5px;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out; }
+
+.owl-dots .owl-dot.active span,
+.owl-dots .owl-dot:hover span {
+  background: #1ABB9C; }
 
 /*# sourceMappingURL=style.css.map */
