@@ -93,12 +93,13 @@ if ( ! class_exists( 'Reen' ) ) :
                 array(
                     'aside',
                     'image',
+                    'gallery',
                     'video',
+                    'audio',
                     'quote',
                     'link',
-                    'gallery',
                     'status',
-                    'audio',
+                    
                 )
             );
 
@@ -193,8 +194,8 @@ if ( ! class_exists( 'Reen' ) ) :
         public function widgets_init() {
 
             register_sidebar( array(
-                'name'          => esc_html__( 'Sidebar', 'reen' ),
-                'id'            => 'sidebar-1',
+                'name'          => esc_html__( 'Blog Sidebar', 'reen' ),
+                'id'            => 'sidebar-blog',
                 'description'   => esc_html__( 'Add widgets here.', 'reen' ),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget'  => '</section>',
@@ -202,6 +203,73 @@ if ( ! class_exists( 'Reen' ) ) :
                 'after_title'   => '</h2>',
             ) );            
         }
+
+        /**
+         * Get all Reen scripts.
+         */
+        // private static function get_theme_scripts() {
+        //     $js_path = get_template_directory_uri() . '/assets/js/';
+        //     $js_vendors = apply_filters( 'reen_js_vendors', array(
+        //         'popper' => array( 
+        //             'src' => $js_path . 'popper.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'bootstrap' => array( 
+        //             'src' => $js_path . 'bootstrap.min.js',
+        //             'dep' => array( 'jquery', 'popper' )
+        //         ),
+        //         'jquery-form' => array(
+        //             'src' => $js_path . 'jquery.form.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'jquery-easing' => array(
+        //             'src' => $js_path . 'jquery.easing.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'jquery-validation' => array(
+        //             'src' => $js_path . 'jquery.validate.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'affix' => array(
+        //             'src' => $js_path . 'affix.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'aos' => array(
+        //             'src' => $js_path . 'aos.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'owl-carousel' => array(
+        //             'src' => $js_path . 'owl.carousel.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'jquery-isotope' => array(
+        //             'src' => $js_path . 'jquery.isotope.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'imagesloaded-pkgd' => array(
+        //             'src' => $js_path . 'imagesloaded.pkgd.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'jquery-easytabs' => array(
+        //             'src' => $js_path . 'jquery.easytabs.min.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'viewport-units-buggyfill' => array(
+        //             'src' => $js_path . 'viewport-units-buggyfill.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'selected-scroll' => array(
+        //             'src' => $js_path . 'selected-scroll.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //         'reen-scripts' => array(
+        //             'src' => $js_path . 'scripts.js',
+        //             'dep' => array( 'jquery' )
+        //         ),
+        //     ) );
+
+        //     return $js_vendors;
+        // }
 
         /**
          * Enqueue scripts and styles.
@@ -251,7 +319,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'jquery.validate', get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper' . $suffix . '.js', array( 'jquery' ), '1.14.4', true );
+            wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
             wp_enqueue_script( 'affix', get_template_directory_uri() . '/assets/js/affix.js', array( 'jquery' ), $reen_version, true );
 
@@ -319,13 +387,19 @@ if ( ! class_exists( 'Reen' ) ) :
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
                 'bootstrap'                  => 'bootstrap/bootstrap.css',
-                'owl-carousel'               => 'owl-carousel/owl-carousel.css',
+                'owl-carousel'               => 'owl-carousel/owl.carousel.css',
                 'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
                 wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
             }
+
+            // Scripts
+            // $theme_scripts = self::get_theme_scripts();
+            // foreach ( $theme_scripts as $handle => $props ) {
+            //     wp_enqueue_script( $handle, $props['src'], $props['dep'], $reen_version );
+            // }
         }
 
 

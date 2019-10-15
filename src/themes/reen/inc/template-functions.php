@@ -18,7 +18,7 @@ function reen_body_classes( $classes ) {
 	}
 
 	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	if ( ! is_active_sidebar( 'sidebar-blog' ) ) {
 		$classes[] = 'no-sidebar';
 	}
 

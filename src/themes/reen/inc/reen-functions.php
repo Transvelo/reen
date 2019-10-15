@@ -45,6 +45,28 @@ if ( ! function_exists( 'reen_get_single_post_layout' ) ) {
     }
 }
 
+if ( ! function_exists( 'reen_get_blog_style' ) ) {
+    /**
+     * Classic or Grid
+     */
+    function reen_get_blog_style() {
+        $default_blog_style = 'classic-blog';
+        $available_styles = array( 'classic-blog', 'grid-blog' );
+        
+        if ( is_single() ) {
+            $blog_style = 'classic-blog';
+        } else {
+            $blog_style = apply_filters( 'reen_blog_style', $default_blog_style );
+        }
+
+        if ( ! in_array( $blog_style, $available_styles ) ) {
+            $blog_style = $default_blog_style;
+        } 
+
+        return $blog_style;
+    }
+}
+
 if ( ! function_exists( 'reen_get_blog_layout' ) ) {
     /**
      * Gets Blog Layout
