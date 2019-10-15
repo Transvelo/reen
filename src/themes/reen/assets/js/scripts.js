@@ -1047,4 +1047,11 @@ $(document).ready(function() {
 	});
 	
 });
+
+/**
+ * Initialize Tooltip
+ */
+if ($("[rel=tooltip]").length) {
+    $("[rel=tooltip]").tooltip();
+}
 })(jQuery);

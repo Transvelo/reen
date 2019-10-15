@@ -19,6 +19,13 @@ add_filter( 'reen_portfolio_page_title', 'reen_redux_change_portfolio_page_title
 add_filter( 'reen_portfolio_page_description', 'reen_redux_change_portfolio_page_description'    );
 
 /**
+ * Blog Hooks
+ */
+add_filter( 'reen_blog_style',         'reen_redux_change_blog_style'         );
+add_filter( 'reen_blog_layout',        'reen_redux_change_blog_layout'        );
+add_filter( 'reen_blog_grid_columns',  'reen_redux_change_grid_columns'       );
+
+/**
  * Header Filters
  */
 

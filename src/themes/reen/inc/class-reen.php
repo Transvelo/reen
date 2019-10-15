@@ -93,12 +93,13 @@ if ( ! class_exists( 'Reen' ) ) :
                 array(
                     'aside',
                     'image',
+                    'gallery',
                     'video',
+                    'audio',
                     'quote',
                     'link',
-                    'gallery',
                     'status',
-                    'audio',
+                    
                 )
             );
 
@@ -193,8 +194,8 @@ if ( ! class_exists( 'Reen' ) ) :
         public function widgets_init() {
 
             register_sidebar( array(
-                'name'          => esc_html__( 'Sidebar', 'reen' ),
-                'id'            => 'sidebar-1',
+                'name'          => esc_html__( 'Blog Sidebar', 'reen' ),
+                'id'            => 'sidebar-blog',
                 'description'   => esc_html__( 'Add widgets here.', 'reen' ),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget'  => '</section>',
@@ -251,7 +252,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'jquery.validate', get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper' . $suffix . '.js', array( 'jquery' ), '1.14.4', true );
+            wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
             wp_enqueue_script( 'affix', get_template_directory_uri() . '/assets/js/affix.js', array( 'jquery' ), $reen_version, true );
 
