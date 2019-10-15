@@ -311,7 +311,8 @@ if ( ! class_exists( 'Reen' ) ) :
              */
             $suffix = '.min';
 
-            wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+
+            wp_enqueue_script( 'bootstrap-bundle', get_template_directory_uri() . '/assets/js/bootstrap.bundle' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
             wp_enqueue_script( 'jquery-form', get_template_directory_uri() . '/assets/js/jquery.form.js', array( 'jquery' ), $reen_version, true );
 
