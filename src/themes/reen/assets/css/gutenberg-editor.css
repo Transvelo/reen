@@ -1,6 +1,9 @@
 body {
   background-color: #fff !important; }
 
+.editor-writing-flow header + * {
+  margin-top: 35px !important; }
+
 /** === Content Width === */
 .wp-block {
   width: calc(100vw - (2 * 1rem));
