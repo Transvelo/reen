@@ -5790,4 +5790,54 @@ ul.page-numbers > li:last-child > a {
 .owl-dots .owl-dot:hover span {
   background: #1ABB9C; }
 
+#portfolio-post .article {
+  margin-bottom: 0; }
+
+.post-meta {
+  list-style: none;
+  font-size: 16px;
+  line-height: 140%;
+  padding-left: 0;
+  margin-bottom: 0; }
+
+.post-meta li + li {
+  margin-top: 6px; }
+
+.post-meta li:before {
+  content: "";
+  font-family: "fontello";
+  color: #506A85;
+  margin-right: 10px; }
+
+.post-meta .client-name:before {
+  content: "\f464"; }
+
+.post-meta .project-date:before {
+  content: "\e82c"; }
+
+.post-meta .project-url:before {
+  content: "\f30e"; }
+
+.post-meta .project-types:before {
+  content: "\e70d"; }
+
+.text-center .post-meta li {
+  display: inline-block;
+  margin: 0 15px 6px; }
+
+.post-meta-key {
+  display: none; }
+
+.col-lg-4 .post-meta {
+  border-top: 1px solid #ced7e0;
+  padding-top: 40px;
+  margin-top: 40px; }
+
+.comment-respond {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
+.form-control {
+  width: 70%; }
+
 /*# sourceMappingURL=style.css.map */

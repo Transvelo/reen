@@ -79,6 +79,7 @@ if ( reen_is_jetpack_activated() ) {
     $reen->jetpack = require_once get_template_directory() . '/inc/jetpack/reen-jetpack-functions.php';
     require_once get_template_directory() . '/inc/jetpack/reen-jetpack-template-functions.php';
     require_once get_template_directory() . '/inc/jetpack/reen-jetpack-template-hooks.php';
+    require_once get_template_directory() . '/inc/jetpack/class-reen-jetpack.php';
 }
 
 if ( reen_is_redux_activated() ) {
