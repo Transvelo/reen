@@ -1,0 +1,54 @@
+ul.page-numbers {
+    display: block;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+
+ul.page-numbers > li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+ul.page-numbers > li:first-child {
+    margin-left: 0;
+}
+
+ul.page-numbers > li > a,
+ul.page-numbers > li > span {
+    float: none;
+    display: inline-block;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #1ABB9C;
+    padding: 11px 20px 13px;
+    margin-left: 0;
+    font-weight: 700;
+    font-size: 14px;
+    text-shadow: none;
+    text-transform: uppercase;
+    border: none;
+    -webkit-transition: all 200ms ease-out;
+    -o-transition: all 200ms ease-out;
+    -moz-transition: all 200ms ease-out;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15);
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15);
+}
+
+ul.page-numbers > li > a.current,
+ul.page-numbers > li > span.current,
+ul.page-numbers > li > a.current:hover,
+ul.page-numbers > li > span.current:hover,
+ul.page-numbers > li > a:hover,
+ul.page-numbers > li > a:focus {
+    background: #17A78B;
+    color: #FFF;
+}
+
+ul.page-numbers > li:first-child > a,
+ul.page-numbers > li:last-child > a {
+    border-radius: 3px;
+}
