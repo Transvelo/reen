@@ -133,7 +133,7 @@ endif;
 
 if ( ! function_exists( 'reen_footer_site_description' ) ) {
     function reen_footer_site_description() {
-        $footer_site_description = apply_filters( 'reen_footer_site_description_info', wp_kses_post( sprintf( __( '<h4>WHO WE ARE</h4>', 'reen' ) ) ) );
+        $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ) ) );
         ?>
             <?php echo wp_kses_post( $footer_site_description ); ?>
         <?php
