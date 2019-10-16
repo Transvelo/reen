@@ -17,16 +17,12 @@
         <?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
         <div class="container inner">
             <div class="row">
-                <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
                 <div class="col-lg-3 col-md-6 inner">
-            	<?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
-                <?php the_custom_logo(); ?>
-                <?php else : ?> 
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.svg" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
-                <?php endif; ?>
+                <?php reen_footer_site_title(); ?>
+                <?php reen_footer_logo(); ?>
+                <?php reen_footer_site_description(); ?>
                 <?php dynamic_sidebar( 'footer-1' ); ?>
                 </div>
-                <?php endif; ?>
 
                 <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
                 <div class="col-lg-3 col-md-6 inner">
