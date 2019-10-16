@@ -278,12 +278,12 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
                 'paginationSpeed' => 600,
                 'rewindSpeed'     => 800,
                 'stopOnHover'     => true,
-                'navigation'      => true,
-                'pagination'      => true,
+                'nav'             => true,
+                'dots'            => true,
                 'rewindNav'       => true,
                 'items'           => 1,
                 'autoHeight'      => true,
-                'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
             ) );
 
        ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel owl-inner-pagination owl-ui-lg owl-theme"> 
@@ -317,19 +317,19 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
     function reen_portfolio_post_slider_2() {?>
         <div class="col-md-8"><?php
 
-            $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
-                'autoPlay'        => 5000,
-                'slideSpeed'      => 200,
-                'paginationSpeed' => 600,
-                'rewindSpeed'     => 800,
-                'stopOnHover'     => true,
-                'navigation'      => true,
-                'pagination'      => true,
-                'rewindNav'       => true,
-                'items'           => 1,
-                'autoHeight'      => true,
-                'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
-            ) );
+        $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
+            'autoPlay'        => 5000,
+            'slideSpeed'      => 200,
+            'paginationSpeed' => 600,
+            'rewindSpeed'     => 800,
+            'stopOnHover'     => true,
+            'nav'             => true,
+            'dots'            => true,
+            'rewindNav'       => true,
+            'items'           => 1,
+            'autoHeight'      => true,
+            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+        ) );
 
         ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-inner-pagination owl-inner-nav owl-ui-md owl-theme">
             <?php for ($i=1; $i < 6; $i++) { ?> 
