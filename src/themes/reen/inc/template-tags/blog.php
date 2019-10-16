@@ -418,10 +418,10 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
 
         if ( ! empty( $attachment_ids ) ) :
 
-            wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-            wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
+            // wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
+            // wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
 
-            wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
+            // wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
             $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
                 'autoPlay'        => 5000,
@@ -437,7 +437,7 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
                 'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
             ), $post->ID );
 
-        ?><div id="owl-work" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="article__attachment--gallery article__media owl-carousel owl-inner-pagination owl-inner-nav post-media"><?php 
+        ?><div id="owl-work" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="article__attachment--gallery article__media owl-inner-pagination owl-inner-nav post-media"><?php 
             foreach( $attachment_ids as $attachment_id ) : ?>
                 <div class="item">
                     <figure>
@@ -541,10 +541,10 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
 
         $popular_posts_args = array(
             'posts_type' => 'page',
-             'posts_per_page' => 8,
-             //'meta_key' => 'my_post_viewed',
+             'posts_per_page' => 5,
+             //'meta_key' => 'custom_sort_order',
              'orderby' => 'comment_count',
-             //'orderby' => 'meta_value_num',
+             //'orderby' => 'meta_value meta_value_num',
              //'order'=> 'DESC'
             );
         $popular_posts_loop = new WP_Query( $popular_posts_args );
@@ -567,21 +567,17 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                     </div><!-- /.panel-heading -->
                                     <div id="content-popular-posts" class="panel-collapse collapse show" data-parent="#accordion-popular-posts">
                                     <div class="panel-body"><?php
-                                        wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-                                        wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
-                                        wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
-
                                         $owl_params = apply_filters( 'owl-popular-posts_params', array(
                                             'autoPlay'     => 5000,
                                             'stopOnHover'  => true,
-                                            'navigation'   => true,
-                                            'pagination'   => true,
                                             'rewindNav'    => true,
                                             'items'        => 5,
-                                            'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                            'nav'          => true,
+                                            'dots'         => true,
+                                            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
                                         ) );
 
-                                ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel owl-item-gap-sm owl-theme">
+                                        ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
                                             <?php while( $popular_posts_loop->have_posts() ):
                                                  $popular_posts_loop->the_post(); ?>
                                                 <div class="item">
@@ -592,7 +588,12 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                                                     <h4><?php the_title(); ?></h4>
                                                                 </div><!-- /.info -->
                                                             </figcaption>
-                                                            <?php the_post_thumbnail()?>
+                                                            <?php if ( has_post_thumbnail() ) {
+                                                            the_post_thumbnail();
+                                                            } else { ?>
+                                                        
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
+                                                            <?php } ?>
                                                         </figure>
                                                     </a>
                                                 </div><!-- /.item -->
