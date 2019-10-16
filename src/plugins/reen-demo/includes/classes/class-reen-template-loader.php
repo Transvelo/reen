@@ -27,17 +27,17 @@ class Reen_Template_Loader {
     }
 
     public static function rewrite_portfolio_rule() {
-        add_rewrite_rule( '^portfolio/3-column-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3','top' );
-        add_rewrite_rule( '^portfolio/3-column-detail-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=detail-grid&grid-columns=3','top' );
+        add_rewrite_rule( '^portfolio/3-column-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=3','top' );
+        add_rewrite_rule( '^portfolio/4-column-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=4','top' );
         add_rewrite_rule( '^portfolio/4-column-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=4','top' );
-        add_rewrite_rule( '^portfolio/4-column-detail-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=detail-grid&grid-columns=4','top' );
+        add_rewrite_rule( '^portfolio/3-column-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3','top' );
         add_rewrite_rule( '^portfolio/fullscreen?', 'index.php?post_type=jetpack-portfolio&portfolio-view=fullscreen','top' );
         
     }
 
     public static function add_query_vars_filter( $vars ){
         $vars[] = "portfolio-view";
-        $vars[] = "grid_columns";
+        $vars[] = "grid-columns";
         return $vars;
     }
 
@@ -51,7 +51,7 @@ class Reen_Template_Loader {
 
         switch( $custom_view ) {
             case 'grid':
-            case 'deatil-grid':
+            case 'grid-detail':
             case 'fullscreen':
                 $view = $custom_view;
             break;
@@ -64,7 +64,11 @@ class Reen_Template_Loader {
 
     public static function portfolio_grid_columns_loader ( $columns ) {
  
-        $custom_columns = isset( $_GET['grid_columns'] ) ? sanitize_text_field( $_GET['grid_columns'] ) :$columns;
+        $custom_columns = isset( $_GET['grid-columns'] ) ? sanitize_text_field( $_GET['grid-columns'] ) :'';
+
+        if ( empty( $custom_columns ) ) {
+            $custom_columns = get_query_var( 'grid-columns' );
+        }
 
         switch( $custom_columns ) {
             case '3':
