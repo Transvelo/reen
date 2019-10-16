@@ -80,7 +80,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                     // build a string to use as aria-labelledby.
                     $labelledby = 'aria-labelledby="' . end( $matches[2] ) . '"';
                 }
-                $output .= "{$n}{$indent}<ul$class_names $labelledby role=\"menu\">{$n}";
+                $output .= "{$n}{$indent}<ul$class_names $labelledby >{$n}";
             }
         }
 
@@ -174,12 +174,11 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                  */
                 $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
 
-                // Add some additional default classes to the item.
-                $classes[] = 'dropdown hover';
-
-                if ( $depth === 0 ) {
-                    if ( ! in_array( 'u-header__nav-last-item', $classes ) ) { 
-                    }
+                // Add .dropdown or .active classes where they are needed.
+                if ( $depth === 0 && isset( $args->has_children ) && $args->has_children && isset( $item->has_megamenu ) && $item->has_megamenu == 'yes' ) {
+                    $classes[] = 'yamm-fullwidth';
+                } elseif ( $depth === 0 && isset( $args->has_children ) && $args->has_children ) {
+                    $classes[] = 'dropdown hover';
                 }
 
                 // Allow filtering the classes.
@@ -242,7 +241,9 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 // If item has_children add atts to <a>.
                 if ( isset( $args->has_children ) && $args->has_children && 0 === $depth ) {
                     $atts['href']          = $item->url;
-                    $atts['aria-haspopup'] = 'true';
+                    $atts['class'] = 'dropdown-toggle';
+
+
                 } else {
                     $atts['href'] = ! empty( $item->url ) ? $item->url : '#';
                     // Items in dropdowns use .dropdown-item instead of .nav-link.
