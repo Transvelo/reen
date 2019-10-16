@@ -281,12 +281,12 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
                 'navigation'      => true,
                 'pagination'      => true,
                 'rewindNav'       => true,
-                'singleItem'      => true,
+                'items'           => 1,
                 'autoHeight'      => true,
                 'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
             ) );
 
-       ?><div id="owl-portfolio" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel owl-inner-pagination owl-outer-nav owl-ui-lg owl-theme"> 
+       ?><div id="owl-work" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel owl-inner-pagination owl-outer-nav owl-ui-lg owl-theme"> 
             <?php for ($i=1; $i < 6; $i++) { ?> 
                 <div class="item">
                     <figure>
@@ -326,12 +326,12 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
                 'navigation'      => true,
                 'pagination'      => true,
                 'rewindNav'       => true,
-                'singleItem'      => true,
+                'items'           => 1,
                 'autoHeight'      => true,
                 'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
             ) );
 
-        ?><div id="owl-portfolio" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-inner-pagination owl-inner-nav owl-ui-md owl-theme">
+        ?><div id="owl-work" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-inner-pagination owl-inner-nav owl-ui-md owl-theme">
             <?php for ($i=1; $i < 6; $i++) { ?> 
                 <div class="item">
                     <figure>
