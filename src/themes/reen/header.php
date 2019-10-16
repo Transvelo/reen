@@ -79,9 +79,8 @@
                    ?>
                 </div><!-- #site-navigation -->
            </div>
-
-            </div><!-- .site-branding -->
-        </div>
+        </div><!-- .site-branding -->
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">
+        <main id="content" role="main">
