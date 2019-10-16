@@ -5848,4 +5848,14 @@ ul.page-numbers > li:last-child > a {
 .dropdown.searchbox .menu-text {
   display: none; }
 
+.site-footer .widget .screen-reader-text {
+  display: none; }
+
+.site-footer .widget table td, .site-footer .widget table th {
+  padding: 7px 2px;
+  font-size: 14px; }
+
+.site-footer .widget.widget_calendar table {
+  table-layout: fixed; }
+
 /*# sourceMappingURL=style.css.map */

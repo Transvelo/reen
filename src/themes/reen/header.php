@@ -60,25 +60,29 @@
                 </div>
             </div>
             <?php endif ?>
-            <div class="site-branding navbar-collapse collapse animate affix-top">
-               <div class="container">
-                    <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
-                    <?php the_custom_logo(); ?>
-                    <?php else : ?> 
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
-                    <?php endif; ?>
-                    <?php
-                   wp_nav_menu( array(
-                        'theme_location'     => 'primary',
-                        'depth'              => 0,
-                        'container'          => false,
-                        'menu_class'         => 'nav navbar-nav',
-                        'fallback_cb'        => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'             => new WP_Bootstrap_Navwalker(),
-                    ) );
-                   ?>
-                </div><!-- #site-navigation -->
-           </div>
+            <div class="yamm">
+                <div class="affix-wrapper">
+                    <div class="navbar-collapse collapse animate affix-top">
+                       <div class="container">
+                            <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
+                            <?php the_custom_logo(); ?>
+                            <?php else : ?> 
+                                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                            <?php endif; ?>
+                            <?php
+                           wp_nav_menu( array(
+                                'theme_location'     => 'primary',
+                                'depth'              => 0,
+                                'container'          => false,
+                                'menu_class'         => 'nav navbar-nav',
+                                'fallback_cb'        => 'WP_Bootstrap_Navwalker::fallback',
+                                'walker'             => new WP_Bootstrap_Navwalker(),
+                            ) );
+                           ?>
+                        </div><!-- #site-navigation -->
+                    </div>
+                </div>
+            </div>
         </div><!-- .site-branding -->
     </header><!-- #masthead -->
 
