@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name:     Front Demo
- * Plugin URI:      https://madrasthemes.com/front
- * Description:     This selection of demo compliment our lean and mean theme for WooCommerce, Front. Please note: they don’t work with any WordPress theme, just Front.
+ * Plugin Name:     Reen Demo
+ * Plugin URI:      https://madrasthemes.com/reen
+ * Description:     This selection of demo compliment our lean and mean theme for WooCommerce, Reen. Please note: they don’t work with any WordPress theme, just Reen.
  * Author:          MadrasThemes
  * Author URI:      https://madrasthemes.com/
  * Version:         0.0.2002
- * Text Domain:     front-demo
+ * Text Domain:     reen-demo
  * Domain Path:     /languages
  * WC tested up to: 3.5.0
  */
@@ -16,19 +16,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if( ! class_exists( 'Front_Demo' ) ) {
+if( ! class_exists( 'Reen_Demo' ) ) {
     /**
-     * Main Front_Demo Class
+     * Main Reen_Demo Class
      *
-     * @class Front_Demo
+     * @class Reen_Demo
      * @version 1.0.0
      * @since 1.0.0
      * @package Kudos
      * @author Ibrahim
      */
-    final class Front_Demo {
+    final class Reen_Demo {
         /**
-         * Front_Demo The single instance of Front_Demo.
+         * Reen_Demo The single instance of Reen_Demo.
          * @var     object
          * @access  private
          * @since   1.0.0
@@ -68,11 +68,11 @@ if( ! class_exists( 'Front_Demo' ) ) {
          * Constructor function.
          * @access  public
          * @since   1.0.0
-         * @return  front
+         * @return  Reen
          */
         public function __construct () {
             
-            $this->token    = 'front-demo';
+            $this->token    = 'reen-demo';
             $this->version  = '1.0.4';
             
             add_action( 'plugins_loaded', array( $this, 'setup_constants' ),        10 );
@@ -82,13 +82,13 @@ if( ! class_exists( 'Front_Demo' ) ) {
         }
 
         /**
-         * Main Front_Demo Instance
+         * Main Reen_Demo Instance
          *
-         * Ensures only one instance of Front_Demo is loaded or can be loaded.
+         * Ensures only one instance of Reen_Demo is loaded or can be loaded.
          *
          * @since 1.0.0
          * @static
-         * @see Front_Demo()
+         * @see Reen_Demo()
          * @return Main Kudos instance
          */
         public static function instance () {
@@ -103,23 +103,23 @@ if( ! class_exists( 'Front_Demo' ) ) {
          *
          * @access public
          * @since  1.0.0
-         * @return front
+         * @return reen
          */
         public function setup_constants() {
 
             // Plugin Folder Path
-            if ( ! defined( 'FRONT_DEMO_DIR' ) ) {
-                define( 'FRONT_DEMO_DIR', plugin_dir_path( __FILE__ ) );
+            if ( ! defined( 'REEN_DEMO_DIR' ) ) {
+                define( 'REEN_DEMO_DIR', plugin_dir_path( __FILE__ ) );
             }
 
             // Plugin Folder URL
-            if ( ! defined( 'FRONT_DEMO_URL' ) ) {
-                define( 'FRONT_DEMO_URL', plugin_dir_url( __FILE__ ) );
+            if ( ! defined( 'REEN_DEMO_URL' ) ) {
+                define( 'REEN_DEMO_URL', plugin_dir_url( __FILE__ ) );
             }
 
             // Plugin Root File
-            if ( ! defined( 'FRONT_DEMO_FILE' ) ) {
-                define( 'FRONT_DEMO_FILE', __FILE__ );
+            if ( ! defined( 'REEN_DEMO_FILE' ) ) {
+                define( 'REEN_DEMO_FILE', __FILE__ );
             }
         }
 
@@ -128,22 +128,20 @@ if( ! class_exists( 'Front_Demo' ) ) {
          *
          * @access public
          * @since  1.0.0
-         * @return front
+         * @return reen
          */
         public function includes() {
-            require_once FRONT_DEMO_DIR . 'includes/modules/blog/blog-functions.php';
-            require_once FRONT_DEMO_DIR . 'includes/classes/class-front-template-loader.php';
-            require_once FRONT_DEMO_DIR . 'includes/modules/portfolio/portfolio-functions.php';
+            require_once REEN_DEMO_DIR . 'includes/classes/class-reen-template-loader.php';
         }
 
         /**
          * Load the localisation file.
          * @access  public
          * @since   1.0.0
-         * @return  front
+         * @return  reen
          */
         public function load_plugin_textdomain() {
-            load_plugin_textdomain( 'front-demo', false, dirname( plugin_basename( FRONT_DEMO_FILE ) ) . '/languages/' );
+            load_plugin_textdomain( 'reen-demo', false, dirname( plugin_basename( REEN_DEMO_FILE ) ) . '/languages/' );
         }
 
         /**
@@ -152,7 +150,7 @@ if( ! class_exists( 'Front_Demo' ) ) {
          * @access public
          * @since  1.0.0
 
-         * @return front
+         * @return reen
          */
         public function page_templates_init() {
 
@@ -172,11 +170,11 @@ if( ! class_exists( 'Front_Demo' ) ) {
             add_filter('template_include', array( $this, 'view_page_templates') );
 
             // Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
-            register_deactivation_hook( FRONT_DEMO_FILE, array( $this, 'deactivate' ) );
+            register_deactivation_hook( REEN_DEMO_FILE, array( $this, 'deactivate' ) );
 
             // Add your templates to this array.
             $this->templates = array(
-                'template-blog.php'      => esc_html__( 'Blog-Demo', 'front-demo' ),
+                'template-blog.php'      => esc_html__( 'Blog-Demo', 'reen-demo' ),
             );
 
             // adding support for theme templates to be merged and shown in dropdown
@@ -239,14 +237,14 @@ if( ! class_exists( 'Front_Demo' ) ) {
             global $post;
 
             // If no posts found, return to
-            // afront "Trying to get property of non-object" error
+            // areen "Trying to get property of non-object" error
             if ( !isset( $post ) ) return $template;
 
             if ( ! isset( $this->templates[ get_post_meta( $post->ID, '_wp_page_template', true ) ] ) ) {
                 return $template;
             } // end if
 
-            $file = FRONT_DEMO_DIR . 'templates/' . get_post_meta( $post->ID, '_wp_page_template', true );
+            $file = REEN_DEMO_DIR . 'templates/' . get_post_meta( $post->ID, '_wp_page_template', true );
             // Just to be safe, we check if the file exist first
             if( file_exists( $file ) ) {
                 return $file;
@@ -261,7 +259,7 @@ if( ! class_exists( 'Front_Demo' ) ) {
          *---------------------------------------------*/
         static function deactivate( $network_wide ) {
             foreach( $this as $value ) {
-                Front_Demo::delete_template( $value );
+                Reen_Demo::delete_template( $value );
             }
             
         } // end deactivate
@@ -287,7 +285,7 @@ if( ! class_exists( 'Front_Demo' ) ) {
          * @since 1.0.0
          */
         public function __clone () {
-            _doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'front-demo' ), '1.0.4' );
+            _doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'reen-demo' ), '1.0.4' );
         }
 
         /**
@@ -296,22 +294,22 @@ if( ! class_exists( 'Front_Demo' ) ) {
          * @since 1.0.0
          */
         public function __wakeup () {
-            _doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'front-demo' ), '1.0.4' );
+            _doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'reen-demo' ), '1.0.4' );
         }
     }
 }
 
     /**
-     * Returns the main instance of Front_Demo to prevent the need to use globals.
+     * Returns the main instance of Reen_Demo to prevent the need to use globals.
      *
      * @since  1.0.0
-     * @return object Front_Demo
+     * @return object Reen_Demo
      */
-    function Front_Demo() {
-        return Front_Demo::instance();
+    function Reen_Demo() {
+        return Reen_Demo::instance();
     }
 
     /**
      * Initialise the plugin
      */
-Front_Demo();
+Reen_Demo();
