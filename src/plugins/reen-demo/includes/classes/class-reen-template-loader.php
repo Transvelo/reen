@@ -28,10 +28,10 @@ class Reen_Template_Loader {
     }
 
     public static function rewrite_portfolio_rule() {
-        add_rewrite_rule( '^portfolio/3-column-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=3&portfolio-title=3 Columns details grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/4-column-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=4&portfolio-title=4 Columns details grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/4-column-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=4&portfolio-title=4 Columns grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/3-column-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3&portfolio-title=3 Columns grid portfolio','top' );
+        add_rewrite_rule( '^portfolio/3-columns-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=3&portfolio-title=3 Columns details grid portfolio','top' );
+        add_rewrite_rule( '^portfolio/4-columns-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=4&portfolio-title=4 Columns details grid portfolio','top' );
+        add_rewrite_rule( '^portfolio/4-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=4&portfolio-title=4 Columns grid portfolio','top' );
+        add_rewrite_rule( '^portfolio/3-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3&portfolio-title=3 Columns grid portfolio','top' );
         add_rewrite_rule( '^portfolio/fullscreen?', 'index.php?post_type=jetpack-portfolio&portfolio-view=fullscreen&portfolio-title=Fullscreen grid portfolio','top' );
         
     }
