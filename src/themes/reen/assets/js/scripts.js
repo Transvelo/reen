@@ -568,15 +568,15 @@ $(document).ready(function () {
 		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	});
 	
-	$("#owl-popular-posts").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		items: 5,
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-popular-posts").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	items: 5,
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
 	$("#owl-related-posts").owlCarousel({
 		autoPlay: 5000,
