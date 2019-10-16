@@ -18,7 +18,7 @@
                 <div class="col-lg-3 col-md-6 inner">
                 <h4><?php reen_footer_site_title(); ?></h4>
                 <?php reen_footer_logo(); ?>
-                <?php reen_footer_site_description(); ?>
+                <p><?php reen_footer_site_description(); ?></p>
                 <?php dynamic_sidebar( 'footer-1' ); ?>
                 </div>
 
