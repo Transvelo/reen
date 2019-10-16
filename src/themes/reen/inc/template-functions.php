@@ -95,3 +95,48 @@ if ( ! function_exists( 'reen_footer_bottom_bar' ) ) {
         }
     }
 }
+
+
+if ( ! function_exists( 'reen_footer_site_title' ) ) {
+    function reen_footer_site_title() {
+        $footer_site_title = apply_filters( 'reen_footer_site_title_info', wp_kses_post( sprintf( __( '<h4>WHO WE ARE</h4>', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ) );
+        ?>
+            <?php echo wp_kses_post( $footer_site_title ); ?>
+        <?php
+    }
+}
+
+
+if ( ! function_exists( 'reen_footer_logo' ) ) :
+    /**
+     * Displays Logo in Footer
+     *
+     */
+    function reen_footer_logo() {
+        $seperate_logo = apply_filters( 'reen_separate_footer_logo', '' );
+        if( apply_filters( 'reen_enable_seperate_footer_logo', true ) && !empty( $seperate_logo ) ) {
+            ?><a class="mb-3 d-inline-block" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php
+                echo wp_get_attachment_image( $seperate_logo['id'], array( get_theme_support( 'custom-logo', 'width' ), get_theme_support( 'custom-logo', 'height' ) ) );
+            ?></a><?php
+        } elseif( has_custom_logo() ) {
+            the_custom_logo();
+        } elseif ( apply_filters( 'reen_use_footer_svg_logo', true ) ) {
+            if ( apply_filters( 'reen_use_footer_svg_logo_with_site_title', true ) ) {
+                ?>
+                <?php the_custom_logo(); ?>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.svg" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                <?php
+            } 
+        }
+    }
+endif;
+
+if ( ! function_exists( 'reen_footer_site_description' ) ) {
+    function reen_footer_site_description() {
+        $footer_site_description = apply_filters( 'reen_footer_site_description_info', wp_kses_post( sprintf( __( '<h4>WHO WE ARE</h4>', 'reen' ) ) ) );
+        ?>
+            <?php echo wp_kses_post( $footer_site_description ); ?>
+        <?php
+    }
+}
+                

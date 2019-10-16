@@ -2,7 +2,7 @@
 /**
  * Reen functions.
  *
- * @package front
+ * @package Reen
  */
 
 if ( ! function_exists( 'reen_is_jetpack_activated' ) ) {
