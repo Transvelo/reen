@@ -16,7 +16,7 @@
         <div class="container inner">
             <div class="row">
                 <div class="col-lg-3 col-md-6 inner">
-                <?php reen_footer_site_title(); ?>
+                <h4><?php reen_footer_site_title(); ?></h4>
                 <?php reen_footer_logo(); ?>
                 <?php reen_footer_site_description(); ?>
                 <?php dynamic_sidebar( 'footer-1' ); ?>
