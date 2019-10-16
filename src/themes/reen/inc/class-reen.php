@@ -130,6 +130,7 @@ if ( ! class_exists( 'Reen' ) ) :
 						'primary' => esc_html__( 'Primary', 'reen' ),
                         'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
                         'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
+                        'footer_menu' => esc_html__( 'Footer Menu', 'reen' ),
                     )
                 )
             );
@@ -186,7 +187,7 @@ if ( ! class_exists( 'Reen' ) ) :
             $GLOBALS['content_width'] = apply_filters( 'reen_content_width', 640 );
         }
 
-        /**
+         /**
          * Register widget area.
          *
          * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -201,7 +202,58 @@ if ( ! class_exists( 'Reen' ) ) :
                 'after_widget'  => '</section>',
                 'before_title'  => '<h2 class="widget-title">',
                 'after_title'   => '</h2>',
-            ) );            
+            ) );
+
+            $rows    = intval( apply_filters( 'reen_footer_widget_rows', 1 ) );
+            $regions = intval( apply_filters( 'reen_footer_widget_columns', 4 ) );
+
+            for ( $row = 1; $row <= $rows; $row++ ) {
+                for ( $region = 1; $region <= $regions; $region++ ) {
+                    $footer_n = $region + $regions * ( $row - 1 ); // Defines footer sidebar ID.
+                    $footer   = sprintf( 'footer_%d', $footer_n );
+
+                    if ( 1 == $rows ) {
+                        $footer_region_name = sprintf( esc_html__( 'Footer Column %1$d', 'reen' ), $region );
+                        $footer_region_description = sprintf( esc_html__( 'Widgets added here will appear in column %1$d of the footer.', 'reen' ), $region );
+                    } else {
+                        $footer_region_name = sprintf( esc_html__( 'Footer Row %1$d - Column %2$d', 'reen' ), $row, $region );
+                        $footer_region_description = sprintf( esc_html__( 'Widgets added here will appear in column %1$d of footer row %2$d.', 'reen' ), $region, $row );
+                    }
+
+                    $sidebar_args[ $footer ] = array(
+                        'name'        => $footer_region_name,
+                        'id'          => sprintf( 'footer-%d', $footer_n ),
+                        'description' => $footer_region_description,
+                    );
+                }
+            }
+
+            $sidebar_args = apply_filters( 'reen_sidebar_args', $sidebar_args );
+
+            foreach ( $sidebar_args as $sidebar => $args ) {
+                $widget_tags = array(
+                    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                    'after_widget'  => '</div>',
+                    'before_title'  => '<h4>',
+                    'after_title'   => '</h4>',
+                );
+
+                /**
+                 * Dynamically generated filter hooks. Allow changing widget wrapper and title tags. See the list below.
+                 *
+                 * 'reen_sidebar_widget_tags'
+                 * 'reen_footer_1_widget_tags'
+                 * 'reen_footer_2_widget_tags'
+                 * 'reen_footer_3_widget_tags'
+                 * 'reen_footer_4_widget_tags'
+                 */
+                $filter_hook = sprintf( 'reen_%s_widget_tags', $sidebar );
+                $widget_tags = apply_filters( $filter_hook, $widget_tags );
+
+                if ( is_array( $widget_tags ) ) {
+                    register_sidebar( $args + $widget_tags );
+                }
+            }
         }
 
         /**
