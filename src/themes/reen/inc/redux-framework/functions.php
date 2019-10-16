@@ -32,5 +32,6 @@ function redux_queue_font_awesome() {
 }
 
 require_once get_template_directory() . '/inc/redux-framework/functions/header-functions.php';
+require_once get_template_directory() . '/inc/redux-framework/functions/footer-functions.php';
 require_once get_template_directory() . '/inc/redux-framework/functions/blog-functions.php';
 require_once get_template_directory() . '/inc/redux-framework/functions/portfolio-functions.php';

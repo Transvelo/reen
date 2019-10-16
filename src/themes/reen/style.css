@@ -5840,4 +5840,7 @@ ul.page-numbers > li:last-child > a {
 .form-control {
   width: 70%; }
 
+.dropdown.searchbox .menu-text {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

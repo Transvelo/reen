@@ -69,3 +69,29 @@ function reen_separate_linkmods_and_icons_from_classes( $classes, &$linkmod_clas
 
     return $classes;
 }
+
+if ( ! function_exists( 'reen_footer_bottom_copyright_bar' ) ) {
+    function reen_footer_bottom_copyright_bar() {
+        ?><div class="footer-bottom">
+            <div class="container">
+            <?php
+            if ( apply_filters( 'reen_enable_footer_bottom_bar', true ) ): ?>
+                <div class="footer-bottom__inner">
+                    <?php reen_footer_bottom_bar(); ?>
+                </div>
+                </div>
+            <?php endif; ?>
+        </div><?php
+    }
+}
+
+if ( ! function_exists( 'reen_footer_bottom_bar' ) ) {
+    function reen_footer_bottom_bar() {
+        $copyright_info = apply_filters( 'reen_footer_copyright_text', wp_kses_post( sprintf( __( '&copy; %s REEN. All Rights Reserved.', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ) );
+        if( apply_filters( 'reen_footer_enable_copyright_info', true ) && ! empty( $copyright_info ) ) {
+            ?>
+                <?php echo wp_kses_post( $copyright_info ); ?>
+            <?php
+        }
+    }
+}
