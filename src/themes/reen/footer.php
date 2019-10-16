@@ -12,16 +12,14 @@
 
 
     <footer class="dark-bg">
-        <?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
         <div class="container inner">
             <div class="row">
                 <div class="col-lg-3 col-md-6 inner">
                 <h4><?php reen_footer_site_title(); ?></h4>
                 <?php reen_footer_logo(); ?>
                 <p><?php reen_footer_site_description(); ?></p>
-                <?php dynamic_sidebar( 'footer-1' ); ?>
                 </div>
-
+                <?php if ( is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
                 <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
                 <div class="col-lg-3 col-md-6 inner">
                     <?php dynamic_sidebar( 'footer-2' ); ?>
