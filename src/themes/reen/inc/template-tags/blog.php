@@ -397,28 +397,14 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
     function reen_post_gallery() {
         global $post;
 
-        $attachment_ids = '';
-        $post_id = '';
-        $post_id = esc_attr( ( $post_id ? $post_id : $post->ID ) );
+        $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_gallery_images', true );
+        $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
 
-        // Get the media ID's
-        $ids = esc_attr( get_post_meta($post_id, 'postformat_gallery_ids', true) );
-
-        // Query the media data
-        $attachment_ids = get_posts( array(
-            'post__in'          => explode(",", $ids),
-            'orderby'           => 'post__in',
-            'post_type'         => 'attachment',
-            'post_mime_type'    => 'image',
-            'post_status'       => 'any',
-            'numberposts'       => -1
-        ));
-
-        // // if there is a gallery block do this
+        // if there is a gallery block do this
         // if ( has_block( 'gallery', $post->post_content ) ) {
         //     $post_blocks = parse_blocks( $post->post_content );
         //     if ( isset( $post_blocks[0]['attrs']['ids'] ) ) {
-        //         $attachment_ids = $post_blocks[0]['attrs']['ids'];    
+        //         $attachments = $post_blocks[0]['attrs']['ids'];    
         //     }
         // } 
         // // if there is not a gallery block do this
@@ -428,36 +414,31 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
             
         //     if ( isset( $gallery['ids'] ) ) {
         //         // makes an array of image ids
-        //         $attachment_ids = explode ( ',', $gallery['ids'] );
+        //         $attachments = explode ( ',', $gallery['ids'] );
         //     }
         // }
 
-        if ( ! empty( $attachment_ids ) ) :
-
-            // wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-            // wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
-
-            // wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
+        if ( ! empty( $attachments ) ) :
 
             $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
-                'autoPlay'        => 5000,
-                'slideSpeed'      => 200,
-                'paginationSpeed' => 600,
-                'rewindSpeed'     => 800,
-                'stopOnHover'     => true,
-                'navigation'      => true,
-                'pagination'      => true,
-                'rewindNav'       => true,
-                'singleItem'      => true,
-                'autoHeight'      => true,
-                'navigationText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
-            ), $post->ID );
+                'items'               => 1,
+                'autoplay'            => true,
+                'autoplayTimeout'     => 5000,
+                'autoplayHoverPause'  => true,
+                'smartSpeed'          => 200,
+                'rewind'              => true,
+                'nav'                 => true,
+                'dots'                => true,
+                'autoHeight'          => true,
+                'navText'             => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+            ));
 
-        ?><div id="owl-work" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="article__attachment--gallery article__media owl-inner-pagination owl-inner-nav post-media"><?php 
-            foreach( $attachment_ids as $attachment_id ) : ?>
+            ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel post-gallery-carousel owl-inner-pagination owl-inner-nav post-media"><?php 
+            foreach( $attachments as $attachment ) : ?>
+
                 <div class="item">
                     <figure>
-                        <?php echo wp_get_attachment_image( $attachment_id, 'post-thumbnail' ); ?>
+                        <?php echo wp_get_attachment_image( $attachment['id'], 'post-thumbnail' ); ?>
                     </figure>
                 </div><?php 
             endforeach; ?></div><?php

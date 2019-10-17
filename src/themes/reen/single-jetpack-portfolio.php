@@ -20,7 +20,7 @@ get_header(); ?>
             	$portfolio_style = empty( $portfolio_style ) ? 'image-2' : $portfolio_style ;
             	$audio_field      = get_post_meta(get_the_ID(), 'audio_field', true);
             	$video_field      = get_post_meta(get_the_ID(), 'video_field', true);
-	            
+	           
 
 	            if ( ( 'audio' == $post_format && $audio_field ) || ('video' == $post_format && $video_field ) ) {
 	                    get_template_part( 'templates/portfolio/content',  $post_format . '-portfolio-single' );
