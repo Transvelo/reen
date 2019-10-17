@@ -99,7 +99,6 @@ if ( ! function_exists( 'reen_portfolio_icon_overlay' ) ) {
     function reen_portfolio_icon_overlay() {
         ?><div class="icon-overlay icn-link">
             <a href="<?php echo esc_url( get_permalink() ); ?>">
-                <span class="icn-more"></span>
                 <?php reen_portfolio_thumbnail(); ?>
             </a>
         </div><!-- /.icon-overlay --><?php
@@ -169,19 +168,11 @@ if ( ! function_exists( 'reen_portfolio_post_audio' ) ) {
      * Displays post audio when applicable
      */
     function reen_portfolio_post_audio() {
-        $content = apply_filters( 'the_content', get_the_content() );
-        $audio   = false;
-
-        // Only get audio from the content if a playlist isn't present.
-        if ( false === strpos( $content, 'wp-playlist-script' ) ) {
-            $audio = get_media_embedded_in_content( $content, array( 'audio', 'object', 'embed', 'iframe' ) );
-        }
+        $audio   = get_post_meta(get_the_ID(), 'audio_field', true);
 
         if ( ! empty( $audio ) ) {
             ?><div class="col-lg-8 inner-left-xs"><?php
-            foreach ( $audio as $audio_html ) {
-            echo ( $audio_html );
-            } 
+            echo ( apply_filters( 'the_content', $audio ) );
             ?></div><?php
         }
     }
@@ -207,24 +198,16 @@ if ( ! function_exists( 'reen_portfolio_post_video' ) ) {
      * Displays post video when applicable
      */
     function reen_portfolio_post_video() {
-        $content = apply_filters( 'the_content', get_the_content() );
-        $video   = false;
+        $video   = get_post_meta(get_the_ID(), 'video_field', true);
 
-        // Only get video from the content if a playlist isn't present.
-        if ( false === strpos( $content, 'wp-playlist-script' ) ) {
-            $video = get_media_embedded_in_content( $content, array( 'video', 'object', 'embed', 'iframe' ) );
-        }
         if ( ! empty( $video ) ) {
-            foreach ( $video as $video_html ) {
-                ?><div class="row">
-                    <div class="col-md-12">
-                        <div class="video-container"><?php 
-                    echo ( $video_html ); 
-                    ?>
-                        </div>
-                    </div>
-                </div><?php
-            }
+            ?><div class="row">
+                <div class="col-md-12">
+                    <div class="video-container"><?php 
+                        echo ( apply_filters( 'the_content', $video ) );
+                    ?></div>
+                </div>
+            </div><?php
         }
     }
 }
@@ -240,7 +223,7 @@ if ( ! function_exists( 'reen_portfolio_video_post_content_description' ) ) {
         <div class="col-md-7 inner-top-xs inner-right-xs">
             <header>
                 <?php the_title( '<h2>', '</h2>' );?>
-                <?php the_content(); ?>
+                <?php the_excerpt(); ?>
             </header>
         </div>
         <div class ="col-md-4 offset-md-1 outer-top-xs inner-left-xs border-left">
@@ -662,7 +645,7 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
 
         if ( $more_audio->have_posts() ) : ?>
         <section id="more-audio">
-            <div class="container">
+            <div class="container inner">
                 <div class="row">
                     <div class="col-md-12">
                         <div id="accordion" class="panel-group blank">

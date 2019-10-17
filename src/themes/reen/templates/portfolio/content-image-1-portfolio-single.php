@@ -9,7 +9,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?>>
     <section id="portfolio-post">
     <?php if ( has_post_thumbnail() ) : ?>
-    <div class="img-bg height-sm border-bottom"><?php the_post_thumbnail();?> </div>
+    <div class="img-bg height-sm border-bottom" style="background-image: url(<?php the_post_thumbnail_url(); ?>);" ></div>
     <?php endif; ?>
     <div class="container inner-top">
     <?php
