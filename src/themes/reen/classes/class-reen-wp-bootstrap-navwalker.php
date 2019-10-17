@@ -179,6 +179,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                     $classes[] = 'yamm-fullwidth';
                 } elseif ( $depth === 0 && isset( $args->has_children ) && $args->has_children ) {
                     $classes[] = 'dropdown hover';
+                } elseif ( $depth > 0 && isset( $args->has_children ) && $args->has_children ) {
+                    $classes[] = 'dropdown-submenu';
                 }
 
                 // Allow filtering the classes.
