@@ -177,8 +177,10 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 // Add .dropdown or .active classes where they are needed.
                 if ( $depth === 0 && isset( $args->has_children ) && $args->has_children && isset( $item->has_megamenu ) && $item->has_megamenu == 'yes' ) {
                     $classes[] = 'yamm-fullwidth';
-                } elseif ( isset( $args->has_children ) && $args->has_children ) {
+                } elseif ( $depth === 0 && isset( $args->has_children ) && $args->has_children ) {
                     $classes[] = 'dropdown hover';
+                } elseif ( $depth > 0 && isset( $args->has_children ) && $args->has_children ) {
+                    $classes[] = 'dropdown-submenu';
                 }
 
                 // Allow filtering the classes.
