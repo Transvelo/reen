@@ -99,7 +99,7 @@ if ( ! function_exists( 'reen_footer_bottom_bar' ) ) {
 
 if ( ! function_exists( 'reen_footer_site_title' ) ) {
     function reen_footer_site_title() {
-        $footer_site_title = apply_filters( 'reen_footer_site_title_info', wp_kses_post( sprintf( __( '<h4>WHO WE ARE</h4>', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ) );
+        $footer_site_title = apply_filters( 'reen_footer_site_title_info', wp_kses_post( sprintf( __( 'WHO WE ARE', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ) );
         ?>
             <?php echo wp_kses_post( $footer_site_title ); ?>
         <?php
