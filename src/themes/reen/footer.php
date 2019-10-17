@@ -19,7 +19,7 @@
                 <?php reen_footer_logo(); ?>
                 <?php reen_footer_site_description(); ?>
                 </div>
-                <?php if ( is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
+                <?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
                 <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
                 <div class="col-lg-3 col-md-6 inner">
                     <?php dynamic_sidebar( 'footer-2' ); ?>

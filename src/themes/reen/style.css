@@ -5915,4 +5915,87 @@ ul.page-numbers > li:last-child > a {
 .dropdown.searchbox .menu-text {
   display: none; }
 
+.site-footer .widget img {
+  height: auto; }
+
+.site-footer .widget select,
+.site-footer .widget img {
+  max-width: 100%; }
+
+.site-footer #wp-calendar {
+  width: 100%; }
+  .site-footer #wp-calendar thead {
+    font-size: 0.714em; }
+    .site-footer #wp-calendar thead th {
+      padding-bottom: 1em;
+      text-align: center;
+      border: 1px solid #fff;
+      padding: 5px;
+      font-size: 14px; }
+  .site-footer #wp-calendar tbody {
+    color: #aaa; }
+    .site-footer #wp-calendar tbody td {
+      border: 1px solid #fff;
+      text-align: center;
+      padding: 8px; }
+      .site-footer #wp-calendar tbody td a {
+        font-weight: bold; }
+    .site-footer #wp-calendar tbody .pad {
+      background: none; }
+
+.site-footer .widget_recent_comments .recentcomments + .recentcomments {
+  margin-top: 0.5em;
+  padding-top: 0.5em; }
+
+.site-footer .widget_recent_comments a {
+  font-weight: bold; }
+
+.site-footer .widget_rss .widget-title .rss-widget-icon {
+  display: none; }
+
+.site-footer .widget_rss .widget-title .rsswidget {
+  display: block; }
+
+.site-footer .widget_rss li .rsswidget {
+  font-size: 110%;
+  font-weight: bold;
+  display: block; }
+
+.site-footer .widget_rss li .rss-date {
+  font-size: 80%; }
+
+.site-footer .widget_rss li .rssSummary {
+  margin: 0.429em 0; }
+
+.site-footer .widget_rss li + li {
+  margin-top: 1em; }
+  .site-footer .widget_rss li + li:before {
+    content: '';
+    display: block;
+    padding-top: 1em; }
+
+.site-footer .widget_search form.search-form label,
+.site-footer .widget_search .woocommerce-product-search label,
+.site-footer .sidebar .widget_product_search form.search-form label,
+.site-footer .sidebar .widget_product_search .woocommerce-product-search label {
+  display: block; }
+
+.site-footer .widget_search form.search-form .search-field,
+.site-footer .widget_search .woocommerce-product-search .search-field,
+.site-footer .sidebar .widget_product_search form.search-form .search-field,
+.site-footer .sidebar .widget_product_search .woocommerce-product-search .search-field {
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  line-height: 1.286em;
+  width: 100%;
+  color: #818181; }
+
+.site-footer .widget_search .search-submit,
+.site-footer .widget_search input[type=submit],
+.site-footer .widget_search button[type=submit],
+.site-footer .sidebar .widget_product_search .search-submit,
+.site-footer .sidebar .widget_product_search input[type=submit],
+.site-footer .sidebar .widget_product_search button[type=submit] {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

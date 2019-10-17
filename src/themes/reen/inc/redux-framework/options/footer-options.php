@@ -43,10 +43,18 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
         ),
 
         array(
+            'id'        => 'footer_footer_site_title_enable',
+            'type'      => 'switch',
+            'title'     => esc_html__( 'Enable Footer Site Title', 'REEN' ),
+            'default'   => 1,
+        ),
+
+        array(
             'type'         => 'text',
             'id'           => 'footer_site_title',
             'title'        => esc_html__( 'Footer Site Title', 'reen' ),
             'subtitle'     => esc_html__( 'Enter the footer site Title', 'reen' ),
+            'required'  => array( 'footer_footer_site_title_enable', 'equals', true ),
         ),
 
         array(

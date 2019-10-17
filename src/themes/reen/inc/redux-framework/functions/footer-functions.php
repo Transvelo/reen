@@ -76,3 +76,20 @@ if ( ! function_exists( 'reen_redux_apply_footer_site_description' ) ) {
         return $footer_site_description;
     }
 }
+
+
+if ( ! function_exists( 'redux_toggle_footer_site_title' ) ) {
+    function redux_toggle_footer_site_title( $enable ) {
+        global $reen_options;
+
+        $reen_options['footer_footer_site_title_enable'] = isset( $reen_options['footer_footer_site_title_enable'] ) ? $reen_options['footer_footer_site_title_enable'] : true;
+
+        if( $reen_options['footer_footer_site_title_enable'] ) {
+            $enable = true;
+        } else {
+            $enable = false;
+        }
+
+        return $enable;
+    }
+}
