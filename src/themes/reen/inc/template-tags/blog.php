@@ -398,23 +398,39 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
         global $post;
 
         $attachment_ids = '';
-        // if there is a gallery block do this
-        if ( has_block( 'gallery', $post->post_content ) ) {
-            $post_blocks = parse_blocks( $post->post_content );
-            if ( isset( $post_blocks[0]['attrs']['ids'] ) ) {
-                $attachment_ids = $post_blocks[0]['attrs']['ids'];    
-            }
-        } 
-        // if there is not a gallery block do this
-        else {
-            // gets the gallery info
-            $gallery = get_post_gallery( $post->ID, false );
+        $post_id = '';
+        $post_id = esc_attr( ( $post_id ? $post_id : $post->ID ) );
+
+        // Get the media ID's
+        $ids = esc_attr( get_post_meta($post_id, 'postformat_gallery_ids', true) );
+
+        // Query the media data
+        $attachment_ids = get_posts( array(
+            'post__in'          => explode(",", $ids),
+            'orderby'           => 'post__in',
+            'post_type'         => 'attachment',
+            'post_mime_type'    => 'image',
+            'post_status'       => 'any',
+            'numberposts'       => -1
+        ));
+
+        // // if there is a gallery block do this
+        // if ( has_block( 'gallery', $post->post_content ) ) {
+        //     $post_blocks = parse_blocks( $post->post_content );
+        //     if ( isset( $post_blocks[0]['attrs']['ids'] ) ) {
+        //         $attachment_ids = $post_blocks[0]['attrs']['ids'];    
+        //     }
+        // } 
+        // // if there is not a gallery block do this
+        // else {
+        //     // gets the gallery info
+        //     $gallery = get_post_gallery( $post->ID, false );
             
-            if ( isset( $gallery['ids'] ) ) {
-                // makes an array of image ids
-                $attachment_ids = explode ( ',', $gallery['ids'] );
-            }
-        }
+        //     if ( isset( $gallery['ids'] ) ) {
+        //         // makes an array of image ids
+        //         $attachment_ids = explode ( ',', $gallery['ids'] );
+        //     }
+        // }
 
         if ( ! empty( $attachment_ids ) ) :
 
