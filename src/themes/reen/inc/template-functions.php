@@ -175,8 +175,7 @@ class Reen_Featured_Posts_Widget extends WP_Widget {
             'no_found_rows'       => true,
             'post_status'         => 'publish',
             'post__not_in'        => array( get_the_ID() ),
-            'ignore_sticky_posts' => 1,
-            'orderby'             => 'rand' ) );
+            'ignore_sticky_posts' => 1 ) );
 
             if ( ! $more_works->have_posts() ) {
                 return;
