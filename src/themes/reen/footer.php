@@ -11,7 +11,7 @@
 </div><!-- #site-content -->
 
 
-    <footer class="dark-bg">
+    <footer class="dark-bg site-footer">
         <div class="container inner">
             <div class="row">
                 <div class="col-lg-3 col-md-6 inner">
