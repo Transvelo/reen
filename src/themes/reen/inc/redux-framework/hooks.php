@@ -45,3 +45,4 @@ add_filter( 'reen_use_footer_svg_logo_light', 'reen_redux_toggle_svg_logo_light'
 add_filter( 'reen_footer_site_title_info', 'reen_redux_apply_footer_site_title'           );
 add_filter( 'reen_footer_site_description_info', 'reen_redux_apply_footer_site_description'     );
 
+add_filter( 'reen_footer_enable_site_title',  'redux_toggle_footer_site_title'   );

@@ -87,7 +87,7 @@ if ( ! function_exists( 'reen_footer_bottom_copyright_bar' ) ) {
 
 if ( ! function_exists( 'reen_footer_bottom_bar' ) ) {
     function reen_footer_bottom_bar() {
-        $copyright_info = apply_filters( 'reen_footer_copyright_text', wp_kses_post( sprintf( __( '&copy; %s REEN. All Rights Reserved.', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ) );
+        $copyright_info = apply_filters( 'reen_footer_copyright_text', wp_kses_post( sprintf( __( '&copy;2019All Rights Reserved.', 'reen' ), get_bloginfo( 'name' ) ) ) );
         if( apply_filters( 'reen_footer_enable_copyright_info', true ) && ! empty( $copyright_info ) ) {
             ?>
                 <?php echo wp_kses_post( $copyright_info ); ?>
@@ -96,13 +96,14 @@ if ( ! function_exists( 'reen_footer_bottom_bar' ) ) {
     }
 }
 
-
 if ( ! function_exists( 'reen_footer_site_title' ) ) {
     function reen_footer_site_title() {
-        $footer_site_title = apply_filters( 'reen_footer_site_title_info', wp_kses_post( sprintf( __( 'WHO WE ARE', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ) );
-        ?>
-            <?php echo wp_kses_post( $footer_site_title ); ?>
-        <?php
+        $footer_site_title = apply_filters( 'reen_footer_site_title_info', wp_kses_post( sprintf( __( 'WHO WE ARE', 'reen' ), get_bloginfo( 'name' ) ) ) );
+        if( apply_filters( 'reen_footer_enable_site_title', true ) && ! empty( $footer_site_title ) ) {
+            ?>
+                <?php echo wp_kses_post( $footer_site_title ); ?>
+            <?php
+        }
     }
 }
 
@@ -168,16 +169,45 @@ class Reen_Featured_Posts_Widget extends WP_Widget {
 
         $instance = wp_parse_args( (array) $instance, $this->defaults );
 
-       $featured_posts = new WP_Query( apply_filters( 'featured', array(
+        $more_works = new WP_Query( array( 
+            'post_type'           => 'jetpack-portfolio',
             'posts_per_page'      => $instance['number'],
             'no_found_rows'       => true,
             'post_status'         => 'publish',
             'post__not_in'        => array( get_the_ID() ),
-            'ignore_sticky_posts' => 1
-        ) )
-        );
+            'ignore_sticky_posts' => 1,
+            'orderby'             => 'rand' ) );
 
-        if ($featured_posts->have_posts()) :
+            if ( ! $more_works->have_posts() ) {
+                return;
+            }
+
+        $portfolio_cats = array();        
+
+        while ( $more_works->have_posts() ) : 
+
+            $more_works->the_post(); 
+
+            $portfolio_types = get_the_terms( get_the_ID(), 'jetpack-portfolio-type' );
+
+            if ( ! $portfolio_types || is_wp_error( $portfolio_types ) ) {
+                $portfolio_types = array();
+            }
+
+            $portfolio_types = array_values( $portfolio_types );
+
+            foreach ( array_keys( $portfolio_types ) as $key ) {
+               _make_cat_compat( $portfolio_types[ $key ] );           
+            }
+
+            foreach ( $portfolio_types as $portfolio_type ) {
+                $portfolio_cats[ $portfolio_type->slug] = $portfolio_type->name;
+            }
+
+        endwhile;
+        wp_reset_postdata();
+
+        if ($more_works->have_posts()) :
 
             echo wp_kses_post( $args['before_widget'] );
 
@@ -185,20 +215,19 @@ class Reen_Featured_Posts_Widget extends WP_Widget {
                 echo wp_kses_post( $args['before_title'] . $instance['title'] . $args['after_title'] );
             }?>
             <div class="row thumbs gap-xs">
-            <?php while ( $featured_posts->have_posts() ) : $featured_posts->the_post(); ?>  
+            <?php while ( $more_works->have_posts() ) : $more_works->the_post(); ?> 
                 <div class="col-6 thumb">
                     <figure class="icon-overlay icn-link">    
-                            <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail(); ?>
-                            </a>
+                            <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail(); ?></a>
                     </figure>     
                 </div>                      
             <?php endwhile; ?>
             </div>  
             <?php
             echo wp_kses_post( $args['after_widget'] );
-        endif;
+            endif;
 
-        wp_reset_postdata();
+            wp_reset_postdata();
 
             }
 
@@ -224,7 +253,7 @@ class Reen_Featured_Posts_Widget extends WP_Widget {
                     <label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', 'reen' ); ?></label>
                     <input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo esc_attr( $instance['number'] ); ?>" size="3" />
                 </p><?php
-    }
+            }
 }
 
 function reen_register_featured_widget() { 
@@ -233,4 +262,4 @@ function reen_register_featured_widget() {
 
 }
 
-add_action( 'widgets_init', 'reen_register_featured_widget' );            
+add_action( 'widgets_init', 'reen_register_featured_widget' );
