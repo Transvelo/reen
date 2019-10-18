@@ -53,7 +53,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 }
                 $indent = str_repeat( $t, $depth );
                 // Default class to add to the file.
-                $classes = array( 'dropdown-menu' );
+                    $classes = array( 'dropdown-menu' );
+
                 /**
                  * Filters the CSS class(es) applied to a menu list element.
                  *
@@ -129,7 +130,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
         public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
             if( $depth > 0 && 'mas_static_content' == $item->object ) {
                 $classes = empty( $item->classes ) ? array() : (array) $item->classes;
-                $classes[] = 'hs-mega-menu u-header__sub-menu';
+                $classes[] = 'dropdown-menu hs-mega-menu u-header__sub-menu';
                 $classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth );
                 $class_names = join( ' ', $classes );
                 $class_names = $class_names ? esc_attr( $class_names ) : '';
@@ -176,7 +177,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
                 // Add .dropdown or .active classes where they are needed.
                 if ( $depth === 0 && isset( $args->has_children ) && $args->has_children && isset( $item->has_megamenu ) && $item->has_megamenu == 'yes' ) {
-                    $classes[] = 'yamm-fullwidth';
+                    $classes[] = 'dropdown yamm-fullwidth';
+                    
                 } elseif ( $depth === 0 && isset( $args->has_children ) && $args->has_children ) {
                     $classes[] = 'dropdown hover';
                 } elseif ( $depth > 0 && isset( $args->has_children ) && $args->has_children ) {
