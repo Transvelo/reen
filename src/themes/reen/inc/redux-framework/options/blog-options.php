@@ -48,5 +48,18 @@
 
             ), 
         ),
+
+        array(
+            'type'     => 'select',
+            'id'       => 'single_blog_layout',
+            'title'    => esc_html__( 'Single Blog Layout', 'reen' ),
+            'subtitle' => esc_html__( 'Select from the three available layouts for your single blog', 'reen' ),
+            'options'  => array(
+                'sidebar-left'  => esc_html__( 'Left Sidebar', 'reen' ),
+                'sidebar-right' => esc_html__( 'Right Sidebar', 'reen' ),
+                'no-sidebar'    => esc_html__( 'Full Width', 'reen' )
+            ),
+                'default'       => 'sidebar-right'
+        ),
     )
  ) );
