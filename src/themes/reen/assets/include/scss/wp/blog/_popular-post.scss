@@ -1,4 +1,17 @@
 .popular-posts-carousel {
+	.categories {
+		height: 22px;
+		overflow: hidden;
+		
+		a {
+			text-decoration: none;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+
 	&.owl-carousel {
 		.owl-nav {
 			text-align: center;

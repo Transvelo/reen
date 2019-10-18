@@ -38,4 +38,17 @@ if ( ! function_exists( 'reen_redux_change_grid_columns' ) ) {
         return $columns;
     }
 } 
+
+if ( ! function_exists( 'reen_redux_change_single_blog_layout' ) ) {
+    function reen_redux_change_single_blog_layout( $layout ) {
+
+        global $reen_options;
+
+        if ( isset( $reen_options['single_blog_layout'] ) ) {
+            $layout = $reen_options['single_blog_layout'];
+        }
+
+        return $layout;
+    }
+}
   
