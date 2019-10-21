@@ -38,40 +38,50 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
     /**
      * Displays format filter
      */
-    function reen_format_filter() {
+    function reen_format_filter() {  
+        $post_formats = array(); 
+        while ( have_posts() ) : 
+            the_post(); 
+                switch( get_post_format() ) {
+                    case 'gallery':
+                        $post_formats['gallery'] = 'icon-picture';
+                    break;
+                    case 'link':
+                        $post_formats['link'] = 'icon-popup';
+                    break;
+                    case 'image':
+                        $post_formats['image'] = 'icon-picture-1';
+                    break;
+                    case 'video':
+                        $post_formats['video'] = 'icon-video-1';
+                    break;
+                    case 'audio':
+                        $post_formats['audio'] = 'icon-music-1';
+                    break;
+                    case 'quote':
+                        $post_formats['quote'] = 'icon-quote';
+                    break;
+                    case 'aside':
+                        $post_formats['aside'] = 'icon-left-hand';
+                    break;
+                    case 'status':
+                        $post_formats['status'] = 'icon-comment';
+                    break;
+                    case 'standard':
+                        $post_formats['standard'] = 'icon-edit';
+                    break;
+                
+                }
+        endwhile; 
+
         ?><div class="row inner-bottom-xs">
             <div class="col-md-12"> 
                 <ul class="format-filter text-center">
                     <li><a class="active" href="#" data-filter="*" title="All" data-rel="tooltip" data-placement="top"><i class="icon-th"></i></a></li>
-                        <?php 
-                            $post_formats = empty( $post_formats ) ? get_theme_support( 'post-formats' ) : '';
-                              if (isset($post_formats[0]) && is_array( $post_formats[0] ) ) {
 
-                                   foreach ( $post_formats[0] as $post_format ) : 
-                                    
-                                        if( $post_format === 'image' ) {
-                                            $post_icon = 'icon-picture-1';
-                                        } elseif( $post_format === 'gallery' ){
-                                            $post_icon = 'icon-picture';
-                                        } elseif( $post_format === 'video' ){
-                                            $post_icon = 'icon-video-1';
-                                        } elseif( $post_format === 'audio' ){
-                                            $post_icon = 'icon-music-1';
-                                        } elseif( $post_format === 'quote' ){
-                                            $post_icon = 'icon-quote';
-                                        } elseif( $post_format === 'link' ){
-                                            $post_icon = 'icon-popup';
-                                        } else {
-                                            $post_icon = 'icon-edit';
-                                        }
-                                        
-                                        ?>
-
-                                        <?php if ( ! has_post_format() ) : ?><li><a href="#" data-filter=".format-<?php echo esc_attr($post_format);?>" title="<?php echo esc_attr($post_format);?>" data-rel="tooltip" data-placement="top"><i class="<?php echo esc_html($post_icon);?>"></i></a></li><?php endif; ?>
-                                    <?php endforeach; 
-                        
-                            }
-                        ?>
+                    <?php foreach ( $post_formats as $post_format => $post_icon ) : ?>
+                        <li><a href="#" data-filter=".format-<?php echo esc_attr($post_format ); ?>" title="<?php echo esc_attr($post_format);?>" data-rel="tooltip" data-placement="top"><i class="<?php echo esc_html($post_icon);?>"></i></a></li>
+                    <?php endforeach; ?>
                 </ul><!-- /.format-filter -->
             </div><!-- /.col -->
         </div><!-- /.row --><?php
@@ -218,7 +228,7 @@ if ( ! function_exists( 'reen_post_format' ) ) {
         $post_format = get_post_format();
         switch( $post_format ) {
             case 'aside':
-                $icon = 'fas fa-hand-point-left';
+                $icon = 'icon-left-hand';
             break;
             case 'gallery':
                 $icon = 'icon-picture';
@@ -233,7 +243,7 @@ if ( ! function_exists( 'reen_post_format' ) ) {
                 $icon = 'icon-quote';
             break;
             case 'status':
-                $icon = 'far fa-comment-alt';
+                $icon = 'icon-comment';
             break;
             case 'video':
                 $icon = 'icon-video-1';
@@ -241,9 +251,7 @@ if ( ! function_exists( 'reen_post_format' ) ) {
             case 'audio':
                 $icon = 'icon-music-1';
             break;
-            case 'chat':
-                $icon = 'far fa-comments';
-            break;
+    
             default:
                 $icon = 'icon-edit';
         }
@@ -537,19 +545,16 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
     function reen_popular_posts() { 
         global $post;
 
-        $popular_posts_args = array(
+        $popular_posts_args =apply_filters( 'reen_popular_posts_args', array(
             'posts_type' => 'page',
              'posts_per_page' => 8,
-             //'meta_key' => 'custom_sort_order',
              'orderby' => 'comment_count',
-             //'orderby' => 'meta_value meta_value_num',
              'order'=> 'DESC'
-            );
+        ));
+
         $popular_posts_loop = new WP_Query( $popular_posts_args );
              
-        
         if ( $popular_posts_loop->have_posts() ) : ?>
-            
             <section id="popular-posts" class="light-bg">
                 <div class="container inner-top-md">
                     <div class="row">
@@ -607,7 +612,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </section><?php
-            endif;
+        endif;
     }
 }
 
@@ -728,7 +733,6 @@ if ( ! function_exists( 'reen_post_author' ) ) {
 if ( ! function_exists( 'reen_post_social_sharing' ) ) {
     function reen_post_social_sharing() {
 
-
         ob_start();
         if( function_exists( 'reen_show_jetpack_share' ) ) {
             reen_show_jetpack_share();
@@ -738,10 +742,131 @@ if ( ! function_exists( 'reen_post_social_sharing' ) ) {
         
         if( ! empty( $jetpack_share_html ) ) {
             ?>
-            <div class="reen-post-sharing">
+            <div class="reen-post-sharing" id="share">
                 <?php echo wp_kses_post( $jetpack_share_html ); ?>
             </div>
             <?php
         }
+    }
+}
+
+if ( ! function_exists( 'reen_post_nav' ) ) {
+    function reen_post_nav() {
+        if ( is_singular( 'attachment' ) ) {
+            // Parent post navigation.
+            the_post_navigation(
+                array(
+                    /* translators: %s: parent post link */
+                    'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'reen' ), '%title' ),
+                )
+            );
+        } elseif ( is_singular( 'post' ) ) {
+            // Previous/next post navigation.
+            the_post_navigation(
+                array(
+                    'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next Post', 'reen' ) . '</span>' .
+                        '<span class="sr-only">' . __( 'Next post:', 'reen' ) . ' </span>' .
+                        '<span class="post-title">%title</span>',
+                    'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous Post', 'reen' ) . '</span>' .
+                        '<span class="sr-only">' . __( 'Previous post:', 'reen' ) . '</span>' .
+                        '<span class="post-title">%title</span>',
+                )
+            );
+        }
+    }
+}
+
+if ( ! function_exists( 'reen_related_posts' ) ) {
+    function reen_related_posts() {
+        if( empty( $post_id ) ) {
+            $post_id = get_the_ID();
+        }
+
+        $tags = wp_get_post_terms( $post_id, 'post_tag', ['fields' => 'ids'] );
+
+        if ( empty( $tags ) ) {
+            return;
+        }
+        
+        $related_post = new WP_Query(array( 
+            'post_type'             => 'post',
+            'post_status'           => 'publish',
+            'ignore_sticky_posts'   => 1,
+            'orderby'               => 'date',
+            'order'                 => 'desc',
+            'posts_per_page'        => 6,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'post_tag',
+                    'terms'    => $tags
+                ),
+            ),
+        ));
+
+
+        if ( $related_post->have_posts() ) : ?>         
+            <div id="accordion-related-posts" class="panel-group">
+                <div class="panel panel-default">                                                 
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            <a class="panel-toggle" href="#content-related-posts" data-toggle="collapse">
+                                <span><?php echo esc_html__( 'Related posts', 'reen' ); ?></span>
+                            </a>
+                        </h2>
+                    </div><!-- /.panel-heading -->
+                    
+                    <div id="content-related-posts" class="panel-collapse collapse show" data-parent="#accordion-related-posts">
+                        <div class="panel-body"><?php
+            
+
+                                $owl_params = apply_filters( 'owl-related-posts_params', array(
+                                    'autoPlay'     => 5000,
+                                    'stopOnHover'  => true,
+                                    'rewindNav'    => true,
+                                    'items'        => 2,
+                                    'nav'          => true,
+                                    'dots'         => true,
+                                    'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                    'responsive'        => array(
+                                        '0'     => array( 'items'   => 1 ),
+                                        '480'   => array( 'items'   => 2 ),
+                                        '768'   => array( 'items'   => 2 ),
+                                        '992'   => array( 'items'   => 2 ),
+                                        '1200'  => array( 'items' => 2 ),
+                                    )
+                                ) );
+
+                            ?><div id="owl-related-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"  class="related-post-carousel owl-carousel owl-item-gap owl-theme">
+
+
+                                <?php while( $related_post->have_posts() ):
+                                    $related_post->the_post(); ?>
+                                    <div class="item">
+                                        <figure>  
+
+                                        <div class="icon-overlay icn-link">
+                                            <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                                                <span class="icn-more"></span><?php the_post_thumbnail( 'post-thumbnail' ); ?>
+                                            </a>
+                                        </div>                              
+                                            
+                                            
+                                            <figcaption class="bordered no-top-border">
+                                                <div class="info">
+                                                    <h4> <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                    <p class="categories"><?php reen_post_categories(); ?></p>
+                                                </div><!-- /.info -->
+                                            </figcaption>
+                                        </figure>
+                                    </div>                
+                                <?php endwhile; ?>
+                                <?php wp_reset_postdata(); ?>
+                            </div><!-- /.owl-carousel -->
+                        </div><!-- /.panel-body -->
+                    </div><!-- /.content -->               
+                </div><!-- /.panel -->
+            </div><?php
+        endif;
+
     }
 }
