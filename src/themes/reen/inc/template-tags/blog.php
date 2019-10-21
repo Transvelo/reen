@@ -6,14 +6,13 @@
 if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
     function reen_loop_container_wrap_start() {
         $blog_layout = reen_get_blog_layout();
+        $single_post_layout = reen_get_single_post_layout();
         $blog_style = reen_get_blog_style();
 
-        if ( 'sidebar-left' === $blog_layout ) {
-            $container_class = 'sidebar-left';
-        } elseif('sidebar-right' === $blog_layout) {
-            $container_class = 'sidebar-right';
-        } else {
-            $container_class = 'no-sidebar';
+        if ( is_single() ) {
+            $container_class = !empty( $single_post_layout ) ? $single_post_layout : 'no-sidebar';
+        } elseif ( is_home() || ( 'post' == get_post_type() && ( is_category() || is_tag() || is_author() || is_date() || is_year() || is_month() || is_time() ) ) ) {
+            $container_class = !empty( $blog_layout ) ? $blog_layout : 'no-sidebar';
         }
 
         if ('classic-blog' === $blog_style) {
@@ -22,7 +21,10 @@ if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
             $container_class .= ' grid-blog';
         }
 
-        ?><section id="blog" class="light-bg"><div class="container inner-top-sm inner-bottom <?php echo esc_attr( $container_class ); ?>"><?php
+        $container_class .= apply_filters( 'reen_blog_container_classes', ' inner-top-sm inner-bottom');
+        
+
+        ?><section id="blog" class="light-bg"><div class="container <?php echo esc_attr( $container_class ); ?>"><?php
     }
 }
 
@@ -45,7 +47,9 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
                         <?php 
                             $post_formats = get_theme_support( 'post-formats' );
                               if (isset($post_formats[0]) && is_array( $post_formats[0] ) ) {
+
                                    foreach ( $post_formats[0] as $post_format ) : 
+                                    
                                         if( $post_format === 'image' ) {
                                             $post_icon = 'icon-picture-1';
                                         } elseif( $post_format === 'gallery' ){
@@ -63,7 +67,7 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
                                         }
                                         
                                         ?>
-                                        <li><a href="#" data-filter=".format-<?php echo esc_attr($post_format);?>" title="<?php echo esc_attr($post_format);?>" data-rel="tooltip" data-placement="top"><i class="<?php echo esc_html($post_icon);?>"></i></a></li>
+                                        <?php if ( ! has_post_format() ) : ?><li><a href="#" data-filter=".format-<?php echo esc_attr($post_format);?>" title="<?php echo esc_attr($post_format);?>" data-rel="tooltip" data-placement="top"><i class="<?php echo esc_html($post_icon);?>"></i></a></li><?php endif; ?>
                                     <?php endforeach; 
                         
                             }
@@ -188,14 +192,14 @@ if ( ! function_exists( 'reen_posted_on' ) ) {
     }
 }
 
-if ( ! function_exists( 'reen_post_summary_start' ) ) {
-    function reen_post_summary_start() {
+if ( ! function_exists( 'reen_post_content_start' ) ) {
+    function reen_post_content_start() {
         ?><div class="post-content"><?php
     }
 }
 
-if ( ! function_exists( 'reen_post_summary_end' ) ) {
-    function reen_post_summary_end() {
+if ( ! function_exists( 'reen_post_content_end' ) ) {
+    function reen_post_content_end() {
         ?></div><?php
     }
 }
@@ -253,8 +257,15 @@ if ( ! function_exists( 'reen_post_format' ) ) {
 if ( ! function_exists( 'reen_post_meta' ) ) {
     function reen_post_meta() {
         ?><ul class="meta"><?php 
-            do_action( 'reen_post_meta' );
-        ?></ul><?php
+            if ( apply_filters( 'reen_post_meta_show_cat', true ) ) : ?>
+               <li class="categories"><?php echo reen_post_categories();?></li>
+            <?php endif; 
+
+            if ( apply_filters( 'reen_post_meta_show_comment', true ) ) : ?>
+               <li class="comments"><?php echo reen_post_comments();?></li>
+            <?php endif; ?>
+            
+        </ul><?php
     }
 }
 
@@ -274,32 +285,23 @@ if ( ! function_exists( 'reen_post_side_meta' ) ) {
 
 
 if ( ! function_exists( 'reen_post_categories' ) ) {
-    function reen_post_categories( $post_id = false, $return = false ) {
-        /* translators: used between list items, there is a space after the comma */
-        $categories_list = get_the_category_list( esc_html__( ', ', 'reen' ), '', $post_id );
-
-        if ( $categories_list ) {
-            $categories_list = '<li class="categories">' . $categories_list . '</li>';
-
-            if ( ! $return ) {
-            
-                echo wp_kses_post( $categories_list );   
-            
-            } else {
-            
-                return $categories_list;
-            
-            }
-        }
+    function reen_post_categories() {
+        $categories_list = get_the_category_list( esc_html__( ', ', 'reen' ) );
+            if ( $categories_list ) : ?>
+                <span class="article__cat-links">
+                    <?php
+                    echo wp_kses_post( $categories_list );
+                    ?>
+                </span>
+            <?php endif; // End if categories. ?>
+        <?php
     }
 }
 
 if ( ! function_exists( 'reen_post_comments' ) ) {
     function reen_post_comments() {
         if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-            <li class="comments">
-                <span class="comments-link"><?php comments_popup_link( esc_html__( 'Leave a comment', 'reen' ), esc_html__( '1 Comment', 'reen' ), esc_html__( '% Comments', 'reen' ) ); ?></span>
-            </li>
+            <span class="comments-link"><?php comments_popup_link( esc_html__( 'Leave a comment', 'reen' ), esc_html__( '1 Comment', 'reen' ), esc_html__( '% Comments', 'reen' ) ); ?></span>
         <?php endif;
     }
 }
@@ -525,9 +527,9 @@ if ( ! function_exists( 'reen_toggle_post_side_meta_hooks' ) ) {
         $blog_style = reen_get_blog_style();
 
         if ( 'grid-blog' == $blog_style ) {
-            remove_action( 'reen_loop_post',   'reen_post_side_meta',                      10 );
+            remove_action( 'reen_loop_post',           'reen_post_side_meta',              10 );
             remove_action( 'reen_loop_post_link',      'reen_post_side_meta',              10 );
-            remove_action( 'reen_loop_post_quote',      'reen_post_side_meta',             10 );
+            remove_action( 'reen_loop_post_quote',     'reen_post_side_meta',              10 );
         }
     }
 }
@@ -538,11 +540,11 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
 
         $popular_posts_args = array(
             'posts_type' => 'page',
-             'posts_per_page' => 5,
+             'posts_per_page' => 8,
              //'meta_key' => 'custom_sort_order',
              'orderby' => 'comment_count',
              //'orderby' => 'meta_value meta_value_num',
-             //'order'=> 'DESC'
+             'order'=> 'DESC'
             );
         $popular_posts_loop = new WP_Query( $popular_posts_args );
              
@@ -583,6 +585,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                                             <figcaption class="text-overlay">
                                                                 <div class="info">
                                                                     <h4><?php the_title(); ?></h4>
+                                                                    <p class="categories"><?php reen_post_categories(); ?></p>
                                                                 </div><!-- /.info -->
                                                             </figcaption>
                                                             <?php if ( has_post_thumbnail() ) {
@@ -606,5 +609,119 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                 </div><!-- /.container -->
             </section><?php
             endif;
+    }
+}
+
+
+/**
+ * Template tags used in Single Blog Pages
+ */
+
+if ( ! function_exists( 'reen_post_wrap_open' ) ) {
+    function reen_post_wrap_open() {
+        ?><div class="sidemeta "><?php
+    }
+}
+
+if ( ! function_exists( 'reen_post_wrap_close' ) ) {
+    function reen_post_wrap_close() {
+        ?></div><?php
+    }
+}
+
+if ( ! function_exists( 'reen_single_post_author_name' ) ) {
+    function reen_single_post_author_name() { 
+        if( apply_filters( 'reen_show_author_name', true ) ) :
+            $current_user_id = get_current_user_id(); 
+            ?>
+            <p class="author"><a href="#" title="" data-rel="tooltip" data-placement="left" rel="tooltip" data-original-title="Post author"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
+        <?php
+        endif;
+
+    }
+}
+
+if ( ! function_exists( 'reen_post_author' ) ) {
+    function reen_post_author() {
+        if( apply_filters( 'reen_show_author_info', true ) ) :
+            $current_user_id = get_current_user_id();
+            $author_url = get_the_author_meta( 'user_url' ); 
+            ?>
+            <div class="post-author">
+                <div class="reen-author-info">
+                    <div class="author-image icon-overlay icn-link">
+                        <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><span class="icn-more"></span>
+                            <?php echo get_avatar( get_the_author_meta( 'ID' ) , 120 ); ?>
+                        </a>
+                    </div>
+                    <div class="author-details">
+                        <h3><?php echo esc_html__( 'About the author', 'reen' ); ?></h3>
+                        <p><a href="#"><?php the_author_meta( 'display_name', $current_user_id );?></a><span> <?php echo the_author_meta( 'description' );?></span></p>
+
+                        <ul class="meta">
+                            <li class="author-posts">
+                                <a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+                                    <?php echo sprintf( esc_html__( 'All posts by %s', 'reen' ), esc_html( get_the_author() ) ); ?>
+                                </a>
+                            </li>
+                            <?php if ( (bool) $author_url ) : ?>
+                            <li class="url"><a href="<?php echo esc_url( $author_url ); ?>"><?php echo esc_html( $author_url ); ?></a></li>
+                            <?php endif; ?>
+                        </ul><!-- /.meta -->
+
+                            <?php if ( apply_filters( 'enable_author_social_links', TRUE ) ) :
+
+                                // if( empty( $post_id ) ) {
+                                //     $post_id = get_the_ID();
+                                // }
+
+                            $twitter            = esc_attr( get_post_meta( get_the_ID(), '_twitter', true ) );
+                            $facebook           = esc_attr( get_post_meta( get_the_ID(), '_facebook', true ) );
+                            $google_plus        = esc_attr( get_post_meta( get_the_ID(), '_google_plus', true ) );
+ 
+
+                            $social_icons = apply_filters( 'reen_author_social_links_icons_args', array(
+                                'facebook'  => array( 
+                                    'class'         => 'facebook', 
+                                    'icon'          => 'icon-s-facebook', 
+                                    'title'         => esc_html__( 'Add me on Facebook', 'reen' ),
+                                    'social_link'   => $facebook 
+                                ),
+
+                                'google_plus'          => array( 
+                                    'class'         => 'google_plus', 
+                                    'icon'          => 'icon-s-gplus', 
+                                    'title'         => esc_html__( 'Add me on Google Plus', 'reen' ),
+                                    'social_link'   => $google_plus 
+                                ),
+                                'twitter'       => array( 
+                                    'class'         => 'twitter', 
+                                    'icon'          => 'icon-s-twitter', 
+                                    'title'         => esc_html__( 'Follow me on Twitter', 'reen' ),
+                                    'social_link'   => $twitter 
+                                ),
+                                    
+                                )
+                            );
+                            ?>
+                            <ul class="social">
+                                <?php foreach ($social_icons as $social_icon) : ?>
+                                    <?php if( !empty( $social_icon['social_link'] ) ) :?>
+                                    <?php $url = !empty( $social_icon['link_prefix'] ) ? $social_icon['link_prefix'] . ':' . $social_icon['social_link'] : esc_url( $social_icon['social_link'] ); ?>
+                                    <li>
+                                        <a href="<?php echo esc_url( $url ); ?>"><i class="<?php echo esc_attr( $social_icon['icon'] ); ?>"></i></a>
+                                    </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php
+                        endif;?>
+                    </div>
+
+                    
+            </div>
+            </div>
+            <?php
+        endif;
     }
 }

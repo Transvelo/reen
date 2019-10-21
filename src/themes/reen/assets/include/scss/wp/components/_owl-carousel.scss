@@ -39,9 +39,16 @@
 .owl-carousel .owl-prev,
 .owl-carousel .owl-next {
 	
-	color: #FFF !important;
 	background-color: #506A85 !important;
+
+	&:not(:hover) {
+		color: #FFF !important;
+	}
+
 	
+	i {
+		font-size: 30px;
+	}
 }
 
 .owl-carousel.post-media + * {

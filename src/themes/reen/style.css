@@ -5656,6 +5656,14 @@ a.changecolor {
 article.post .date-wrapper .updated:not(.published) {
   display: none; }
 
+.popular-posts-carousel .categories {
+  height: 22px;
+  overflow: hidden; }
+  .popular-posts-carousel .categories a {
+    text-decoration: none; }
+    .popular-posts-carousel .categories a:hover {
+      color: #fff; }
+
 .popular-posts-carousel.owl-carousel .owl-nav {
   text-align: center;
   position: absolute;
@@ -5776,8 +5784,13 @@ ul.page-numbers > li:last-child > a {
 
 .owl-carousel .owl-prev,
 .owl-carousel .owl-next {
-  color: #FFF !important;
   background-color: #506A85 !important; }
+  .owl-carousel .owl-prev:not(:hover),
+  .owl-carousel .owl-next:not(:hover) {
+    color: #FFF !important; }
+  .owl-carousel .owl-prev i,
+  .owl-carousel .owl-next i {
+    font-size: 30px; }
 
 .owl-carousel.post-media + * {
   margin-top: 60px; }
@@ -5892,14 +5905,15 @@ ul.page-numbers > li:last-child > a {
 .form-control {
   width: 70%; }
 
-.portfolio-post-carousel.owl-carousel .owl-nav button.owl-prev {
-  font-size: 45px !important; }
-
-.portfolio-post-carousel.owl-carousel .owl-nav button.owl-next {
-  font-size: 45px !important; }
+.portfolio-post-carousel {
+  margin-bottom: 14px; }
+  .portfolio-post-carousel.owl-carousel .owl-nav button.owl-prev i,
+  .portfolio-post-carousel.owl-carousel .owl-nav button.owl-next i {
+    font-size: 45px !important; }
 
 .portfolio-post-carousel .owl-dots {
-  z-index: 5; }
+  z-index: 5;
+  margin: 0 !important; }
 
 .dropdown.searchbox .menu-text {
   display: none; }

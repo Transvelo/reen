@@ -31,20 +31,6 @@ function reen_can_show_post_thumbnail() {
     return apply_filters( 'reen_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
 }
 
-if ( ! function_exists( 'reen_get_single_post_layout' ) ) {
-    function reen_get_single_post_layout() {
-        $available_layouts = array( 'sidebar-left', 'sidebar-right', 'no-sidebar' );
-        $default_single_post_layout = 'sidebar-right';
-        $single_post_layout         = apply_filters( 'reen_single_post_layout', $default_single_post_layout );
-
-        if ( ! in_array( $single_post_layout, $available_layouts ) ) {
-            $single_post_layout = $default_single_post_layout;
-        }
-
-        return $single_post_layout;
-    }
-}
-
 if ( ! function_exists( 'reen_get_blog_style' ) ) {
     /**
      * Classic or Grid
@@ -91,3 +77,16 @@ if ( ! function_exists( 'reen_get_blog_layout' ) ) {
     }
 }
 
+if ( ! function_exists( 'reen_get_single_post_layout' ) ) {
+    function reen_get_single_post_layout() {
+        $available_layouts = array( 'sidebar-left', 'sidebar-right', 'no-sidebar' );
+        $default_single_post_layout = 'sidebar-right';
+        $single_post_layout         = apply_filters( 'reen_single_post_layout', $default_single_post_layout );
+
+        if ( ! in_array( $single_post_layout, $available_layouts ) ) {
+            $single_post_layout = $default_single_post_layout;
+        }
+
+        return $single_post_layout;
+    }
+}

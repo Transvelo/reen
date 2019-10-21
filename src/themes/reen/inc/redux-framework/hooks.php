@@ -24,6 +24,7 @@ add_filter( 'reen_portfolio_page_description', 'reen_redux_change_portfolio_page
 add_filter( 'reen_blog_style',         'reen_redux_change_blog_style'         );
 add_filter( 'reen_blog_layout',        'reen_redux_change_blog_layout'        );
 add_filter( 'reen_blog_grid_columns',  'reen_redux_change_grid_columns'       );
+add_filter( 'reen_single_post_layout', 'reen_redux_change_single_blog_layout' );
 
 /**
  * Header Filters
