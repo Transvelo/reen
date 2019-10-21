@@ -1,0 +1,16 @@
+.portfolio-post-carousel {
+	&.owl-carousel {
+		.owl-nav button.owl-prev {
+			font-size: 45px !important;
+		}
+		.owl-nav button.owl-next {
+			font-size: 45px !important;
+		}
+	}
+}
+
+.portfolio-post-carousel {
+	.owl-dots {
+		z-index: 5;
+	}
+}

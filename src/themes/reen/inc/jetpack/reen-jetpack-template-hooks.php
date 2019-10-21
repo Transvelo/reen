@@ -45,8 +45,9 @@ add_action( 'reen_portfolio_single_post_video', 'reen_portfolio_video_post_wrap_
 */
 add_action( 'reen_portfolio_single_slider_1', 'reen_portfolio_post_slider_wrap_open',           10 );
 add_action( 'reen_portfolio_single_slider_1', 'reen_portfolio_post_slider_1',                   20 );
-add_action( 'reen_portfolio_single_slider_1', 'reen_portfolio_post_slider_1_content',           30 );
-add_action( 'reen_portfolio_single_slider_1', 'reen_portfolio_post_slider_wrap_close',          40 );
+add_action( 'reen_portfolio_single_slider_1', 'reen_portfolio_post_slider_wrap_close',          30 );
+add_action( 'reen_portfolio_single_slider_1', 'reen_portfolio_post_slider_1_content',           40 );
+
 add_action( 'reen_portfolio_single_post_slider_1_bottom', 'reen_more_works'                        );
 
 add_action( 'reen_portfolio_single_slider_2', 'reen_portfolio_post_slider_wrap_open',           10 );

@@ -255,6 +255,8 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
     function reen_portfolio_post_slider_1() {?>
         <div class="col-md-12"><?php
 
+        $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_portfolio_gallery_images', true );
+        $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
             $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
                 'autoPlay'        => 5000,
                 'slideSpeed'      => 200,
@@ -269,29 +271,33 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
                 'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
             ) );
 
-       ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel owl-inner-pagination owl-ui-lg owl-theme"> 
-            <?php for ($i=1; $i < 6; $i++) { ?> 
+        if ( ! empty( $attachments ) ) :
+       ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel owl-inner-pagination owl-outer-nav owl-ui-lg owl-theme portfolio-post-carousel"> 
+            <?php foreach( $attachments as $attachment ) : ?>
                 <div class="item">
                     <figure>
-                        <?php the_post_thumbnail(); ?>
+                        <?php echo wp_get_attachment_image( $attachment['id'], 'post-thumbnail' ); ?>
                     </figure>
-                </div><?php } ?>
-            </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
         </div><?php
-      
     }
 }
 
 if ( ! function_exists( 'reen_portfolio_post_slider_1_content' ) ) {
     function reen_portfolio_post_slider_1_content() {?>
-        <div class="col-md-7 inner-top-xs inner-right-xs">
-            <header>
-                <?php the_title( '<h2>', '</h2>' );?>
-                <?php the_content(); ?>
-            </header>
-        </div>
-        <div class="col-md-4 offset-md-1 outer-top-xs inner-left-xs border-left">
-            <?php reen_portfolio_meta(); ?>            
+        <div class="row">
+            <div class="col-md-7 inner-top-xs inner-right-xs">
+                <header>
+                    <?php the_title( '<h2>', '</h2>' );?>
+                    <?php the_content(); ?>
+                </header>
+            </div>
+            <div class="col-md-4 offset-md-1 outer-top-xs inner-left-xs border-left">
+                <?php reen_portfolio_meta(); ?>            
+            </div>
         </div><?php
     }
 }
@@ -300,6 +306,8 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
     function reen_portfolio_post_slider_2() {?>
         <div class="col-md-8"><?php
 
+        $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_portfolio_gallery_images', true );
+        $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
         $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
             'autoPlay'        => 5000,
             'slideSpeed'      => 200,
@@ -314,16 +322,18 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
             'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
         ) );
 
-        ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-inner-pagination owl-inner-nav owl-ui-md owl-theme">
-            <?php for ($i=1; $i < 6; $i++) { ?> 
+        if ( ! empty( $attachments ) ) :
+        ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel portfolio-post-carousel owl-inner-pagination owl-inner-nav owl-ui-md owl-theme">
+            <?php foreach( $attachments as $attachment ) : ?>
                 <div class="item">
                     <figure>
-                        <?php the_post_thumbnail(); ?>
+                        <?php echo wp_get_attachment_image( $attachment['id'], 'post-thumbnail' ); ?>
                     </figure>
-                </div><?php } ?>
-            </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
         </div><?php
-      
     }
 }
           
