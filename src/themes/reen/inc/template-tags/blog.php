@@ -39,13 +39,12 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
      * Displays format filter
      */
     function reen_format_filter() {
-        if ( ! is_singular() ) :
         ?><div class="row inner-bottom-xs">
             <div class="col-md-12"> 
                 <ul class="format-filter text-center">
                     <li><a class="active" href="#" data-filter="*" title="All" data-rel="tooltip" data-placement="top"><i class="icon-th"></i></a></li>
                         <?php 
-                            $post_formats = get_theme_support( 'post-formats' );
+                            $post_formats = empty( $post_formats ) ? get_theme_support( 'post-formats' ) : '';
                               if (isset($post_formats[0]) && is_array( $post_formats[0] ) ) {
 
                                    foreach ( $post_formats[0] as $post_format ) : 
@@ -67,6 +66,7 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
                                         }
                                         
                                         ?>
+
                                         <?php if ( ! has_post_format() ) : ?><li><a href="#" data-filter=".format-<?php echo esc_attr($post_format);?>" title="<?php echo esc_attr($post_format);?>" data-rel="tooltip" data-placement="top"><i class="<?php echo esc_html($post_icon);?>"></i></a></li><?php endif; ?>
                                     <?php endforeach; 
                         
@@ -75,7 +75,6 @@ if ( ! function_exists( 'reen_format_filter' ) ) {
                 </ul><!-- /.format-filter -->
             </div><!-- /.col -->
         </div><!-- /.row --><?php
-        endif;
     }
 }
 
@@ -723,5 +722,26 @@ if ( ! function_exists( 'reen_post_author' ) ) {
             </div>
             <?php
         endif;
+    }
+}
+
+if ( ! function_exists( 'reen_post_social_sharing' ) ) {
+    function reen_post_social_sharing() {
+
+
+        ob_start();
+        if( function_exists( 'reen_show_jetpack_share' ) ) {
+            reen_show_jetpack_share();
+        }
+
+        $jetpack_share_html = ob_get_clean();
+        
+        if( ! empty( $jetpack_share_html ) ) {
+            ?>
+            <div class="reen-post-sharing">
+                <?php echo wp_kses_post( $jetpack_share_html ); ?>
+            </div>
+            <?php
+        }
     }
 }

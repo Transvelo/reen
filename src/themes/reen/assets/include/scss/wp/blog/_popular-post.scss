@@ -18,14 +18,15 @@
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
-			bottom: 0;
+			bottom: 18px;
+			z-index: 1;
 		}
 
 		.owl-prev {
-			left: -30px;
+			left: -60px;
 		}
 		.owl-next {
-			right: -30px;
+			right: -60px;
 		}
 		.owl-dots{
 			margin-top: 25px;
@@ -43,12 +44,12 @@
 			}
 
 			.owl-prev {
-				left: -35px;
+				left: -65px;
 				opacity: .25;
 			}
 
 			.owl-next {
-				right: -35px;
+				right: -65px;
 				opacity: .25;
 			}
 		}
