@@ -5759,7 +5759,8 @@ article.post .post-content .sharedaddy {
       color: #fff; }
 
 .post-gallery-carousel.owl-carousel .owl-prev,
-.post-gallery-carousel.owl-carousel .owl-next {
+.post-gallery-carousel.owl-carousel .owl-next, .portfolio-post-carousel.owl-carousel .owl-prev,
+.portfolio-post-carousel.owl-carousel .owl-next {
   position: absolute; }
 
 ul.page-numbers {
@@ -5965,6 +5966,16 @@ ul.page-numbers > li:last-child > a {
 
 .form-control {
   width: 70%; }
+
+.portfolio-post-carousel {
+  margin-bottom: 14px; }
+  .portfolio-post-carousel.owl-carousel .owl-nav button.owl-prev i,
+  .portfolio-post-carousel.owl-carousel .owl-nav button.owl-next i {
+    font-size: 45px !important; }
+
+.portfolio-post-carousel .owl-dots {
+  z-index: 5;
+  margin: 0 !important; }
 
 .dropdown.searchbox .menu-text {
   display: none; }
