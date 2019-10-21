@@ -870,3 +870,93 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
 
     }
 }
+
+if ( ! function_exists( 'reen_display_comments' ) ) {
+    /**
+     * reen display comments
+     *
+     * @since  1.0.0
+     */
+    function reen_display_comments() {
+        // If comments are open or we have at least one comment, load up the comment template.
+        if ( comments_open() || '0' != get_comments_number() ) :
+            comments_template();
+        endif;
+    }
+}
+
+if ( ! function_exists( 'reen_comment' ) ) {
+    /**
+     * reen comment template
+     *
+     * @param array $comment the comment array.
+     * @param array $args the comment args.
+     * @param int   $depth the comment depth.
+     * @since 1.0.0
+     */
+    function reen_comment( $comment, $args, $depth ) {
+        if ( 'div' === $args['style'] ) {
+            $tag       = 'div';
+            $add_below = 'comment';
+        } else {
+            $tag       = 'li';
+            $add_below = 'div-comment';
+        }
+        $comment_author_url = get_comment_author_url();
+        ?>
+        <<?php echo esc_attr( $tag ); ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID(); ?>">
+        <?php if ( 'comment' === get_comment_type() ) : ?>
+        <div class="avatar icon-overlay icn-link">
+            <?php if ( ! empty( $comment_author_url ) ) : ?>
+                <a href="<?php echo esc_url( $comment_author_url ); ?>">
+                <span class="icn-more"></span>
+            <?php endif; ?>
+            <?php echo get_avatar( $comment, 60 ); ?>
+            <?php if ( ! empty( $comment_author_url ) ) : ?>
+                </a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>d
+        <div class="comment-body commentbody">
+            <div class="author comment-author vcard">
+                <?php printf( wp_kses_post( '<h3 class="fn">%s</h3>', 'reen' ), get_comment_author_link() ); ?>
+                <div class="meta">
+                    <a href="<?php echo esc_url( htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ); ?>" class="comment-date date">
+                        <?php echo '<time datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>'; ?>
+                    </a>
+                    <?php if ( '0' === $comment->comment_approved ) : ?>
+                    <em class="comment-awaiting-moderation"><?php esc_attr_e( 'Your comment is awaiting moderation.', 'reen' ); ?></em>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php if ( 'div' !== $args['style'] ) : ?>
+        <div id="div-comment-<?php comment_ID(); ?>" class="message comment-content">
+        <?php endif; ?>
+        <div class="comment-text">
+        <?php comment_text(); ?>
+        </div>
+        <ul class="meta">
+            <li class="reply">
+            <?php
+            comment_reply_link(
+                array_merge(
+                    $args, array(
+                        'add_below' => $add_below,
+                        'depth'     => $depth,
+                        'max_depth' => $args['max_depth'],
+                    )
+                )
+            );
+            ?>
+            </li>
+            <li class="edit">
+            <?php edit_comment_link( __( 'Edit', 'reen' ), '  ', '' ); ?>
+            </li>
+        </ul>
+        </div>
+        <?php if ( 'div' !== $args['style'] ) : ?>
+        </div>
+        <?php endif; ?>
+        <?php
+    }
+}
