@@ -30,25 +30,15 @@ if ( post_password_required() ) {
 	if ( have_comments() ) :
 		?>
 		<h2 class="comments-title">
-			<?php
-			$reen_comment_count = get_comments_number();
-			if ( '1' === $reen_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'reen' ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			} else {
-				printf( // WPCS: XSS OK.
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $reen_comment_count, 'comments title', 'reen' ) ),
-					number_format_i18n( $reen_comment_count ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			}
-			?>
-		</h2><!-- .comments-title -->
-
+            <?php
+                printf( // WPCS: XSS OK.
+                    /* translators: 1: number of comments, 2: post title */
+                    esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'reen' ) ),
+                    number_format_i18n( get_comments_number() ),
+                    '<span>' . get_the_title() . '</span>'
+                );
+            ?>
+        </h2>
 
 		<ol class="comment-list">
             <?php
@@ -120,11 +110,12 @@ $args = apply_filters(
         'title_reply_after'  => '</h2>',
         'class_form'         => 'forms comment-form',
         'class_submit'       => 'btn btn-submit submit',
+        'fields'             => apply_filters( 'comment_form_default_fields', $fields ),
         'submit_field'       => '<div class="form-submit">%1$s %2$s</div>',
         'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
-        'fields'             => $fields
     )
 );
+
 
 comment_form( $args );
 ?></div><!-- /.comment-form-wrapper -->

@@ -554,7 +554,12 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
 
         $popular_posts_loop = new WP_Query( $popular_posts_args );
              
-        if ( $popular_posts_loop->have_posts() ) : ?>
+        if ( $popular_posts_loop->have_posts() ) : 
+            if ( is_singular() ) {
+                $collapse_class = '';
+            } else {
+                $collapse_class = 'show';
+            } ?>
             <section id="popular-posts" class="light-bg">
                 <div class="container inner-top-md">
                     <div class="row">
@@ -568,7 +573,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                             </a>
                                         </h4>
                                     </div><!-- /.panel-heading -->
-                                    <div id="content-popular-posts" class="panel-collapse collapse show" data-parent="#accordion-popular-posts">
+                                    <div id="content-popular-posts" class="panel-collapse collapse <?php echo esc_html( $collapse_class); ?>" data-parent="#accordion-popular-posts">
                                     <div class="panel-body"><?php
                                         $owl_params = apply_filters( 'owl-popular-posts_params', array(
                                             'autoPlay'     => 5000,
@@ -581,8 +586,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                         ) );
 
                                         ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
-                                            <?php while( $popular_posts_loop->have_posts() ):
-                                                 $popular_posts_loop->the_post(); ?>
+                                            <?php while( $popular_posts_loop->have_posts() ): $popular_posts_loop->the_post(); ?>
                                                 <div class="item">
                                                     <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                                                         <figure>
@@ -752,27 +756,33 @@ if ( ! function_exists( 'reen_post_social_sharing' ) ) {
 
 if ( ! function_exists( 'reen_post_nav' ) ) {
     function reen_post_nav() {
-        if ( is_singular( 'attachment' ) ) {
-            // Parent post navigation.
-            the_post_navigation(
-                array(
-                    /* translators: %s: parent post link */
-                    'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'reen' ), '%title' ),
-                )
-            );
-        } elseif ( is_singular( 'post' ) ) {
-            // Previous/next post navigation.
-            the_post_navigation(
-                array(
-                    'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next Post', 'reen' ) . '</span>' .
-                        '<span class="sr-only">' . __( 'Next post:', 'reen' ) . ' </span>' .
-                        '<span class="post-title">%title</span>',
-                    'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous Post', 'reen' ) . '</span>' .
-                        '<span class="sr-only">' . __( 'Previous post:', 'reen' ) . '</span>' .
-                        '<span class="post-title">%title</span>',
-                )
-            );
-        }
+        
+        ob_start();
+        ?>
+        <div class="reen-post-nav post-navigation__nav">
+            <div class="reen-post-title next post-navigation__text">
+                <span class="post-direction post-navigation__text--label"><?php echo esc_html__( 'Next Post', 'reen' ); ?></span>
+                <span class="post-title post-navigation__text--post-title">%title</span>
+            </div>
+        </div>
+
+        <?php
+        $next = ob_get_clean();
+        ob_start();
+        ?>
+        <div class="reen-post-nav post-navigation__nav">
+            <div class="reen-post-title prev post-navigation__text">
+                <span class="post-direction post-navigation__text--label"><?php echo esc_html__( 'Previous Post', 'reen' ); ?></span>
+                <span class="post-title post-navigation__text--post-title">%title</span>
+            </div>
+        </div>
+        <?php
+        $prev = ob_get_clean();
+        $args = array(
+            'next_text' => $next,
+            'prev_text' => $prev,
+        );
+        the_post_navigation( $args );
     }
 }
 
@@ -916,7 +926,7 @@ if ( ! function_exists( 'reen_comment' ) ) {
                 </a>
             <?php endif; ?>
         </div>
-        <?php endif; ?>d
+        <?php endif; ?>
         <div class="comment-body commentbody">
             <div class="author comment-author vcard">
                 <?php printf( wp_kses_post( '<h3 class="fn">%s</h3>', 'reen' ), get_comment_author_link() ); ?>
@@ -958,5 +968,15 @@ if ( ! function_exists( 'reen_comment' ) ) {
         </div>
         <?php endif; ?>
         <?php
+    }
+}
+
+if ( ! function_exists( 'reen_move_comment_field_to_bottom' ) ) {
+
+    function reen_move_comment_field_to_bottom( $fields ) {
+        $comment_field = $fields['comment'];
+        unset( $fields['comment'] );
+        $fields['comment'] = $comment_field;
+        return $fields;
     }
 }

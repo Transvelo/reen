@@ -71,8 +71,9 @@ add_action( 'reen_single_post', 'reen_post_meta',             60 );
 add_action( 'reen_single_post', 'reen_post_the_content',      70 );
 add_action( 'reen_single_post', 'reen_post_content_end',      80 );
 
-add_action( 'reen_single_post_after', 'reen_post_author',           10 );
-add_action( 'reen_single_post_after', 'reen_post_social_sharing',   20 );
+add_action( 'reen_single_post_after', 'reen_post_nav',              10 );
+add_action( 'reen_single_post_after', 'reen_post_author',           20 );
+add_action( 'reen_single_post_after', 'reen_post_social_sharing',   30 );
 add_action( 'reen_single_post_after', 'reen_related_posts',         40 );
 add_action( 'reen_single_post_after', 'reen_display_comments',         50 );
 
@@ -80,3 +81,10 @@ add_action( 'reen_single_post_after', 'reen_post_wrap_close', 60 );
 add_action( 'reen_single_post_after', 'reen_loop_row_wrap_end',      	            70 );
 add_action( 'reen_single_post_after', 'reen_loop_container_wrap_end',      	    80 );
 
+/**
+ * Filters
+ */
+add_filter( 'wp_nav_menu_items', 'reen_header_icons', 10, 2 );
+add_filter( 'excerpt_more', 'reen_excerpt_more', 10 );
+add_filter( 'comment_form_fields', 'reen_move_comment_field_to_bottom', 10 );
+add_filter( 'the_password_form', 'reen_the_password_form', 10 );

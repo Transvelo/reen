@@ -92,3 +92,30 @@ article.post {
 		// }
 	}
 }
+
+.comment-text {
+    margin-bottom: 20px;
+
+    table, blockquote, dl, ol, ul {
+        margin-bottom: 20px;
+    }
+
+    ul, ol {
+        list-style: disc;
+    }
+}
+
+.comment-content + .comment-respond {
+    margin-top: 20px;
+
+    > h2 {
+        font-size: 20px;
+        line-height: 150%;
+        margin-right: 15px;
+    }
+}
+
+#cancel-comment-reply-link {
+    color: #BCC7D1;
+    font-size: 14px;
+}
