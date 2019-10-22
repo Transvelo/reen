@@ -2,6 +2,8 @@
 /**
  * Hooks used for Posts
  */
+
+
 add_action( 'reen_loop_before', 'reen_popular_posts',                      10 );
 
 add_action( 'reen_loop_before', 'reen_loop_container_wrap_start',          20 );
@@ -84,7 +86,5 @@ add_action( 'reen_single_post_after', 'reen_loop_container_wrap_end',      	    
 /**
  * Filters
  */
-add_filter( 'wp_nav_menu_items', 'reen_header_icons', 10, 2 );
-add_filter( 'excerpt_more', 'reen_excerpt_more', 10 );
+
 add_filter( 'comment_form_fields', 'reen_move_comment_field_to_bottom', 10 );
-add_filter( 'the_password_form', 'reen_the_password_form', 10 );

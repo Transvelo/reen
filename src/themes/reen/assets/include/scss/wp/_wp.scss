@@ -1,14 +1,18 @@
 @import 'blog/article';
 @import 'blog/popular-post';
+@import 'blog/widgets';
 
 @import 'components/pagination';
 @import 'components/owl-carousel';
 @import 'components/owl-carousel-inner-pagination';
 @import 'components/post-navigation';
 
+@import 'general/media';
+@import 'general/base';
+
 @import 'portfolio/portfolio-post';
 @import 'portfolio/portfolio-carousel';
 @import 'header/navbar';
 @import 'blocks/footer-widgets';
 
-//@import 'components/utilities';
+@import 'components/utilities';

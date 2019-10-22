@@ -198,10 +198,10 @@ if ( ! class_exists( 'Reen' ) ) :
                 'name'          => esc_html__( 'Blog Sidebar', 'reen' ),
                 'id'            => 'sidebar-blog',
                 'description'   => esc_html__( 'Add widgets here.', 'reen' ),
-                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'before_widget' => '<section id="%1$s" class="sidebox widget widget--blog %2$s">',
                 'after_widget'  => '</section>',
-                'before_title'  => '<h2 class="widget-title">',
-                'after_title'   => '</h2>',
+                'before_title'  => '<h4 class="widget__title">',
+                'after_title'   => '</h4>',
             ) );
 
             $rows    = intval( apply_filters( 'reen_footer_widget_rows', 1 ) );
@@ -270,7 +270,6 @@ if ( ! class_exists( 'Reen' ) ) :
             $vendors = apply_filters( 'reen_vendor_styles', array(
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
-                'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl.carousel.css',
             ) );
 
@@ -305,7 +304,6 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'jquery.validate', get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
             wp_enqueue_script( 'affix', get_template_directory_uri() . '/assets/js/affix.js', array( 'jquery' ), $reen_version, true );
 
@@ -372,7 +370,6 @@ if ( ! class_exists( 'Reen' ) ) :
             $vendors = apply_filters( 'reen_editor_vendor_styles', array(
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
-                'bootstrap'                  => 'bootstrap/bootstrap.css',
                 'owl-carousel'               => 'owl-carousel/owl.carousel.css',
                 'fontello'                   => 'fontello/css/fontello.css',
             ) );
