@@ -268,6 +268,7 @@ if ( ! class_exists( 'Reen' ) ) :
              * Styles
              */
             $vendors = apply_filters( 'reen_vendor_styles', array(
+                'fontawesome'             => 'font-awesome/css/fontawesome-all.min.css',
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
                 'owl-carousel'               => 'owl-carousel/owl.carousel.css',
@@ -368,6 +369,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             // Styles.
             $vendors = apply_filters( 'reen_editor_vendor_styles', array(
+                'fontawesome'                => 'font-awesome/css/fontawesome-all.min.css',
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
                 'owl-carousel'               => 'owl-carousel/owl.carousel.css',
@@ -377,6 +379,11 @@ if ( ! class_exists( 'Reen' ) ) :
             foreach( $vendors as $key => $vendor ) {
                 wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
             }
+
+            wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
+
+
+            wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/vendor/font-awesome/css/fontawesome-all.min.css', '', $reen_version );
 
             // Scripts
             // $theme_scripts = self::get_theme_scripts();

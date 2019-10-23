@@ -10475,6 +10475,86 @@ blockquote:before {
   line-height: auto;
   list-style: none; }
 
+select,
+input,
+textarea,
+.uneditable-input,
+.form-inline .form-control,
+.navbar-form .form-control {
+  width: 100%; }
+
+select,
+textarea,
+textarea.form-control,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  height: 40px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 25px;
+  color: #73879C;
+  resize: none;
+  vertical-align: middle;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #f5f5f5;
+  border: 1px solid #E6E9ED;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out; }
+
+textarea:focus,
+textarea.form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border: 1px solid #BCC7D1;
+  box-shadow: none; }
+
+textarea {
+  height: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  min-height: 150px;
+  resize: vertical; }
+
+textarea.form-control {
+  padding: 10px; }
+
+.btn-submit {
+  width: auto; }
+
 input,
 textarea,
 .uneditable-input,
