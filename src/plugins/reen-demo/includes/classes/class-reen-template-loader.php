@@ -21,7 +21,9 @@ class Reen_Template_Loader {
      */
     public static function init() {
         add_filter( 'query_vars', array( __CLASS__, 'add_query_vars_filter' ) );
-        add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
+        //add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
+        //add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
+        add_action( 'init', array( __CLASS__, 'rewrite_blog_rule' ), 10, 0 );
         add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_grid_columns', array( __CLASS__, 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_page_title', array( __CLASS__, 'portfolio_page_title_loader' ), PHP_INT_MAX );
@@ -50,7 +52,11 @@ class Reen_Template_Loader {
         add_rewrite_rule( '^portfolio/4-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=4&portfolio-title=4 Columns grid portfolio','top' );
         add_rewrite_rule( '^portfolio/3-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3&portfolio-title=3 Columns grid portfolio','top' );
         add_rewrite_rule( '^portfolio/fullscreen?', 'index.php?post_type=jetpack-portfolio&portfolio-view=fullscreen&portfolio-title=Fullscreen grid portfolio','top' );
+        
+    }
 
+    public static function rewrite_blog_rule() {
+        
         add_rewrite_rule( '^blog/sidebar-right?', 'index.php?post_type=post&blog_style=classic-blog&blog_layout=sidebar-right','top' );
         add_rewrite_rule( '^blog/sidebar-left?', 'index.php?post_type=post&blog_style=classic-blog&blog_layout=sidebar-left','top' );
         add_rewrite_rule( '^blog/without-sidebar?', 'index.php?post_type=post&blog_style=classic-blog&blog_layout=no-sidebar','top' );
@@ -133,6 +139,11 @@ class Reen_Template_Loader {
 
         $custom_style = isset( $_GET['blog_style'] ) ? sanitize_text_field( $_GET['blog_style'] ) : '';
 
+        if ( empty( $custom_style ) ) {
+            $custom_style = get_query_var( 'blog_style' );
+        }
+
+
         switch( $custom_style ) {
             case 'classic-blog':
             case 'grid-blog':
@@ -148,6 +159,10 @@ class Reen_Template_Loader {
     public static function blog_layout_loader( $layout ) {
  
         $custom_layout = isset( $_GET['blog_layout'] ) ? sanitize_text_field( $_GET['blog_layout'] ) : '';
+
+        if ( empty( $custom_layout ) ) {
+            $custom_layout = get_query_var( 'blog_layout' );
+        }
 
         switch( $custom_layout ) {
             case 'no-sidebar':
@@ -166,6 +181,10 @@ class Reen_Template_Loader {
  
         $custom_columns = isset( $_GET['blog_grid_columns'] ) ? sanitize_text_field( $_GET['blog_grid_columns'] ) :'';
 
+        if ( empty( $custom_columns ) ) {
+            $custom_columns = get_query_var( 'blog_grid_columns' );
+        }
+
         switch( $custom_columns ) {
             case '2':
             case '3':
@@ -183,6 +202,10 @@ class Reen_Template_Loader {
        
         if( is_singular( 'post' ) ) {
             $single_layout = isset( $_GET['single_blog_layout'] ) ? sanitize_text_field( $_GET['single_blog_layout'] ) : '';
+
+            if ( empty( $single_layout ) ) {
+                $single_layout = get_query_var( 'single_blog_layout' );
+            }
 
             switch( $single_layout ) {
                 case 'sidebar-left':
