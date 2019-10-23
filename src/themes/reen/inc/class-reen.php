@@ -257,6 +257,83 @@ if ( ! class_exists( 'Reen' ) ) :
         }
 
         /**
+         * Get all Front scripts.
+         */
+        private static function get_theme_scripts() {
+            $reen_get_theme_script = apply_filters( 'reen_theme_script', array(
+                'affix'             => array(
+                    'src' => get_template_directory_uri() . '/assets/js/affix.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'aos'        => array(
+                    'src' => get_template_directory_uri() . '/assets/js/aos.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'bootstrap-bundle'         => array(
+                    'src' => get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'jquery-easing' => array(
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.easing.min.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'jquery-easytabs'           => array(
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.easytabs.min.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'jquery-form'         => array(
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.form.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'jquery-isotope'  => array(
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.isotope.min.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'jquery-validate'           => array(
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.validate.min.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'owl-carousel'      => array(
+                    'src' => get_template_directory_uri() . '/assets/js/owl.carousel.min.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'selected-scroll' => array(
+                    'src' => get_template_directory_uri() . '/assets/js/selected-scroll.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'viewport-units-buggyfill'      => array(
+                    'src' => get_template_directory_uri() . '/assets/js/viewport-units-buggyfill.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'custom'   => array(
+                    'src' => get_template_directory_uri() . '/assets/js/custom.js',
+                    'dep' => array( 'jquery' )
+                ),
+                'images-loaded'   => array(
+                    'src' => get_template_directory_uri() . '/assets/js/imagesloaded.pkgd.min.js',
+                    'dep' => array( 'jquery-isotope' )
+                ),
+                
+            ) );
+            return $reen_get_theme_script;
+
+        }
+
+        /**
+         * Register all Reen scripts.
+         */
+        private static function register_scripts() {
+            global $reen_version;
+
+            $register_scripts = self::get_theme_scripts();
+            foreach ( $register_scripts as $handle => $props ) {
+                wp_register_script( $handle, $props['src'], $props['dep'], $reen_version );
+            }
+
+        }
+
+
+        /**
          * Enqueue scripts and styles.
          *
          * @since  1.0.0
@@ -276,6 +353,8 @@ if ( ! class_exists( 'Reen' ) ) :
             foreach( $vendors as $key => $vendor ) {
                 wp_enqueue_style( $key, get_template_directory_uri() . '/assets/vendor/' . $vendor, '', $reen_version );
             }
+
+            self::register_scripts();
 
             wp_enqueue_style( 'reen-style', get_template_directory_uri() . '/style.css', '', $reen_version );
             wp_style_add_data( 'reen-style', 'rtl', 'replace' );
@@ -379,10 +458,10 @@ if ( ! class_exists( 'Reen' ) ) :
             }
 
             // Scripts
-            // $theme_scripts = self::get_theme_scripts();
-            // foreach ( $theme_scripts as $handle => $props ) {
-            //     wp_enqueue_script( $handle, $props['src'], $props['dep'], $reen_version );
-            // }
+            $theme_scripts = self::get_theme_scripts();
+            foreach ( $theme_scripts as $handle => $props ) {
+                wp_enqueue_script( $handle, $props['src'], $props['dep'], $reen_version );
+            }
         }
 
 
