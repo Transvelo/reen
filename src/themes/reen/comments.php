@@ -86,19 +86,19 @@ $consent = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked
 $fields =  array(
 
   'author' =>
-    '<div class="comment-form-author row"><div class="col-md-6"><label class="sr-only" for="author">' . esc_html__( 'Name', 'reen' ) .
+    '<div class="comment-form-author row"><div class="col-md-6 reen-form-group"><label class="sr-only" for="author">' . esc_html__( 'Name', 'reen' ) .
     ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
     '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
     '" size="30"' . $aria_req . ' placeholder="' . esc_attr( esc_html__( 'Name', 'reen' ) ) . ( $req ? esc_attr( esc_html__( ' (Required)', 'reen' ) ) : '' ) . '" /></div></div>',
 
   'email' =>
-    '<div class="row comment-form-email"><div class="col-md-6"><label class="sr-only" for="email">' . esc_html__( 'Email', 'reen' ) .
+    '<div class="row comment-form-email"><div class="col-md-6 reen-form-group"><label class="sr-only" for="email">' . esc_html__( 'Email', 'reen' ) .
     ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
     '<input id="email" name="email" class="form-control" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
     '" size="30"' . $aria_req . ' placeholder="' . esc_attr( esc_html__( 'Email', 'reen' ) ) . ( $req ? esc_attr( esc_html__( ' (Required)', 'reen' ) ) : '' ) . '" /></div></div>',
 
   'url' =>
-    '<div class="row comment-form-url"><div class="col-md-6"><label class="sr-only" for="url">' . esc_html__( 'Website', 'reen' ) . '</label>' .
+    '<div class="row comment-form-url"><div class="col-md-6 reen-form-group"><label class="sr-only" for="url">' . esc_html__( 'Website', 'reen' ) . '</label>' .
     '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
     '" size="30" placeholder="' . esc_attr( esc_html__( 'Website', 'reen' ) ) .'" /></div></div>',
 
@@ -112,7 +112,7 @@ $args = apply_filters(
         'class_submit'       => 'btn btn-submit submit',
         'fields'             => apply_filters( 'comment_form_default_fields', $fields ),
         'submit_field'       => '<div class="form-submit">%1$s %2$s</div>',
-        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
+        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
     )
 );
 

@@ -10924,6 +10924,10 @@ input:focus:-ms-input-placeholder {
 .classic-blog .post {
   width: 728px; }
 
+.classic-blog .post-title {
+  font-size: 40px;
+  line-height: 120%; }
+
 .classic-blog .isotope {
   overflow: visible !important; }
 
@@ -12785,14 +12789,6 @@ article.post .post-content .sharedaddy {
   bottom: 18px;
   z-index: 1; }
 
-.popular-posts-carousel.owl-carousel .owl-prev,
-.related-post-carousel.owl-carousel .owl-prev {
-  left: -60px; }
-
-.popular-posts-carousel.owl-carousel .owl-next,
-.related-post-carousel.owl-carousel .owl-next {
-  right: -60px; }
-
 .popular-posts-carousel.owl-carousel .owl-dots,
 .related-post-carousel.owl-carousel .owl-dots {
   margin-top: 25px; }
@@ -12811,21 +12807,48 @@ article.post .post-content .sharedaddy {
 
 .popular-posts-carousel.owl-carousel:hover .owl-prev,
 .related-post-carousel.owl-carousel:hover .owl-prev {
-  left: -65px;
   opacity: .25; }
 
 .popular-posts-carousel.owl-carousel:hover .owl-next,
 .related-post-carousel.owl-carousel:hover .owl-next {
-  right: -65px;
   opacity: .25; }
 
 .popular-posts-carousel .categories {
   height: 22px;
   overflow: hidden; }
   .popular-posts-carousel .categories a {
-    text-decoration: none; }
-    .popular-posts-carousel .categories a:hover {
-      color: #fff; }
+    border: none; }
+
+.popular-posts-carousel figure :not(.icon-overlay) a:hover,
+.popular-posts-carousel figure:not(.icon-overlay) > a:hover {
+  opacity: 1; }
+
+.popular-posts-carousel a:hover {
+  color: #fff; }
+
+.popular-posts-carousel.owl-carousel .owl-prev {
+  left: -60px; }
+
+.popular-posts-carousel.owl-carousel .owl-next {
+  right: -60px; }
+
+.popular-posts-carousel.owl-carousel:hover .owl-prev {
+  left: -65px; }
+
+.popular-posts-carousel.owl-carousel:hover .owl-next {
+  right: -65px; }
+
+.related-post-carousel.owl-carousel .owl-prev {
+  left: -65px; }
+
+.related-post-carousel.owl-carousel .owl-next {
+  right: -65px; }
+
+.related-post-carousel.owl-carousel:hover .owl-prev {
+  left: -70px; }
+
+.related-post-carousel.owl-carousel:hover .owl-next {
+  right: -70px; }
 
 .post-gallery-carousel.owl-carousel .owl-prev,
 .post-gallery-carousel.owl-carousel .owl-next, .portfolio-post-carousel.owl-carousel .owl-prev,
@@ -12867,21 +12890,83 @@ article.post .post-content .sharedaddy {
       margin-bottom: 5px;
       display: block; }
 
-ul.page-numbers {
+article.post .post-content .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+  article.post .post-content .gallery > .gallery-item {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 50%;
+    max-width: 50%; }
+  article.post .post-content .gallery .gallery-item {
+    padding-top: 0; }
+    article.post .post-content .gallery .gallery-item a, article.post .post-content .gallery .gallery-item img {
+      display: block; }
+    article.post .post-content .gallery .gallery-item img {
+      margin: auto; }
+  @media (min-width: 992px) {
+    article.post .post-content .gallery.gallery-columns-1 > .gallery-item {
+      flex: 0 0 100%;
+      max-width: 100%; }
+    article.post .post-content .gallery.gallery-columns-2 > .gallery-item {
+      flex: 0 0 50%;
+      max-width: 50%; }
+    article.post .post-content .gallery.gallery-columns-3 > .gallery-item {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%; }
+    article.post .post-content .gallery.gallery-columns-4 > .gallery-item {
+      flex: 0 0 25%;
+      max-width: 25%; }
+    article.post .post-content .gallery.gallery-columns-5 > .gallery-item {
+      flex: 0 0 20%;
+      max-width: 20%; }
+    article.post .post-content .gallery.gallery-columns-6 > .gallery-item {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%; }
+    article.post .post-content .gallery.gallery-columns-7 > .gallery-item {
+      flex: 0 0 14.28571425%;
+      max-width: 14.28571425%; }
+    article.post .post-content .gallery.gallery-columns-8 > .gallery-item {
+      flex: 0 0 12.5%;
+      max-width: 12.5%; }
+    article.post .post-content .gallery.gallery-columns-9 > .gallery-item {
+      flex: 0 0 11.1111110833%;
+      max-width: 11.1111110833%; }
+    article.post .post-content .gallery.gallery-columns-10 > .gallery-item {
+      flex: 0 0 10%;
+      max-width: 10%; }
+    article.post .post-content .gallery.gallery-columns-11 > .gallery-item {
+      flex: 0 0 9.0909090833%;
+      max-width: 9.0909090833%; }
+    article.post .post-content .gallery.gallery-columns-12 > .gallery-item {
+      flex: 0 0 8.3333333333%;
+      max-width: 8.3333333333%; } }
+
+ul.page-numbers,
+.page-links-inner {
   display: block;
   border-radius: 0;
   margin: 0;
   padding: 0; }
 
-ul.page-numbers > li {
+ul.page-numbers > li,
+.page-links-inner > span,
+.page-links-inner > a {
   display: inline-block;
   margin-left: 10px; }
 
-ul.page-numbers > li:first-child {
+ul.page-numbers > li:first-child,
+.page-links-inner > span:first-child,
+.page-links-inner > a:first-child {
   margin-left: 0; }
 
 ul.page-numbers > li > a,
-ul.page-numbers > li > span {
+ul.page-numbers > li > span,
+.page-links-inner .page-link {
   float: none;
   display: inline-block;
   color: #fff;
@@ -12908,13 +12993,21 @@ ul.page-numbers > li > span.current,
 ul.page-numbers > li > a.current:hover,
 ul.page-numbers > li > span.current:hover,
 ul.page-numbers > li > a:hover,
-ul.page-numbers > li > a:focus {
+ul.page-numbers > li > a:focus,
+.post-page-numbers.current .page-link,
+.page-link:hover,
+ul.page-numbers > li > a:hover,
+ul.page-numbers > li > span:hover {
   background: #17A78B;
   color: #FFF; }
 
 ul.page-numbers > li:first-child > a,
 ul.page-numbers > li:last-child > a {
   border-radius: 3px; }
+
+.page-links-title {
+  display: block;
+  margin: 20px 0; }
 
 .owl-dots {
   position: relative;
@@ -13029,10 +13122,10 @@ ul.page-numbers > li:last-child > a {
   .post-navigation__text {
     display: flex;
     flex-direction: column; }
-  .post-navigation .prev .post-navigation__text--label:before {
+  .post-navigation .prev .post-navigation--label:before {
     content: "—";
     margin-right: 5px; }
-  .post-navigation .next .post-navigation__text--label:after {
+  .post-navigation .next .post-navigation--label:after {
     content: "—";
     margin-left: 5px; }
   .post-navigation .nav-previous,
@@ -13056,7 +13149,7 @@ ul.page-numbers > li:last-child > a {
     -webkit-transform: translate(1em);
     -ms-transform: translate(1em);
     transform: translate(1em); }
-  .post-navigation .post-title {
+  .post-navigation--post-title {
     font-family: "Lato", sans-serif;
     font-weight: 700;
     letter-spacing: 0.025em;

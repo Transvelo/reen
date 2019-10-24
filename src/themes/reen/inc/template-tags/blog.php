@@ -340,7 +340,7 @@ if ( ! function_exists( 'reen_post_media' ) ) {
         } else {
             if ( 'video' === $post_format ) {
                 reen_post_video();    
-            } elseif ( 'audio' == $post_format ) {
+            } elseif ( 'audio' == $post_format) {
                 reen_post_audio();
             } elseif ( 'gallery' == $post_format ) {
                 reen_post_gallery();
@@ -395,7 +395,15 @@ if ( ! function_exists( 'reen_post_the_content' ) ) {
                 wp_kses_post( __( 'Continue reading %s', 'reen' ) ),
                 '<span class="screen-reader-text">' . get_the_title() . '</span>'
             )
-        ); ?></div><!-- /.article__content-inner --><?php
+        ); 
+        wp_link_pages( array(
+            'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'reen' ) . '</span><div class="page-links-inner">',
+            'after'       => '</div></div>',
+            'link_before' => '<span class="page-link">',
+            'link_after'  => '</span>'
+
+        ) );
+        ?></div><!-- /.article__content-inner --><?php
     }
 }
 
@@ -409,14 +417,14 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
         $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_gallery_images', true );
         $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
 
-        // if there is a gallery block do this
+        //if there is a gallery block do this
         // if ( has_block( 'gallery', $post->post_content ) ) {
         //     $post_blocks = parse_blocks( $post->post_content );
         //     if ( isset( $post_blocks[0]['attrs']['ids'] ) ) {
         //         $attachments = $post_blocks[0]['attrs']['ids'];    
         //     }
         // } 
-        // // if there is not a gallery block do this
+        // if there is not a gallery block do this
         // else {
         //     // gets the gallery info
         //     $gallery = get_post_gallery( $post->ID, false );
@@ -460,21 +468,24 @@ if ( ! function_exists( 'reen_post_audio' ) ) {
      * Displays post audio when applicable
      */
     function reen_post_audio() {
-        $content = apply_filters( 'the_content', get_the_content() );
-        $audio   = false;
+       // $content = apply_filters( 'the_content', get_the_content() );
+        //$audio   = false;
 
-        // Only get audio from the content if a playlist isn't present.
-        if ( false === strpos( $content, 'wp-playlist-script' ) ) {
-            $audio = get_media_embedded_in_content( $content, array( 'audio', 'object', 'embed', 'iframe' ) );
-        }
+        $embed_audio  = get_post_meta( get_the_ID(), '_audio_field', true );
 
-        if ( ! empty( $audio ) ) {
-            foreach ( $audio as $audio_html ) {
-                ?><div class="article__media post-media article__attachment--audio"><?php 
-                    echo ( $audio_html ); 
-                ?></div><!-- .article__attachment--audio --><?php
+        if ( isset($embed_audio) && $embed_audio != '' ) {
+            // Embed Audio
+
+            if( !empty($embed_audio) ) {
+                ?><div class="post-media"><?php 
+                // run oEmbed for known sources to generate embed code from audio links
+                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+
+                ?></div><!-- .article__attachment--video --><?php
             }
-        }
+
+        } 
+        
     }
 }
 
@@ -483,21 +494,20 @@ if ( ! function_exists( 'reen_post_video' ) ) {
      * Displays post video when applicable
      */
     function reen_post_video() {
-        $content = apply_filters( 'the_content', get_the_content() );
-        $video   = false;
+        $embed_video  = get_post_meta( get_the_ID(), '_video_field', true );
 
-        // Only get video from the content if a playlist isn't present.
-        if ( false === strpos( $content, 'wp-playlist-script' ) ) {
-            $video = get_media_embedded_in_content( $content, array( 'video', 'object', 'embed', 'iframe' ) );
-        }
+        if ( isset($embed_video) && $embed_video != '' ) {
+            // Embed Audio
 
-        if ( ! empty( $video ) ) {
-            foreach ( $video as $video_html ) {
-                ?><div class="video-container post-media article__media article__attachment--video"><?php 
-                    echo ( $video_html ); 
+            if( !empty($embed_video) ) {
+                ?><div class="video-container post-media"><?php 
+                // run oEmbed for known sources to generate embed code from audio links
+                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+
                 ?></div><!-- .article__attachment--video --><?php
             }
-        }
+
+        } 
     }
 }
 
@@ -588,22 +598,24 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                         ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
                                             <?php while( $popular_posts_loop->have_posts() ): $popular_posts_loop->the_post(); ?>
                                                 <div class="item">
-                                                    <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                                                        <figure>
-                                                            <figcaption class="text-overlay">
-                                                                <div class="info">
-                                                                    <h4><?php the_title(); ?></h4>
-                                                                    <p class="categories"><?php reen_post_categories(); ?></p>
-                                                                </div><!-- /.info -->
-                                                            </figcaption>
-                                                            <?php if ( has_post_thumbnail() ) {
+                                                    
+
+                                                    
+                                                    <figure>
+                                                        <figcaption class="text-overlay">
+                                                            <div class="info">
+                                                                <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p class="categories"><?php reen_post_categories(); ?></p>
+                                                            </div><!-- /.info -->
+                                                        </figcaption>
+                                                        <?php if ( has_post_thumbnail() ) {
                                                             the_post_thumbnail();
                                                             } else { ?>
                                                         
                                                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
                                                             <?php } ?>
-                                                        </figure>
-                                                    </a>
+                                                    </figure>
+                                               
                                                 </div><!-- /.item -->
                                             <?php endwhile; ?>
                                             <?php wp_reset_postdata(); ?>
@@ -761,8 +773,8 @@ if ( ! function_exists( 'reen_post_nav' ) ) {
         ?>
         <div class="reen-post-nav post-navigation__nav">
             <div class="reen-post-title next post-navigation__text">
-                <span class="post-direction post-navigation__text--label"><?php echo esc_html__( 'Next Post', 'reen' ); ?></span>
-                <span class="post-title post-navigation__text--post-title">%title</span>
+                <span class="post-direction post-navigation--label"><?php echo esc_html__( 'Next Post', 'reen' ); ?></span>
+                <span class="post-navigation--post-title">%title</span>
             </div>
         </div>
 
@@ -772,8 +784,8 @@ if ( ! function_exists( 'reen_post_nav' ) ) {
         ?>
         <div class="reen-post-nav post-navigation__nav">
             <div class="reen-post-title prev post-navigation__text">
-                <span class="post-direction post-navigation__text--label"><?php echo esc_html__( 'Previous Post', 'reen' ); ?></span>
-                <span class="post-title post-navigation__text--post-title">%title</span>
+                <span class="post-direction post-navigation--label"><?php echo esc_html__( 'Previous Post', 'reen' ); ?></span>
+                <span class="post-navigation--post-title">%title</span>
             </div>
         </div>
         <?php

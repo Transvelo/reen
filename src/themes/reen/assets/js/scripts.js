@@ -310,7 +310,7 @@ $(document).ready(function () {
 	var aosEnable			= true, // ------------------------------------------------	Turn on/off AOS
 		aosMobileDisable	= false, // -----------------------------------------------	Turn on/off AOS on Mobile
 		aosContainer		= 'main', // ----------------------------------------------	Container (e.g. 'body' [with Footer] or '#main'/'main' [without Footer])
-		aosItems			= '[class*="col-"]:not(.comment-form[class*="col-"]), .isotope .item, .posts .post', // -----	Add/remove Elements to be animated
+		aosItems			= '[class*="col-"]:not(.reen-form-group), .isotope .item, .posts .post', // -----	Add/remove Elements to be animated
 		aosAnimation		= 'fade-up'; // -------------------------------------------	Animation type (More on: https://github.com/michalsnik/aos)
 	
 	AOS.init({
@@ -990,63 +990,63 @@ $(document).ready(function () {
 /*	FORM VALIDATION
 /*===================================================================================*/
 
-$(document).ready(function() {
+// $(document).ready(function() {
 	
-	$('#contactform, #commentform').validate({
+// 	$('#contactform, #commentform').validate({
 		
-		errorPlacement: function(error, element) {  
-			$(element).attr({
-				'placeholder' : error.html()
-			});
-		},
+// 		errorPlacement: function(error, element) {  
+// 			$(element).attr({
+// 				'placeholder' : error.html()
+// 			});
+// 		},
 		
-		focusInvalid: false,
+// 		focusInvalid: false,
 		
-		rules: {
-			name: {
-				required: true,
-				minlength: 2
-			},
-			email: {
-				required: true,
-				email: true
-			},
-			message: {
-				required: true,
-				minlength: 10
-			}
-		},
+// 		rules: {
+// 			name: {
+// 				required: true,
+// 				minlength: 2
+// 			},
+// 			email: {
+// 				required: true,
+// 				email: true
+// 			},
+// 			message: {
+// 				required: true,
+// 				minlength: 10
+// 			}
+// 		},
 		
-		messages: {
-			name: {
-				required: 'Please enter your name!',
-				minlength: 'Name requires at least 2 characters!'
-			},
-			email: {
-				required: 'Please enter your email!',
-				email: 'Please enter a valid email!'
-			},
-			message: {
-				required: 'Please enter a message!',
-				minlength: 'Message requires at least 10 characters!'
-			}
-		},
+// 		messages: {
+// 			name: {
+// 				required: 'Please enter your name!',
+// 				minlength: 'Name requires at least 2 characters!'
+// 			},
+// 			email: {
+// 				required: 'Please enter your email!',
+// 				email: 'Please enter a valid email!'
+// 			},
+// 			message: {
+// 				required: 'Please enter a message!',
+// 				minlength: 'Message requires at least 10 characters!'
+// 			}
+// 		},
 		
-		submitHandler: function(form) {
-			$('#contactform .btn-submit').html('Sending message ...');
-			$('#commentform .btn-submit').html('Sending comment ...');
-			$(form).ajaxSubmit({
-				success: function(responseText, statusText, xhr, $form) {
-					$(form).delay(1300).slideUp('fast');
-					$('#response').html(responseText).hide().delay(1300).slideDown('fast');
-				}
-			});
-			return false;
-		}
+// 		submitHandler: function(form) {
+// 			$('#contactform .btn-submit').html('Sending message ...');
+// 			$('#commentform .btn-submit').html('Sending comment ...');
+// 			$(form).ajaxSubmit({
+// 				success: function(responseText, statusText, xhr, $form) {
+// 					$(form).delay(1300).slideUp('fast');
+// 					$('#response').html(responseText).hide().delay(1300).slideDown('fast');
+// 				}
+// 			});
+// 			return false;
+// 		}
 		
-	});
+// 	});
 	
-});
+// });
 
 /**
  * Initialize Tooltip

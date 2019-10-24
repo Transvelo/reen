@@ -1,6 +1,10 @@
+//@import "variables";
+//@import 'mixins/pagination';
+
 @import 'blog/article';
 @import 'blog/popular-post';
 @import 'blog/widgets';
+@import 'blog/gallery';
 
 @import 'components/pagination';
 @import 'components/owl-carousel';
@@ -9,6 +13,8 @@
 
 @import 'general/media';
 @import 'general/base';
+
+
 
 @import 'portfolio/portfolio-post';
 @import 'portfolio/portfolio-carousel';

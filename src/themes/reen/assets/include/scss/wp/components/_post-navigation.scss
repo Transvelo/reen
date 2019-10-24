@@ -12,14 +12,14 @@
 
     }
 
-    .prev .post-navigation__text--label {
+    .prev .post-navigation--label {
         &:before {
             content: "—";
             margin-right: 5px;
         }
     }
 
-    .next .post-navigation__text--label {
+    .next .post-navigation--label {
         &:after {
             content: "—";
             margin-left: 5px;
@@ -57,7 +57,7 @@
         transform: translate(1em);
     }
 
-    .post-title {
+    &--post-title {
         font-family: "Lato", sans-serif;
         font-weight: 700;
         letter-spacing: 0.025em;
