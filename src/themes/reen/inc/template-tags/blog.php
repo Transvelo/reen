@@ -23,8 +23,18 @@ if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
 
         $container_class .= apply_filters( 'reen_blog_container_classes', ' inner-top-sm inner-bottom');
         
+        ?><div class="container <?php echo esc_attr( $container_class ); ?>"><?php
+    }
+}
 
-        ?><section id="blog-post" class="light-bg"><div class="container <?php echo esc_attr( $container_class ); ?>"><?php
+if ( ! function_exists( 'reen_loop_section_wrap_start' ) ) {
+    function reen_loop_section_wrap_start() { ?>
+        <section id="blog" class="light-bg"><?php
+    }
+}
+if ( ! function_exists( 'reen_single_loop_section_wrap_start' ) ) {
+    function reen_single_loop_section_wrap_start() { ?>
+        <section id="blog-post" class="light-bg"><?php
     }
 }
 
