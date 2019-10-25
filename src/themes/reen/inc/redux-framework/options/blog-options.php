@@ -61,5 +61,30 @@
             ),
                 'default'       => 'sidebar-right'
         ),
+        array(
+            'title'     => esc_html__( 'Blog Post Author Info', 'reen' ),
+            'id'        => 'show_blog_post_author_info',
+            'on'        => esc_html__('Yes', 'reen'),
+            'off'       => esc_html__('No', 'reen'),
+            'type'      => 'switch',
+            'default'   => false,
+        ),
+        array(
+            'title'     => esc_html__( 'Blog Social Sharing', 'reen' ),
+            'id'        => 'show_social_sharing',
+            'on'        => esc_html__('Yes', 'reen'),
+            'off'       => esc_html__('No', 'reen'),
+            'type'      => 'switch',
+            'default'   => false,
+        ),
+        array(
+            'title'     => esc_html__( 'Enable Related Posts', 'reen' ),
+            'subtitle'  => esc_html__( 'Choose if you want to enable related posts section in single blog post', 'reen' ),
+            'id'        => 'enable_related_posts',
+            'on'        => esc_html__( 'Yes', 'reen' ),
+            'off'       => esc_html__( 'No', 'reen' ),
+            'type'      => 'switch',
+            'default'   => false,
+        ),
     )
  ) );

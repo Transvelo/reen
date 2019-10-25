@@ -6969,7 +6969,8 @@ body {
   -webkit-text-size-adjust: 100%;
   /*-moz-osx-font-smoothing: grayscale;*/
   text-rendering: optimizeLegibility;
-  overflow-x: hidden !important; }
+  overflow-x: hidden !important;
+  word-wrap: break-word; }
 
 .navbar,
 main {
@@ -7378,6 +7379,8 @@ blockquote footer,
 blockquote small,
 blockquote .small,
 blockquote .small,
+blockquote > p > cite,
+blockquote cite,
 .format-quote footer,
 .format-quote small,
 .format-quote .small,
@@ -7395,6 +7398,10 @@ blockquote footer:after,
 blockquote small:after,
 blockquote .small:after,
 blockquote .small:after,
+blockquote > p > cite:only-child:before,
+blockquote cite:before,
+blockquote > p > cite:only-child:after,
+blockquote cite:after,
 .format-quote footer:before,
 .format-quote small:before,
 .format-quote .small:before,
@@ -7414,6 +7421,8 @@ blockquote footer:before,
 blockquote small:before,
 blockquote .small:before,
 blockquote .small:before,
+blockquote > p > cite:only-child:before,
+blockquote cite:before,
 .format-quote footer:before,
 .format-quote small:before,
 .format-quote .small:before,
@@ -7424,6 +7433,8 @@ blockquote footer:after,
 blockquote small:after,
 blockquote .small:after,
 blockquote .small:after,
+blockquote > p > cite:only-child:after,
+blockquote cite:after,
 .format-quote footer:after,
 .format-quote small:after,
 .format-quote .small:after,
@@ -9364,12 +9375,14 @@ blockquote:before {
   background-color: #1ABB9C; }
 
 .format-quote .meta,
+.format-quote .post-title,
 .format-quote blockquote,
 .format-quote blockquote footer,
 .format-quote blockquote small,
 .format-quote blockquote .small,
 .format-quote blockquote .small,
-.format-quote p {
+.format-quote p,
+.format-quote cite {
   color: #FFF; }
 
 .format-quote blockquote footer:before,
@@ -9379,7 +9392,9 @@ blockquote:before {
 .format-quote blockquote footer:after,
 .format-quote blockquote small:after,
 .format-quote blockquote .small:after,
-.format-quote blockquote .small:after {
+.format-quote blockquote .small:after,
+.format-quote cite:before,
+.format-quote cite:after {
   background-color: #FFF; }
 
 .format-quote .meta a:hover {
@@ -10677,7 +10692,7 @@ form select {
 .newsletter {
   position: relative; }
 
-.newsletter input[type="email"] {
+form.newsletter input[type="email"] {
   background: rgba(255, 255, 255, 0.15);
   padding-right: 100px;
   -webkit-border-radius: 3px;
@@ -10685,7 +10700,7 @@ form select {
   border: none;
   color: #FFF !important; }
 
-.newsletter input[type="email"]:focus {
+form.newsletter input[type="email"]:focus {
   background: rgba(255, 255, 255, 0.2); }
 
 .navbar .searchbox .dropdown-menu {
@@ -12708,11 +12723,39 @@ a.changecolor {
 /*------------------------------------
   File for your custom SCSS style
 ------------------------------------*/
+article.post::after {
+  display: block;
+  clear: both;
+  content: ""; }
+
 article.post .date-wrapper .updated:not(.published) {
   display: none; }
 
 article.post .post-content .sharedaddy {
   display: none; }
+
+article.post table, article.post blockquote, article.post dl, article.post ol, article.post ul {
+  margin-bottom: 20px; }
+
+article.post table {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: transparent; }
+  article.post table th,
+  article.post table td {
+    padding: 0.5rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6; }
+  article.post table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6; }
+  article.post table tbody + tbody {
+    border-top: 2px solid #dee2e6; }
+  article.post table .table {
+    background-color: #fff; }
+
+article.post ul, article.post ol {
+  list-style: disc; }
 
 .reen-post-sharing .sharedaddy .sd-social-icon h3.sd-title, .reen-post-sharing .sharedaddy .sd-social-icon .sd-title.h3 {
   display: none; }
@@ -12768,6 +12811,22 @@ article.post .post-content .sharedaddy {
     margin-bottom: 20px; }
   .comment-text ul, .comment-text ol {
     list-style: disc; }
+  .comment-text table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent; }
+    .comment-text table th,
+    .comment-text table td {
+      padding: 0.5rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6; }
+    .comment-text table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6; }
+    .comment-text table tbody + tbody {
+      border-top: 2px solid #dee2e6; }
+    .comment-text table .table {
+      background-color: #fff; }
 
 .comment-content + .comment-respond {
   margin-top: 20px; }
@@ -12779,6 +12838,58 @@ article.post .post-content .sharedaddy {
 #cancel-comment-reply-link {
   color: #BCC7D1;
   font-size: 14px; }
+
+.post-password-form input[type="submit"] {
+  width: fit-content; }
+
+/**
+ * Alignment
+ */
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 25px; }
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 25px; }
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.classic-blog figure.align-right + *,
+.classic-blog figure.alignleft + * {
+  padding-top: 0; }
+
+.alignfull,
+.alignwide {
+  clear: both; }
+
+figure {
+  max-width: 100%; }
+
+.classic-blog .post__content-inner figure + *,
+figure.post-media + * {
+  padding-top: 0; }
+
+.classic-blog .post__content-inner figure {
+  padding-bottom: 30px; }
+
+.alert.no-comments {
+  padding: .75rem 1.25rem !important;
+  margin-top: 40px; }
+
+blockquote > p:last-child:not(footer) a,
+.format-quote > p:last-child:not(footer) a {
+  border: none; }
+  blockquote > p:last-child:not(footer) a:hover, blockquote > p:last-child:not(footer) a:focus,
+  .format-quote > p:last-child:not(footer) a:hover,
+  .format-quote > p:last-child:not(footer) a:focus {
+    color: #fff; }
 
 .popular-posts-carousel.owl-carousel .owl-nav,
 .related-post-carousel.owl-carousel .owl-nav {

@@ -88,4 +88,8 @@ add_action( 'reen_single_post_after', 'reen_loop_container_wrap_end',      	    
  */
 
 add_filter( 'comment_form_fields', 'reen_move_comment_field_to_bottom', 10 );
+/**
+ * Protected Post Custom Password Form
+ */
+add_filter( 'the_password_form', 'reen_post_protected_password_form' );
 

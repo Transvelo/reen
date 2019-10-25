@@ -58,6 +58,7 @@ body {
 	/*-moz-osx-font-smoothing: grayscale;*/
 	text-rendering: optimizeLegibility;
 	overflow-x: hidden !important;
+	word-wrap: break-word;
 }
 .navbar,
 main {
@@ -476,6 +477,8 @@ blockquote p,
 blockquote footer,
 blockquote small,
 blockquote .small,
+blockquote > p > cite,
+blockquote cite,
 .format-quote footer,
 .format-quote small,
 .format-quote .small {
@@ -490,6 +493,10 @@ blockquote .small:before,
 blockquote footer:after,
 blockquote small:after,
 blockquote .small:after,
+blockquote > p > cite:only-child:before,
+blockquote cite:before,
+blockquote > p > cite:only-child:after,
+blockquote cite:after,
 .format-quote footer:before,
 .format-quote small:before,
 .format-quote .small:before,
@@ -506,6 +513,8 @@ blockquote .small:after,
 blockquote footer:before,
 blockquote small:before,
 blockquote .small:before,
+blockquote > p > cite:only-child:before,
+blockquote cite:before,
 .format-quote footer:before,
 .format-quote small:before,
 .format-quote .small:before {
@@ -514,6 +523,8 @@ blockquote .small:before,
 blockquote footer:after,
 blockquote small:after,
 blockquote .small:after,
+blockquote > p > cite:only-child:after,
+blockquote cite:after,
 .format-quote footer:after,
 .format-quote small:after,
 .format-quote .small:after {
@@ -2447,11 +2458,13 @@ blockquote:before {
 	background-color: #1ABB9C;
 }
 .format-quote .meta,
+.format-quote .post-title,
 .format-quote blockquote,
 .format-quote blockquote footer,
 .format-quote blockquote small,
 .format-quote blockquote .small,
-.format-quote p {
+.format-quote p,
+.format-quote cite {
 	color: #FFF;
 }
 .format-quote blockquote footer:before,
@@ -2459,7 +2472,9 @@ blockquote:before {
 .format-quote blockquote .small:before,
 .format-quote blockquote footer:after,
 .format-quote blockquote small:after,
-.format-quote blockquote .small:after {
+.format-quote blockquote .small:after,
+.format-quote cite:before,
+.format-quote cite:after {
 	background-color: #FFF;
 }
 .format-quote .meta a:hover {
@@ -3816,7 +3831,7 @@ form select {
 .newsletter {
     position: relative;
 }
-.newsletter input[type="email"] {
+form.newsletter input[type="email"] {
     background: rgba(255,255,255,0.15);
 	padding-right: 100px;
     -webkit-border-radius: 3px;
@@ -3824,7 +3839,7 @@ form select {
     border: none;
     color: #FFF !important;
 }
-.newsletter input[type="email"]:focus {
+form.newsletter input[type="email"]:focus {
     background: rgba(255,255,255,0.20);
 }
 .navbar .searchbox .dropdown-menu {

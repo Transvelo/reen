@@ -10,12 +10,6 @@
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
-
-  //padding: $pagination-padding-y $pagination-padding-x;
-  //margin-left: -$pagination-border-width;
-  //line-height: $pagination-line-height;
-
-
   &:hover {
     z-index: 2;
     color: $pagination-hover-color;
