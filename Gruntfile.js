@@ -83,51 +83,51 @@ module.exports = function( grunt ) {
             }
         },
 
-        // // Publish theme to GH Pages
-        // 'gh-pages': {
-        //     pages: {
-        //         options: {
-        //             base : 'gh-pages'
-        //         },
-        //         src: ['**']
-        //     },
-        //     theme: {
-        //         options: {
-        //             base : '<%= dirs.theme %>',
-        //             branch: 'theme',
-        //         },
-        //         src: ['**']
-        //     }
-        // },
+        // Publish theme to GH Pages
+        'gh-pages': {
+            pages: {
+                options: {
+                    base : 'gh-pages'
+                },
+                src: ['**']
+            },
+            theme: {
+                options: {
+                    base : '<%= dirs.theme %>',
+                    branch: 'theme',
+                },
+                src: ['**']
+            }
+        },
 
-        // version: {
-        //     extension_plugin: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [ '<%= dirs.extensions %>/<%= pkg.name %>-extensions.php' ]
-        //     },
-        //     demo_plugin: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [ '<%= dirs.demo %>/<%= pkg.name %>-demo.php' ]
-        //     },
-        //     theme_sass: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [
-        //             '<%= dirs.theme %>/style.scss',
-        //         ]
-        //     },
-        //     child_theme: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [ '<%= dirs.childTheme %>/style.css' ]
-        //     }
-        // },
+        version: {
+            extension_plugin: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [ '<%= dirs.extensions %>/<%= pkg.name %>-extensions.php' ]
+            },
+            demo_plugin: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [ '<%= dirs.demo %>/<%= pkg.name %>-demo.php' ]
+            },
+            theme_sass: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [
+                    '<%= dirs.theme %>/style.scss',
+                ]
+            },
+            child_theme: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [ '<%= dirs.childTheme %>/style.css' ]
+            }
+        },
 
         // Clean previous deployed files
         clean: {
