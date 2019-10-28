@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.32
+Version:           0.0.33
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -9382,7 +9382,8 @@ blockquote:before {
 .format-quote blockquote .small,
 .format-quote blockquote .small,
 .format-quote p,
-.format-quote cite {
+.format-quote cite,
+.format-quote .small {
   color: #FFF; }
 
 .format-quote blockquote footer:before,
@@ -9394,7 +9395,9 @@ blockquote:before {
 .format-quote blockquote .small:after,
 .format-quote blockquote .small:after,
 .format-quote cite:before,
-.format-quote cite:after {
+.format-quote cite:after,
+.format-quote .small:before,
+.format-quote .small:after {
   background-color: #FFF; }
 
 .format-quote .meta a:hover {
@@ -12893,6 +12896,10 @@ blockquote > p:last-child:not(footer) a,
   .format-quote > p:last-child:not(footer) a:hover,
   .format-quote > p:last-child:not(footer) a:focus {
     color: #fff; }
+
+figure.reen-image-block figcaption {
+  text-align: left;
+  margin-top: 0; }
 
 .popular-posts-carousel.owl-carousel .owl-nav,
 .related-post-carousel.owl-carousel .owl-nav {
