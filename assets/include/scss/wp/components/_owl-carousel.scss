@@ -1,0 +1,56 @@
+.owl-dots {
+	position: relative;
+	line-height: 30px;
+}
+
+.owl-carousel .owl-nav .owl-prev,
+.owl-carousel .owl-nav .owl-next,
+.owl-carousel .owl-dot {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+
+
+.owl-dots .owl-dot span {
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: #506A85;
+	border: none;
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+	margin: 0 5px;
+	-webkit-transition: all 200ms ease-out;
+	   -moz-transition: all 200ms ease-out;
+		 -o-transition: all 200ms ease-out;
+			transition: all 200ms ease-out;
+}
+
+.owl-dots .owl-dot.active span,
+.owl-dots .owl-dot:hover span {
+	background: #1ABB9C;
+}
+
+.owl-carousel .owl-prev,
+.owl-carousel .owl-next {
+	
+	background-color: #506A85 !important;
+
+	&:not(:hover) {
+		color: #FFF !important;
+	}
+
+	
+	i {
+		font-size: 30px;
+	}
+}
+
+.owl-carousel.post-media + * {
+	margin-top: 60px;
+}
