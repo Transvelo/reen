@@ -22,7 +22,7 @@ class Reen_Template_Loader {
     public static function init() {
         add_filter( 'query_vars', array( __CLASS__, 'add_query_vars_filter' ) );
         //add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
-        //add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
+        add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
         add_action( 'init', array( __CLASS__, 'rewrite_blog_rule' ), 10, 0 );
         add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_grid_columns', array( __CLASS__, 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
