@@ -18,11 +18,11 @@ get_header(); ?>
 	            $post_format     = get_post_format();
 	            $portfolio_style = get_post_meta( get_the_ID(), '_portfolio_style', true );
             	$portfolio_style = empty( $portfolio_style ) ? 'image-2' : $portfolio_style ;
-            	$audio_field      = get_post_meta(get_the_ID(), '_audio_field', true);
-            	$video_field      = get_post_meta(get_the_ID(), '_video_field', true);
+            	$audio_field      = get_post_meta(get_the_ID(), '_portfolio_audio_field', true);
+            	$video_field      = get_post_meta(get_the_ID(), '_portfolio_video_field', true);
 	           
 
-	            if ( ( 'audio' == $post_format && $audio_field ) || ('video' == $post_format && $video_field ) ) {
+	            if ( ( 'audio' == $post_format ) || ('video' == $post_format ) ) {
 	                    get_template_part( 'templates/portfolio/content',  $post_format . '-portfolio-single' );
 	            } 
 	            elseif ( 'slider-1' == $portfolio_style || 'slider-2' == $portfolio_style || 'image-1' == $portfolio_style || 'image-2' == $portfolio_style) {

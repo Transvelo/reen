@@ -168,12 +168,18 @@ if ( ! function_exists( 'reen_portfolio_post_audio' ) ) {
      * Displays post audio when applicable
      */
     function reen_portfolio_post_audio() {
-        $audio   = get_post_meta(get_the_ID(), 'audio_field', true);
+        $embed_audio  = get_post_meta( get_the_ID(), '_portfolio_audio_field', true );
 
-        if ( ! empty( $audio ) ) {
-            ?><div class="col-lg-8 inner-left-xs"><?php
-            echo ( apply_filters( 'the_content', $audio ) );
-            ?></div><?php
+        if ( isset($embed_audio) && $embed_audio != '' ) {
+            // Embed Audio
+
+            if( !empty($embed_audio) ) {
+                ?><div class="col-lg-8 inner-left-xs"><?php
+                // run oEmbed for known sources to generate embed code from audio links
+                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+
+                ?></div><?php
+            }
         }
     }
 }
@@ -198,16 +204,21 @@ if ( ! function_exists( 'reen_portfolio_post_video' ) ) {
      * Displays post video when applicable
      */
     function reen_portfolio_post_video() {
-        $video   = get_post_meta(get_the_ID(), 'video_field', true);
+        $embed_video  = get_post_meta( get_the_ID(), '_portfolio_video_field', true );
 
-        if ( ! empty( $video ) ) {
-            ?><div class="row">
-                <div class="col-md-12">
-                    <div class="video-container"><?php 
-                        echo ( apply_filters( 'the_content', $video ) );
-                    ?></div>
-                </div>
-            </div><?php
+        if ( isset($embed_video) && $embed_video != '' ) {
+            // Embed Audio
+
+            if( !empty($embed_video) ) {
+                ?><div class="row">
+                    <div class="col-md-12">
+                        <div class="video-container"><?php 
+                            // run oEmbed for known sources to generate embed code from audio links
+                                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                        ?></div>
+                    </div>
+                </div><?php
+            }
         }
     }
 }
