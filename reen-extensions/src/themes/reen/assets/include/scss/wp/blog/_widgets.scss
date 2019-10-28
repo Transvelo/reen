@@ -1,0 +1,51 @@
+#wp-calendar {
+    width: 100%;
+    margin-bottom: 1em;
+    background-color: transparent;
+
+    th, td {
+        padding: 5px;
+        text-align: center;
+        vertical-align: top;
+        border: 1px solid #E6E9ED;
+
+        a {
+            font-weight: bold;
+        }
+    }
+
+    caption {
+        color: #506A85;
+    }
+}
+
+.light-bg #wp-calendar { background-color: #FFF; }
+
+.widget_rss {
+    .widget__title + ul {
+        padding-left: 0;
+
+        > li {
+            margin-bottom: 15px;
+
+            &:before {
+                content: none;
+            }
+
+            a.rsswidget:first-child {
+                color: #506A85;
+                line-height: 150%;
+                margin-bottom: 5px;
+                font-family: 'Lato', sans-serif;
+                font-weight: 700;
+                display: block;
+            }
+
+            .rss-date, cite,
+            .rssSummary {
+                margin-bottom: 5px;
+                display: block;
+            }
+        }
+    }
+}
