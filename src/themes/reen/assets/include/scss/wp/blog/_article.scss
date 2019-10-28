@@ -1,4 +1,6 @@
 article.post {
+	@include clearfix;
+
     .date-wrapper {
         .updated:not(.published) {
             display: none;
@@ -9,6 +11,18 @@ article.post {
     	.sharedaddy {
     		display: none;
     	}
+    }
+
+    table, blockquote, dl, ol, ul {
+        margin-bottom: 20px;
+    }
+
+    table {
+        @include make-table();
+    }
+
+    ul, ol {
+        list-style: disc;
     }
 }  
 
@@ -103,6 +117,10 @@ article.post {
     ul, ol {
         list-style: disc;
     }
+
+    table {
+        @include make-table();
+    }
 }
 
 .comment-content + .comment-respond {
@@ -115,7 +133,79 @@ article.post {
     }
 }
 
+.comments-area + .comment-form-wrapper .comment-respond {
+    padding-top: 0;
+}
+
+
 #cancel-comment-reply-link {
     color: #BCC7D1;
     font-size: 14px;
 }
+
+.post-password-form {
+	input[type="submit"] {
+		width: fit-content;
+	}
+}
+
+/**
+ * Alignment
+ */
+.alignleft {
+    display: inline;
+    float: left;
+    margin-right: 25px;
+}
+
+.alignright {
+    display: inline;
+    float: right;
+    margin-left: 25px;
+}
+
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.classic-blog figure.align-right + *,
+.classic-blog figure.alignleft + * {
+    padding-top: 0;
+}
+
+.alignfull,
+.alignwide {
+	clear: both;
+}
+
+figure {
+	max-width: 100%;
+}
+
+.classic-blog .post__content-inner figure + *,
+ figure.post-media + * {
+ 	padding-top: 0;
+ }
+
+ .classic-blog .post__content-inner figure {
+ 	padding-bottom: 30px;
+ }
+
+.alert.no-comments {
+    padding: .75rem 1.25rem !important;
+    margin-top: 40px;
+}
+
+blockquote > p:last-child:not(footer) a,
+.format-quote > p:last-child:not(footer) a {
+	border: none;
+
+	&:hover,
+	&:focus {
+		color: #fff;
+	}
+}
+

@@ -5,7 +5,7 @@
 
 
 add_action( 'reen_loop_before', 'reen_popular_posts',                      10 );
-
+add_action( 'reen_loop_before', 'reen_loop_section_wrap_start',            15 );
 add_action( 'reen_loop_before', 'reen_loop_container_wrap_start',          20 );
 add_action( 'reen_loop_before', 'reen_format_filter',      	 		       30 );
 add_action( 'reen_loop_before', 'reen_loop_row_wrap_start',      	       40 );
@@ -59,6 +59,7 @@ add_action( 'reen_loop_post_quote',      'reen_post_content_end', 				    40 );
 
 
 add_action( 'reen_single_post_before',    'reen_popular_posts',   10 );
+add_action( 'reen_single_post_before', 'reen_single_loop_section_wrap_start',     15 );
 add_action( 'reen_single_post_before', 'reen_loop_container_wrap_start',          20 );
 add_action( 'reen_single_post_before', 'reen_loop_row_wrap_start',      	       40 );
 add_action( 'reen_single_post_before', 'reen_toggle_post_side_meta_hooks',        60 );
@@ -88,4 +89,8 @@ add_action( 'reen_single_post_after', 'reen_loop_container_wrap_end',      	    
  */
 
 add_filter( 'comment_form_fields', 'reen_move_comment_field_to_bottom', 10 );
+/**
+ * Protected Post Custom Password Form
+ */
+add_filter( 'the_password_form', 'reen_post_protected_password_form' );
 

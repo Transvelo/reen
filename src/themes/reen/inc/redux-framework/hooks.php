@@ -25,6 +25,9 @@ add_filter( 'reen_blog_style',         'reen_redux_change_blog_style'         );
 add_filter( 'reen_blog_layout',        'reen_redux_change_blog_layout'        );
 add_filter( 'reen_blog_grid_columns',  'reen_redux_change_grid_columns'       );
 add_filter( 'reen_single_post_layout', 'reen_redux_change_single_blog_layout' );
+add_filter( 'reen_show_author_info',   'redux_toggle_author_info'             );
+add_filter( 'reen_show_social_sharing', 'redux_toggle_social_sharing'         );
+add_filter( 'reen_enable_related_posts', 'redux_toggle_related_posts'          );
 
 /**
  * Header Filters

@@ -23,8 +23,18 @@ if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
 
         $container_class .= apply_filters( 'reen_blog_container_classes', ' inner-top-sm inner-bottom');
         
+        ?><div class="container <?php echo esc_attr( $container_class ); ?>"><?php
+    }
+}
 
-        ?><section id="blog" class="light-bg"><div class="container <?php echo esc_attr( $container_class ); ?>"><?php
+if ( ! function_exists( 'reen_loop_section_wrap_start' ) ) {
+    function reen_loop_section_wrap_start() { ?>
+        <section id="blog" class="light-bg"><?php
+    }
+}
+if ( ! function_exists( 'reen_single_loop_section_wrap_start' ) ) {
+    function reen_single_loop_section_wrap_start() { ?>
+        <section id="blog-post" class="light-bg"><?php
     }
 }
 
@@ -268,7 +278,7 @@ if ( ! function_exists( 'reen_post_meta' ) ) {
                <li class="categories"><?php echo reen_post_categories();?></li>
             <?php endif; 
 
-            if ( apply_filters( 'reen_post_meta_show_comment', true ) ) : ?>
+            if ( apply_filters( 'reen_post_meta_show_comment', true ) && ! post_password_required() && ( comments_open() || '0' != get_comments_number() )) : ?>
                <li class="comments"><?php echo reen_post_comments();?></li>
             <?php endif; ?>
             
@@ -663,7 +673,7 @@ if ( ! function_exists( 'reen_single_post_author_name' ) ) {
 
 if ( ! function_exists( 'reen_post_author' ) ) {
     function reen_post_author() {
-        if( apply_filters( 'reen_show_author_info', true ) ) :
+        if( apply_filters( 'reen_show_author_info', false ) ) :
             $current_user_id = get_current_user_id();
             $author_url = get_the_author_meta( 'user_url' ); 
             ?>
@@ -674,6 +684,7 @@ if ( ! function_exists( 'reen_post_author' ) ) {
                             <?php echo get_avatar( get_the_author_meta( 'ID' ) , 120 ); ?>
                         </a>
                     </div>
+
                     <div class="author-details">
                         <h3><?php echo esc_html__( 'About the author', 'reen' ); ?></h3>
                         <p><a href="#"><?php the_author_meta( 'display_name', $current_user_id );?></a><span> <?php echo the_author_meta( 'description' );?></span></p>
@@ -689,16 +700,12 @@ if ( ! function_exists( 'reen_post_author' ) ) {
                             <?php endif; ?>
                         </ul><!-- /.meta -->
 
-                            <?php if ( apply_filters( 'enable_author_social_links', TRUE ) ) :
-
-                                // if( empty( $post_id ) ) {
-                                //     $post_id = get_the_ID();
-                                // }
+                        <?php if ( apply_filters( 'enable_author_social_links', TRUE ) ) :
 
                             $twitter            = esc_attr( get_post_meta( get_the_ID(), '_twitter', true ) );
                             $facebook           = esc_attr( get_post_meta( get_the_ID(), '_facebook', true ) );
                             $google_plus        = esc_attr( get_post_meta( get_the_ID(), '_google_plus', true ) );
- 
+
 
                             $social_icons = apply_filters( 'reen_author_social_links_icons_args', array(
                                 'facebook'  => array( 
@@ -734,34 +741,29 @@ if ( ! function_exists( 'reen_post_author' ) ) {
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>
-                            <?php
-                        endif;?>
-                    </div>
-
-                    
+                        <?php endif;?>
+                    </div>    
+                </div>
             </div>
-            </div>
-            <?php
-        endif;
+        <?php endif;
     }
 }
 
 if ( ! function_exists( 'reen_post_social_sharing' ) ) {
     function reen_post_social_sharing() {
+        if( apply_filters( 'reen_show_social_sharing', false ) ) {
+            ob_start();
+            if( function_exists( 'reen_show_jetpack_share' ) ) {
+                reen_show_jetpack_share();
+            }
 
-        ob_start();
-        if( function_exists( 'reen_show_jetpack_share' ) ) {
-            reen_show_jetpack_share();
-        }
-
-        $jetpack_share_html = ob_get_clean();
-        
-        if( ! empty( $jetpack_share_html ) ) {
-            ?>
-            <div class="reen-post-sharing" id="share">
-                <?php echo wp_kses_post( $jetpack_share_html ); ?>
-            </div>
-            <?php
+            $jetpack_share_html = ob_get_clean();
+            
+            if( ! empty( $jetpack_share_html ) ) { ?>
+                <div class="reen-post-sharing" id="share">
+                    <?php echo wp_kses_post( $jetpack_share_html ); ?>
+                </div><?php
+            }
         }
     }
 }
@@ -800,96 +802,97 @@ if ( ! function_exists( 'reen_post_nav' ) ) {
 
 if ( ! function_exists( 'reen_related_posts' ) ) {
     function reen_related_posts() {
-        if( empty( $post_id ) ) {
-            $post_id = get_the_ID();
-        }
+        if ( apply_filters( 'reen_enable_related_posts', false ) ) {
+            if( empty( $post_id ) ) {
+                $post_id = get_the_ID();
+            }
 
-        $tags = wp_get_post_terms( $post_id, 'post_tag', ['fields' => 'ids'] );
+            $tags = wp_get_post_terms( $post_id, 'post_tag', ['fields' => 'ids'] );
 
-        if ( empty( $tags ) ) {
-            return;
-        }
-        
-        $related_post = new WP_Query(array( 
-            'post_type'             => 'post',
-            'post_status'           => 'publish',
-            'ignore_sticky_posts'   => 1,
-            'orderby'               => 'date',
-            'order'                 => 'desc',
-            'posts_per_page'        => 6,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'post_tag',
-                    'terms'    => $tags
-                ),
-            ),
-        ));
-
-
-        if ( $related_post->have_posts() ) : ?>         
-            <div id="accordion-related-posts" class="panel-group">
-                <div class="panel panel-default">                                                 
-                    <div class="panel-heading">
-                        <h2 class="panel-title">
-                            <a class="panel-toggle" href="#content-related-posts" data-toggle="collapse">
-                                <span><?php echo esc_html__( 'Related posts', 'reen' ); ?></span>
-                            </a>
-                        </h2>
-                    </div><!-- /.panel-heading -->
-                    
-                    <div id="content-related-posts" class="panel-collapse collapse show" data-parent="#accordion-related-posts">
-                        <div class="panel-body"><?php
+            if ( empty( $tags ) ) {
+                return;
+            }
             
-
-                                $owl_params = apply_filters( 'owl-related-posts_params', array(
-                                    'autoPlay'     => 5000,
-                                    'stopOnHover'  => true,
-                                    'rewindNav'    => true,
-                                    'items'        => 2,
-                                    'nav'          => true,
-                                    'dots'         => true,
-                                    'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
-                                    'responsive'        => array(
-                                        '0'     => array( 'items'   => 1 ),
-                                        '480'   => array( 'items'   => 2 ),
-                                        '768'   => array( 'items'   => 2 ),
-                                        '992'   => array( 'items'   => 2 ),
-                                        '1200'  => array( 'items' => 2 ),
-                                    )
-                                ) );
-
-                            ?><div id="owl-related-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"  class="related-post-carousel owl-carousel owl-item-gap owl-theme">
+            $related_post = new WP_Query(array( 
+                'post_type'             => 'post',
+                'post_status'           => 'publish',
+                'ignore_sticky_posts'   => 1,
+                'orderby'               => 'date',
+                'order'                 => 'desc',
+                'posts_per_page'        => 6,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'post_tag',
+                        'terms'    => $tags
+                    ),
+                ),
+            ));
 
 
-                                <?php while( $related_post->have_posts() ):
-                                    $related_post->the_post(); ?>
-                                    <div class="item">
-                                        <figure>  
+            if ( $related_post->have_posts() ) : ?>         
+                <div id="accordion-related-posts" class="panel-group">
+                    <div class="panel panel-default">                                                 
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <a class="panel-toggle" href="#content-related-posts" data-toggle="collapse">
+                                    <span><?php echo esc_html__( 'Related posts', 'reen' ); ?></span>
+                                </a>
+                            </h2>
+                        </div><!-- /.panel-heading -->
+                        
+                        <div id="content-related-posts" class="panel-collapse collapse show" data-parent="#accordion-related-posts">
+                            <div class="panel-body"><?php
+                
 
-                                        <div class="icon-overlay icn-link">
-                                            <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                                                <span class="icn-more"></span><?php the_post_thumbnail( 'post-thumbnail' ); ?>
-                                            </a>
-                                        </div>                              
-                                            
-                                            
-                                            <figcaption class="bordered no-top-border">
-                                                <div class="info">
-                                                    <h4> <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
-                                                    <p class="categories"><?php reen_post_categories(); ?></p>
-                                                </div><!-- /.info -->
-                                            </figcaption>
-                                        </figure>
-                                    </div>                
-                                <?php endwhile; ?>
-                                <?php wp_reset_postdata(); ?>
-                            </div><!-- /.owl-carousel -->
-                        </div><!-- /.panel-body -->
-                    </div><!-- /.content -->               
-                </div><!-- /.panel -->
-            </div><?php
-        endif;
+                                    $owl_params = apply_filters( 'owl-related-posts_params', array(
+                                        'autoPlay'     => 5000,
+                                        'stopOnHover'  => true,
+                                        'rewindNav'    => true,
+                                        'items'        => 2,
+                                        'nav'          => true,
+                                        'dots'         => true,
+                                        'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                        'responsive'        => array(
+                                            '0'     => array( 'items'   => 1 ),
+                                            '480'   => array( 'items'   => 2 ),
+                                            '768'   => array( 'items'   => 2 ),
+                                            '992'   => array( 'items'   => 2 ),
+                                            '1200'  => array( 'items' => 2 ),
+                                        )
+                                    ) );
 
+                                ?><div id="owl-related-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"  class="related-post-carousel owl-carousel owl-item-gap owl-theme">
+
+
+                                    <?php while( $related_post->have_posts() ):
+                                        $related_post->the_post(); ?>
+                                        <div class="item">
+                                            <figure>  
+
+                                            <div class="icon-overlay icn-link">
+                                                <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                                                    <span class="icn-more"></span><?php the_post_thumbnail( 'post-thumbnail' ); ?>
+                                                </a>
+                                            </div>                              
+                                                
+                                                
+                                                <figcaption class="bordered no-top-border">
+                                                    <div class="info">
+                                                        <h4> <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                        <p class="categories"><?php reen_post_categories(); ?></p>
+                                                    </div><!-- /.info -->
+                                                </figcaption>
+                                            </figure>
+                                        </div>                
+                                    <?php endwhile; ?>
+                                    <?php wp_reset_postdata(); ?>
+                                </div><!-- /.owl-carousel -->
+                            </div><!-- /.panel-body -->
+                        </div><!-- /.content -->               
+                    </div><!-- /.panel -->
+                </div><?php
+            endif;
+        }
     }
 }
 
@@ -992,3 +995,22 @@ if ( ! function_exists( 'reen_move_comment_field_to_bottom' ) ) {
         return $fields;
     }
 }
+
+if ( ! function_exists( 'reen_post_protected_password_form' ) ) :
+
+    function reen_post_protected_password_form() {
+        global $post;
+
+        $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID ); ?>
+
+        <form class="post-password-form forms form-inline reen-protected-post-form" action="<?php echo esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ); ?>" method="post">
+            <p><?php echo esc_html__( 'This content is password protected. To view it please enter your password below:', 'reen' ); ?></p>
+            <div class="form-group">
+                <label for="<?php echo esc_attr( $label ); ?>"><?php echo esc_html__( 'Password:', 'reen' ); ?></label>
+                <input name="post_password" id="<?php echo esc_attr( $label ); ?>" type="password">
+            </div>
+
+            <input type="submit" name="Submit" class="btn" value="<?php echo esc_attr( "Submit" ); ?>" style="margin-top:30px;margin-left: 15px;"/>
+        </form><?php
+    }
+endif;
