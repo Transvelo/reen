@@ -1014,3 +1014,16 @@ if ( ! function_exists( 'reen_post_protected_password_form' ) ) :
         </form><?php
     }
 endif;
+
+
+if ( ! function_exists( 'reen_excerpt_length' ) ) {
+    function reen_excerpt_length() {
+        return apply_filters( 'reen_excerpt_length', 30 );
+    }
+}
+
+if ( ! function_exists( 'reen_excerpt_more' ) ) {
+    function reen_excerpt_more() {
+        return apply_filters( 'reen_excerpt_more', '' );
+    }
+}

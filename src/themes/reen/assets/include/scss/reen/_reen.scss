@@ -2464,7 +2464,8 @@ blockquote:before {
 .format-quote blockquote small,
 .format-quote blockquote .small,
 .format-quote p,
-.format-quote cite {
+.format-quote cite,
+.format-quote .small {
 	color: #FFF;
 }
 .format-quote blockquote footer:before,
@@ -2474,7 +2475,9 @@ blockquote:before {
 .format-quote blockquote small:after,
 .format-quote blockquote .small:after,
 .format-quote cite:before,
-.format-quote cite:after {
+.format-quote cite:after,
+.format-quote .small:before,
+.format-quote .small:after {
 	background-color: #FFF;
 }
 .format-quote .meta a:hover {
