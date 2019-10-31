@@ -446,12 +446,12 @@ $(document).ready(function () {
 		
 		autoPlay: 5000,
 		stopOnHover: true,
-        navigation: true,
-		pagination: true,
-		singleItem: true,
+        nav: true,
+		dots: true,
+		items: 1,
 		addClassActive: true,
         transitionStyle: "fade",
-        navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
 			
     	afterInit: function() {
         	fadeIn();
