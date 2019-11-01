@@ -313,6 +313,10 @@ if ( ! class_exists( 'Reen' ) ) :
                     'src' => get_template_directory_uri() . '/assets/js/imagesloaded.pkgd.min.js',
                     'dep' => array( 'jquery-isotope' )
                 ),
+                'reen-scripts'   => array(
+                    'src' => get_template_directory_uri() . '/assets/js/scripts.js',
+                    'dep' => array( 'jquery' )
+                ),
                 
             ) );
             return $reen_get_theme_script;

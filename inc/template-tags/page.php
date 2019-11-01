@@ -25,16 +25,35 @@ if ( ! function_exists( 'reen_page_header' ) ) {
 }
 
 if ( ! function_exists( 'reen_page_content' ) ) {
-    function reen_page_content() { ?>
-        <div class="container">
-            <div class="col-lg-12 "> 
-                <div class="page__content">
-                    <?php the_content(); ?>
-                </div><?php
-                 if ( comments_open() || '0' != get_comments_number() ) :
-                    comments_template();
-            ?></div><?php   
-            endif;
-        ?></div><?php
+    function reen_page_content() { 
+
+        global $post;
+
+        $page_meta_values = get_post_meta( $post->ID, '_disableContainer', true );
+
+        $article_content_additional_class = '';
+
+        if ( ! ( isset( $page_meta_values ) && $page_meta_values) ) {
+            $article_content_additional_class .= ' container';
+        }
+
+        ?>
+        <div class="article__content article__content--page<?php echo esc_attr( $article_content_additional_class ); ?>">
+            <div class="row">
+                <div class="col-lg-12 "> 
+                    <div class="page__content">
+                        <?php the_content(); ?>
+                    </div>
+                    <?php
+                        wp_link_pages(
+                            array(
+                                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'reen' ),
+                                'after'  => '</div>',
+                            )
+                        );
+                    ?>
+                </div>
+            </div>
+        </div><!-- .entry-content --><?php
     }
 }

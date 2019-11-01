@@ -443,52 +443,119 @@ $(document).ready(function () {
 	}
 	
 	$(owlElementID).owlCarousel({
-		
-		autoPlay: 5000,
+		animateOut: 'fadeOut',
+		autoplay: true,
+        autoplayTimeout: 5000,
 		stopOnHover: true,
-        navigation: true,
-		pagination: true,
-		singleItem: true,
+        nav: true,
+		dots: true,
+		items: 1,
+		loop: true,
+		navRewind: true,
 		addClassActive: true,
-        transitionStyle: "fade",
-        navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+        lazyLoad: true,
+        stagePadding: 0,
+        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
 			
-    	afterInit: function() {
-        	fadeIn();
-        	fadeInDown();
-        	fadeInUp();
-        	fadeInLeft();
-        	fadeInRight();
-    	},
-		
-    	afterMove: function() {
-        	fadeIn();
-			fadeInDown();
-        	fadeInUp();
-        	fadeInLeft();
-        	fadeInRight();
-    	},
-		
-    	afterUpdate: function() {
-        	fadeIn();
-			fadeInDown();
-        	fadeInUp();
-        	fadeInLeft();
-        	fadeInRight();
-    	},
-		
-    	startDragging: function() {
-			dragging = true;
-    	},
-		
-    	afterAction: function() {
-        	fadeInReset();
-			fadeInDownReset();
-			fadeInUpReset();
-        	fadeInLeftReset();
-        	fadeInRightReset();
-			dragging = false;
-    	}
+    	onInitialize   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onInitialized   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onResize   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onResized   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onRefresh   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onRefreshed   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onUpdate   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onUpdated   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onDrag : function() {
+            dragging = true;
+        },
+
+        onTranslate   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+        onTranslated   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onTo   : function() {
+            fadeIn();
+            fadeInDown();
+            fadeInUp();
+            fadeInLeft();
+            fadeInRight();
+        },
+
+        onChanged  : function() {
+            fadeInReset();
+            fadeInDownReset();
+            fadeInUpReset();
+            fadeInLeftReset();
+            fadeInRightReset();
+            dragging = false;
+        }
 		
     });
 	
@@ -590,15 +657,22 @@ $(document).ready(function () {
 	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	// });
 	
-	$("#owl-featured-works").owlCarousel({
-		autoPlay: 5000,
+	$("#owl-sliders").owlCarousel({
+
+		animateOut: 'slideInDown',
+		autoplay: true,
+        autoplayTimeout: 5000,
 		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		singleItem: true,
-		transitionStyle: "goDown",
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+        nav: true,
+		dots: true,
+		items: 1,
+		loop: true,
+		navRewind: true,
+		addClassActive: true,
+        lazyLoad: true,
+        stagePadding: 0,
+        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+
 	});
 	
 	$("#owl-work-samples").owlCarousel({
@@ -674,6 +748,8 @@ $(document).ready(function () {
 	})
 	
 });
+
+
 
 
 /*===================================================================================*/
