@@ -1,5 +1,6 @@
 .popular-posts-carousel,
-.related-post-carousel {
+.related-post-carousel,
+.hero-carousel {
 	&.owl-carousel {
 		.owl-nav {
 			text-align: center;
@@ -37,7 +38,8 @@
 	}
 }
 
-.popular-posts-carousel {
+.popular-posts-carousel,
+.hero-carousel {
 	.categories {
 		height: 22px;
 		overflow: hidden;

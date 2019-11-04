@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.33
+Version:           0.0.35
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -12904,7 +12904,8 @@ figure.reen-image-block figcaption {
   margin-top: 0; }
 
 .popular-posts-carousel.owl-carousel .owl-nav,
-.related-post-carousel.owl-carousel .owl-nav {
+.related-post-carousel.owl-carousel .owl-nav,
+.hero-carousel.owl-carousel .owl-nav {
   text-align: center;
   position: absolute;
   left: 50%;
@@ -12913,52 +12914,68 @@ figure.reen-image-block figcaption {
   z-index: 1; }
 
 .popular-posts-carousel.owl-carousel .owl-dots,
-.related-post-carousel.owl-carousel .owl-dots {
+.related-post-carousel.owl-carousel .owl-dots,
+.hero-carousel.owl-carousel .owl-dots {
   margin-top: 25px; }
 
 .popular-posts-carousel.owl-carousel:hover .owl-prev,
 .popular-posts-carousel.owl-carousel:hover .owl-next,
 .related-post-carousel.owl-carousel:hover .owl-prev,
-.related-post-carousel.owl-carousel:hover .owl-next {
+.related-post-carousel.owl-carousel:hover .owl-next,
+.hero-carousel.owl-carousel:hover .owl-prev,
+.hero-carousel.owl-carousel:hover .owl-next {
   cursor: pointor; }
   .popular-posts-carousel.owl-carousel:hover .owl-prev:hover,
   .popular-posts-carousel.owl-carousel:hover .owl-next:hover,
   .related-post-carousel.owl-carousel:hover .owl-prev:hover,
-  .related-post-carousel.owl-carousel:hover .owl-next:hover {
+  .related-post-carousel.owl-carousel:hover .owl-next:hover,
+  .hero-carousel.owl-carousel:hover .owl-prev:hover,
+  .hero-carousel.owl-carousel:hover .owl-next:hover {
     color: #1abb9c !important;
     opacity: 1; }
 
 .popular-posts-carousel.owl-carousel:hover .owl-prev,
-.related-post-carousel.owl-carousel:hover .owl-prev {
+.related-post-carousel.owl-carousel:hover .owl-prev,
+.hero-carousel.owl-carousel:hover .owl-prev {
   opacity: .25; }
 
 .popular-posts-carousel.owl-carousel:hover .owl-next,
-.related-post-carousel.owl-carousel:hover .owl-next {
+.related-post-carousel.owl-carousel:hover .owl-next,
+.hero-carousel.owl-carousel:hover .owl-next {
   opacity: .25; }
 
-.popular-posts-carousel .categories {
+.popular-posts-carousel .categories,
+.hero-carousel .categories {
   height: 22px;
   overflow: hidden; }
-  .popular-posts-carousel .categories a {
+  .popular-posts-carousel .categories a,
+  .hero-carousel .categories a {
     border: none; }
 
 .popular-posts-carousel figure :not(.icon-overlay) a:hover,
-.popular-posts-carousel figure:not(.icon-overlay) > a:hover {
+.popular-posts-carousel figure:not(.icon-overlay) > a:hover,
+.hero-carousel figure :not(.icon-overlay) a:hover,
+.hero-carousel figure:not(.icon-overlay) > a:hover {
   opacity: 1; }
 
-.popular-posts-carousel a:hover {
+.popular-posts-carousel a:hover,
+.hero-carousel a:hover {
   color: #fff; }
 
-.popular-posts-carousel.owl-carousel .owl-prev {
+.popular-posts-carousel.owl-carousel .owl-prev,
+.hero-carousel.owl-carousel .owl-prev {
   left: -60px; }
 
-.popular-posts-carousel.owl-carousel .owl-next {
+.popular-posts-carousel.owl-carousel .owl-next,
+.hero-carousel.owl-carousel .owl-next {
   right: -60px; }
 
-.popular-posts-carousel.owl-carousel:hover .owl-prev {
+.popular-posts-carousel.owl-carousel:hover .owl-prev,
+.hero-carousel.owl-carousel:hover .owl-prev {
   left: -65px; }
 
-.popular-posts-carousel.owl-carousel:hover .owl-next {
+.popular-posts-carousel.owl-carousel:hover .owl-next,
+.hero-carousel.owl-carousel:hover .owl-next {
   right: -65px; }
 
 .related-post-carousel.owl-carousel .owl-prev {
@@ -13178,8 +13195,9 @@ ul.page-numbers > li:last-child > a {
 .owl-carousel.owl-ui-lg .owl-next i {
   font-size: 60px; }
 
-.owl-carousel.owl-ui-md .owl-prev i,
-.owl-carousel.owl-ui-md .owl-next i {
+.owl-carousel.owl-ui-md .owl-prev i, .owl-carousel.owl-ui-md .owl-prev span,
+.owl-carousel.owl-ui-md .owl-next i,
+.owl-carousel.owl-ui-md .owl-next span {
   font-size: 45px; }
 
 .owl-carousel.post-media + * {
