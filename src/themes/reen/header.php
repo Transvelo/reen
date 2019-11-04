@@ -37,8 +37,6 @@
                                 'container'      => false,
                                 'depth'          => 1,
                                 'menu_class'     => 'info',
-                                'menu_id'        => 'jumpToDropdown',
-                                'items_wrap'     => '<div id="%1$s" class="%2$s" aria-labelledby="jumpToDropdownInvoker">%3$s</div>',
                                 'walker'         => new Reen_Topbar_Walker(),
                             ) );
                         }
