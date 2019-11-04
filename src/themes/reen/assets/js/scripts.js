@@ -446,7 +446,7 @@ $(document).ready(function () {
 		animateOut: 'fadeOut',
 		autoplay: true,
         autoplayTimeout: 5000,
-		stopOnHover: true,
+		autoplayHoverPause: true,
         nav: true,
 		dots: true,
 		items: 1,

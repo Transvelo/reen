@@ -7,7 +7,20 @@
 
 if ( ! function_exists( 'reen_page_header' ) ) {
     function reen_page_header() {
-        if ( is_page() && apply_filters( 'reen_show_site_content_page_header', true ) ) : ?>
+        
+
+        global $post;
+        $hide_page_header = false;
+
+        if ( isset( $post->ID ) ) {
+            $page_header_meta_values = get_post_meta( $post->ID, '_hidePageHeader', true );
+            if ( isset( $page_header_meta_values ) && $page_header_meta_values ) {
+                $hide_page_header = $page_header_meta_values;
+            }
+        }
+
+        if( ! $hide_page_header ) {
+            if ( is_page() && apply_filters( 'reen_show_site_content_page_header', true ) ) : ?>
             <?php if ( apply_filters( 'reen_show_site_content_page_title', true ) ) : ?>
             <div class="container inner">
                 <div class="row">
@@ -21,6 +34,7 @@ if ( ! function_exists( 'reen_page_header' ) ) {
             </div>
             <?php endif; ?>
         <?php endif;
+        }
     }
 }
 
