@@ -13287,6 +13287,9 @@ textarea,
 .navbar-form .form-control {
   width: 100%; }
 
+.article__content--page .sharedaddy {
+  display: none; }
+
 #portfolio-post .article {
   margin-bottom: 0; }
 
