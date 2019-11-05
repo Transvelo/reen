@@ -634,6 +634,24 @@ $(document).ready(function () {
 		items: 5,
 		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	});
+
+	var owlCarousel = $('#hero-carousel');
+
+	owlCarousel.owlCarousel({
+	    autoplay           :true,
+        autoplayTimeout    : 5000,
+        autoplayHoverPause  : true,
+        nav: true,
+        dots: true,
+        rewind: true,
+        items: 5,
+        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	});
+
+	// Wrap around nav & dots
+	owlCarousel.each(function(index) {
+	    $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+	});
 	
 	// $("#owl-popular-posts").owlCarousel({
 	// 	autoPlay: 5000,
