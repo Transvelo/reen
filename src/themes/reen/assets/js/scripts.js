@@ -582,8 +582,10 @@ $(document).ready(function () {
 		return false;
 		
 	});
-	
-	$("#owl-testimonials").owlCarousel({
+
+	var testimonialCarousel = $('#owl-testimonials');
+
+	testimonialCarousel.owlCarousel({
 		autoPlay: 5000,
 		stopOnHover: true,
 		navigation: true,
@@ -594,6 +596,11 @@ $(document).ready(function () {
 		transitionStyle: "fadeInAfterOut",
 		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	});
+
+	// Wrap around nav & dots
+    testimonialCarousel.each(function(index) {
+        $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+    });
 	
 	$("#owl-projects").owlCarousel({
 		navigation: false,

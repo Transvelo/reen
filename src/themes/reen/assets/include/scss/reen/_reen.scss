@@ -3483,7 +3483,6 @@ blockquote:before {
 	position: relative;
 	bottom: 9px;
 	padding: 10px;
-	display: inline-block;
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
 			border-radius: 3px;
@@ -3494,6 +3493,11 @@ blockquote:before {
 		 -o-transition: all 200ms ease-out;
 			transition: all 200ms ease-out;
 }
+
+#owl-main.owl-carousel .owl-dots:not(.disabled) {
+	display: inline-block;
+}
+
 #owl-main:hover .owl-dots {
 	bottom: 22px;
 	opacity: 1;
