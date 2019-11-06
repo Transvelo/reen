@@ -7,12 +7,12 @@ module.exports = function( grunt ) {
         pkg: grunt.file.readJSON( 'package.json' ),
 
         dirs: {
-            // demo: 'src/plugins/<%= pkg.name %>-demo',
-            // extensions: 'src/plugins/<%= pkg.name %>-extensions',
-            // extensionsESNext: 'src/plugins/<%= pkg.name %>-extensions/assets/esnext',
-            // extensionsJS: 'src/plugins/<%= pkg.name %>-extensions/assets/js',
-            // extensionsCSS: 'src/plugins/<%= pkg.name %>-extensions/assets/css',
-            // extensionsSASS: 'src/plugins/<%= pkg.name %>-extensions/assets/scss',
+            demo: 'src/plugins/<%= pkg.name %>-demo',
+            extensions: 'src/plugins/<%= pkg.name %>-extensions',
+            extensionsESNext: 'src/plugins/<%= pkg.name %>-extensions/assets/esnext',
+            extensionsJS: 'src/plugins/<%= pkg.name %>-extensions/assets/js',
+            extensionsCSS: 'src/plugins/<%= pkg.name %>-extensions/assets/css',
+            extensionsSASS: 'src/plugins/<%= pkg.name %>-extensions/assets/scss',
             theme: 'src/themes/<%= pkg.name %>',
             themeJS: 'src/themes/<%= pkg.name %>/assets/js',
             themeCSS: 'src/themes/<%= pkg.name %>/assets/css',
@@ -83,51 +83,125 @@ module.exports = function( grunt ) {
             }
         },
 
-        // // Publish theme to GH Pages
-        // 'gh-pages': {
-        //     pages: {
-        //         options: {
-        //             base : 'gh-pages'
-        //         },
-        //         src: ['**']
-        //     },
-        //     theme: {
-        //         options: {
-        //             base : '<%= dirs.theme %>',
-        //             branch: 'theme',
-        //         },
-        //         src: ['**']
-        //     }
-        // },
+        // Check textdomain errors.
+        checktextdomain: {
+            options:{
+                text_domain: '<%= pkg.name %>',
+                keywords: [
+                    '__:1,2d',
+                    '_e:1,2d',
+                    '_x:1,2c,3d',
+                    'esc_html__:1,2d',
+                    'esc_html_e:1,2d',
+                    'esc_html_x:1,2c,3d',
+                    'esc_attr__:1,2d',
+                    'esc_attr_e:1,2d',
+                    'esc_attr_x:1,2c,3d',
+                    '_ex:1,2c,3d',
+                    '_n:1,2,4d',
+                    '_nx:1,2,4c,5d',
+                    '_n_noop:1,2,3d',
+                    '_nx_noop:1,2,3c,4d'
+                ]
+            },
+            theme: {
+                src:  [
+                    '<%= dirs.theme %>/**/*.php', // Include all files
+                    '!node_modules/**' // Exclude node_modules/
+                ],
+                expand: true
+            },
+            plugin: {
+                options: {
+                    text_domain: '<%= pkg.name %>-extensions'
+                },
+                src: [
+                    '<%= dirs.extensions %>/**/*.php',
+                    '!node_modules/**' // Exclude node_modules/
+                ],
+                expand: true
+            }
+        },
 
-        // version: {
-        //     extension_plugin: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [ '<%= dirs.extensions %>/<%= pkg.name %>-extensions.php' ]
-        //     },
-        //     demo_plugin: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [ '<%= dirs.demo %>/<%= pkg.name %>-demo.php' ]
-        //     },
-        //     theme_sass: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [
-        //             '<%= dirs.theme %>/style.scss',
-        //         ]
-        //     },
-        //     child_theme: {
-        //         options: {
-        //             prefix: 'Version:\\s*\\s'
-        //         },
-        //         src: [ '<%= dirs.childTheme %>/style.css' ]
-        //     }
-        // },
+        // Generate POT files.
+        makepot: {
+            options: {
+                potHeaders: {
+                    'report-msgid-bugs-to': 'https://madrasthemes.freshdesk.com/',
+                    'language-team': '<%= pkg.title %> POT <support@madrasthemes.freshdesk.com>'
+                }
+            },
+            frontend: {
+                options: {
+                    type: 'wp-theme',
+                    cwd: '<%= dirs.theme %>/',
+                    domainPath: 'languages',
+                    potFilename: '<%= pkg.name %>.pot',
+                    processPot: function ( pot ) {
+                        pot.headers['project-id-version'];
+                        return pot;
+                    }
+                }
+            },
+            plugins: {
+                options: {
+                    type: 'wp-plugin',
+                    cwd: '<%= dirs.extensions %>/',
+                    domainPath: 'languages',
+                    potFilename: '<%= pkg.name %>-extensions.pot',
+                    processPot: function ( pot ) {
+                        pot.headers['project-id-version'];
+                        return pot;
+                    }
+                }
+            }
+        },
+
+        // Publish theme to GH Pages
+        'gh-pages': {
+            pages: {
+                options: {
+                    base : 'gh-pages'
+                },
+                src: ['**']
+            },
+            theme: {
+                options: {
+                    base : '<%= dirs.theme %>',
+                    branch: 'theme',
+                },
+                src: ['**']
+            }
+        },
+
+        version: {
+            extension_plugin: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [ '<%= dirs.extensions %>/<%= pkg.name %>-extensions.php' ]
+            },
+            demo_plugin: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [ '<%= dirs.demo %>/<%= pkg.name %>-demo.php' ]
+            },
+            theme_sass: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [
+                    '<%= dirs.theme %>/style.scss',
+                ]
+            },
+            child_theme: {
+                options: {
+                    prefix: 'Version:\\s*\\s'
+                },
+                src: [ '<%= dirs.childTheme %>/style.css' ]
+            }
+        },
 
         // Clean previous deployed files
         clean: {
@@ -284,6 +358,16 @@ module.exports = function( grunt ) {
                     { expand: true, cwd: 'dist/', src: ['changelog.txt'], dest: 'gh-pages/'}
                 ]
             }
+        },
+
+
+        // Minify all .css files.
+        cssmin: {
+            main: {
+                files: {
+                    '<%= dirs.theme %>/style.min.css': ['<%= dirs.theme %>/style.css']
+                }
+            }
         }
     });
 
@@ -305,11 +389,18 @@ module.exports = function( grunt ) {
     //grunt.loadNpmTasks( 'grunt-browserify' );
 
     grunt.registerTask( 'default', [
-        'sass'
+        'css'
     ]);
 
     grunt.registerTask( 'js', [
         'uglify'
+    ]);
+
+    grunt.registerTask( 'css', [
+        'sass',
+        // 'rtlcss',
+        // 'postcss',
+        // 'cssmin'
     ]);
 
     grunt.registerTask( 'publish', [
@@ -320,6 +411,12 @@ module.exports = function( grunt ) {
     grunt.registerTask( 'publishtheme', [
         'gh-pages:theme',
         'clean:files'
+    ]);
+
+    grunt.registerTask( 'dev', [
+        'default',
+        'checktextdomain',
+        'makepot'
     ]);
 
     grunt.registerTask( 'deploy', [

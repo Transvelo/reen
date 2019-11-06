@@ -345,17 +345,16 @@ if ( ! function_exists( 'reen_post_media' ) ) {
     function reen_post_media() {
         $post_format = get_post_format();
 
-        if ( reen_can_show_post_thumbnail() ) {
+        if ( 'video' === $post_format && !empty(get_post_meta( get_the_ID(), '_video_field', true )) ) {
+            reen_post_video();    
+        } elseif ( 'audio' == $post_format && !empty( get_post_meta( get_the_ID(), '_audio_field', true ) )) {
+            reen_post_audio();
+        } elseif ( 'gallery' == $post_format && !empty( get_post_meta( get_the_ID(), '_gallery_images', true ) ) ) {
+            reen_post_gallery();
+        }  elseif ( reen_can_show_post_thumbnail() ) {
             reen_has_post_thumbnail();
-        } else {
-            if ( 'video' === $post_format ) {
-                reen_post_video();    
-            } elseif ( 'audio' == $post_format) {
-                reen_post_audio();
-            } elseif ( 'gallery' == $post_format ) {
-                reen_post_gallery();
-            }
-        }
+
+        } 
     }
 }
 
@@ -1014,3 +1013,16 @@ if ( ! function_exists( 'reen_post_protected_password_form' ) ) :
         </form><?php
     }
 endif;
+
+
+if ( ! function_exists( 'reen_excerpt_length' ) ) {
+    function reen_excerpt_length() {
+        return apply_filters( 'reen_excerpt_length', 30 );
+    }
+}
+
+if ( ! function_exists( 'reen_excerpt_more' ) ) {
+    function reen_excerpt_more() {
+        return apply_filters( 'reen_excerpt_more', '' );
+    }
+}
