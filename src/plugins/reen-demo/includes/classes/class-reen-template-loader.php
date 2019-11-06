@@ -24,7 +24,7 @@ class Reen_Template_Loader {
         //add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
         add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
         add_action( 'init', array( __CLASS__, 'rewrite_blog_rule' ), 10, 0 );
-        add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
+        // add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_grid_columns', array( __CLASS__, 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_page_title', array( __CLASS__, 'portfolio_page_title_loader' ), PHP_INT_MAX );
 
@@ -90,6 +90,14 @@ class Reen_Template_Loader {
         }
 
         return $view;
+    }
+
+     public static function template_loader( $template ) {
+        if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
+            $template = REEN_DEMO_DIR . '/templates/template-portfolio.php';
+        }
+
+        return $template;
     }
 
     public static function portfolio_grid_columns_loader ( $columns ) {

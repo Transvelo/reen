@@ -174,7 +174,7 @@ if( ! class_exists( 'Reen_Demo' ) ) {
 
             // Add your templates to this array.
             $this->templates = array(
-                'template-blog.php'      => esc_html__( 'Blog-Demo', 'reen-demo' ),
+                'template-portfolio.php'      => esc_html__( 'Portfolio-Demo', 'portfolio-demo' ),
             );
 
             // adding support for theme templates to be merged and shown in dropdown
