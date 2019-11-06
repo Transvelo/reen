@@ -17,7 +17,6 @@ global $wp_query;
 
 $_wp_query        = $wp_query;
 $portfolio_view   = ( get_query_var( 'portfolio-view') ) ? get_query_var( 'portfolio-view' ) : 'grid';
-echo '<pre>' . print_r( 'test' ) . '</pre>';
 $portfolio_tag    = $portfolio_view;
 $wp_query         = new WP_Query( array( 
     'post_type'        => 'jetpack-portfolio', 
