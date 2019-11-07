@@ -574,14 +574,27 @@ $(document).ready(function () {
 		$('#transitionType li a').removeClass('active');
 		$(this).addClass('active');
 		
-		var newValue = $(this).attr('data-transition-type');
-		
+		var newValue = $(this).attr('data-animation');
 		$(owlElementID).data("owlCarousel").transitionTypes(newValue);
 		$(owlElementID).trigger("owl.next");
 		
 		return false;
 		
 	});
+
+	// $('#transitionType li a').click(function () {
+		
+	// 	$('#transitionType li a').removeClass('active');
+	// 	$(this).addClass('active');
+		
+	// 	var newValue = $(this).attr('data-animation');
+		
+	// 	$(owlElementID).data("owlCarousel").animateOut(newValue);
+	// 	$(owlElementID).trigger("owl.next");
+		
+	// 	return false;
+		
+	// });
 
 	var testimonialCarousel = $('#owl-testimonials');
 
