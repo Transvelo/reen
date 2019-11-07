@@ -7,6 +7,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?>>
+    <?php do_action( 'reen_portfolio_single_post_image_2_before' );?>
     <section id="portfolio-post">
         <div class="container inner-top-md">
         <?php
@@ -27,6 +28,8 @@
         do_action( 'reen_portfolio_single_post_image_2_bottom' );
         ?>
         
-        </div>
+        </div><?php
+        do_action( 'reen_portfolio_single_post_image_2_after' );
+        ?>
     </section>
 </article>
