@@ -593,12 +593,31 @@ $(document).ready(function () {
 		singleItem: true,
 		addClassActive: true,
 		autoHeight: true,
-		transitionStyle: "fadeInAfterOut",
+		animateOut: "fadeInAfterOut",
 		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	});
 
 	// Wrap around nav & dots
     testimonialCarousel.each(function(index) {
+        $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+    });
+
+    var portfolioCarousel = $('#owl-featured-works');
+
+	portfolioCarousel.owlCarousel({
+		autoPlay: 5000,
+		stopOnHover: true,
+		navigation: true,
+		pagination: true,
+		singleItem: true,
+		addClassActive: true,
+		autoHeight: true,
+		animateOut: "slideInDown",
+		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	});
+
+	// Wrap around nav & dots
+    portfolioCarousel.each(function(index) {
         $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
     });
 	
