@@ -66,4 +66,3 @@ add_action( 'reen_portfolio_single_image_2', 'reen_portfolio_post_image_2_media'
 add_action( 'reen_portfolio_single_image_2', 'reen_portfolio_post_image_2_content',             20 );
 
 add_action( 'reen_portfolio_single_post_image_2_bottom', 'reen_more_works',                      10 );
-add_action( 'reen_portfolio_single_post_image_2_after',  'reen_portfolio_post_social_sharing',   20 );

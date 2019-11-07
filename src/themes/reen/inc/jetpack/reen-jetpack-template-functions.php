@@ -408,25 +408,6 @@ if ( ! function_exists( 'reen_portfolio_post_image_2_content' ) ) {
     }
 }
 
-if ( ! function_exists( 'reen_portfolio_post_social_sharing' ) ) {
-    function reen_portfolio_post_social_sharing() {
-        if( apply_filters( 'reen_show_social_sharing', false ) ) {
-            ob_start();
-            if( function_exists( 'reen_show_jetpack_share' ) ) {
-                reen_show_jetpack_share();
-            }
-
-            $jetpack_share_html = ob_get_clean();
-            
-            if( ! empty( $jetpack_share_html ) ) { ?>
-                <div class="reen-post-sharing" id="share">
-                    <?php echo wp_kses_post( $jetpack_share_html ); ?>
-                </div><?php
-            }
-        }
-    }
-}
-
 if ( ! function_exists( 'reen_portfolio_post_image_2_media' ) ) {
     function reen_portfolio_post_image_2_media() { ?>
         <div class="row">
