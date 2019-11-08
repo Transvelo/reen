@@ -524,6 +524,7 @@ if ( ! function_exists( 'reen_more_works' ) ) {
                                                             <figcaption class="text-overlay">
                                                                 <div class="info">
                                                                     <h4><?php the_title(); ?></h4>
+                                                                    <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                                 </div><!-- /.info -->
                                                             </figcaption>
                                                                 <?php the_post_thumbnail()?>
@@ -612,6 +613,7 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                                         <figcaption class="bordered no-top-border">
                                                             <div class="info">
                                                                 <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                             </div><!-- /.info -->
                                                         </figcaption>
                                                         
@@ -705,6 +707,7 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                                         <figcaption class="bordered no-top-border">
                                                             <div class="info">
                                                                 <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                             </div><!-- /.info -->
                                                         </figcaption>
                                                     </figure>
