@@ -37,6 +37,16 @@
         ),
 
      array(
+            'id'        => 'portfolio_posts_per_page',
+            'type'      => 'slider',
+            'title'     => esc_html__( 'Projects per page', 'front' ),
+            'subtitle'  => esc_html__( 'How many projects should be shown per page?', 'front' ),
+            'min'       => 4,
+            'max'       => 32,
+            'default'   => '16'
+        ),
+
+     array(
 
             'type'         => 'text',
             'id'           => 'reen_portfolio_page_title',

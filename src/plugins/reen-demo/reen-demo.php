@@ -1,4 +1,4 @@
-<?php
+6<?php
 /**
  * Plugin Name:     Reen Demo
  * Plugin URI:      https://madrasthemes.com/reen
@@ -132,6 +132,7 @@ if( ! class_exists( 'Reen_Demo' ) ) {
          */
         public function includes() {
             require_once REEN_DEMO_DIR . 'includes/classes/class-reen-template-loader.php';
+            require_once REEN_DEMO_DIR . 'includes/modules/portfolio/portfolio-functions.php';
         }
 
         /**

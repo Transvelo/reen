@@ -8,6 +8,8 @@
 /**
 * Portfolio
 */
+add_action( 'pre_get_posts', 'reen_portfolio_set_posts_per_page', 20 );
+
 add_action( 'reen_loop_portfolio_before', 'reen_portfolio_header', 10 );
 add_action( 'reen_loop_portfolio_before', 'reen_loop_portfolio_wrap_start', 40 );
 
