@@ -1,4 +1,4 @@
-6<?php
+<?php
 /**
  * Plugin Name:     Reen Demo
  * Plugin URI:      https://madrasthemes.com/reen
