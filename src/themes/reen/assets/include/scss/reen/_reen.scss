@@ -3329,59 +3329,90 @@ blockquote:before {
 	opacity: 1;
 }
 
-.owl-inner-pagination.owl-inner-nav .owl-dots {
-	top: -6px; /*-45px;*/
-}
+// .owl-inner-pagination.owl-inner-nav .owl-dots {
+// 	top: -6px; /*-45px;*/
+// }
 
-.owl-inner-pagination.owl-inner-nav.owl-ui-md .owl-dots{
-	top: -50px;
-}
+// .owl-inner-pagination.owl-inner-nav.owl-ui-md .owl-dots{
+// 	top: -50px;
+// }
 
-.owl-inner-pagination.owl-inner-nav.owl-ui-lg .owl-dots {
-	top: -60px;
-}
+// .owl-inner-pagination.owl-inner-nav.owl-ui-lg .owl-dots {
+// 	top: -60px;
+// }
 
-.owl-inner-pagination.owl-inner-nav:hover .owl-dots {
-	top: -20px; /*-60px;*/
-}
+// .owl-inner-pagination.owl-inner-nav:hover .owl-dots {
+// 	top: -60px; /*-20px;*/
+// }
 
-.owl-inner-pagination.owl-inner-nav.owl-ui-md:hover .owl-dots{
-	top: -65px;
-}
+// .owl-inner-pagination.owl-inner-nav.owl-ui-md:hover .owl-dots{
+// 	top: -65px;
+// }
 
-.owl-inner-pagination.owl-inner-nav.owl-ui-lg:hover .owl-dots {
-	top: -75px;
-}
+// .owl-inner-pagination.owl-inner-nav.owl-ui-lg:hover .owl-dots {
+// 	top: -75px;
+// }
 
 
+// .owl-inner-pagination.owl-outer-nav .owl-dots {
+// 	top: -45px;
+// }
+
+
+// .owl-inner-pagination.owl-outer-nav.owl-ui-md .owl-dots {
+// 	top: -50px;
+// }
+
+
+// .owl-inner-pagination.owl-outer-nav.owl-ui-lg .owl-dots {
+// 	top: -75px;
+// }
+
+
+// .owl-inner-pagination.owl-outer-nav:hover .owl-dots {
+// 	top: -60px;
+// }
+
+
+// .owl-inner-pagination.owl-outer-nav.owl-ui-md:hover .owl-dots {
+// 	top: -65px;
+// }
+
+
+// .owl-inner-pagination.owl-outer-nav.owl-ui-lg:hover .owl-dots {
+// 	top: -16px;
+// }
+
+.owl-inner-pagination.owl-inner-nav .owl-dots,
 .owl-inner-pagination.owl-outer-nav .owl-dots {
-	top: -45px;
+    top: -45px;
 }
 
-
+.owl-inner-pagination.owl-inner-nav.owl-ui-md .owl-dots,
 .owl-inner-pagination.owl-outer-nav.owl-ui-md .owl-dots {
-	top: -50px;
+    top: -50px;
 }
 
-
+.owl-inner-pagination.owl-inner-nav.owl-ui-lg .owl-dots,
 .owl-inner-pagination.owl-outer-nav.owl-ui-lg .owl-dots {
-	top: 0;
+    top: -60px;
 }
 
-
+.owl-inner-pagination.owl-inner-nav:hover .owl-dots,
 .owl-inner-pagination.owl-outer-nav:hover .owl-dots {
-	top: -60px;
+    top: -60px;
 }
 
-
+.owl-inner-pagination.owl-inner-nav.owl-ui-md:hover .owl-dots,
 .owl-inner-pagination.owl-outer-nav.owl-ui-md:hover .owl-dots {
-	top: -65px;
+    top: -65px;
 }
 
-
+.owl-inner-pagination.owl-inner-nav.owl-ui-lg:hover .owl-dots,
 .owl-inner-pagination.owl-outer-nav.owl-ui-lg:hover .owl-dots {
-	top: -16px;
+    top: -75px;
 }
+
 
 #owl-main .item {
 	height: 44vh;
