@@ -27,8 +27,6 @@ class Reen_Template_Loader {
         // add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_grid_columns', array( __CLASS__, 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_page_title', array( __CLASS__, 'portfolio_page_title_loader' ), PHP_INT_MAX );
-        add_action( 'pre_get_posts', 'reen_demo_override_posts_per_page', PHP_INT_MAX );
-
 
         add_filter( 'reen_blog_style', array( __CLASS__, 'blog_style_loader' ), PHP_INT_MAX );
         add_filter( 'reen_blog_layout', array( __CLASS__, 'blog_layout_loader' ), PHP_INT_MAX );

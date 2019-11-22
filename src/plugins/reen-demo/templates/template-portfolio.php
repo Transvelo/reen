@@ -38,4 +38,3 @@ wp_reset_postdata();
 $wp_query = $_wp_query;
 
 remove_filter( 'reen_portfolio_view', array( 'Reen_Template_Loader', 'portfolio_view_loader' ), PHP_INT_MAX );
-remove_action( 'pre_get_posts', 'reen_demo_override_posts_per_page', PHP_INT_MAX );
