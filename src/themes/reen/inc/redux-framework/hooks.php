@@ -17,6 +17,8 @@ add_filter( 'reen_portfolio_grid_columns', 'reen_redux_change_portfolio_grid_col
 
 add_filter( 'reen_portfolio_page_title', 'reen_redux_change_portfolio_page_title'      );
 add_filter( 'reen_portfolio_page_description', 'reen_redux_change_portfolio_page_description'    );
+add_filter( 'reen_portfolio_posts_per_page', 'reen_redux_apply_portfolio_posts_per_page', 10 );
+
 
 /**
  * Blog Hooks

@@ -408,25 +408,6 @@ if ( ! function_exists( 'reen_portfolio_post_image_2_content' ) ) {
     }
 }
 
-if ( ! function_exists( 'reen_portfolio_post_social_sharing' ) ) {
-    function reen_portfolio_post_social_sharing() {
-        if( apply_filters( 'reen_show_social_sharing', false ) ) {
-            ob_start();
-            if( function_exists( 'reen_show_jetpack_share' ) ) {
-                reen_show_jetpack_share();
-            }
-
-            $jetpack_share_html = ob_get_clean();
-            
-            if( ! empty( $jetpack_share_html ) ) { ?>
-                <div class="reen-post-sharing" id="share">
-                    <?php echo wp_kses_post( $jetpack_share_html ); ?>
-                </div><?php
-            }
-        }
-    }
-}
-
 if ( ! function_exists( 'reen_portfolio_post_image_2_media' ) ) {
     function reen_portfolio_post_image_2_media() { ?>
         <div class="row">
@@ -543,6 +524,7 @@ if ( ! function_exists( 'reen_more_works' ) ) {
                                                             <figcaption class="text-overlay">
                                                                 <div class="info">
                                                                     <h4><?php the_title(); ?></h4>
+                                                                    <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                                 </div><!-- /.info -->
                                                             </figcaption>
                                                                 <?php the_post_thumbnail()?>
@@ -612,15 +594,16 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                             wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                                 $owl_params = apply_filters( 'owl-videos_params', array(
-                                                    'autoPlay'               => 5000,
-                                                    'stopOnHover'            => true,
-                                                    'navigation'             => true,
-                                                    'pagination'             => true,
-                                                    'rewindNav'              => true,
-                                                    'items'                  => 5,
-                                                    'navigationText'         => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                                    'autoPlay'        => 5000,
+                                                    'stopOnHover'     => true,
+                                                    'nav'             => true,
+                                                    'dots'            => true,
+                                                    'rewindNav'       => true,
+                                                    'items'           => 5,
+                                                    'navText'         => array( '<i class="it-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
                                                 ) ); ?>
-                                            <div id="owl-videos" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
+
+                                            <div id="owl-videos" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
                                             <?php while ( $more_videos->have_posts() ) : $more_videos->the_post(); ?> 
                                                 <div class="item">
                                                     <figure>
@@ -631,6 +614,7 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                                         <figcaption class="bordered no-top-border">
                                                             <div class="info">
                                                                 <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                             </div><!-- /.info -->
                                                         </figcaption>
                                                         
@@ -706,15 +690,15 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                         wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                             $owl_params = apply_filters( 'owl-audio_params', array(
-                                                'autoPlay'               => 5000,
-                                                'stopOnHover'            => true,
-                                                'navigation'             => true,
-                                                'pagination'             => true,
-                                                'rewindNav'              => true,
-                                                'items'                  => 5,
-                                                'navigationText'         => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                                'autoPlay'        => 5000,
+                                                'stopOnHover'     => true,
+                                                'nav'             => true,
+                                                'dots'            => true,
+                                                'rewindNav'       => true,
+                                                'items'           => 5,
+                                                'navText'         => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
                                             ) ); ?>
-                                            <div id="owl-audio" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
+                                            <div id="owl-audio" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
                                             <?php while ( $more_audio->have_posts() ) : $more_audio->the_post(); ?> 
                                                 <div class="item">
                                                     <figure>
@@ -724,6 +708,7 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                                         <figcaption class="bordered no-top-border">
                                                             <div class="info">
                                                                 <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                             </div><!-- /.info -->
                                                         </figcaption>
                                                     </figure>

@@ -28,4 +28,13 @@ function reen_show_jetpack_share() {
         echo wp_kses_post ( $custom_likes->post_likes( '' ) );
     }
 }
+function reen_portfolio_set_posts_per_page( $query ) {
+    if ( is_admin() || ! $query->is_main_query() ) {
+        return;
+    }
 
+    if ( reen_is_jetpack_activated() && is_post_type_archive( Jetpack_Portfolio::CUSTOM_POST_TYPE ) ) {
+        $query->set( 'posts_per_page', apply_filters( 'reen_portfolio_posts_per_page', 16 ) );
+        return;
+    }
+}
