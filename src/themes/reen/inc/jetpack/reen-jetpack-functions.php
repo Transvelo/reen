@@ -15,7 +15,7 @@ function reen_get_portfolio_columns() {
 }
 
 function reen_get_project_types( $portfolio_id ) {
-    return get_the_term_list( $portfolio_id, 'jetpack-portfolio-type', '', '/' );
+    return get_the_term_list( $portfolio_id, 'jetpack-portfolio-type', '', ',' );
 }
 
 function reen_show_jetpack_share() {

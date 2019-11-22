@@ -691,6 +691,41 @@ $(document).ready(function () {
 	owlCarousel.each(function(index) {
 	    $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
 	});
+
+
+	var clientsCarousel = $('#owl-clients');
+
+	clientsCarousel.owlCarousel({
+
+		autoplay           :true,
+        autoplayTimeout    : 5000,
+        autoplayHoverPause  : true,
+        nav: true,
+        dots: true,
+        rewind: true,
+        items: 8,
+        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+        responsive:{
+			0:{
+				items:1
+			},
+			480:{
+				items:2
+			},
+			768:{
+				items:3
+			},
+			1199:{
+				items:4
+			}
+		}
+	});
+
+	// Wrap around nav & dots
+	clientsCarousel.each(function(index) {
+	    $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+	});
+
 	
 	// $("#owl-popular-posts").owlCarousel({
 	// 	autoPlay: 5000,
@@ -783,18 +818,7 @@ $(document).ready(function () {
 		transitionStyle: "fade",
 		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	});
-	
-	$("#owl-clients").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		rewindNav: true,
-		items: 4,
-		itemsDesktopSmall: [1199, 4],
-		itemsTablet: [977, 3],
-		navigation: true,
-		pagination: true,
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+
 	
 	$(".slider-next").click(function () {
 		owl.trigger('owl.next');

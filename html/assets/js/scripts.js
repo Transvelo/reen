@@ -504,7 +504,7 @@ $(document).ready(function () {
 		
 		var newValue = $(this).attr('data-transition-type');
 		
-		$(owlElementID).data("owlCarousel").animateOut(newValue);
+		$(owlElementID).data("owlCarousel").transitionTypes(newValue);
 		$(owlElementID).trigger("owl.next");
 		
 		return false;

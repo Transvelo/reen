@@ -21,10 +21,10 @@ class Reen_Template_Loader {
      */
     public static function init() {
         add_filter( 'query_vars', array( __CLASS__, 'add_query_vars_filter' ) );
-        //add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
+        add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
         add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
         add_action( 'init', array( __CLASS__, 'rewrite_blog_rule' ), 10, 0 );
-        add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
+        // add_filter( 'reen_portfolio_view', array( __CLASS__, 'portfolio_view_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_grid_columns', array( __CLASS__, 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
         add_filter( 'reen_portfolio_page_title', array( __CLASS__, 'portfolio_page_title_loader' ), PHP_INT_MAX );
 
@@ -43,6 +43,7 @@ class Reen_Template_Loader {
         $vars[] = "blog_layout";
         $vars[] = "blog_grid_columns";
         $vars[] = "single_blog_layout";
+
         return $vars;
     }
 
@@ -92,6 +93,14 @@ class Reen_Template_Loader {
         return $view;
     }
 
+    public static function template_loader( $template ) {
+        if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
+            $template = REEN_DEMO_DIR . '/templates/template-portfolio.php';
+        }
+
+        return $template;
+    }
+
     public static function portfolio_grid_columns_loader ( $columns ) {
  
         $custom_columns = isset( $_GET['grid-columns'] ) ? sanitize_text_field( $_GET['grid-columns'] ) :'';
@@ -114,7 +123,7 @@ class Reen_Template_Loader {
 
     public static function portfolio_page_title_loader( $title ) {
 
-        $custom_view = isset( $_GET['portfolio-title'] ) ? sanitize_text_field( $_GET['portfolio-title'] ) : '';
+        $custom_title = isset( $_GET['portfolio-title'] ) ? sanitize_text_field( $_GET['portfolio-title'] ) : '';
 
         if ( empty( $custom_title ) ) {
             $custom_title = get_query_var( 'portfolio-title' );
