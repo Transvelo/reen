@@ -12891,19 +12891,6 @@ figure.reen-image-block figcaption {
   text-align: left;
   margin-top: 0; }
 
-.popular-posts-carousel.owl-carousel .owl-nav,
-.related-post-carousel.owl-carousel .owl-nav {
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 18px;
-  z-index: 1; }
-
-.popular-posts-carousel.owl-carousel .owl-dots,
-.related-post-carousel.owl-carousel .owl-dots {
-  margin-top: 25px; }
-
 .popular-posts-carousel.owl-carousel:hover .owl-prev,
 .popular-posts-carousel.owl-carousel:hover .owl-next,
 .related-post-carousel.owl-carousel:hover .owl-prev,
@@ -12930,6 +12917,10 @@ figure.reen-image-block figcaption {
   .popular-posts-carousel .categories a {
     border: none; }
 
+.popular-posts-carousel h4, .popular-posts-carousel .h4 {
+  height: 24px;
+  overflow: hidden; }
+
 .popular-posts-carousel figure :not(.icon-overlay) a:hover,
 .popular-posts-carousel figure:not(.icon-overlay) > a:hover {
   opacity: 1; }
@@ -12937,34 +12928,8 @@ figure.reen-image-block figcaption {
 .popular-posts-carousel a:hover {
   color: #fff; }
 
-.popular-posts-carousel.owl-carousel .owl-prev {
-  left: -60px; }
-
-.popular-posts-carousel.owl-carousel .owl-next {
-  right: -60px; }
-
-.popular-posts-carousel.owl-carousel:hover .owl-prev {
-  left: -65px; }
-
-.popular-posts-carousel.owl-carousel:hover .owl-next {
-  right: -65px; }
-
-.related-post-carousel.owl-carousel .owl-prev {
-  left: -65px; }
-
-.related-post-carousel.owl-carousel .owl-next {
-  right: -65px; }
-
-.related-post-carousel.owl-carousel:hover .owl-prev {
-  left: -70px; }
-
-.related-post-carousel.owl-carousel:hover .owl-next {
-  right: -70px; }
-
-.post-gallery-carousel.owl-carousel .owl-prev,
-.post-gallery-carousel.owl-carousel .owl-next, .portfolio-post-carousel.owl-carousel .owl-prev,
-.portfolio-post-carousel.owl-carousel .owl-next {
-  position: absolute; }
+.popular-posts-carousel figcaption {
+  cursor: pointer; }
 
 #wp-calendar {
   width: 100%;
@@ -13170,9 +13135,6 @@ ul.page-numbers > li:last-child > a {
 .owl-carousel.owl-ui-md .owl-next i,
 .owl-carousel.owl-ui-md .owl-next span {
   font-size: 45px; }
-
-.owl-carousel.post-media + * {
-  margin-top: 60px; }
 
 .owl-inner-pagination .owl-dots,
 .owl-inner-pagination .owl-prev,

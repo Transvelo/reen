@@ -594,6 +594,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                     </div><!-- /.panel-heading -->
                                     <div id="content-popular-posts" class="panel-collapse collapse <?php echo esc_html( $collapse_class); ?>" data-parent="#accordion-popular-posts">
                                     <div class="panel-body"><?php
+ 
                                         $owl_params = apply_filters( 'owl-popular-posts_params', array(
                                             'autoPlay'     => 5000,
                                             'stopOnHover'  => true,
@@ -607,9 +608,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                         ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
                                             <?php while( $popular_posts_loop->have_posts() ): $popular_posts_loop->the_post(); ?>
                                                 <div class="item">
-                                                    
-
-                                                    
+                                                
                                                     <figure>
                                                         <figcaption class="text-overlay">
                                                             <div class="info">
