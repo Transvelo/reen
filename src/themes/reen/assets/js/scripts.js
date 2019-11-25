@@ -1191,12 +1191,12 @@ $(document).ready(function () {
 	
 // });
 
-/**
- * Initialize Tooltip
- */
-if ($("[rel=tooltip]").length) {
-    $("[rel=tooltip]").tooltip();
-}
+	/**
+	 * Initialize Tooltip
+	 */
+	if ($("[rel=tooltip]").length) {
+	    $("[rel=tooltip]").tooltip();
+	}
 
 	/**
      * Owl carousel
