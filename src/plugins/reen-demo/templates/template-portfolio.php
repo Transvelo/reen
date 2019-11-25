@@ -12,17 +12,24 @@
  */
 
 add_filter( 'reen_portfolio_view', array( 'Reen_Template_Loader', 'portfolio_view_loader' ), PHP_INT_MAX );
+add_filter( 'reen_portfolio_grid_columns', array( 'Reen_Template_Loader', 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
+add_filter( 'reen_portfolio_page_title', array( 'Reen_Template_Loader', 'portfolio_page_title_loader' ), PHP_INT_MAX );
 
 global $wp_query;
 
 $_wp_query        = $wp_query;
 $portfolio_view   = ( get_query_var( 'portfolio-view') ) ? get_query_var( 'portfolio-view' ) : 'grid';
+$grid_columns = ( get_query_var( 'grid-columns') ) ? get_query_var( 'grid-columns' ) : '3';
+$portfolio_title = ( get_query_var( 'portfolio-title') ) ? get_query_var( 'portfolio-title' ) : '3 Columns details grid portfolio';
 $portfolio_tag    = $portfolio_view;
 $wp_query         = new WP_Query( array( 
     'post_type'        => 'jetpack-portfolio', 
     'paged'            => $paged, 
     'posts_per_page'   => 16,
     'portfolio-view'   => $portfolio_view,
+    'grid-columns'     => $grid_columns,
+    'portfolio-title'  => $portfolio_title,
+
     'tax_query' => array(
     	array(
     		'taxonomy' => 'jetpack-portfolio-tag',
@@ -38,3 +45,6 @@ wp_reset_postdata();
 $wp_query = $_wp_query;
 
 remove_filter( 'reen_portfolio_view', array( 'Reen_Template_Loader', 'portfolio_view_loader' ), PHP_INT_MAX );
+remove_filter( 'reen_portfolio_grid_columns', array( 'Reen_Template_Loader', 'portfolio_grid_columns_loader' ), PHP_INT_MAX );
+remove_filter( 'reen_portfolio_page_title', array( 'Reen_Template_Loader', 'portfolio_page_title_loader' ), PHP_INT_MAX );
+
