@@ -43,8 +43,8 @@ if ( ! function_exists( 'reen_redux_apply_portfolio_posts_per_page' ) ) {
     function reen_redux_apply_portfolio_posts_per_page( $posts_per_page ) {
         global $reen_options;
 
-        if ( isset( $reen_options['portfolio_posts_per_page'] ) ) {
-            $posts_per_page = intval( $reen_options['portfolio_posts_per_page'] );
+        if ( isset( $reen_options['reen_portfolio_posts_per_page'] ) ) {
+            $posts_per_page = intval( $reen_options['reen_portfolio_posts_per_page'] );
         }
 
         return $posts_per_page;

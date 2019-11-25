@@ -24,7 +24,6 @@ class Reen_Template_Loader {
         add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
         add_action( 'init', array( __CLASS__, 'rewrite_portfolio_rule' ), 10, 0 );
         add_action( 'init', array( __CLASS__, 'rewrite_blog_rule' ), 10, 0 );
-        // add_filter( 'reen_portfolio_page_title', array( __CLASS__, 'portfolio_page_title_loader' ), PHP_INT_MAX );
 
         add_filter( 'reen_blog_style', array( __CLASS__, 'blog_style_loader' ), PHP_INT_MAX );
         add_filter( 'reen_blog_layout', array( __CLASS__, 'blog_layout_loader' ), PHP_INT_MAX );
@@ -37,6 +36,7 @@ class Reen_Template_Loader {
         $vars[] = "portfolio-view";
         $vars[] = "grid-columns";
         $vars[] = "portfolio-title";
+        $vars[] = "portfolio-post-per-page";
         $vars[] = "blog_style";
         $vars[] = "blog_layout";
         $vars[] = "blog_grid_columns";
@@ -46,11 +46,11 @@ class Reen_Template_Loader {
     }
 
     public static function rewrite_portfolio_rule() {
-        add_rewrite_rule( '^portfolio/3-columns-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=3&portfolio-title=3 Columns details grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/4-columns-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=4&portfolio-title=4 Columns details grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/4-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=4&portfolio-title=4 Columns grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/3-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3&portfolio-title=3 Columns grid portfolio','top' );
-        add_rewrite_rule( '^portfolio/fullscreen?', 'index.php?post_type=jetpack-portfolio&portfolio-view=fullscreen&portfolio-title=Fullscreen grid portfolio','top' );
+        add_rewrite_rule( '^portfolio/3-columns-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=3&portfolio-title=3 Columns details grid portfolio&portfolio-post-per-page=15','top' );
+        add_rewrite_rule( '^portfolio/4-columns-grid-detail?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid-detail&grid-columns=4&portfolio-title=4 Columns details grid portfolio&portfolio-post-per-page=16','top' );
+        add_rewrite_rule( '^portfolio/4-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=4&portfolio-title=4 Columns grid portfolio&portfolio-post-per-page=16','top' );
+        add_rewrite_rule( '^portfolio/3-columns-grid?', 'index.php?post_type=jetpack-portfolio&portfolio-view=grid&grid-columns=3&portfolio-title=3 Columns grid portfolio&portfolio-post-per-page=15','top' );
+        add_rewrite_rule( '^portfolio/fullscreen?', 'index.php?post_type=jetpack-portfolio&portfolio-view=fullscreen&portfolio-title=Fullscreen grid portfolio&portfolio-post-per-page=24','top' );
         
     }
 
@@ -90,6 +90,30 @@ class Reen_Template_Loader {
 
         return $view;
     }
+
+
+    public static function portfolio_posts_per_page_loader( $page ) {
+
+        $custom_page = isset( $_GET['portfolio-post-per-page'] ) ? sanitize_text_field( $_GET['portfolio-post-per-page'] ) : '';
+
+        if ( empty( $custom_page ) ) {
+            $custom_page = get_query_var( 'portfolio-post-per-page' );
+        }
+
+        switch( $custom_page ) {
+            case '16':
+            case '15':
+            case '24':
+                $page = $custom_page;
+            break;
+            default: 
+                $page = $page;
+        }
+
+        return $page;
+    }
+
+
 
     public static function portfolio_grid_columns_loader ( $columns ) {
  
