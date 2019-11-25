@@ -53,21 +53,17 @@ if ( ! function_exists( 'reen_page_content' ) ) {
 
         ?>
         <div class="article__content article__content--page<?php echo esc_attr( $article_content_additional_class ); ?>">
-            <div class="row">
-                <div class="col-lg-12 "> 
-                    <div class="page__content">
-                        <?php the_content(); ?>
-                    </div>
-                    <?php
-                        wp_link_pages(
-                            array(
-                                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'reen' ),
-                                'after'  => '</div>',
-                            )
-                        );
-                    ?>
-                </div>
+            <div class="page__content">
+                <?php the_content(); ?>
             </div>
+            <?php
+                wp_link_pages(
+                    array(
+                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'reen' ),
+                        'after'  => '</div>',
+                    )
+                );
+            ?>
         </div><!-- .entry-content --><?php
     }
 }

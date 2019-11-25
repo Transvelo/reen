@@ -30,6 +30,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
+            add_filter( 'body_class', array( $this, 'body_classes' ) );
         }
 
         /**
@@ -171,6 +172,26 @@ if ( ! class_exists( 'Reen' ) ) :
              * Enqueue editor styles.
              */
             add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
+        }
+
+         /**
+         * Adds custom classes to the array of body classes.
+         *
+         * @param array $classes Classes for the body element.
+         * @return array
+         */
+        public function body_classes( $classes ) {
+            global $post;
+
+            if ( is_page() && isset( $post->ID ) ) {
+                $body_class_meta_values = get_post_meta( $post->ID, '_bodyClasses', true );
+
+                if ( isset( $body_class_meta_values ) && $body_class_meta_values ) {
+                    $classes[] = $body_class_meta_values;
+                }
+            }
+
+            return $classes;
         }
 
         /**
