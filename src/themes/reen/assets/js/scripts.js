@@ -676,41 +676,66 @@ $(document).ready(function () {
 	});
 
 
-	$("#owl-clients").owlCarousel({
-		autoplay           :true,
-        autoplayTimeout    : 5000,
-        autoplayHoverPause  : true,
-        nav: true,
-        dots: true,
-        rewind: true,
-        items: 8,
-        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
-        responsive:{
-			0:{
-				items:1
-			},
-			480:{
-				items:2
-			},
-			768:{
-				items:3
-			},
-			1199:{
-				items:4
-			}
-		}
-	});
+	// var clientsCarousel = $('#owl-clients');
 
-	// Wrap around nav & dots
-	// clientsCarousel.each(function(index) {
+    // clientsCarousel.owlCarousel({
+
+    //     autoplay           :true,
+    //     autoplayTimeout    : 5000,
+    //     autoplayHoverPause  : true,
+    //     nav: true,
+    //     dots: true,
+    //     rewind: true,
+    //     items: 8,
+    //     navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+    //     responsive:{
+    //         0:{
+    //             items:1
+    //         },
+    //         480:{
+    //             items:2
+    //         },
+    //         768:{
+    //             items:3
+    //         },
+    //         1199:{
+    //             items:4
+    //         }
+    //     }
+    // });
+
+    // Wrap around nav & dots
+    // clientsCarousel.each(function(index) {
+    //     $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+    // });
+
+    var reenCarousel = $('.owl-carousel');
+
+    reenCarousel.each(function(index) {
+        const defaultCarouselOptions = {
+            autoplay :false,
+            autoplayTimeout : 5000,
+            autoplayHoverPause : true,
+            nav: true,
+            dots: true,
+            rewind: true,
+            items: 1,
+            mouseDrag: false,
+            navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+        }
+
+        const carouselJson = $(this).attr( 'data-owl-carousel' );
+        const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
+        const newCarouselOptions = {...defaultCarouselOptions, ...currentCarouselOptions}
+        $(this).owlCarousel( newCarouselOptions );
+        $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+    });
+
+	// var reenCarousel = $('.owl-carousel');
+	// // Wrap around nav & dots
+	// reenCarousel.each(function(index) {
 	//     $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
 	// });
-
-	var reenCarousel = $('.owl-carousel');
-	// Wrap around nav & dots
-	reenCarousel.each(function(index) {
-	    $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
-	});
 
 	
 	// $("#owl-popular-posts").owlCarousel({
