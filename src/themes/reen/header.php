@@ -60,7 +60,7 @@
             <?php endif ?>
             <div class="yamm">
                 <div class="affix-wrapper">
-                    <div class="navbar-collapse collapse animate affix-top">
+                    <div class="navbar-collapse collapse animate affix-top" data-spy="affix" data-offset-top="197">
                        <div class="container">
                             <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
                             <?php the_custom_logo(); ?>

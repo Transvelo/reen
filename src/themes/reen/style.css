@@ -13293,6 +13293,12 @@ textarea,
 .dropdown.searchbox .menu-text {
   display: none; }
 
+.navbar-collapse.collapse.animate.affix {
+  padding-top: 0px;
+  padding-bottom: 0px; }
+  .navbar-collapse.collapse.animate.affix .navbar-brand img {
+    height: 20px; }
+
 .site-footer .widget img {
   height: auto; }
 
