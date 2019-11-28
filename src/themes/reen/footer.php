@@ -7,9 +7,6 @@
  * @package reen
  */
 ?>
-    </main><!-- #content -->
-</div><!-- #site-content -->
-
 
     <footer class="dark-bg site-footer">
         <div class="container inner">

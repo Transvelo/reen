@@ -13286,9 +13286,6 @@ p a.txt-btn {
   padding-top: 40px;
   padding-bottom: 40px; }
 
-.form-control {
-  width: 70%; }
-
 .portfolio-post-carousel {
   margin-bottom: 14px; }
   .portfolio-post-carousel.owl-carousel .owl-nav button.owl-prev i,
@@ -13297,6 +13294,12 @@ p a.txt-btn {
 
 .dropdown.searchbox .menu-text {
   display: none; }
+
+.navbar-collapse.collapse.animate.affix {
+  padding-top: 0px;
+  padding-bottom: 0px; }
+  .navbar-collapse.collapse.animate.affix .navbar-brand img {
+    height: 20px; }
 
 .site-footer .widget img {
   height: auto; }
