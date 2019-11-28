@@ -597,61 +597,61 @@ $(document).ready(function () {
 	// });
 
 
-	$("#owl-testimonials").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		singleItem: true,
-		addClassActive: true,
-		autoHeight: true,
-		animateOut: "fadeInAfterOut",
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-testimonials").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	singleItem: true,
+	// 	addClassActive: true,
+	// 	autoHeight: true,
+	// 	animateOut: "fadeInAfterOut",
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 
 
-	$("#owl-featured-works").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		singleItem: true,
-		addClassActive: true,
-		autoHeight: true,
-		animateOut: "slideInDown",
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-featured-works").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	singleItem: true,
+	// 	addClassActive: true,
+	// 	autoHeight: true,
+	// 	animateOut: "slideInDown",
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 
 	
-	$("#owl-projects").owlCarousel({
-		navigation: false,
-		autoHeight: true,
-		slideSpeed: 300,
-		paginationSpeed: 400,
-		rewindNav: false,
-		singleItem: true,
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-projects").owlCarousel({
+	// 	navigation: false,
+	// 	autoHeight: true,
+	// 	slideSpeed: 300,
+	// 	paginationSpeed: 400,
+	// 	rewindNav: false,
+	// 	singleItem: true,
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
-	$("#owl-latest-works").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		items: 4,
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-latest-works").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	items: 4,
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
-	$("#owl-videos").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		items: 5,
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-videos").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	items: 5,
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
 	// $("#owl-audio").owlCarousel({
 	// 	autoPlay: 5000,
@@ -664,16 +664,16 @@ $(document).ready(function () {
 	// });
 
 
-	$("#hero-carousel").owlCarousel({
-	    autoplay           :true,
-        autoplayTimeout    : 5000,
-        autoplayHoverPause  : true,
-        nav: true,
-        dots: true,
-        rewind: true,
-        items: 5,
-        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#hero-carousel").owlCarousel({
+	//     autoplay           :true,
+ //        autoplayTimeout    : 5000,
+ //        autoplayHoverPause  : true,
+ //        nav: true,
+ //        dots: true,
+ //        rewind: true,
+ //        items: 5,
+ //        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 
 
 	// var clientsCarousel = $('#owl-clients');
@@ -721,7 +721,24 @@ $(document).ready(function () {
             rewind: true,
             items: 1,
             mouseDrag: false,
-            navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+            navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+            responsive:{
+	            0:{
+	                items:1
+	            },
+	            480:{
+	                items:2
+	            },
+	            768:{
+	                items:3
+	            },
+	            992:{
+	                items:4
+	            },
+	            1200:{
+	                items:4
+	            }
+	        }
         }
 
         const carouselJson = $(this).attr( 'data-owl-carousel' );
@@ -737,16 +754,41 @@ $(document).ready(function () {
 	//     $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
 	// });
 
-	
-	// $("#owl-popular-posts").owlCarousel({
-	// 	autoPlay: 5000,
-	// 	stopOnHover: true,
-	// 	navigation: true,
-	// 	pagination: true,
-	// 	rewindNav: true,
-	// 	items: 5,
-	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	// });
+	// var reenPostCarousel = $('#owl-post-carousel');
+
+ //    reenPostCarousel.each(function(index) {
+	// 	const defaultCarouselOptions = {
+	// 		autoplay :true,
+	//         autoplayTimeout : 5000,
+	//         autoplayHoverPause : true,
+	//         nav: true,
+	//         dots: true,
+	//         rewind: true,
+	//         items: 5,
+	//         mouseDrag: false,
+	//         navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+	//         responsive:{
+	//             0:{
+	//                 items:1
+	//             },
+	//             480:{
+	//                 items:2
+	//             },
+	//             768:{
+	//                 items:2
+	//             },
+	//             1199:{
+	//                 items:4
+	//             }
+	//         }
+	//     }
+	//     const carouselJson = $(this).attr( 'data-owl-carousel' );
+ //        const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
+ //        const newCarouselOptions = {...defaultCarouselOptions, ...currentCarouselOptions}
+ //        $(this).owlCarousel( newCarouselOptions );
+ //        $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+ //    });
+
 	
 	// $("#owl-related-posts").owlCarousel({
 	// 	autoPlay: 5000,
@@ -760,75 +802,75 @@ $(document).ready(function () {
 	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
 	// });
 	
-	$("#owl-sliders").owlCarousel({
+	// $("#owl-sliders").owlCarousel({
 
-		animateOut: 'slideInDown',
-		autoplay: true,
-        autoplayTimeout: 5000,
-		stopOnHover: true,
-        nav: true,
-		dots: true,
-		items: 1,
-		loop: true,
-		navRewind: true,
-		addClassActive: true,
-        lazyLoad: true,
-        stagePadding: 0,
-        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+	// 	animateOut: 'slideInDown',
+	// 	autoplay: true,
+ //        autoplayTimeout: 5000,
+	// 	stopOnHover: true,
+ //        nav: true,
+	// 	dots: true,
+	// 	items: 1,
+	// 	loop: true,
+	// 	navRewind: true,
+	// 	addClassActive: true,
+ //        lazyLoad: true,
+ //        stagePadding: 0,
+ //        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
 
-	});
+	// });
 	
-	$("#owl-work-samples").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		items: 3,
-		itemsDesktopSmall: [1199, 3],
-		itemsTablet: [977, 2],
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-work-samples").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	items: 3,
+	// 	itemsDesktopSmall: [1199, 3],
+	// 	itemsTablet: [977, 2],
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
-	$("#owl-work-samples-big").owlCarousel({
-		autoPlay: 5000,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		singleItem: true,
-		transitionStyle: "fadeUp",
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-work-samples-big").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	singleItem: true,
+	// 	transitionStyle: "fadeUp",
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
-	$("#owl-work, [id*='owl-work-modal']").owlCarousel({
-		autoPlay: 5000,
-		slideSpeed: 200,
-		paginationSpeed: 600,
-		rewindSpeed: 800,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		singleItem: true,
-		autoHeight: true,
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-work, [id*='owl-work-modal']").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	slideSpeed: 200,
+	// 	paginationSpeed: 600,
+	// 	rewindSpeed: 800,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	singleItem: true,
+	// 	autoHeight: true,
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 	
-	$("#owl-office").owlCarousel({
-		autoPlay: 5000,
-		slideSpeed: 200,
-		paginationSpeed: 600,
-		rewindSpeed: 800,
-		stopOnHover: true,
-		navigation: true,
-		pagination: true,
-		rewindNav: true,
-		singleItem: true,
-		autoHeight: true,
-		transitionStyle: "fade",
-		navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-	});
+	// $("#owl-office").owlCarousel({
+	// 	autoPlay: 5000,
+	// 	slideSpeed: 200,
+	// 	paginationSpeed: 600,
+	// 	rewindSpeed: 800,
+	// 	stopOnHover: true,
+	// 	navigation: true,
+	// 	pagination: true,
+	// 	rewindNav: true,
+	// 	singleItem: true,
+	// 	autoHeight: true,
+	// 	transitionStyle: "fade",
+	// 	navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
+	// });
 
 	
 	$(".slider-next").click(function () {

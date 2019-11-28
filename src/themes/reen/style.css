@@ -9699,7 +9699,6 @@ blockquote:before {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
   padding: 10%;
   font: 0px/0 a;
   /* remove the gap between inline(-block) elements */
