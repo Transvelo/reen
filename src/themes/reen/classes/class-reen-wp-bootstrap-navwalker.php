@@ -246,8 +246,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 if ( isset( $args->has_children ) && $args->has_children && 0 === $depth ) {
                     $atts['href']          = $item->url;
                     $atts['class'] = 'dropdown-toggle';
-
-
+                    $atts['data-toggle'] = 'dropdown';
                 } else {
                     $atts['href'] = ! empty( $item->url ) ? $item->url : '#';
                     // Items in dropdowns use .dropdown-item instead of .nav-link.
