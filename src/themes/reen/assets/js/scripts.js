@@ -722,23 +722,7 @@ $(document).ready(function () {
             items: 1,
             mouseDrag: false,
             navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
-            responsive:{
-	            0:{
-	                items:1
-	            },
-	            480:{
-	                items:2
-	            },
-	            768:{
-	                items:3
-	            },
-	            992:{
-	                items:4
-	            },
-	            1200:{
-	                items:4
-	            }
-	        }
+          
         }
 
         const carouselJson = $(this).attr( 'data-owl-carousel' );
