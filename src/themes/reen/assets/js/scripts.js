@@ -53,183 +53,6 @@ function debounce(func, wait, immediate) {
 //$(window).resize(debounce(function() { ... })); // Without custom Delay (Default is 100ms)
 //$(window).on('resize', debounce(function() { ... }, 250)); // With custom Delay of 250ms and 'on' Event Handler e.g.
 
-
-/*===================================================================================*/
-/*	FIXED NAVIGATION (BOOTSTRAP AFFIX)
-/*===================================================================================*/
-
-// $(document).ready(function() {
-
-// 	var affixElementDesktop			= '.navbar-collapse',
-// 		affixElementDesktopHeight	= affixElementDesktop,
-// 		affixElementDesktopOffset	= '.navbar-header',
-// 		affixElementMobile			= '.navbar',
-// 		affixElementMobileHeight	= '.navbar-header',
-// 		affixElementMobileNav		= '.navbar-nav',
-// 		affixElementMobileNavBtn	= '.navbar-toggler',
-// 		bodyScrollDisableClass		= 'body-scroll-disabled';
-	
-// 	function affixNav(el, elHeight, elOffset) {
-// 		$(window).off('.affix');
-// 		$('.affix, .affix-top').unwrap();
-// 		$(affixElementDesktop + ', ' + affixElementMobile)
-// 			.removeData('bs.affix')
-// 			.removeClass('affix affix-top');
-
-// 		$(el).affix({ offset: { top: $(elOffset).outerHeight(true) || 0 } });
-
-// 		$('.affix, .affix-top')
-// 			.wrap('<div class="affix-wrapper"></div>')
-// 			.parent().css('min-height', $(elHeight).outerHeight(true) || 0);
-// 	}
-	
-// 	$(window).resize(debounce(function () {
-// 		if (cssBreakpoint('md')) {
-// 			if (switchedBreakpoint()) {
-// 				$(affixElementMobileNav).css('height', '');
-// 				affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
-// 				if ($(affixElementDesktop).hasClass('show')) {
-// 					enableSelectedScroll(false, affixElementMobileNav);
-// 					$('html').removeClass(bodyScrollDisableClass);
-// 				}
-// 			}
-// 		}
-// 		else if (cssBreakpoint('xs')) {
-// 			if (switchedBreakpoint()) {
-// 				affixNav(affixElementMobile, affixElementMobileHeight);
-// 				if ($(affixElementDesktop).hasClass('show')) {
-// 					enableSelectedScroll(true, affixElementMobileNav);
-// 					$('html').addClass(bodyScrollDisableClass);
-// 				}
-// 			}
-// 			$(affixElementMobileNav).css('height', window.innerHeight - $(affixElementMobileHeight).outerHeight(true) || 0);
-// 		}
-// 	})).resize();
-
-// 	$(affixElementDesktop).on('show.bs.collapse', function(){
-// 		enableSelectedScroll(true, affixElementMobileNav);
-// 		$('html').addClass(bodyScrollDisableClass);
-// 	});
-
-// 	$(affixElementDesktop).on('hide.bs.collapse', function(){
-// 		enableSelectedScroll(false, affixElementMobileNav);
-// 		$('html').removeClass(bodyScrollDisableClass);
-// 	});
-
-// });
-
-
-/*===================================================================================*/
-/*	HEADER RESIZE
-/*===================================================================================*/
-
-// $(document).ready(function() {
-	
-// 	// Settings
-// 	var	topHeaderHeight		= $('.navbar-header').outerHeight(true), // -------	Get Height of Element that is not fixed and not being changed — used for Delay before Element starts changing
-// 		objectStyles		= {
-// 			navbarPadTop	: { // --------------------------------------------	Custom Element/Object Name — type what you want
-// 				element		: '.navbar .navbar-collapse', // ------------------	CSS Class of Element that is being changed
-// 				style		: 'padding-top', // -------------------------------	CSS Style that is being changed
-// 				start		: 'currentValueFromCSS', // -----------------------	Change from e.g. 30 (Pixels) — if a String/Text is entered then the current Value from CSS File is being taken
-// 				end			: 0, // -------------------------------------------	Change to e.g. 0 (Pixels)
-// 				distance	: 300, // -----------------------------------------	Element is being resized for e.g. 300 (Pixels) scrolled
-// 				delay		: topHeaderHeight // ------------------------------	Delay before Element starts changing e.g. 50 (Pixels)
-// 			},
-// 			navbarPadBot	: {
-// 				element		: '.navbar .navbar-collapse',
-// 				style		: 'padding-bottom',
-// 				start		: 'currentValueFromCSS',
-// 				end			: 0,
-// 				distance	: 300,
-// 				delay		: topHeaderHeight
-// 			},
-// 			navbarLogoH		: {
-// 				element		: '.navbar-brand img',
-// 				style		: 'height',
-// 				start		: 'currentValueFromCSS',
-// 				end			: 20,
-// 				distance	: 300,
-// 				delay		: topHeaderHeight
-// 			}
-// 		},
-// 		scrolledFromTop		= 0,
-// 		running				= false;
-	
-// 	function initialize() {
-// 		$.each(objectStyles, function(obj, prop) {
-// 			prop.start				= typeof prop.start === 'string' ? parseInt($(prop.element).css(prop.style), 10) : prop.start;
-// 			prop.maxChange			= prop.start - prop.end;
-// 			prop.scrollRatio		= prop.maxChange / prop.distance;
-// 			prop.animTriggered		= false;
-// 			prop.animFinished		= false;
-// 			$(prop.element).addClass('animate');
-// 		});
-// 	}
-	
-// 	function destroy() {
-// 		$.each(objectStyles, function(obj, prop) {
-// 			$(prop.element)
-// 				.css(prop.style, '')
-// 				.removeClass('animate animate-after');
-// 		});
-// 	}
-	
-// 	function resizeHeader() {
-// 		scrolledFromTop 	= $(document).scrollTop();
-// 		running				= false;
-// 		$.each(objectStyles, function(obj, prop) {
-// 			if (scrolledFromTop > prop.delay) {
-// 				if (!prop.animTriggered) prop.animTriggered = true;
-// 				prop.scrolled = scrolledFromTop - prop.delay;
-// 				if (prop.scrolled <= prop.distance) {
-// 					prop.currentChange = prop.start - prop.scrolled * prop.scrollRatio.toFixed(2);
-// 					$(prop.element).css(prop.style, prop.currentChange + 'px');
-// 					if (prop.animFinished) {
-// 						prop.animFinished = false;
-// 						$(prop.element).removeClass('animate-after');
-// 					}
-// 				}
-// 				else if (!prop.animFinished) {
-// 					prop.animFinished = true;
-// 					$(prop.element)
-// 						.css(prop.style, prop.end + 'px')
-// 						.addClass('animate-after');
-// 				}
-// 			}
-// 			else if (prop.animTriggered) {
-// 				prop.animTriggered = false;
-// 				$(prop.element).css(prop.style, prop.start + 'px');
-// 			}
-// 		});
-// 	}
-	
-// 	if (cssBreakpoint('md')) {
-// 		initialize();
-// 		var initialized = true;
-// 	}
-// 	else var initialized = false;
-	
-// 	$(window).resize(debounce(function () {
-// 		if (cssBreakpoint('md') && !initialized) {
-// 			initialize();
-// 			resizeHeader();
-// 			initialized = true;
-// 		}
-// 		else if (cssBreakpoint('xs') && initialized) {
-// 			destroy();
-// 			initialized = false;
-// 		}
-// 	}));
-	
-// 	$(window).scroll(function () {
-// 		if (cssBreakpoint('md') && !running) window.requestAnimationFrame(resizeHeader);
-// 		running = true;
-// 	});
-	
-// });
-
-
 /*===================================================================================*/
 /*	DROPDOWN ON HOVER (NAVIGATION)
 /*===================================================================================*/
@@ -310,7 +133,7 @@ $(document).ready(function () {
 	var aosEnable			= true, // ------------------------------------------------	Turn on/off AOS
 		aosMobileDisable	= false, // -----------------------------------------------	Turn on/off AOS on Mobile
 		aosContainer		= 'main', // ----------------------------------------------	Container (e.g. 'body' [with Footer] or '#main'/'main' [without Footer])
-		aosItems			= '[class*="col-"]:not(.reen-form-group), .isotope .item, .posts .post', // -----	Add/remove Elements to be animated
+		aosItems			= '[class*="col-"]:not(.reen-form-group, .rgb-single-column.no-aos), .isotope .item, .posts .post', // -----	Add/remove Elements to be animated
 		aosAnimation		= 'fade-up'; // -------------------------------------------	Animation type (More on: https://github.com/michalsnik/aos)
 	
 	AOS.init({
@@ -355,6 +178,194 @@ $(document).ready(function () {
 			disableAOS($(aosItems));
 	});
 	
+});
+
+
+/*===================================================================================*/
+/*	FIXED NAVIGATION (BOOTSTRAP AFFIX)
+/*===================================================================================*/
+$(document).ready(function() {
+	var affixElementDesktop			= '.navbar-collapse',
+		affixElementDesktopHeight	= affixElementDesktop,
+		affixElementDesktopOffset	= '.navbar-header',
+		affixElementMobile			= '.navbar',
+		affixElementMobileHeight	= '.navbar-header',
+		affixElementMobileNav		= '.navbar-nav',
+		affixElementMobileNavBtn	= '.navbar-toggler',
+		bodyScrollDisableClass		= 'body-scroll-disabled';
+	
+	function affixNav(el, elHeight, elOffset) {
+		$(window).off('.affix');
+		$('.affix, .affix-top').unwrap();
+		$(affixElementDesktop + ', ' + affixElementMobile)
+			.removeData('bs.affix')
+			.removeClass('affix affix-top');
+
+		$(el).affix({ offset: { top: $(elOffset).outerHeight(true) || 0 } });
+
+		$('.affix, .affix-top')
+			.wrap('<div class="affix-wrapper"></div>')
+			.parent().css('min-height', $(elHeight).outerHeight(true) || 0);
+	}
+
+	if (cssBreakpoint('md')) {
+		if (switchedBreakpoint()) {
+			affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
+		}
+	} else if (cssBreakpoint('xs')) {
+		var $affixElementMobileNavHeight = screen.height - $(affixElementMobileHeight).outerHeight(true);
+		if( $('#wpadminbar').outerHeight(true) ) {
+			$affixElementMobileNavHeight -= $('#wpadminbar').outerHeight(true);
+		}
+		$(affixElementMobileNav).css('height', $affixElementMobileNavHeight || 0);
+	}
+	
+	$(window).resize(debounce(function () {
+		if (cssBreakpoint('md')) {
+			if (switchedBreakpoint()) {
+				$(affixElementMobileNav).css('height', '');
+				affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
+				if ($(affixElementDesktop).hasClass('show')) {
+					enableSelectedScroll(false, affixElementMobileNav);
+					$('html').removeClass(bodyScrollDisableClass);
+				}
+			}
+		}
+		else if (cssBreakpoint('xs')) {
+			if (switchedBreakpoint()) {
+				affixNav(affixElementMobile, affixElementMobileHeight);
+				if ($(affixElementDesktop).hasClass('show')) {
+					enableSelectedScroll(true, affixElementMobileNav);
+					$('html').addClass(bodyScrollDisableClass);
+				}
+			}
+			$(affixElementMobileNav).css('height', window.innerHeight - $(affixElementMobileHeight).outerHeight(true) || 0);
+		}
+	})).resize();
+
+	$(affixElementDesktop).on('show.bs.collapse', function(){
+		enableSelectedScroll(true, affixElementMobileNav);
+		$('html').addClass(bodyScrollDisableClass);
+	});
+
+	$(affixElementDesktop).on('hide.bs.collapse', function(){
+		enableSelectedScroll(false, affixElementMobileNav);
+		$('html').removeClass(bodyScrollDisableClass);
+	});
+
+});
+
+
+/*===================================================================================*/
+/*	HEADER RESIZE
+/*===================================================================================*/
+$(document).ready(function() {
+	// Settings
+	var	topHeaderHeight		= $('.navbar-header').outerHeight(true), // -------	Get Height of Element that is not fixed and not being changed — used for Delay before Element starts changing
+		objectStyles		= {
+			navbarPadTop	: { // --------------------------------------------	Custom Element/Object Name — type what you want
+				element		: '.navbar .navbar-collapse', // ------------------	CSS Class of Element that is being changed
+				style		: 'padding-top', // -------------------------------	CSS Style that is being changed
+				start		: 'currentValueFromCSS', // -----------------------	Change from e.g. 30 (Pixels) — if a String/Text is entered then the current Value from CSS File is being taken
+				end			: 0, // -------------------------------------------	Change to e.g. 0 (Pixels)
+				distance	: 300, // -----------------------------------------	Element is being resized for e.g. 300 (Pixels) scrolled
+				delay		: topHeaderHeight // ------------------------------	Delay before Element starts changing e.g. 50 (Pixels)
+			},
+			navbarPadBot	: {
+				element		: '.navbar .navbar-collapse',
+				style		: 'padding-bottom',
+				start		: 'currentValueFromCSS',
+				end			: 0,
+				distance	: 300,
+				delay		: topHeaderHeight
+			},
+			navbarLogoH		: {
+				element		: '.navbar-brand img',
+				style		: 'height',
+				start		: 'currentValueFromCSS',
+				end			: 20,
+				distance	: 300,
+				delay		: topHeaderHeight
+			}
+		},
+		scrolledFromTop		= 0,
+		running				= false;
+	
+	function initialize() {
+		$.each(objectStyles, function(obj, prop) {
+			prop.start				= typeof prop.start === 'string' ? parseInt($(prop.element).css(prop.style), 10) : prop.start;
+			prop.maxChange			= prop.start - prop.end;
+			prop.scrollRatio		= prop.maxChange / prop.distance;
+			prop.animTriggered		= false;
+			prop.animFinished		= false;
+			$(prop.element).addClass('animate');
+		});
+	}
+	
+	function destroy() {
+		$.each(objectStyles, function(obj, prop) {
+			$(prop.element)
+				.css(prop.style, '')
+				.removeClass('animate animate-after');
+		});
+	}
+	
+	function resizeHeader() {
+		scrolledFromTop 	= $(document).scrollTop();
+		running				= false;
+		$.each(objectStyles, function(obj, prop) {
+			if (scrolledFromTop > prop.delay) {
+				if (!prop.animTriggered) prop.animTriggered = true;
+				prop.scrolled = scrolledFromTop - prop.delay;
+				if (prop.scrolled <= prop.distance) {
+					prop.currentChange = prop.start - prop.scrolled * prop.scrollRatio.toFixed(2);
+					$(prop.element).css(prop.style, prop.currentChange + 'px');
+					if (prop.animFinished) {
+						prop.animFinished = false;
+						$(prop.element).removeClass('animate-after');
+					}
+				}
+				else if (!prop.animFinished) {
+					prop.animFinished = true;
+					$(prop.element)
+						.css(prop.style, prop.end + 'px')
+						.addClass('animate-after');
+				}
+			}
+			else if (prop.animTriggered) {
+				prop.animTriggered = false;
+				$(prop.element).css(prop.style, prop.start + 'px');
+			}
+		});
+	}
+	
+	if (cssBreakpoint('md')) {
+		initialize();
+		var initialized = true;
+	}
+	else var initialized = false;
+	
+	$(window).resize(debounce(function () {
+		if (cssBreakpoint('md') && !initialized) {
+			initialize();
+			resizeHeader();
+			initialized = true;
+		}
+		else if (cssBreakpoint('xs') && initialized) {
+			destroy();
+			initialized = false;
+		}
+	}));
+	
+	$(window).scroll(function () {
+		if (cssBreakpoint('md') && !running) window.requestAnimationFrame(resizeHeader);
+		running = true;
+	});
+
+	$(document).scroll(function () {
+		if (cssBreakpoint('md') && !running) resizeHeader();
+	});
+
 });
 
 
@@ -866,9 +877,6 @@ $(document).ready(function () {
 	})
 	
 });
-
-
-
 
 /*===================================================================================*/
 /*	ISOTOPE PORTFOLIO

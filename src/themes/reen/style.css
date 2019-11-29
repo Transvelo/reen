@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.35
+Version:           0.0.37
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -10297,7 +10297,7 @@ blockquote:before {
   background: #FFF;
   line-height: inherit;
   position: relative;
-  bottom: 9px;
+  bottom: -40px;
   padding: 10px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -10313,7 +10313,7 @@ blockquote:before {
   display: inline-block; }
 
 #owl-main:hover .owl-dots {
-  bottom: 22px;
+  bottom: -25px;
   opacity: 1; }
 
 #owl-main .owl-prev,
@@ -13208,11 +13208,12 @@ p a.txt-btn {
 .dropdown.searchbox .menu-text {
   display: none; }
 
-.navbar-collapse.collapse.animate.affix {
-  padding-top: 0px;
-  padding-bottom: 0px; }
-  .navbar-collapse.collapse.animate.affix .navbar-brand img {
-    height: 20px; }
+.social i:after {
+  background-color: rgba(26, 187, 156, 0.9);
+  transition: all 200ms ease-out; }
+
+.member .text-overlay .social li a:hover i {
+  color: #506A85; }
 
 .site-footer .widget img {
   height: auto; }
