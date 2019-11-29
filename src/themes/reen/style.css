@@ -13295,6 +13295,13 @@ p a.txt-btn {
 .dropdown.searchbox .menu-text {
   display: none; }
 
+.social i:after {
+  background-color: rgba(26, 187, 156, 0.9);
+  transition: all 200ms ease-out; }
+
+.member .text-overlay .social li a:hover i {
+  color: #506A85; }
+
 .site-footer .widget img {
   height: auto; }
 
