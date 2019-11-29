@@ -171,7 +171,17 @@ if ( ! class_exists( 'Reen' ) ) :
             /**
              * Enqueue editor styles.
              */
-            add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
+            $editor_styles = array(
+                get_template_directory_uri() . '/assets/css/gutenberg-editor.css',
+                get_template_directory_uri() . '/style.css', $this->google_fonts()
+            );
+
+            if ( apply_filters( 'reen_use_predefined_colors', true ) ) {
+                $color_css_file = apply_filters( 'reen_primary_color', 'green' );
+                $editor_styles[] = get_template_directory_uri() . '/assets/css/colors/' . $color_css_file . '.css';
+            }
+            add_editor_style( $editor_styles );
+
         }
 
          /**
@@ -389,6 +399,11 @@ if ( ! class_exists( 'Reen' ) ) :
             wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
             wp_style_add_data( 'reen-icons', 'rtl', 'replace' );
 
+            if ( apply_filters( 'reen_use_predefined_colors', true ) ) {
+                $color_css_file = apply_filters( 'reen_primary_color', 'green' );
+                wp_enqueue_style( 'reen-color', get_template_directory_uri() . '/assets/css/colors/' . $color_css_file . '.css', '', $reen_version );
+            }
+
             /**
              * Fonts
              */
@@ -489,6 +504,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/vendor/font-awesome/css/fontawesome-all.min.css', '', $reen_version );
 
+            
             // Scripts
             $theme_scripts = self::get_theme_scripts();
             foreach ( $theme_scripts as $handle => $props ) {

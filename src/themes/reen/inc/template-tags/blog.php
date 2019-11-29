@@ -602,7 +602,14 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                             'items'        => 5,
                                             'nav'          => true,
                                             'dots'         => true,
-                                            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                            'responsive'        => array(
+                                                '0'     => array( 'items'   => 1 ),
+                                                '480'   => array( 'items'   => 2 ),
+                                                '768'   => array( 'items'   => 2 ),
+                                                '992'   => array( 'items'   => 4 ),
+                                                '1200'  => array( 'items'   => 5 ),
+                                            )
                                         ) );
 
                                         ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
@@ -855,7 +862,7 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                                             '480'   => array( 'items'   => 2 ),
                                             '768'   => array( 'items'   => 2 ),
                                             '992'   => array( 'items'   => 2 ),
-                                            '1200'  => array( 'items' => 2 ),
+                                            '1200'  => array( 'items'   => 2 ),
                                         )
                                     ) );
 
