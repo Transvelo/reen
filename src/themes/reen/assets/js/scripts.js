@@ -212,6 +212,12 @@ $(document).ready(function() {
 		if (switchedBreakpoint()) {
 			affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
 		}
+	} else if (cssBreakpoint('xs')) {
+		var $affixElementMobileNavHeight = screen.height - $(affixElementMobileHeight).outerHeight(true);
+		if( $('#wpadminbar').outerHeight(true) ) {
+			$affixElementMobileNavHeight -= $('#wpadminbar').outerHeight(true);
+		}
+		$(affixElementMobileNav).css('height', $affixElementMobileNavHeight || 0);
 	}
 	
 	$(window).resize(debounce(function () {

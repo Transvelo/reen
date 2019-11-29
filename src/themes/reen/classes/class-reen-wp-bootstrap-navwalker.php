@@ -255,6 +255,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
                         if ( isset( $args->has_children ) && $args->has_children ) {
                             $atts['class'] .= ' u-header__sub-menu-nav-link-toggle';
+                            $atts['data-toggle'] = 'dropdown';
                         }
 
                     }
