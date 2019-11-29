@@ -133,7 +133,7 @@ $(document).ready(function () {
 	var aosEnable			= true, // ------------------------------------------------	Turn on/off AOS
 		aosMobileDisable	= false, // -----------------------------------------------	Turn on/off AOS on Mobile
 		aosContainer		= 'main', // ----------------------------------------------	Container (e.g. 'body' [with Footer] or '#main'/'main' [without Footer])
-		aosItems			= '[class*="col-"]:not(.reen-form-group), .isotope .item, .posts .post', // -----	Add/remove Elements to be animated
+		aosItems			= '[class*="col-"]:not(.reen-form-group, .rgb-single-column.no-aos), .isotope .item, .posts .post', // -----	Add/remove Elements to be animated
 		aosAnimation		= 'fade-up'; // -------------------------------------------	Animation type (More on: https://github.com/michalsnik/aos)
 	
 	AOS.init({
@@ -212,6 +212,12 @@ $(document).ready(function() {
 		if (switchedBreakpoint()) {
 			affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
 		}
+	} else if (cssBreakpoint('xs')) {
+		var $affixElementMobileNavHeight = screen.height - $(affixElementMobileHeight).outerHeight(true);
+		if( $('#wpadminbar').outerHeight(true) ) {
+			$affixElementMobileNavHeight -= $('#wpadminbar').outerHeight(true);
+		}
+		$(affixElementMobileNav).css('height', $affixElementMobileNavHeight || 0);
 	}
 	
 	$(window).resize(debounce(function () {
@@ -871,9 +877,6 @@ $(document).ready(function () {
 	})
 	
 });
-
-
-
 
 /*===================================================================================*/
 /*	ISOTOPE PORTFOLIO
