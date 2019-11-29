@@ -9699,7 +9699,6 @@ blockquote:before {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
   padding: 10%;
   font: 0px/0 a;
   /* remove the gap between inline(-block) elements */
@@ -13237,6 +13236,9 @@ textarea,
 .article__content--page .sharedaddy {
   display: none; }
 
+p a.txt-btn {
+  text-decoration: none; }
+
 #portfolio-post .article {
   margin-bottom: 0; }
 
@@ -13283,9 +13285,6 @@ textarea,
 .comment-respond {
   padding-top: 40px;
   padding-bottom: 40px; }
-
-.form-control {
-  width: 70%; }
 
 .portfolio-post-carousel {
   margin-bottom: 14px; }
