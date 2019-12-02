@@ -580,18 +580,19 @@ $(document).ready(function () {
 		pagination: false
 	});
 	
-	$('#transitionType li a').click(function () {
+	// $('#transitionType li a').click(function () {
 		
-		$('#transitionType li a').removeClass('active');
-		$(this).addClass('active');
+	// 	$('#transitionType li a').removeClass('active');
+	// 	$(this).addClass('active');
 		
-		var newValue = $(this).attr('data-animation');
-		$(owlElementID).data("owlCarousel").transitionTypes(newValue);
-		$(owlElementID).trigger("owl.next");
+	// 	var newValue = $(this).attr('data-animation');
+	// 	$(owlElementID).data("owlCarousel").toggleClass('animated fadeIn');
+	// 	//$(owlElementID).data("owlCarousel").transitionTypes(newValue);
+	// 	$(owlElementID).trigger("owl.next");
 		
-		return false;
+	// 	return false;
 		
-	});
+	// });
 
 	// $('#transitionType li a').click(function () {
 		
@@ -600,7 +601,7 @@ $(document).ready(function () {
 		
 	// 	var newValue = $(this).attr('data-animation');
 		
-	// 	$(owlElementID).data("owlCarousel").animateOut(newValue);
+	// 	$(owlElementID).data("owlCarousel").transitionTypes(newValue);
 	// 	$(owlElementID).trigger("owl.next");
 		
 	// 	return false;
