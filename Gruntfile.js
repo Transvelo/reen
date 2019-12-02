@@ -350,11 +350,12 @@ module.exports = function( grunt ) {
 
         // Creates deploy-able theme
         copy: {
-            // main: {
-            //     files: [
-            //         { src: ['<%= pkg.name %>-extensions.zip'], dest: 'gh-pages/assets/plugins/'},
-            //     ]
-            // },
+            main: {
+                files: [
+                    { src: ['<%= pkg.name %>-extensions.zip'], dest: '<%= dirs.theme %>/assets/plugins/'},
+                    { src: ['<%= pkg.name %>-demo.zip'], dest: '<%= dirs.theme %>/assets/plugins/'}
+                ]
+            },
             deploy: {
                 files: [
                     { src: ['<%= pkg.name %>.zip'], dest: 'dist/theme-files/'},
@@ -366,8 +367,6 @@ module.exports = function( grunt ) {
                     { expand: true, cwd: 'dist/', src: ['changelog.txt'], dest: 'gh-pages/'}
                 ]
             }
-
-
         },
 
 
