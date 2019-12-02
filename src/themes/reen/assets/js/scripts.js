@@ -575,9 +575,9 @@ function debounce(func, wait, immediate) {
             });
         }
 
-        $(owlElementID).each(function(index) {
+        function heroCarouselOptions() {
             const defaultCarouselOptions = {
-                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
                 autoplay: true,
                 autoplayTimeout: 5000,
                 autoplayHoverPause: true,
@@ -591,16 +591,14 @@ function debounce(func, wait, immediate) {
                 stagePadding: 0,
                 navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
             }
-            const carouselJson = $(this).attr('data-owl-carousel');
+
+            const carouselJson = $(this).data('data-owl-carousel');
+
             const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
-            const newCarouselOptions = {
+
+            return {
                 ...defaultCarouselOptions,
-                ...currentCarouselOptions
-            }
-
-            $(this).owlCarousel({
-                ...newCarouselOptions,
-
+                ...currentCarouselOptions,
                 onInitialize: function() {
                     fadeIn();
                     fadeInDown();
@@ -700,8 +698,29 @@ function debounce(func, wait, immediate) {
                     fadeInRightReset();
                     dragging = false;
                 }
+            }
+        }
 
-            });
+        $(owlElementID).each(function(index) {
+            $(this).owlCarousel(heroCarouselOptions());
+        });
+
+        $('#transitionType li a').click(function() {
+
+            $('#transitionType li a').removeClass('active');
+            $(this).addClass('active');
+
+            var newValue = $(this).attr('data-animation');
+
+            if( newValue ) {
+                $(owlElementID).trigger('destroy.owl.carousel');
+                $(owlElementID).owlCarousel({ ...heroCarouselOptions(), animateIn: newValue });
+                $(owlElementID).trigger('next.owl.carousel');
+                $(owlElementID).trigger('prev.owl.carousel');
+            }
+
+            return false;
+
         });
 
         if ($(owlElementID).hasClass("owl-one-item")) {
@@ -714,30 +733,17 @@ function debounce(func, wait, immediate) {
             pagination: false
         });
 
-        $('#transitionType li a').click(function() {
-
-            $('#transitionType li a').removeClass('active');
-            $(this).addClass('active');
-
-            var newValue = $(this).attr('data-animation');
-            $(owlElementID).data("owlCarousel").transitionTypes(newValue);
-            $(owlElementID).trigger("owl.next");
-
-            return false;
-
-        });
-
         // $('#transitionType li a').click(function () {
 
-        //  $('#transitionType li a').removeClass('active');
-        //  $(this).addClass('active');
+        //     $('#transitionType li a').removeClass('active');
+        //     $(this).addClass('active');
 
-        //  var newValue = $(this).attr('data-animation');
+        //     var newValue = $(this).attr('data-animation');
 
-        //  $(owlElementID).data("owlCarousel").animateOut(newValue);
-        //  $(owlElementID).trigger("owl.next");
+        //     $(owlElementID).attr("data-owl-carousel").animateOut(newValue);
+        //     $(owlElementID).trigger("owl.next");
 
-        //  return false;
+        //     return false;
 
         // });
 
