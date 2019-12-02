@@ -374,7 +374,7 @@ $(document).ready(function() {
 /*===================================================================================*/
 
 $(document).ready(function () {
-	
+
 	var dragging = true;
 	var owlElementID = "#owl-main";
 	
@@ -453,122 +453,131 @@ $(document).ready(function () {
 		$(owlElementID + " .active .caption .fadeInRight-3").stop().delay(1000).animate({ opacity: 1, left: "0" }, { duration: 800, easing: "easeOutCubic" });
 	}
 	
-	$(owlElementID).owlCarousel({
-		animateOut: 'fadeOut',
-		autoplay: true,
-        autoplayTimeout: 5000,
-		autoplayHoverPause: true,
-        nav: true,
-		dots: true,
-		items: 1,
-		loop: true,
-		navRewind: true,
-		addClassActive: true,
-        lazyLoad: true,
-        stagePadding: 0,
-        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+	$(owlElementID).each(function(index) {
+		const defaultCarouselOptions = {
+			animateOut: 'fadeOut',
+			autoplay: true,
+	        autoplayTimeout: 5000,
+			autoplayHoverPause: true,
+	        nav: true,
+			dots: true,
+			items: 1,
+			loop: true,
+			navRewind: true,
+			addClassActive: true,
+	        lazyLoad: true,
+	        stagePadding: 0,
+	        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+		}
+		const carouselJson = $(this).attr( 'data-owl-carousel' );
+        const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
+        const newCarouselOptions = {...defaultCarouselOptions, ...currentCarouselOptions}
+
+		$(this).owlCarousel({
+			...newCarouselOptions,
+
+	    	onInitialize   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onInitialized   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onResize   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onResized   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onRefresh   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onRefreshed   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onUpdate   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onUpdated   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onDrag : function() {
+	            dragging = true;
+	        },
+
+	        onTranslate   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+	        onTranslated   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onTo   : function() {
+	            fadeIn();
+	            fadeInDown();
+	            fadeInUp();
+	            fadeInLeft();
+	            fadeInRight();
+	        },
+
+	        onChanged  : function() {
+	            fadeInReset();
+	            fadeInDownReset();
+	            fadeInUpReset();
+	            fadeInLeftReset();
+	            fadeInRightReset();
+	            dragging = false;
+	        }
 			
-    	onInitialize   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onInitialized   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onResize   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onResized   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onRefresh   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onRefreshed   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onUpdate   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onUpdated   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onDrag : function() {
-            dragging = true;
-        },
-
-        onTranslate   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-        onTranslated   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onTo   : function() {
-            fadeIn();
-            fadeInDown();
-            fadeInUp();
-            fadeInLeft();
-            fadeInRight();
-        },
-
-        onChanged  : function() {
-            fadeInReset();
-            fadeInDownReset();
-            fadeInUpReset();
-            fadeInLeftReset();
-            fadeInRightReset();
-            dragging = false;
-        }
-		
-    });
+	    });
+	});
 	
 	if ($(owlElementID).hasClass("owl-one-item")) {
 		$(owlElementID + ".owl-one-item").data('owlCarousel').destroy();
