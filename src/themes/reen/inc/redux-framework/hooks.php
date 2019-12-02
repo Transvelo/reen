@@ -52,3 +52,12 @@ add_filter( 'reen_footer_site_title_info', 'reen_redux_apply_footer_site_title' 
 add_filter( 'reen_footer_site_description_info', 'reen_redux_apply_footer_site_description'     );
 
 add_filter( 'reen_footer_enable_site_title',  'redux_toggle_footer_site_title'   );
+
+// Style Filters
+add_filter( 'reen_use_predefined_colors',                   'redux_toggle_use_predefined_colors' );
+add_action( 'reen_primary_color',                           'redux_apply_primary_color' );
+add_action( 'wp_head',                                      'redux_apply_custom_color_css',                 100 );
+add_action( 'wp_enqueue_scripts',                           'redux_load_external_custom_css',               20 );
+//add_action( 'enqueue_block_editor_assets',                  'redux_apply_custom_color_css',                 100 );
+add_action( 'enqueue_block_editor_assets',                  'redux_load_external_custom_css',               20 );
+add_filter( 'uneno_should_add_custom_css_page',             'redux_toggle_custom_css_page',                 10 );
