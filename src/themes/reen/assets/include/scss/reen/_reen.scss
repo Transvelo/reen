@@ -3146,10 +3146,14 @@ blockquote:before {
 	height: 100%;
 	z-index: 0;
 }
-.owl-outer-nav .owl-wrapper-outer,
+.owl-outer-nav .owl-stage-outer,
 .owl-outer-nav .owl-dots,
 .owl-outer-nav .owl-prev,
-.owl-outer-nav .owl-next {
+.owl-outer-nav .owl-next,
+.owl-inner-nav .owl-stage-outer,
+.owl-inner-nav .owl-dots,
+.owl-inner-nav .owl-prev,
+.owl-inner-nav .owl-next,{
 	z-index: 1;
 }
 .owl-outer-nav .owl-controls {
