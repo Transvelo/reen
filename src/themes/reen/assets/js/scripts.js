@@ -702,6 +702,9 @@ function debounce(func, wait, immediate) {
         }
 
         $(owlElementID).each(function(index) {
+            if( $(this).hasClass('owl-loaded') ) {
+                $(this).find('.owl-nav, .owl-dots').unwrap();
+            }
             $(this).owlCarousel(heroCarouselOptions());
         });
 
@@ -713,8 +716,11 @@ function debounce(func, wait, immediate) {
             var newValue = $(this).attr('data-animation');
 
             if( newValue ) {
+                $(owlElementID).find('.owl-nav, .owl-dots').unwrap();
                 $(owlElementID).trigger('destroy.owl.carousel');
+                $(owlElementID).html($(owlElementID).find('.owl-stage-outer').html()).removeClass('owl-loaded');
                 $(owlElementID).owlCarousel({ ...heroCarouselOptions(), animateIn: newValue });
+                $(owlElementID).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
                 $(owlElementID).trigger('next.owl.carousel');
                 $(owlElementID).trigger('prev.owl.carousel');
             }
