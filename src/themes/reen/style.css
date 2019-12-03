@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.37
+Version:           0.0.38
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -11395,6 +11395,10 @@ input:focus:-ms-input-placeholder {
   border: 1px solid #E6E9ED;
   border-left: none;
   background: #FFF; }
+
+.table.table-bordered {
+  color: #73879c;
+  padding: .75rem; }
 
 .table-bordered th,
 .table-bordered td {
