@@ -50,6 +50,10 @@ function reen_separate_linkmods_and_icons_from_classes( $classes, &$linkmod_clas
             // depth greater than 0 - IE inside a dropdown.
             $linkmod_classes[] = $class;
             unset( $classes[ $key ] );
+        } elseif ( preg_match( '/^blue|^gray|^green|^navy|^orange|^pink|^purple|^red/i', $class ) ) {
+            // Menu Color
+            $linkmod_classes[] = $class;
+            unset( $classes[ $key ] );
         } elseif ( preg_match( '/^fa-(\S*)?|^fa(s|r|l|b)?(\s?)?$/i', $class ) ) {
             // Font Awesome.
             $icon_classes[] = $class;

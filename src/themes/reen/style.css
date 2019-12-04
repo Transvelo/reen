@@ -13154,15 +13154,16 @@ ul.page-numbers > li:last-child > a {
 .wpforms-field-hp {
   display: none; }
 
-.wpforms-container .wpforms-field {
+.wpforms-container .wpforms-field-container .wpforms-field {
   padding: 0; }
-  .wpforms-container .wpforms-field input.wpforms-error,
-  .wpforms-container .wpforms-field input.user-invalid,
-  .wpforms-container .wpforms-field textarea.wpforms-error,
-  .wpforms-container .wpforms-field textarea.user-invalid,
-  .wpforms-container .wpforms-field select.wpforms-error,
-  .wpforms-container .wpforms-field select.user-invalid {
-    border-color: #d99898; }
+
+.wpforms-container .wpforms-field input.wpforms-error,
+.wpforms-container .wpforms-field input.user-invalid,
+.wpforms-container .wpforms-field textarea.wpforms-error,
+.wpforms-container .wpforms-field textarea.user-invalid,
+.wpforms-container .wpforms-field select.wpforms-error,
+.wpforms-container .wpforms-field select.user-invalid {
+  border-color: #d99898; }
 
 .wpforms-field-small::placeholder, .wpforms-field-medium::placeholder, .wpforms-field-large::placeholder {
   color: #c2c7cc; }
