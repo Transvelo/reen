@@ -12837,16 +12837,6 @@ figure.reen-image-block figcaption {
 .related-post-carousel.owl-carousel:hover .owl-next {
   opacity: .25; }
 
-.popular-posts-carousel .categories {
-  height: 22px;
-  overflow: hidden; }
-  .popular-posts-carousel .categories a {
-    border: none; }
-
-.popular-posts-carousel h4, .popular-posts-carousel .h4 {
-  height: 24px;
-  overflow: hidden; }
-
 .popular-posts-carousel figure :not(.icon-overlay) a:hover,
 .popular-posts-carousel figure:not(.icon-overlay) > a:hover {
   opacity: 1; }
@@ -12856,6 +12846,20 @@ figure.reen-image-block figcaption {
 
 .popular-posts-carousel figcaption {
   cursor: pointer; }
+
+.popular-posts-carousel h4, .popular-posts-carousel .h4,
+.related-post-carousel h4,
+.related-post-carousel .h4 {
+  height: 24px;
+  overflow: hidden; }
+
+.popular-posts-carousel p.categories,
+.related-post-carousel p.categories {
+  height: 22px;
+  overflow: hidden; }
+  .popular-posts-carousel p.categories a,
+  .related-post-carousel p.categories a {
+    border: none; }
 
 #wp-calendar {
   width: 100%;

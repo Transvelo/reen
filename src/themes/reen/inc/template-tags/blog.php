@@ -281,6 +281,10 @@ if ( ! function_exists( 'reen_post_meta' ) ) {
             if ( apply_filters( 'reen_post_meta_show_comment', true ) && ! post_password_required() && ( comments_open() || '0' != get_comments_number() )) : ?>
                <li class="comments"><?php echo reen_post_comments();?></li>
             <?php endif; ?>
+
+            <?php if( function_exists( 'reen_show_jetpack_likes' ) ) { 
+                reen_show_jetpack_likes();
+            } ?>
             
         </ul><?php
     }

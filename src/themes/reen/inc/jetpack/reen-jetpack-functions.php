@@ -22,12 +22,16 @@ function reen_show_jetpack_share() {
     if ( function_exists( 'sharing_display' ) ) {
         sharing_display( '', true );
     }
-     
+    
+}
+
+function reen_show_jetpack_likes() {
     if ( class_exists( 'Jetpack_Likes' ) ) {
         $custom_likes = new Jetpack_Likes;
         echo wp_kses_post ( $custom_likes->post_likes( '' ) );
     }
 }
+
 function reen_portfolio_set_posts_per_page( $query ) {
     if ( is_admin() || ! $query->is_main_query() ) {
         return;

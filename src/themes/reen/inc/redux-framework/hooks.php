@@ -8,7 +8,10 @@
 add_action( 'init',                            'reen_remove_demo_mode_link' );
 add_action( 'redux/loaded',                    'reen_redux_disable_dev_mode_and_remove_admin_notices'                   );
 add_action( 'redux/page/reen_options/enqueue', 'redux_queue_font_awesome'   );
-
+/**
+ * General Hooks
+ */
+add_filter( 'reen_enable_scrollup',             'redux_toggle_scrollup' );
 /**
  * Portfolio Hooks
  */
