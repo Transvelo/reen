@@ -132,6 +132,7 @@ if( ! class_exists( 'Reen_Demo' ) ) {
          */
         public function includes() {
             require_once REEN_DEMO_DIR . 'includes/classes/class-reen-template-loader.php';
+            require_once REEN_DEMO_DIR . 'functions/reen-demo-functions.php';
         }
 
         /**
