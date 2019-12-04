@@ -40,7 +40,7 @@
         }
 
         &-small:not( textarea ) {
-            .wpforms-container & {
+            .wpforms-container .wpforms-field-container & {
                 max-width: 100%;
 
                 @include media-breakpoint-up(md) {
@@ -50,7 +50,7 @@
         }
 
         &-medium:not( textarea ) {
-            .wpforms-container & {
+            .wpforms-container .wpforms-field-container & {
                 max-width: 100%;
 
                 @include media-breakpoint-up(md) {
@@ -79,7 +79,7 @@
         margin-bottom: 0;
 
         &-container {
-            .wpforms-container & {
+            .wpforms-container .wpforms-form & {
                 padding: 0;
             }
         }
