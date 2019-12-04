@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: REEN 0.0.391\n"
+"Project-Id-Version: REEN 0.0.392\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-04 08:09:02+00:00\n"
+"POT-Creation-Date: 2019-12-04 09:01:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -603,11 +603,11 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: inc/template-functions.php:90
+#: inc/template-functions.php:94
 msgid "&copy;2019All Rights Reserved."
 msgstr ""
 
-#: inc/template-functions.php:101
+#: inc/template-functions.php:105
 msgid "WHO WE ARE"
 msgstr ""
 
