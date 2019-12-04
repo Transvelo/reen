@@ -10,10 +10,10 @@ class REEN_Random_Posts_Widget extends WP_Widget {
 
         $widget_ops = array(
             'classname'     => 'reen_random_posts_widget',
-            'description'   => esc_html__( 'Display Random Posts.', 'reen' )
+            'description'   => esc_html__( 'Display Random Posts.', 'reen-extensions' )
         );
 
-        parent::__construct( 'reen_random_posts_widget', esc_html__( 'REEN Random Posts', 'reen' ), $widget_ops );
+        parent::__construct( 'reen_random_posts_widget', esc_html__( 'REEN Random Posts', 'reen-extensions' ), $widget_ops );
 
         $defaults = apply_filters( 'reen_random_posts_widget_default_args', array(
             'title'     => '',
@@ -90,12 +90,12 @@ class REEN_Random_Posts_Widget extends WP_Widget {
         ?>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e('Title', 'reen'); ?>:</label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e('Title', 'reen-extensions'); ?>:</label>
             <input id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" type="text" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', 'reen' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', 'reen-extensions' ); ?></label>
             <input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo esc_attr( $instance['number'] ); ?>" size="3" />
         </p>
         <?php

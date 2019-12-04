@@ -5,7 +5,7 @@
  * Description:     This selection of extensions compliment our lean and mean theme for WooCommerce, reen. Please note: they don’t work with any WordPress theme, just reen.
  * Author:          MadrasThemes
  * Author URI:      https://madrasthemes.com/
- * Version:         0.0.390
+ * Version:         0.0.392
  * Text Domain:     Reen-extensions
  * Domain Path:     /languages
  * WC tested up to: 3.6.1
@@ -64,7 +64,7 @@ if( ! class_exists( 'Reen_Extensions' ) ) {
 
             add_action( 'plugins_loaded', array( $this, 'setup_constants' ),        10 );
             add_action( 'plugins_loaded', array( $this, 'includes' ),               20 );
-            // add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ),  30 );
+            add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ),  30 );
         }
 
         /**
@@ -122,9 +122,17 @@ if( ! class_exists( 'Reen_Extensions' ) ) {
          * @return void
          */
         public function includes() {
-            
-
             require REEN_EXTENSIONS_DIR . '/includes/function.php';
+        }
+
+        /**
+         * Load the localisation file.
+         * @access  public
+         * @since   1.0.0
+         * @return  reen
+         */
+        public function load_plugin_textdomain() {
+            load_plugin_textdomain( 'reen-extensions', false, dirname( plugin_basename( REEN_DEMO_FILE ) ) . '/languages/' );
         }
 
         /**

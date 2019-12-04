@@ -50,6 +50,10 @@ function reen_separate_linkmods_and_icons_from_classes( $classes, &$linkmod_clas
             // depth greater than 0 - IE inside a dropdown.
             $linkmod_classes[] = $class;
             unset( $classes[ $key ] );
+        } elseif ( preg_match( '/^blue|^gray|^green|^navy|^orange|^pink|^purple|^red/i', $class ) ) {
+            // Menu Color
+            $linkmod_classes[] = $class;
+            unset( $classes[ $key ] );
         } elseif ( preg_match( '/^fa-(\S*)?|^fa(s|r|l|b)?(\s?)?$/i', $class ) ) {
             // Font Awesome.
             $icon_classes[] = $class;
@@ -134,7 +138,7 @@ endif;
 
 if ( ! function_exists( 'reen_footer_site_description' ) ) {
     function reen_footer_site_description() {
-        $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ) ) );
+        $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ), 'reen' ) );
         ?>
             <?php echo wp_kses_post( $footer_site_description ); ?>
         <?php

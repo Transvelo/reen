@@ -1,0 +1,97 @@
+.wpforms {
+    &-form {
+        position: relative;
+        padding: 0;
+        width: 100%;
+
+        input:not(.btn):not([type="submit"]):focus,
+        textarea:focus,
+        select:focus {
+            background-color: #fff;
+        }
+    }
+
+    &-field {
+        &-hp {
+            display: none;
+        }
+
+        .wpforms-container .wpforms-field-container & {
+            padding: 0;
+        }
+
+        .wpforms-container & {
+            input.wpforms-error, 
+            input.user-invalid, 
+            textarea.wpforms-error, 
+            textarea.user-invalid, 
+            select.wpforms-error, 
+            select.user-invalid {
+                border-color: #d99898;
+            }
+        }
+
+        &-small,
+        &-medium,
+        &-large {
+            &::placeholder {
+                color: #c2c7cc;
+            }
+        }
+
+        &-small:not( textarea ) {
+            .wpforms-container .wpforms-field-container & {
+                max-width: 100%;
+
+                @include media-breakpoint-up(md) {
+                    max-width: 25%;
+                }
+            }
+        }
+
+        &-medium:not( textarea ) {
+            .wpforms-container .wpforms-field-container & {
+                max-width: 100%;
+
+                @include media-breakpoint-up(md) {
+                    max-width: 50%;
+                }
+            }
+        }
+
+        @at-root .dark-bg {
+            .wpforms-field {
+                &-small,
+                &-medium,
+                &-large {
+                    &::-webkit-input-placeholder,
+                    &::-moz-placeholder,
+                    &:-moz-placeholder,
+                    &:-ms-input-placeholder {
+                        color: #828E99;
+                    }
+                }
+            }
+        }
+    }
+
+    &-submit {
+        margin-bottom: 0;
+
+        &-container {
+            .wpforms-container .wpforms-form & {
+                padding: 0;
+            }
+        }
+    }
+
+    &-label-hide {
+        @include sr-only;
+    }
+
+    &-has-error {
+        label.wpforms-error {
+            display: none !important;
+        }
+    }
+}
