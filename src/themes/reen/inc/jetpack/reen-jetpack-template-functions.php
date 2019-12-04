@@ -445,7 +445,7 @@ if ( ! function_exists( 'reen_portfolio_meta' ) ) :
                     "<li class='%s'><span class='post-meta-key'>%s</span>%s</li>\n",
                 
                     sanitize_title( $key ),
-                    sprintf( _x( '%s:', 'Post custom field name' ), $key ),
+                    sprintf( _x( '%s:', 'Post custom field name', 'reen' ), $key ),
                     $key == 'project-url' ?  '<a href="'. esc_url( $value ) .'">' . $value . '</a>' : wp_strip_all_tags( $value, true )
             );
             $li_html .= apply_filters( 'reen_meta_key', $html, $key, $value );

@@ -112,7 +112,7 @@ $args = apply_filters(
         'class_submit'       => 'btn btn-submit submit',
         'fields'             => apply_filters( 'comment_form_default_fields', $fields ),
         'submit_field'       => '<div class="form-submit">%1$s %2$s</div>',
-        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
+        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun', 'reen' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
     )
 );
 

@@ -110,11 +110,11 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
         if ( ! empty( $item->_invalid ) ) {
             $classes[] = 'menu-item-invalid';
             /* translators: %s: title of menu item which is invalid */
-            $title = sprintf( __( '%s (Invalid)' ), $item->title );
+            $title = sprintf( __( '%s (Invalid)', 'reen' ), $item->title );
         } elseif ( isset( $item->post_status ) && 'draft' == $item->post_status ) {
             $classes[] = 'pending';
             /* translators: %s: title of menu item in draft status */
-            $title = sprintf( __( '%s (Pending)' ), $item->title );
+            $title = sprintf( __( '%s (Pending)', 'reen' ), $item->title );
         }
 
         $title = ( ! isset( $item->label ) || '' == $item->label ) ? $title : $item->label;
@@ -128,7 +128,7 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
         <li id="menu-item-<?php echo $item_id; ?>" class="<?php echo implode( ' ', $classes ); ?>">
             <div class="menu-item-bar">
                 <div class="menu-item-handle">
-                    <span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' ); ?></span></span>
+                    <span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item', 'reen' ); ?></span></span>
                     <span class="item-controls">
                         <span class="item-type"><?php echo esc_html( $item->type_label ); ?></span>
                         <span class="item-order hide-if-js">
@@ -145,7 +145,7 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                                     'move-menu_item'
                                 );
                             ?>
-                            " class="item-move-up" aria-label="<?php esc_attr_e( 'Move up' ); ?>">&#8593;</a>
+                            " class="item-move-up" aria-label="<?php esc_attr_e( 'Move up', 'reen' ); ?>">&#8593;</a>
                             |
                             <a href="
                             <?php
@@ -160,13 +160,13 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                                     'move-menu_item'
                                 );
                             ?>
-                            " class="item-move-down" aria-label="<?php esc_attr_e( 'Move down' ); ?>">&#8595;</a>
+                            " class="item-move-down" aria-label="<?php esc_attr_e( 'Move down', 'reen' ); ?>">&#8595;</a>
                         </span>
                         <a class="item-edit" id="edit-<?php echo $item_id; ?>" href="
                                                                     <?php
                                                                     echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
                                                                     ?>
-                        " aria-label="<?php esc_attr_e( 'Edit menu item' ); ?>"><span class="screen-reader-text"><?php _e( 'Edit' ); ?></span></a>
+                        " aria-label="<?php esc_attr_e( 'Edit menu item', 'reen' ); ?>"><span class="screen-reader-text"><?php esc_html_e( 'Edit', 'reen' ); ?></span></a>
                     </span>
                 </div>
             </div>
@@ -175,46 +175,46 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                 <?php if ( 'custom' == $item->type ) : ?>
                     <p class="field-url description description-wide">
                         <label for="edit-menu-item-url-<?php echo $item_id; ?>">
-                            <?php _e( 'URL' ); ?><br />
+                            <?php esc_html_e( 'URL', 'reen' ); ?><br />
                             <input type="text" id="edit-menu-item-url-<?php echo $item_id; ?>" class="widefat code edit-menu-item-url" name="menu-item-url[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->url ); ?>" />
                         </label>
                     </p>
                 <?php endif; ?>
                 <p class="description description-wide">
                     <label for="edit-menu-item-title-<?php echo $item_id; ?>">
-                        <?php _e( 'Navigation Label' ); ?><br />
+                        <?php esc_html_e( 'Navigation Label', 'reen' ); ?><br />
                         <input type="text" id="edit-menu-item-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->title ); ?>" />
                     </label>
                 </p>
                 <p class="field-title-attribute field-attr-title description description-wide">
                     <label for="edit-menu-item-attr-title-<?php echo $item_id; ?>">
-                        <?php _e( 'Title Attribute' ); ?><br />
+                        <?php esc_html_e( 'Title Attribute', 'reen' ); ?><br />
                         <input type="text" id="edit-menu-item-attr-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->post_excerpt ); ?>" />
                     </label>
                 </p>
                 <p class="field-link-target description">
                     <label for="edit-menu-item-target-<?php echo $item_id; ?>">
                         <input type="checkbox" id="edit-menu-item-target-<?php echo $item_id; ?>" value="_blank" name="menu-item-target[<?php echo $item_id; ?>]"<?php checked( $item->target, '_blank' ); ?> />
-                        <?php _e( 'Open link in a new tab' ); ?>
+                        <?php esc_html_e( 'Open link in a new tab', 'reen' ); ?>
                     </label>
                 </p>
                 <p class="field-css-classes description description-thin">
                     <label for="edit-menu-item-classes-<?php echo $item_id; ?>">
-                        <?php _e( 'CSS Classes (optional)' ); ?><br />
+                        <?php esc_html_e( 'CSS Classes (optional)', 'reen' ); ?><br />
                         <input type="text" id="edit-menu-item-classes-<?php echo $item_id; ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo $item_id; ?>]" value="<?php echo esc_attr( implode( ' ', $item->classes ) ); ?>" />
                     </label>
                 </p>
                 <p class="field-xfn description description-thin">
                     <label for="edit-menu-item-xfn-<?php echo $item_id; ?>">
-                        <?php _e( 'Link Relationship (XFN)' ); ?><br />
+                        <?php esc_html_e( 'Link Relationship (XFN)', 'reen' ); ?><br />
                         <input type="text" id="edit-menu-item-xfn-<?php echo $item_id; ?>" class="widefat code edit-menu-item-xfn" name="menu-item-xfn[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->xfn ); ?>" />
                     </label>
                 </p>
                 <p class="field-description description description-wide">
                     <label for="edit-menu-item-description-<?php echo $item_id; ?>">
-                        <?php _e( 'Description' ); ?><br />
+                        <?php esc_html_e( 'Description', 'reen' ); ?><br />
                         <textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
-                        <span class="description"><?php _e( 'The description will be displayed in the menu if the current theme supports it.' ); ?></span>
+                        <span class="description"><?php _e( 'The description will be displayed in the menu if the current theme supports it.', 'reen' ); ?></span>
                     </label>
                 </p>
 
@@ -225,12 +225,12 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                 ?>
 
                 <fieldset class="field-move hide-if-no-js description description-wide">
-                    <span class="field-move-visual-label" aria-hidden="true"><?php _e( 'Move' ); ?></span>
-                    <button type="button" class="button-link menus-move menus-move-up" data-dir="up"><?php _e( 'Up one' ); ?></button>
-                    <button type="button" class="button-link menus-move menus-move-down" data-dir="down"><?php _e( 'Down one' ); ?></button>
+                    <span class="field-move-visual-label" aria-hidden="true"><?php _e( 'Move', 'reen' ); ?></span>
+                    <button type="button" class="button-link menus-move menus-move-up" data-dir="up"><?php _e( 'Up one', 'reen' ); ?></button>
+                    <button type="button" class="button-link menus-move menus-move-down" data-dir="down"><?php _e( 'Down one', 'reen' ); ?></button>
                     <button type="button" class="button-link menus-move menus-move-left" data-dir="left"></button>
                     <button type="button" class="button-link menus-move menus-move-right" data-dir="right"></button>
-                    <button type="button" class="button-link menus-move menus-move-top" data-dir="top"><?php _e( 'To the top' ); ?></button>
+                    <button type="button" class="button-link menus-move menus-move-top" data-dir="top"><?php _e( 'To the top', 'reen' ); ?></button>
                 </fieldset>
 
                 <div class="menu-item-actions description-wide submitbox">
@@ -238,7 +238,7 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                         <p class="link-to-original">
                             <?php
                             /* translators: %s: original title */
-                            printf( __( 'Original: %s' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' );
+                            printf( __( 'Original: %s', 'reen' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' );
                             ?>
                         </p>
                     <?php endif; ?>
@@ -255,7 +255,7 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                                                                                             'delete-menu_item_' . $item_id
                                                                                         );
                                                                                         ?>
-                    "><?php _e( 'Remove' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="
+                    "><?php esc_html_e( 'Remove', 'reen' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="
                     <?php
                     echo esc_url(
                         add_query_arg(
@@ -267,7 +267,7 @@ class Reen_Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
                         )
                     );
                     ?>
-                        #menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel' ); ?></a>
+                        #menu-item-settings-<?php echo $item_id; ?>"><?php esc_html_e( 'Cancel', 'reen' ); ?></a>
                 </div>
 
                 <input class="menu-item-data-db-id" type="hidden" name="menu-item-db-id[<?php echo $item_id; ?>]" value="<?php echo $item_id; ?>" />

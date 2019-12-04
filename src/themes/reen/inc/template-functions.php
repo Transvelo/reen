@@ -134,7 +134,7 @@ endif;
 
 if ( ! function_exists( 'reen_footer_site_description' ) ) {
     function reen_footer_site_description() {
-        $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ) ) );
+        $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ), 'reen' ) );
         ?>
             <?php echo wp_kses_post( $footer_site_description ); ?>
         <?php

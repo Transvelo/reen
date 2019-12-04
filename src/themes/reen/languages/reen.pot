@@ -1,29 +1,29 @@
-# Copyright (C) 2017 Automattic
-# This file is distributed under the GNU General Public License v2 or later.
+# <!=Copyright (C) 2019 MadrasThemes
+# This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: _s 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2016-12-23 16:00+0100\n"
+"Project-Id-Version: REEN 0.0.391\n"
+"Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
+"POT-Creation-Date: 2019-12-04 08:09:02+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator:\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: POT <support@madrasthemes.freshdesk.com>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: 404.php:17
+#: 404.php:18
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: 404.php:21
+#: 404.php:22
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the "
 "links below or a search?"
 msgstr ""
 
-#: 404.php:30
+#: 404.php:31
 msgid "Most Used Categories"
 msgstr ""
 
@@ -32,140 +32,757 @@ msgstr ""
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
-#: comments.php:34
-#. translators: 1: title.
-msgid "One thought on &ldquo;%1$s&rdquo;"
+#: classes/class-reen-wp-bootstrap-navwalker.php:464
+msgid "Add a menu"
 msgstr ""
 
-#: comments.php:67
+#: comments.php:25
+msgid "Post Comments"
+msgstr ""
+
+#: comments.php:60
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:18
-msgid "https://wordpress.org/"
+#: comments.php:72
+msgid "Comment Navigation Below"
 msgstr ""
 
-#: footer.php:20
-#. translators: %s: CMS name, i.e. WordPress.
-msgid "Proudly powered by %s"
+#: comments.php:73
+msgid "Comment navigation"
 msgstr ""
 
-#: footer.php:25
-#. translators: 1: Theme name, 2: Theme author.
-msgid "Theme: %1$s by %2$s."
+#: comments.php:74
+msgid "&larr; Older Comments"
 msgstr ""
 
-#: functions.php:47
-msgid "Primary"
+#: comments.php:75
+msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: functions.php:105
-msgid "Sidebar"
+#: comments.php:89 comments.php:92
+msgid "Name"
 msgstr ""
 
-#: functions.php:107
-msgid "Add widgets here."
+#: comments.php:92 comments.php:98
+msgid " (Required)"
 msgstr ""
 
-#: header.php:24
+#: comments.php:95 comments.php:98
+msgid "Email"
+msgstr ""
+
+#: comments.php:101 comments.php:103
+msgid "Website"
+msgstr ""
+
+#: comments.php:115
+msgid "Enter your comment ..."
+msgstr ""
+
+#: header.php:25
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:45
-msgid "Primary Menu"
+#: inc/class-reen.php:131
+msgid "Primary"
 msgstr ""
 
-#: inc/template-tags.php:52
+#: inc/class-reen.php:132
+msgid "Tob Right Menu"
+msgstr ""
+
+#: inc/class-reen.php:133
+msgid "Top Left Menu"
+msgstr ""
+
+#: inc/class-reen.php:134
+msgid "Footer Menu"
+msgstr ""
+
+#: inc/class-reen.php:229
+msgid "Blog Sidebar"
+msgstr ""
+
+#: inc/class-reen.php:231
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/class-reen.php:247
+msgid "Footer Column %1$d"
+msgstr ""
+
+#: inc/class-reen.php:248
+msgid "Widgets added here will appear in column %1$d of the footer."
+msgstr ""
+
+#: inc/class-reen.php:250
+msgid "Footer Row %1$d - Column %2$d"
+msgstr ""
+
+#: inc/class-reen.php:251
+msgid "Widgets added here will appear in column %1$d of footer row %2$d."
+msgstr ""
+
+#: inc/jetpack/reen-jetpack-template-functions.php:506
+msgid "More works"
+msgstr ""
+
+#: inc/jetpack/reen-jetpack-template-functions.php:586
+msgid "More Videos"
+msgstr ""
+
+#: inc/jetpack/reen-jetpack-template-functions.php:682
+msgid "More Audio"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:8
+msgid "Blog"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:10
+msgid "Options available for your Blog"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:15
+msgid "Blog Layout"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:16
+msgid "Select from the three available layouts for your blog"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:18
+#: inc/redux-framework/options/blog-options.php:58
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:19
+#: inc/redux-framework/options/blog-options.php:59
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:20
+#: inc/redux-framework/options/blog-options.php:60
+msgid "Full Width"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:28
+msgid "Blog style"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:29
+msgid "Select the style  for the  blog"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:31
+#: inc/redux-framework/options/portfolio-options.php:19
+msgid "Grid"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:32
+msgid "Classic"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:40
+#: inc/redux-framework/options/portfolio-options.php:29
+msgid "Grid columns"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:41
+msgid "Select the style  for the  grid"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:55
+msgid "Single Blog Layout"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:56
+msgid "Select from the three available layouts for your single blog"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:65
+msgid "Blog Post Author Info"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:67
+#: inc/redux-framework/options/blog-options.php:75
+#: inc/redux-framework/options/blog-options.php:84
+#: inc/redux-framework/options/footer-options.php:25
+#: inc/redux-framework/options/header-options.php:20
+#: inc/redux-framework/options/header-options.php:30
+#: inc/redux-framework/options/header-options.php:41
+#: inc/redux-framework/options/style-options.php:23
+msgid "Yes"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:68
+#: inc/redux-framework/options/blog-options.php:76
+#: inc/redux-framework/options/blog-options.php:85
+#: inc/redux-framework/options/footer-options.php:26
+#: inc/redux-framework/options/header-options.php:21
+#: inc/redux-framework/options/header-options.php:31
+#: inc/redux-framework/options/header-options.php:42
+#: inc/redux-framework/options/style-options.php:24
+msgid "No"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:73
+msgid "Blog Social Sharing"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:81
+msgid "Enable Related Posts"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:82
+msgid "Choose if you want to enable related posts section in single blog post"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:7
+msgid "Footer"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:8
+msgid ""
+"Options related to the footer section. The Footer has : Brands Slider, "
+"Footer Widgets, Footer Newsletter Section,Footer Contact Info Section, "
+"Footer Contact Block, Footer Bottom Wigets"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:15
+#: inc/redux-framework/options/footer-options.php:33
+msgid "Footer Logo"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:22
+msgid "Use separate logo for Footer"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:23
+msgid "Do you want to display a separate logo for footer ?"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:24
+msgid ""
+"By default the logo uploaded to Appearance > Customize > Site Identity > "
+"Site Logo is displayed in footer"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:34
+msgid "Upload an image file. Recommended Size : 150x57 pixels"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:35
+msgid "Upload a separate logo that you want to be displayed in footer"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:48
+msgid "Enable Footer Site Title"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:55
+msgid "Footer Site Title"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:56
+msgid "Enter the footer site Title"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:63
+msgid "Footer Site Description"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:64
+msgid "Enter the footer site description"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:71
+msgid "Footer Bottom Bar"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:72
+msgid "The Footer Bottom Bar is available bottom of Footer."
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:78
+msgid "Enable Footer Copyright"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:85
+msgid "Footer Copyright Text"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:86
+msgid "&copy; %s REEN. All Rights Reserved."
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:4
+msgid "Header"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:6
+msgid "Options available for your header"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:10
+msgid "Topbar"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:17
+msgid "Enable Topbar"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:19
+msgid "Enable to display top bar in header"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:27
+msgid "Enable Topbar Left"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:29
+msgid "Enable to display top bar left in header"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:38
+msgid "Enable Topbar Right"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:40
+msgid "Enable to display top bar right in header"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:8
+#: inc/redux-framework/options/portfolio-options.php:16
+#: inc/redux-framework/options/portfolio-options.php:53
+#: inc/redux-framework/options/portfolio-options.php:62
+msgid "Portfolio"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:10
+msgid "Options available for your portfolio"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:17
+msgid "Select the view for portfolio"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:20
+msgid "Grid Detail"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:21
+msgid "Grid Fullscreen"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:30
+msgid "Select the columns for the grid"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:42
+msgid "Projects per page"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:43
+msgid "How many projects should be shown per page?"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:54
+msgid "Title for portfolio page"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:63
+msgid "Description for portfolio page"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:7
+msgid "Custom Primary CSS"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:10
+msgid "Styling"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:16
+msgid "General"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:17
+msgid "General Theme Style Settings"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:22
+msgid "Use a predefined color scheme"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:31
+msgid "Main Theme Color"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:32
+msgid "The main color of the site."
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:36
+msgid "Green"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:37
+msgid "Blue"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:38
+msgid "Red"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:39
+msgid "Pink"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:40
+msgid "Purple"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:41
+msgid "Orange"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:42
+msgid "Gray"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:43
+msgid "Navy"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:51
+msgid "Custom Primary Color"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:59
+msgid "How to include custom color ?"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:62
+msgid "Inline"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:63
+msgid "External File"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:72
+msgid "Custom Primary Color CSS"
+msgstr ""
+
+#: inc/redux-framework/options/style-options.php:73
+msgid ""
+"If you choose \"External File\", then please \"Save Changes\" and then "
+"click on ths link to get the custom color primary CSS: "
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "REEN"
+msgstr ""
+
+#: inc/reen-menu-functions.php:113
+#. translators: %s: title of menu item which is invalid
+msgid "%s (Invalid)"
+msgstr ""
+
+#: inc/reen-menu-functions.php:117
+#. translators: %s: title of menu item in draft status
+msgid "%s (Pending)"
+msgstr ""
+
+#: inc/reen-menu-functions.php:131
+msgid "sub item"
+msgstr ""
+
+#: inc/reen-menu-functions.php:148
+msgid "Move up"
+msgstr ""
+
+#: inc/reen-menu-functions.php:163
+msgid "Move down"
+msgstr ""
+
+#: inc/reen-menu-functions.php:169
+msgid "Edit menu item"
+msgstr ""
+
+#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:983
+msgid "Edit"
+msgstr ""
+
+#: inc/reen-menu-functions.php:178
+msgid "URL"
+msgstr ""
+
+#: inc/reen-menu-functions.php:185
+msgid "Navigation Label"
+msgstr ""
+
+#: inc/reen-menu-functions.php:191
+msgid "Title Attribute"
+msgstr ""
+
+#: inc/reen-menu-functions.php:198
+msgid "Open link in a new tab"
+msgstr ""
+
+#: inc/reen-menu-functions.php:203
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: inc/reen-menu-functions.php:209
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: inc/reen-menu-functions.php:215
+msgid "Description"
+msgstr ""
+
+#: inc/reen-menu-functions.php:217
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr ""
+
+#: inc/reen-menu-functions.php:228
+msgid "Move"
+msgstr ""
+
+#: inc/reen-menu-functions.php:229
+msgid "Up one"
+msgstr ""
+
+#: inc/reen-menu-functions.php:230
+msgid "Down one"
+msgstr ""
+
+#: inc/reen-menu-functions.php:233
+msgid "To the top"
+msgstr ""
+
+#: inc/reen-menu-functions.php:241
+#. translators: %s: original title
+msgid "Original: %s"
+msgstr ""
+
+#: inc/reen-menu-functions.php:258
+msgid "Remove"
+msgstr ""
+
+#: inc/reen-menu-functions.php:270
+msgid "Cancel"
+msgstr ""
+
+#: inc/reen-menu-functions.php:292
+msgid "Icon Class"
+msgstr ""
+
+#: inc/reen-menu-functions.php:300
+msgid "Has Megamenu ?"
+msgstr ""
+
+#: inc/reen-menu-functions.php:305
+msgid "Megamenu Max Width"
+msgstr ""
+
+#: inc/reen-menu-functions.php:311
+msgid "Megamenu Position"
+msgstr ""
+
+#: inc/reen-menu-functions.php:313
+msgid "Left"
+msgstr ""
+
+#: inc/reen-menu-functions.php:313
+msgid "Right"
+msgstr ""
+
+#: inc/template-functions.php:90
+msgid "&copy;2019All Rights Reserved."
+msgstr ""
+
+#: inc/template-functions.php:101
+msgid "WHO WE ARE"
+msgstr ""
+
+#: inc/template-tags/blog.php:306 inc/template-tags.php:62
 #. translators: used between list items, there is a space after the comma
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:55
+#: inc/template-tags/blog.php:321
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags/blog.php:321
+msgid "1 Comment"
+msgstr ""
+
+#: inc/template-tags/blog.php:321
+msgid "% Comments"
+msgstr ""
+
+#: inc/template-tags/blog.php:336
+msgid "Read More"
+msgstr ""
+
+#: inc/template-tags/blog.php:404
+msgid "Continue reading %s"
+msgstr ""
+
+#: inc/template-tags/blog.php:409 inc/template-tags/page.php:62
+msgid "Pages:"
+msgstr ""
+
+#: inc/template-tags/blog.php:591
+msgid "Popular posts"
+msgstr ""
+
+#: inc/template-tags/blog.php:694
+msgid "About the author"
+msgstr ""
+
+#: inc/template-tags/blog.php:700
+msgid "All posts by %s"
+msgstr ""
+
+#: inc/template-tags/blog.php:719
+msgid "Add me on Facebook"
+msgstr ""
+
+#: inc/template-tags/blog.php:726
+msgid "Add me on Google Plus"
+msgstr ""
+
+#: inc/template-tags/blog.php:732
+msgid "Follow me on Twitter"
+msgstr ""
+
+#: inc/template-tags/blog.php:783
+msgid "Next Post"
+msgstr ""
+
+#: inc/template-tags/blog.php:794
+msgid "Previous Post"
+msgstr ""
+
+#: inc/template-tags/blog.php:843
+msgid "Related posts"
+msgstr ""
+
+#: inc/template-tags/blog.php:958
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags/blog.php:1012
+msgid ""
+"This content is password protected. To view it please enter your password "
+"below:"
+msgstr ""
+
+#: inc/template-tags/blog.php:1014
+msgid "Password:"
+msgstr ""
+
+#: inc/template-tags.php:65
 #. translators: 1: list of categories.
 msgid "Posted in %1$s"
 msgstr ""
 
-#: inc/template-tags.php:62
+#: inc/template-tags.php:72
 #. translators: 1: list of tags.
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:72
+#: inc/template-tags.php:82
 #. translators: %s: post title
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: inc/template-tags.php:89 template-parts/content-page.php:35
+#: inc/template-tags.php:99
 #. translators: %s: Name of current post. Only visible to screen readers
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
-#: search.php:21
+#: search.php:22
 #. translators: %s: search query.
 msgid "Search Results for: %s"
 msgstr ""
 
-#: template-parts/content-none.php:14
+#: searchform.php:8
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:9
+msgid "Type to search"
+msgstr ""
+
+#: templates/contents/content-none.php:13
 msgid "Nothing Found"
 msgstr ""
 
-#: template-parts/content-none.php:25
+#: templates/contents/content-none.php:23
 #. translators: 1: link to WP admin new post page.
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
-#: template-parts/content-none.php:38
+#: templates/contents/content-none.php:36
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: template-parts/content-none.php:44
+#: templates/contents/content-none.php:43
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:22 template-parts/content.php:45
-msgid "Pages:"
-msgstr ""
-
-#: template-parts/content.php:34
-#. translators: %s: Name of current post. Only visible to screen readers
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr ""
-
-#. Theme Name of the plugin/theme
-msgid "_s"
-msgstr ""
-
-#. Theme URI of the plugin/theme
-msgid "https://underscores.me/"
+#. Author URI of the plugin/theme
+msgid "https://themeforest.net/user/madrasthemes/portfolio"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid ""
-"Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if "
-"you like. I'm a theme meant for hacking so don't use me as a <em>Parent "
-"Theme</em>. Instead try turning me into the next, most awesome, WordPress "
-"theme out there. That's what I'm here for."
+msgid "Multipurpose Responsive Theme"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Automattic"
+msgid "MadrasThemes"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://automattic.com/"
-msgstr ""
-
-#: comments.php:40
-#. translators: 1: comment count number, 2: title.
+#: comments.php:36
+#. translators: 1: number of comments, 2: post title
 msgctxt "comments title"
-msgid "%1$s thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgid "%1$s comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
+
+#: comments.php:115
+msgctxt "noun"
+msgid "Comment"
+msgstr ""
+
+#: inc/jetpack/reen-jetpack-template-functions.php:448
+msgctxt "Post custom field name"
+msgid "%s:"
+msgstr ""
+
+#: inc/template-tags/blog.php:532
+msgctxt "Next post"
+msgid "Next"
+msgstr ""
+
+#: inc/template-tags/blog.php:533
+msgctxt "Previous post"
+msgid "Prev"
+msgstr ""
 
 #: inc/template-tags.php:29
 #. translators: %s: post date.
@@ -173,13 +790,13 @@ msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
-#: inc/template-tags.php:35
+#: inc/template-tags.php:45
 #. translators: %s: post author.
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
-#: inc/template-tags.php:59
+#: inc/template-tags.php:69
 #. translators: used between list items, there is a space after the comma
 msgctxt "list item separator"
 msgid ", "

@@ -5,7 +5,7 @@
  * Description:     This selection of demo compliment our lean and mean theme for WooCommerce, Reen. Please note: they don’t work with any WordPress theme, just Reen.
  * Author:          MadrasThemes
  * Author URI:      https://madrasthemes.com/
- * Version:         0.0.390
+ * Version:         0.0.391
  * Text Domain:     reen-demo
  * Domain Path:     /languages
  * WC tested up to: 3.5.0
