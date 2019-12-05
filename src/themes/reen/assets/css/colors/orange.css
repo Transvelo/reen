@@ -75,7 +75,8 @@ ul.page-numbers > li > a:hover, ul.page-numbers > li > span:hover,
 ul.page-numbers > li > a, ul.page-numbers > li > span,
 .page-links-inner .page-link,
 .owl-dots .owl-dot.active span,
-.owl-dots .owl-dot:hover span {
+.owl-dots .owl-dot:hover span,
+.wp-block-button:not(.is-style-squared) .wp-block-button__link {
   background-color: #F27A24; }
 
 ul.page-numbers > li > a.current,
@@ -97,7 +98,10 @@ ul.page-numbers > li > span:hover,
 .pagination > .active > a:hover,
 .pagination > .active > span:hover,
 .pagination > li > a:hover,
-.pagination > li > a:focus {
+.pagination > li > a:focus,
+.wp-block-button:not(.is-style-squared) .wp-block-button__link:hover,
+.wp-block-button:not(.is-style-squared) .wp-block-button__link:focus,
+.wp-block-button:not(.is-style-squared) .wp-block-button__link:active {
   background-color: #ee6c0e; }
 
 .icon-overlay a .icn-more,
