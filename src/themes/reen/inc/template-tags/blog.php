@@ -587,88 +587,90 @@ if ( ! function_exists( 'reen_toggle_post_side_meta_hooks' ) ) {
 
 if ( ! function_exists( 'reen_popular_posts' ) ) {
     function reen_popular_posts() { 
-        global $post;
+        if ( apply_filters( 'reen_enable_popular_posts', false ) ) {
+            global $post;
 
-        $popular_posts_args =apply_filters( 'reen_popular_posts_args', array(
-            'posts_type' => 'page',
-             'posts_per_page' => 8,
-             'orderby' => 'comment_count',
-             'order'=> 'DESC'
-        ));
+            $popular_posts_args =apply_filters( 'reen_popular_posts_args', array(
+                'posts_type' => 'page',
+                 'posts_per_page' => 8,
+                 'orderby' => 'comment_count',
+                 'order'=> 'DESC'
+            ));
 
-        $popular_posts_loop = new WP_Query( $popular_posts_args );
-             
-        if ( $popular_posts_loop->have_posts() ) : 
-            if ( is_singular() ) {
-                $collapse_class = '';
-            } else {
-                $collapse_class = 'show';
-            } ?>
-            <section id="popular-posts" class="light-bg">
-                <div class="container inner-top-md">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="accordion-popular-posts" class="panel-group">
-                                <div class="panel panel-default">             
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="panel-toggle" href="#content-popular-posts" data-toggle="collapse">
-                                                <span><?php echo esc_html__( 'Popular posts', 'reen' ); ?></span>
-                                            </a>
-                                        </h4>
-                                    </div><!-- /.panel-heading -->
-                                    <div id="content-popular-posts" class="panel-collapse collapse <?php echo esc_html( $collapse_class); ?>" data-parent="#accordion-popular-posts">
-                                    <div class="panel-body"><?php
- 
-                                        $owl_params = apply_filters( 'owl-popular-posts_params', array(
-                                            'autoPlay'     => 5000,
-                                            'stopOnHover'  => true,
-                                            'rewindNav'    => true,
-                                            'items'        => 5,
-                                            'nav'          => true,
-                                            'dots'         => true,
-                                            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
-                                            'responsive'        => array(
-                                                '0'     => array( 'items'   => 1 ),
-                                                '480'   => array( 'items'   => 2 ),
-                                                '768'   => array( 'items'   => 2 ),
-                                                '992'   => array( 'items'   => 4 ),
-                                                '1200'  => array( 'items'   => 5 ),
-                                            )
-                                        ) );
+            $popular_posts_loop = new WP_Query( $popular_posts_args );
+                 
+            if ( $popular_posts_loop->have_posts() ) : 
+                if ( is_singular() ) {
+                    $collapse_class = '';
+                } else {
+                    $collapse_class = 'show';
+                } ?>
+                <section id="popular-posts" class="light-bg">
+                    <div class="container inner-top-md">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="accordion-popular-posts" class="panel-group">
+                                    <div class="panel panel-default">             
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="panel-toggle" href="#content-popular-posts" data-toggle="collapse">
+                                                    <span><?php echo esc_html__( 'Popular posts', 'reen' ); ?></span>
+                                                </a>
+                                            </h4>
+                                        </div><!-- /.panel-heading -->
+                                        <div id="content-popular-posts" class="panel-collapse collapse <?php echo esc_html( $collapse_class); ?>" data-parent="#accordion-popular-posts">
+                                        <div class="panel-body"><?php
+     
+                                            $owl_params = apply_filters( 'owl-popular-posts_params', array(
+                                                'autoPlay'     => 5000,
+                                                'stopOnHover'  => true,
+                                                'rewindNav'    => true,
+                                                'items'        => 5,
+                                                'nav'          => true,
+                                                'dots'         => true,
+                                                'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                'responsive'        => array(
+                                                    '0'     => array( 'items'   => 1 ),
+                                                    '480'   => array( 'items'   => 2 ),
+                                                    '768'   => array( 'items'   => 2 ),
+                                                    '992'   => array( 'items'   => 4 ),
+                                                    '1200'  => array( 'items'   => 5 ),
+                                                )
+                                            ) );
 
-                                        ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
-                                            <?php while( $popular_posts_loop->have_posts() ): $popular_posts_loop->the_post(); ?>
-                                                <div class="item">
-                                                
-                                                    <figure>
-                                                        <figcaption class="text-overlay">
-                                                            <div class="info">
-                                                                <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
-                                                                <p class="categories"><?php reen_post_categories(); ?></p>
-                                                            </div><!-- /.info -->
-                                                        </figcaption>
-                                                        <?php if ( has_post_thumbnail() ) {
-                                                            the_post_thumbnail();
-                                                            } else { ?>
-                                                        
-                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
-                                                            <?php } ?>
-                                                    </figure>
-                                               
-                                                </div><!-- /.item -->
-                                            <?php endwhile; ?>
-                                            <?php wp_reset_postdata(); ?>
-                                            </div><!-- /.owl-carousel -->
-                                        </div><!-- /.panel-body -->
-                                    </div><!-- /.content -->    
-                                </div><!-- /.panel -->
-                            </div><!-- /.panel-group -->
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-            </section><?php
-        endif;
+                                            ?><div id="owl-popular-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel popular-posts-carousel owl-item-gap-sm owl-theme">
+                                                <?php while( $popular_posts_loop->have_posts() ): $popular_posts_loop->the_post(); ?>
+                                                    <div class="item">
+                                                    
+                                                        <figure>
+                                                            <figcaption class="text-overlay">
+                                                                <div class="info">
+                                                                    <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                    <p class="categories"><?php reen_post_categories(); ?></p>
+                                                                </div><!-- /.info -->
+                                                            </figcaption>
+                                                            <?php if ( has_post_thumbnail() ) {
+                                                                the_post_thumbnail();
+                                                                } else { ?>
+                                                            
+                                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
+                                                                <?php } ?>
+                                                        </figure>
+                                                   
+                                                    </div><!-- /.item -->
+                                                <?php endwhile; ?>
+                                                <?php wp_reset_postdata(); ?>
+                                                </div><!-- /.owl-carousel -->
+                                            </div><!-- /.panel-body -->
+                                        </div><!-- /.content -->    
+                                    </div><!-- /.panel -->
+                                </div><!-- /.panel-group -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container -->
+                </section><?php
+            endif;
+        }
     }
 }
 
