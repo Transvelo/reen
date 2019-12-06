@@ -47,6 +47,16 @@ add_action( 'reen_loop_post_quote', 	 'reen_post_content_start', 				20 );
 add_action( 'reen_loop_post_quote',      'reen_post_the_content',     				30 );
 add_action( 'reen_loop_post_quote',      'reen_post_content_end', 				    40 );
 
+
+add_action( 'reen_loop_post_content', 	'reen_post_side_meta', 						10 );
+add_action( 'reen_loop_post_content', 	'reen_post_content_start', 				    20 );
+add_action( 'reen_loop_post_content',   'reen_post_title',     					    30 );
+add_action( 'reen_loop_post_content',   'reen_post_meta',     					    40 );
+add_action( 'reen_loop_post_content',   'reen_post_excerpt',     			        50 );
+add_action( 'reen_loop_post_content',   'reen_post_readmore',     			        60 );
+add_action( 'reen_loop_post_content',   'reen_post_content_end', 				    70 );
+
+
 /**
  * Sidebar
  */

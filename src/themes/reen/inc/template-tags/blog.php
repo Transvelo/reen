@@ -357,7 +357,6 @@ if ( ! function_exists( 'reen_post_media' ) ) {
             reen_post_gallery();
         }  elseif ( reen_can_show_post_thumbnail() ) {
             reen_has_post_thumbnail();
-
         } 
     }
 }
@@ -370,7 +369,9 @@ if ( ! function_exists( 'reen_has_post_thumbnail' ) ) :
      * element when on single views.
      */
     function reen_has_post_thumbnail() {
-        if ( ! reen_can_show_post_thumbnail() ) {
+        $post_format = get_post_format();
+
+        if ( 'aside' === $post_format || 'status' === $post_format || 'link' === $post_format || 'quote' === $post_format ) {
             return;
         }
 
@@ -394,6 +395,26 @@ if ( ! function_exists( 'reen_has_post_thumbnail' ) ) :
 
             <?php
         endif; // End is_singular().
+    }
+endif;
+
+if ( ! function_exists( 'reen_single_post_thumbnail' ) ) :
+    /**
+     * Displays an optional post thumbnail.
+     *
+     * Wraps the post thumbnail in an anchor element on index views, or a div
+     * element when on single views.
+     */
+    function reen_single_post_thumbnail() {
+
+        if ( ! reen_can_show_post_thumbnail() && ('image' !== $post_format || 'standard' !== $post_format || 'aside' !== $post_format || 'status' !== $post_format )) {
+            return;
+        } ?>
+
+        <figure class="post-thumbnail icon-overlay icn-link post-media">
+                <?php the_post_thumbnail(); ?>
+        </figure><!-- .post-thumbnail --><?php
+
     }
 endif;
 
