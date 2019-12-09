@@ -110,7 +110,11 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.popular-posts-carousel.owl-carousel:hover .owl-next:hover, 
 		.related-post-carousel.owl-carousel:hover .owl-prev:hover, 
 		.related-post-carousel.owl-carousel:hover .owl-next:hover,
-		nav > li.active > a {
+		nav > li.active > a,
+		ul li:before,
+		ol li:before,
+		.widget__title + ul li:before, 
+		.menu li:before {
 			color: ' . $primary_color . ';
 		}
 

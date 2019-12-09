@@ -29,6 +29,7 @@ class Reen_Template_Loader {
         add_filter( 'reen_blog_layout', array( __CLASS__, 'blog_layout_loader' ), PHP_INT_MAX );
         add_filter( 'reen_blog_grid_columns', array( __CLASS__, 'blog_grid_columns_loader' ), PHP_INT_MAX );
         add_filter( 'reen_single_post_layout', array( __CLASS__, 'single_post_layout_loader' ), PHP_INT_MAX );
+        add_filter( 'reen_random_posts_widget_query_args', 'reen_demo_override_random_posts_widget_query_args');
         
     }
 

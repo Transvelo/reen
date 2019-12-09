@@ -165,9 +165,65 @@ if ( ! class_exists( 'Reen' ) ) :
             add_theme_support( 'customize-selective-refresh-widgets' );
 
             /**
+             * Add support for full and wide align images.
+             */
+            add_theme_support( 'align-wide' );
+
+            /**
              * Declare support for editor styles.
              */
             add_theme_support( 'editor-styles' );
+
+            /**
+             * Add support for disable editor custom colors.
+             */
+            add_theme_support( 'disable-custom-colors' );
+
+            /**
+             * Add support for editor color palette.
+             */
+            add_theme_support( 'editor-color-palette', apply_filters( 'reen_editor_color_palette_options', array(
+                array(
+                    'name'  => esc_html__( 'Green', 'reen' ),
+                    'slug'  => 'green',
+                    'color' => '#1abb9c',
+                ),
+                array(
+                    'name'  => esc_html__( 'Blue', 'reen' ),
+                    'slug'  => 'blue',
+                    'color' => '#3f8dbf',
+                ),
+                array(
+                    'name'  => esc_html__( 'Red', 'reen' ),
+                    'slug'  => 'red',
+                    'color' => '#fa6c65',
+                ),
+                array(
+                    'name'  => esc_html__( 'Orange', 'reen' ),
+                    'slug'  => 'orange',
+                    'color' => '#f27a24',
+                ),
+                array(
+                    'name'  => esc_html__( 'Purple', 'reen' ),
+                    'slug'  => 'purple',
+                    'color' => '#9b59b6',
+                ),
+                array(
+                    'name'  => esc_html__( 'Pink', 'reen' ),
+                    'slug'  => 'pink',
+                    'color' => '#d487be',
+                ),
+                array(
+                    'name'  => esc_html__( 'Navy', 'reen' ),
+                    'slug'  => 'navy',
+                    'color' => '#34495e',
+                ),
+                array(
+                    'name'  => esc_html__( 'Gray', 'reen' ),
+                    'slug'  => 'gray',
+                    'color' => '#95a5a6',
+                ),
+            ) ) );
 
             /**
              * Enqueue editor styles.
@@ -440,7 +496,9 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'viewport-units-buggyfill', get_template_directory_uri() . '/assets/js/viewport-units-buggyfill' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+             wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll.js', array( 'jquery' ), $reen_version, true );
+
+
 
             if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
                 wp_enqueue_script( 'comment-reply' );

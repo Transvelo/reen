@@ -11,6 +11,10 @@
 		}
 	}
 
+	.widget + .widget {
+		margin-top: 60px;
+	}
+
 	#wp-calendar {
 		width: 100%;
 
@@ -27,7 +31,6 @@
 		}
 
 		tbody {
-			color: #aaa;
 
 			td {
 				border: 1px solid #fff;
@@ -41,6 +44,15 @@
 
 			.pad {
 				background: none;
+			}
+		}
+	}
+
+	&.dark-bg {
+		#wp-calendar {
+			tbody {
+				color: #aaa;
+
 			}
 		}
 	}
@@ -76,7 +88,7 @@
 			}
 
 			.rss-date {
-				font-size: 80%;
+				font-size: 90%;
 			}
 
 			.rssSummary {
@@ -91,6 +103,18 @@
 				content: '';
 				display: block;
 				padding-top: 1em;
+			}
+		}
+
+		h4 + ul {
+			padding: 0;
+		}
+
+		ul {
+			li {
+				&:before {
+					content: none;
+				}
 			}
 		}
 	}
@@ -110,12 +134,40 @@
 			    width: 100%;
 			    color: #818181;
 			}
+
 		}
 
-		.search-submit,
-		input[type=submit],
-		button[type=submit] {
-			display: none;
+		// .search-submit,
+		// input[type=submit],
+		// button[type=submit] {
+		// 	display: none;
+		// }
+
+		form.search {
+			margin: 0;
 		}
 	}
+
+
+	ul li,
+	ol li,
+	.widget__title + ul li, 
+	.menu li {
+		margin-bottom: 5px;
+	}
+
+	ul li:before,
+	ol li:before,
+	.widget__title + ul li:before, 
+	.menu li:before {
+	    font-family: 'fontello-circle';
+	    content: '\e800';
+	    font-size: 8px;
+	    font-weight: normal;
+	    padding-top: 1px;
+		margin-left: -20px;
+	    vertical-align: top;
+		position: absolute;
+	}
+
 }

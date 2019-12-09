@@ -24,20 +24,7 @@
 }
 
 .popular-posts-carousel {
-	.categories {
-		height: 22px;
-		overflow: hidden;
-
-		a {
-			border: none;
-		}
-	}
-
-	h4 {
-		height: 24px;
-		overflow: hidden;
-	}
-
+	
 	figure :not(.icon-overlay) a:hover,
 	figure:not(.icon-overlay) > a:hover {
 		opacity: 1;
@@ -51,6 +38,23 @@
 
 	figcaption {
 		cursor: pointer;
+	}
+}
+
+.popular-posts-carousel,
+.related-post-carousel {
+	h4 {
+		height: 24px;
+		overflow: hidden;
+	}
+
+	p.categories {
+		height: 22px;
+		overflow: hidden;
+
+		a {
+			border: none;
+		}
 	}
 }
 
