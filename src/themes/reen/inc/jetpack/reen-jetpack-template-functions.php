@@ -43,6 +43,12 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
                     <div class="col-md-12 portfolio"><?php
         }
 
+        if ( ( $portfolio_view === 'grid-detail' &&  $portfolio_columns == 3 ) || ( $portfolio_view === 'grid-detail' &&  $portfolio_columns == 4 ) )  {
+            $wrapper_class .= ' gap';
+        } else {
+
+        }
+
         $portfolio_cats = array();        
 
         while ( have_posts() ) : 
@@ -65,13 +71,18 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
             }
 
         endwhile; ?>
-
-        <ul class="filter text-center">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <?php foreach ( $portfolio_cats as $slug => $portfolio_cat ) : ?>
-            <li><a href="#" data-filter=".jetpack-portfolio-type-<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $portfolio_cat ); ?></a></li>
-            <?php endforeach; ?>
-        </ul>
+        <?php if ($portfolio_view === 'fullscreen' ) { ?>
+            <div class="container inner-bottom-xs">
+        <?php } ?>
+            <ul class="filter text-center">
+                <li><a href="#" data-filter="*" class="active">All</a></li>
+                <?php foreach ( $portfolio_cats as $slug => $portfolio_cat ) : ?>
+                <li><a href="#" data-filter=".jetpack-portfolio-type-<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $portfolio_cat ); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php if ($portfolio_view === 'fullscreen' ) { ?>
+            </div>
+        <?php } ?>
         <ul class="<?php echo esc_attr( $wrapper_class ); ?>"><?php
     }
 }

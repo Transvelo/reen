@@ -64,7 +64,7 @@ if( ! class_exists( 'Reen_Extensions' ) ) {
 
             add_action( 'plugins_loaded', array( $this, 'setup_constants' ),        10 );
             add_action( 'plugins_loaded', array( $this, 'includes' ),               20 );
-            add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ),  30 );
+            //add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ),  30 );
         }
 
         /**

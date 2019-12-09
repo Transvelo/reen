@@ -99,6 +99,7 @@ add_action( 'reen_single_post_after', 'reen_loop_container_wrap_end',      	    
  */
 
 add_filter( 'comment_form_fields', 'reen_move_comment_field_to_bottom', 10 );
+//add_filter( 'comment_form_default_fields', 'comment_form_not_checked_cookies_consent', 20 );
 add_filter( 'excerpt_length', 'reen_excerpt_length' );
 add_filter( 'excerpt_more', 'reen_excerpt_more' );
 /**
