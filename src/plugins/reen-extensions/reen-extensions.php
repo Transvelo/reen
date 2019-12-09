@@ -132,7 +132,7 @@ if( ! class_exists( 'Reen_Extensions' ) ) {
          * @return  reen
          */
         public function load_plugin_textdomain() {
-            load_plugin_textdomain( 'reen-extensions', false, dirname( plugin_basename( REEN_DEMO_FILE ) ) . '/languages/' );
+            load_plugin_textdomain( 'reen-extensions', false, dirname( plugin_basename( REEN_EXTENSIONS_FILE ) ) . '/languages/' );
         }
 
         /**

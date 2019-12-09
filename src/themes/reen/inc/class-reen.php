@@ -30,6 +30,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
+            add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
             add_filter( 'body_class', array( $this, 'body_classes' ) );
         }
 
@@ -288,7 +289,7 @@ if ( ! class_exists( 'Reen' ) ) :
         }
 
         /**
-         * Get all Front scripts.
+         * Get all Reen scripts.
          */
         private static function get_theme_scripts() {
             $reen_get_theme_script = apply_filters( 'reen_theme_script', array(
@@ -536,6 +537,113 @@ if ( ! class_exists( 'Reen' ) ) :
                     define( 'REEN_TEMPLATE_DEBUG_MODE', false );
                 }
             }
+        }
+
+        /**
+         * Register the required plugins for this theme.
+         *
+         * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
+         */
+        public function register_required_plugins() {
+            /*
+             * Array of plugin arrays. Required keys are name and slug.
+             * If the source is NOT from the .org repo, then source is also required.
+             */
+            global $reen_version;
+
+            $plugins = array(
+
+                array(
+                    'name'                  => esc_html__( 'Envato Market', 'reen' ),
+                    'slug'                  => 'envato-market',
+                    'source'                => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip',
+                    'required'              => false,
+                    'version'               => '2.0.3',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'external_url'          => '',
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Jetpack by WordPress.com', 'reen' ),
+                    'slug'                  => 'jetpack',
+                    'version'               => '8.0',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => false,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'MAS Static Content', 'reen' ),
+                    'slug'                  => 'mas-static-content',
+                    'version'               => '1.0.1',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => true,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'One Click Demo Import', 'reen' ),
+                    'slug'                  => 'one-click-demo-import',
+                    'version'               => '2.5.2',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => false,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Redux Framework', 'reen' ),
+                    'slug'                  => 'redux-framework',
+                    'version'               => '3.6.16',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => false,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Reen Extensions', 'reen' ),
+                    'slug'                  => 'reen-extensions',
+                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-extensions.zip',
+                    'version'               => $reen_version,
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => true
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Reen Gutenberg Blocks', 'reen' ),
+                    'slug'                  => 'reen-gutenberg-blocks',
+                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
+                    // 'version'               => $reen_version,
+                    'version'               => '0.0.23',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => true
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'WPForms Lite', 'reen' ),
+                    'slug'                  => 'wpforms-lite',
+                    'required'              => false,
+                    'version'               => '1.5.6.2',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'external_url'          => '',
+                ),
+            );
+
+            $config = array(
+                'id'           => 'reen',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+                'default_path' => '',                      // Default absolute path to bundled plugins.
+                'menu'         => 'tgmpa-install-plugins', // Menu slug.
+                'has_notices'  => true,                    // Show admin notices or not.
+                'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+                'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+                'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+                'message'      => '',                      // Message to output right before the plugins table.
+            );
+
+            tgmpa( $plugins, $config );
         }
     }
 endif;
