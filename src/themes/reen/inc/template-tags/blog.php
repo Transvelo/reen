@@ -281,7 +281,6 @@ if ( ! function_exists( 'reen_post_meta' ) ) {
             if ( apply_filters( 'reen_post_meta_show_comment', true ) && ! post_password_required() && ( comments_open() || '0' != get_comments_number() )) : ?>
                <li class="comments"><?php echo reen_post_comments();?></li>
             <?php endif; ?>
-            
         </ul><?php
     }
 }
@@ -618,8 +617,9 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                         <div class="panel-body"><?php
      
                                             $owl_params = apply_filters( 'owl-popular-posts_params', array(
-                                                'autoPlay'     => 5000,
-                                                'stopOnHover'  => true,
+                                                'autoplay' => true,
+                                                'autoplayTimeout' => 5000,
+                                                'autoplayHoverPause' => true,
                                                 'rewindNav'    => true,
                                                 'items'        => 5,
                                                 'nav'          => true,
@@ -708,7 +708,7 @@ if ( ! function_exists( 'reen_post_author' ) ) {
             <div class="post-author">
                 <div class="reen-author-info">
                     <div class="author-image icon-overlay icn-link">
-                        <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><span class="icn-more"></span>
+                        <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
                             <?php echo get_avatar( get_the_author_meta( 'ID' ) , 120 ); ?>
                         </a>
                     </div>
@@ -872,10 +872,10 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                         <div id="content-related-posts" class="panel-collapse collapse show" data-parent="#accordion-related-posts">
                             <div class="panel-body"><?php
                 
-
                                     $owl_params = apply_filters( 'owl-related-posts_params', array(
-                                        'autoPlay'     => 5000,
-                                        'stopOnHover'  => true,
+                                        'autoplay' => true,
+                                        'autoplayTimeout' => 5000,
+                                        'autoplayHoverPause' => true,
                                         'rewindNav'    => true,
                                         'items'        => 2,
                                         'nav'          => true,
