@@ -12899,6 +12899,9 @@ figure.reen-image-block figcaption {
     margin-bottom: 0;
     font-size: 16px; }
 
+.inner-top-rxs {
+  padding-top: 15px; }
+
 .popular-posts-carousel.owl-carousel:hover .owl-prev,
 .popular-posts-carousel.owl-carousel:hover .owl-next,
 .related-post-carousel.owl-carousel:hover .owl-prev,
