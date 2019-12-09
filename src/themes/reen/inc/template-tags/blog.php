@@ -110,9 +110,9 @@ if ( ! function_exists( 'reen_loop_row_wrap_start' ) ) {
             $blog_column_classes = 'col-md-12';
 
         } elseif ( 'sidebar-left' === $blog_layout ) {
-            $blog_column_classes = 'col-lg-9 order-lg-2 inner-left-sm';
+            $blog_column_classes = 'col-lg-9 col-md-8 order-lg-2 inner-left-sm';
         } else  {
-            $blog_column_classes = 'col-lg-9 inner-right-sm';
+            $blog_column_classes = 'col-lg-9 col-md-8 inner-right-sm';
         } 
 
         ?><div class="row"><div class="<?php echo esc_attr( $blog_column_classes ); ?>"><?php
