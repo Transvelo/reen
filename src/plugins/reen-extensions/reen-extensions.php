@@ -5,7 +5,7 @@
  * Description:     This selection of extensions compliment our lean and mean theme for WooCommerce, reen. Please note: they don’t work with any WordPress theme, just reen.
  * Author:          MadrasThemes
  * Author URI:      https://madrasthemes.com/
- * Version:         0.0.398
+ * Version:         0.0.399
  * Text Domain:     Reen-extensions
  * Domain Path:     /languages
  * WC tested up to: 3.6.1
