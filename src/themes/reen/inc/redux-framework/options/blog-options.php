@@ -79,6 +79,14 @@
             'default'   => false,
         ),
         array(
+            'title'     => esc_html__( 'Enable Post Navigation', 'reen' ),
+            'id'        => 'show_post_nav',
+            'on'        => esc_html__('Yes', 'reen'),
+            'off'       => esc_html__('No', 'reen'),
+            'type'      => 'switch',
+            'default'   => false,
+        ),
+        array(
             'title'     => esc_html__( 'Blog Social Sharing', 'reen' ),
             'id'        => 'show_social_sharing',
             'on'        => esc_html__('Yes', 'reen'),

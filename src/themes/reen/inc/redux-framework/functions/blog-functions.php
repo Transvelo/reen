@@ -107,6 +107,24 @@ if ( ! function_exists( 'redux_toggle_author_info' ) ) {
     }
 }
 
+if ( ! function_exists( 'redux_toggle_post_nav' ) ) {
+    function redux_toggle_post_nav( $enable ) {
+        global $reen_options;
+
+        if ( ! isset( $reen_options['show_post_nav'] ) ) {
+            $reen_options['show_post_nav'] = true;
+        }
+
+        if ( $reen_options['show_post_nav'] ) {
+            $enable = true;
+        } else {
+            $enable = false;
+        }
+        
+        return $enable;
+    }
+}
+
 if ( ! function_exists( 'redux_toggle_social_sharing' ) ) {
     function redux_toggle_social_sharing( $enable ) {
         global $reen_options;

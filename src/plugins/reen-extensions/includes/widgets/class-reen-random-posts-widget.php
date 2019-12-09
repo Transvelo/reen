@@ -32,7 +32,7 @@ class REEN_Random_Posts_Widget extends WP_Widget {
 
         $instance = wp_parse_args( (array) $instance, $this->defaults );
 
-        $rpw_query = new WP_Query( array( 
+        $rpw_query = new WP_Query( apply_filters( 'reen_random_posts_widget_query_args', array( 
             'post_type'           => 'post',
             'posts_per_page'      => $instance['number'],
             'no_found_rows'       => true,
@@ -40,7 +40,7 @@ class REEN_Random_Posts_Widget extends WP_Widget {
             'post__not_in'        => array( get_the_ID() ),
             'ignore_sticky_posts' => 1,
             'orderby'             => 'rand'
-        ) );
+        ) ) );
 
         if ( ! $rpw_query->have_posts() ) {
             return;

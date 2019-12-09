@@ -480,7 +480,7 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
                 'rewind'              => true,
                 'nav'                 => true,
                 'dots'                => true,
-                'autoHeight'          => true,
+                //'autoHeight'          => true,
                 'navText'             => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
             ));
 
@@ -802,33 +802,34 @@ if ( ! function_exists( 'reen_post_social_sharing' ) ) {
 
 if ( ! function_exists( 'reen_post_nav' ) ) {
     function reen_post_nav() {
-        
-        ob_start();
-        ?>
-        <div class="reen-post-nav post-navigation__nav">
-            <div class="reen-post-title next post-navigation__text">
-                <span class="post-direction post-navigation--label"><?php echo esc_html__( 'Next Post', 'reen' ); ?></span>
-                <span class="post-navigation--post-title">%title</span>
+        if( apply_filters( 'reen_show_post_nav', false ) ) {
+            ob_start();
+            ?>
+            <div class="reen-post-nav post-navigation__nav">
+                <div class="reen-post-title next post-navigation__text">
+                    <span class="post-direction post-navigation--label"><?php echo esc_html__( 'Next Post', 'reen' ); ?></span>
+                    <span class="post-navigation--post-title">%title</span>
+                </div>
             </div>
-        </div>
 
-        <?php
-        $next = ob_get_clean();
-        ob_start();
-        ?>
-        <div class="reen-post-nav post-navigation__nav">
-            <div class="reen-post-title prev post-navigation__text">
-                <span class="post-direction post-navigation--label"><?php echo esc_html__( 'Previous Post', 'reen' ); ?></span>
-                <span class="post-navigation--post-title">%title</span>
+            <?php
+            $next = ob_get_clean();
+            ob_start();
+            ?>
+            <div class="reen-post-nav post-navigation__nav">
+                <div class="reen-post-title prev post-navigation__text">
+                    <span class="post-direction post-navigation--label"><?php echo esc_html__( 'Previous Post', 'reen' ); ?></span>
+                    <span class="post-navigation--post-title">%title</span>
+                </div>
             </div>
-        </div>
-        <?php
-        $prev = ob_get_clean();
-        $args = array(
-            'next_text' => $next,
-            'prev_text' => $prev,
-        );
-        the_post_navigation( $args );
+            <?php
+            $prev = ob_get_clean();
+            $args = array(
+                'next_text' => $next,
+                'prev_text' => $prev,
+            );
+            the_post_navigation( $args );
+        }
     }
 }
 
@@ -899,14 +900,18 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                                     <?php while( $related_post->have_posts() ):
                                         $related_post->the_post(); ?>
                                         <div class="item">
-                                            <figure>  
+                                            <figure> 
 
-                                            <div class="icon-overlay icn-link">
-                                                <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                                                    <span class="icn-more"></span><?php the_post_thumbnail( 'post-thumbnail' ); ?>
-                                                </a>
-                                            </div>                              
-                                                
+                                                <div class="icon-overlay icn-link">
+                                                    <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                                                        <?php if ( has_post_thumbnail() ) {
+                                                        the_post_thumbnail();
+                                                        } else { ?>
+                                                    
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
+                                                       <?php } ?>
+                                                    </a>
+                                                </div>                              
                                                 
                                                 <figcaption class="bordered no-top-border">
                                                     <div class="info">

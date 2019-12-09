@@ -48,7 +48,8 @@
     }
 
     @include media-breakpoint-up(xl) {
-        margin-left: calc(50% - 50vw - 39px);
+        margin-left: calc(50% - 50vw - 38px);
+        margin-right: calc(50% - 50vw + 52.5px);
     }
 }
 
@@ -84,6 +85,10 @@ p[style='font-size:46px'] {
 .wp-block-embed.alignwide * {
     margin-left: auto;
     margin-right: auto;
+}
+
+.wp-block-embed.alignwide figcaption {
+    text-align: center;
 }
 
 .is-type-video.wp-block-embed {

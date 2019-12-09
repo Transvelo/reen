@@ -218,3 +218,18 @@ figure.reen-image-block figcaption {
 .format-link p a {
 	border: none;
 }
+
+.comment-form p.comment-form-cookies-consent {
+	input, label {
+		width: auto;
+	}
+
+	label {
+		float: none;
+		display: inline-block;
+		margin-left: 5px;
+		margin-bottom: 0;
+		font-size: 16px;
+	}
+
+}

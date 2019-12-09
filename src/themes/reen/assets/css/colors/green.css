@@ -35,7 +35,11 @@ ul.circled li:before, .sidebox .widget__title + ul li:before,
 .popular-posts-carousel.owl-carousel:hover .owl-next:hover,
 .related-post-carousel.owl-carousel:hover .owl-prev:hover,
 .related-post-carousel.owl-carousel:hover .owl-next:hover,
-nav > li.active > a {
+nav > li.active > a,
+ul li:before,
+ol li:before,
+.widget__title + ul li:before,
+.menu li:before {
   color: #1ABB9C; }
 
 .tint-bg .btn,
