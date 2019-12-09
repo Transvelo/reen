@@ -1042,7 +1042,8 @@ footer p {
     margin: 0;
 }
 .meta,
-.more {
+.more,
+.custom {
     font-size: 14px;
     font-weight: 400;
 	line-height: 160%;
@@ -4043,11 +4044,12 @@ input:focus:-ms-input-placeholder {
     margin-right: 20px;
 }
 .classic-blog .post .date {
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     line-height: 1;
-    width: 60px;
-    height: 60px;
+    width: 55px;/*60px;*/
+    height: 55px; /*60px;*/
     //border: 1px solid #1ABB9C;
     -webkit-border-radius: 50%;
     border-radius: 50%;

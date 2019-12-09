@@ -141,16 +141,14 @@ function reen_portfolio_thumbnail() {
 if ( ! function_exists( 'reen_loop_portfolio_wrap_end' ) ) {
     function reen_loop_portfolio_wrap_end() {
         $portfolio_view    = reen_get_portfolio_view();
-
+        ?></ul><?php
         if ( $portfolio_view === 'fullscreen' ) {
             ?></div><!-- /.portfolio --><?php
         } else {
-                ?></div><!-- /.portfolio -->
-            </div><!-- /.row -->
-        </div><!-- /.container --><?php
-    }
-
-        ?></ul><?php
+                    ?></div><!-- /.portfolio -->
+                </div><!-- /.row -->
+            </div><!-- /.container --><?php
+        }
     }
 }
 

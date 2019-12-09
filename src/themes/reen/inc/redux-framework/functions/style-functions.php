@@ -111,10 +111,11 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.related-post-carousel.owl-carousel:hover .owl-prev:hover, 
 		.related-post-carousel.owl-carousel:hover .owl-next:hover,
 		nav > li.active > a,
-		ul li:before,
-		ol li:before,
-		.widget__title + ul li:before, 
-		.menu li:before {
+		.site-footer ul li:not(.footer-menu ):before,
+		.site-footer ul li:not(.contacts ):before,
+		.site-footer ol li:before,
+		.site-footer .widget__title + ul li:before, 
+		.site-footer .menu li:before  {
 			color: ' . $primary_color . ';
 		}
 

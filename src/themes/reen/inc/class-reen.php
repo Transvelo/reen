@@ -523,7 +523,7 @@ if ( ! class_exists( 'Reen' ) ) :
             );
 
             $query_args = array(
-                'family' => implode( '|', $google_fonts ),
+                'family' => implode( '%7c', $google_fonts ),
                 'subset' => rawurlencode( 'latin,latin-ext' ),
             );
 
