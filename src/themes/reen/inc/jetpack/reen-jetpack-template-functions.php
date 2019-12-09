@@ -514,7 +514,7 @@ if ( ! function_exists( 'reen_more_works' ) ) {
                             <div class="panel-heading text-center">
                                 <h4 class="panel-title">
                                     <a class="panel-toggle collapsed" href="#content-more-works" data-toggle="collapse">
-                                        <span><?php echo esc_html__( 'More works', 'reen' ); ?></span>
+                                        <span><?php echo esc_html__( 'More projects', 'reen' ); ?></span>
                                     </a>
                                 </h4>
                             </div><!-- /.panel-heading -->
