@@ -33,10 +33,11 @@ if ( post_password_required() ) {
             <?php
                 printf( // WPCS: XSS OK.
                     /* translators: 1: number of comments, 2: post title */
-                    esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'reen' ) ),
+                    esc_html( _nx( '%1$s comment %2$s', '%1$s comments %2$s', get_comments_number(), 'comments title', 'reen' ) ),
                     number_format_i18n( get_comments_number() ),
-                    '<span>' . get_the_title() . '</span>'
+                    '<span class="screen-reader-text">on ' . get_the_title() . '</span>'
                 );
+
             ?>
         </h2>
 
