@@ -1321,8 +1321,8 @@ function debounce(func, wait, immediate) {
     /*===================================================================================*/
 
     $(document).ready(function() {
-        if ($("[rel=tooltip]").length) {
-            $("[rel=tooltip]").tooltip();
+        if ($("[data-rel=tooltip]").length) {
+            $("[data-rel=tooltip]").tooltip();
         }
     });
 

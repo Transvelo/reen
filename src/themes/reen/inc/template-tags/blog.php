@@ -110,9 +110,9 @@ if ( ! function_exists( 'reen_loop_row_wrap_start' ) ) {
             $blog_column_classes = 'col-md-12';
 
         } elseif ( 'sidebar-left' === $blog_layout ) {
-            $blog_column_classes = 'col-lg-9 order-lg-2 inner-left-sm';
+            $blog_column_classes = 'col-lg-9 col-md-8 order-lg-2 inner-left-sm';
         } else  {
-            $blog_column_classes = 'col-lg-9 inner-right-sm';
+            $blog_column_classes = 'col-lg-9 col-md-8 inner-right-sm';
         } 
 
         ?><div class="row"><div class="<?php echo esc_attr( $blog_column_classes ); ?>"><?php
@@ -692,7 +692,7 @@ if ( ! function_exists( 'reen_single_post_author_name' ) ) {
         if( apply_filters( 'reen_show_author_name', true ) ) :
             $current_user_id = get_current_user_id(); 
             ?>
-            <p class="author"><a href="#" title="" data-rel="tooltip" data-placement="left" rel="tooltip" data-original-title="Post author"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
+            <p class="author"><a href="#" title="" data-rel="tooltip" data-placement="left" data-original-title="Post author"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
         <?php
         endif;
 
