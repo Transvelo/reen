@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: REEN 0.0.392\n"
+"Project-Id-Version: REEN 0.0.41\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-04 09:01:30+00:00\n"
+"POT-Creation-Date: 2019-12-09 14:41:36+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,47 +36,395 @@ msgstr ""
 msgid "Add a menu"
 msgstr ""
 
+#: classes/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:337
+#. translators: %s: plugin name.
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:339
+#. translators: %s: plugin name.
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:377
+#. translators: 1: plugin name(s).
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/class-tgm-plugin-activation.php:382
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/class-tgm-plugin-activation.php:387
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:393
+#: classes/class-tgm-plugin-activation.php:912
+#: classes/class-tgm-plugin-activation.php:2618
+#: classes/class-tgm-plugin-activation.php:3668
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:394
+#: classes/class-tgm-plugin-activation.php:3244
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:395
+#: classes/class-tgm-plugin-activation.php:3037
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:397
+#. translators: 1: plugin name.
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:399
+#. translators: 1: plugin name.
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:401
+#. translators: 1: dashboard link.
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:1019
+#: classes/class-tgm-plugin-activation.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2067
+#. translators: %s: version number
+msgid "TGMPA v%s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2358
+msgid "Required"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2361
+msgid "Recommended"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2377
+msgid "WordPress Repository"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2380
+msgid "External Source"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2383
+msgid "Pre-Packaged"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2400
+msgid "Not Installed"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2404
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2406
+msgid "Active"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2412
+msgid "Required Update not Available"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2415
+msgid "Requires Update"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2418
+msgid "Update recommended"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2477
+#. translators: 1: number of plugins.
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/class-tgm-plugin-activation.php:2481
+#. translators: 1: number of plugins.
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/class-tgm-plugin-activation.php:2485
+#. translators: 1: number of plugins.
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: classes/class-tgm-plugin-activation.php:2575
+msgid "Installed version:"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2583
+msgid "Minimum required version:"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2595
+msgid "Available version:"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2618
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2632
+msgid "Plugin"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2633
+msgid "Source"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2634
+msgid "Type"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2638
+msgid "Version"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2639
+msgid "Status"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2688
+#. translators: %2$s: plugin name in screen reader markup
+msgid "Install %2$s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2693
+#. translators: %2$s: plugin name in screen reader markup
+msgid "Update %2$s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2699
+#. translators: %2$s: plugin name in screen reader markup
+msgid "Activate %2$s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2802
+msgid "Install"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2808
+msgid "Update"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2811
+msgid "Activate"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3243
+msgid "Plugin activation failed."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3583
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3586
+#. translators: 1: plugin name, 2: error message.
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3588
+#. translators: 1: plugin name.
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3591
+msgid ""
+"The installation and activation process is starting. This process may take "
+"a while on some hosts, so please be patient."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3593
+#. translators: 1: plugin name.
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3594
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3596
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3599
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3601
+#. translators: 1: plugin name.
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3602
+msgid "All installations have been completed."
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3604
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3608
+msgid "Show Details"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:3608
+msgid "Hide Details"
+msgstr ""
+
 #: comments.php:25
 msgid "Post Comments"
 msgstr ""
 
-#: comments.php:60
+#: comments.php:61
 msgid "Comments are closed."
 msgstr ""
 
-#: comments.php:72
+#: comments.php:73
 msgid "Comment Navigation Below"
 msgstr ""
 
-#: comments.php:73
+#: comments.php:74
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:74
+#: comments.php:75
 msgid "&larr; Older Comments"
 msgstr ""
 
-#: comments.php:75
+#: comments.php:76
 msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: comments.php:89 comments.php:92
+#: comments.php:90 comments.php:93
 msgid "Name"
 msgstr ""
 
-#: comments.php:92 comments.php:98
+#: comments.php:93 comments.php:99
 msgid " (Required)"
 msgstr ""
 
-#: comments.php:95 comments.php:98
+#: comments.php:96 comments.php:99
 msgid "Email"
 msgstr ""
 
-#: comments.php:101 comments.php:103
+#: comments.php:102 comments.php:104
 msgid "Website"
 msgstr ""
 
-#: comments.php:115
+#: comments.php:116
 msgid "Enter your comment ..."
 msgstr ""
 
@@ -84,56 +432,126 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: inc/class-reen.php:131
+#: inc/class-reen.php:132
 msgid "Primary"
 msgstr ""
 
-#: inc/class-reen.php:132
+#: inc/class-reen.php:133
 msgid "Tob Right Menu"
 msgstr ""
 
-#: inc/class-reen.php:133
+#: inc/class-reen.php:134
 msgid "Top Left Menu"
 msgstr ""
 
-#: inc/class-reen.php:134
+#: inc/class-reen.php:135
 msgid "Footer Menu"
 msgstr ""
 
-#: inc/class-reen.php:229
+#: inc/class-reen.php:187 inc/redux-framework/options/style-options.php:36
+msgid "Green"
+msgstr ""
+
+#: inc/class-reen.php:192 inc/redux-framework/options/style-options.php:37
+msgid "Blue"
+msgstr ""
+
+#: inc/class-reen.php:197 inc/redux-framework/options/style-options.php:38
+msgid "Red"
+msgstr ""
+
+#: inc/class-reen.php:202 inc/redux-framework/options/style-options.php:41
+msgid "Orange"
+msgstr ""
+
+#: inc/class-reen.php:207 inc/redux-framework/options/style-options.php:40
+msgid "Purple"
+msgstr ""
+
+#: inc/class-reen.php:212 inc/redux-framework/options/style-options.php:39
+msgid "Pink"
+msgstr ""
+
+#: inc/class-reen.php:217 inc/redux-framework/options/style-options.php:43
+msgid "Navy"
+msgstr ""
+
+#: inc/class-reen.php:222 inc/redux-framework/options/style-options.php:42
+msgid "Gray"
+msgstr ""
+
+#: inc/class-reen.php:286
 msgid "Blog Sidebar"
 msgstr ""
 
-#: inc/class-reen.php:231
+#: inc/class-reen.php:288
 msgid "Add widgets here."
 msgstr ""
 
-#: inc/class-reen.php:247
+#: inc/class-reen.php:304
 msgid "Footer Column %1$d"
 msgstr ""
 
-#: inc/class-reen.php:248
+#: inc/class-reen.php:305
 msgid "Widgets added here will appear in column %1$d of the footer."
 msgstr ""
 
-#: inc/class-reen.php:250
+#: inc/class-reen.php:307
 msgid "Footer Row %1$d - Column %2$d"
 msgstr ""
 
-#: inc/class-reen.php:251
+#: inc/class-reen.php:308
 msgid "Widgets added here will appear in column %1$d of footer row %2$d."
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:506
-msgid "More works"
+#: inc/class-reen.php:615
+msgid "Envato Market"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:586
+#: inc/class-reen.php:626
+msgid "Jetpack by WordPress.com"
+msgstr ""
+
+#: inc/class-reen.php:635
+msgid "MAS Static Content"
+msgstr ""
+
+#: inc/class-reen.php:644
+msgid "One Click Demo Import"
+msgstr ""
+
+#: inc/class-reen.php:653
+msgid "Redux Framework"
+msgstr ""
+
+#: inc/class-reen.php:662
+msgid "Reen Extensions"
+msgstr ""
+
+#: inc/class-reen.php:672
+msgid "Reen Gutenberg Blocks"
+msgstr ""
+
+#: inc/class-reen.php:684
+msgid "WPForms Lite"
+msgstr ""
+
+#: inc/jetpack/reen-jetpack-template-functions.php:515
+msgid "More projects"
+msgstr ""
+
+#: inc/jetpack/reen-jetpack-template-functions.php:595
 msgid "More Videos"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:682
+#: inc/jetpack/reen-jetpack-template-functions.php:691
 msgid "More Audio"
+msgstr ""
+
+#: inc/ocdi/functions.php:36
+msgid ""
+"Import process may take 3-5 minutes. If you facing any issues please "
+"contact our support."
 msgstr ""
 
 #: inc/redux-framework/options/blog-options.php:8
@@ -202,12 +620,18 @@ msgid "Select from the three available layouts for your single blog"
 msgstr ""
 
 #: inc/redux-framework/options/blog-options.php:65
-msgid "Blog Post Author Info"
+msgid "Enable Popular Posts"
 msgstr ""
 
-#: inc/redux-framework/options/blog-options.php:67
-#: inc/redux-framework/options/blog-options.php:75
+#: inc/redux-framework/options/blog-options.php:66
+msgid "Choose if you want to enable popular posts section in blog page"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:68
+#: inc/redux-framework/options/blog-options.php:76
 #: inc/redux-framework/options/blog-options.php:84
+#: inc/redux-framework/options/blog-options.php:92
+#: inc/redux-framework/options/blog-options.php:101
 #: inc/redux-framework/options/footer-options.php:25
 #: inc/redux-framework/options/header-options.php:20
 #: inc/redux-framework/options/header-options.php:30
@@ -216,9 +640,11 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: inc/redux-framework/options/blog-options.php:68
-#: inc/redux-framework/options/blog-options.php:76
+#: inc/redux-framework/options/blog-options.php:69
+#: inc/redux-framework/options/blog-options.php:77
 #: inc/redux-framework/options/blog-options.php:85
+#: inc/redux-framework/options/blog-options.php:93
+#: inc/redux-framework/options/blog-options.php:102
 #: inc/redux-framework/options/footer-options.php:26
 #: inc/redux-framework/options/header-options.php:21
 #: inc/redux-framework/options/header-options.php:31
@@ -227,15 +653,23 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: inc/redux-framework/options/blog-options.php:73
-msgid "Blog Social Sharing"
-msgstr ""
-
-#: inc/redux-framework/options/blog-options.php:81
-msgid "Enable Related Posts"
+#: inc/redux-framework/options/blog-options.php:74
+msgid "Blog Post Author Info"
 msgstr ""
 
 #: inc/redux-framework/options/blog-options.php:82
+msgid "Enable Post Navigation"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:90
+msgid "Blog Social Sharing"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:98
+msgid "Enable Related Posts"
+msgstr ""
+
+#: inc/redux-framework/options/blog-options.php:99
 msgid "Choose if you want to enable related posts section in single blog post"
 msgstr ""
 
@@ -315,6 +749,23 @@ msgstr ""
 
 #: inc/redux-framework/options/footer-options.php:86
 msgid "&copy; %s REEN. All Rights Reserved."
+msgstr ""
+
+#: inc/redux-framework/options/general-options.php:8
+#: inc/redux-framework/options/style-options.php:16
+msgid "General"
+msgstr ""
+
+#: inc/redux-framework/options/general-options.php:12
+msgid "Scroll To Top"
+msgstr ""
+
+#: inc/redux-framework/options/general-options.php:15
+msgid "Enabled"
+msgstr ""
+
+#: inc/redux-framework/options/general-options.php:16
+msgid "Disabled"
 msgstr ""
 
 #: inc/redux-framework/options/header-options.php:4
@@ -404,10 +855,6 @@ msgstr ""
 msgid "Styling"
 msgstr ""
 
-#: inc/redux-framework/options/style-options.php:16
-msgid "General"
-msgstr ""
-
 #: inc/redux-framework/options/style-options.php:17
 msgid "General Theme Style Settings"
 msgstr ""
@@ -422,38 +869,6 @@ msgstr ""
 
 #: inc/redux-framework/options/style-options.php:32
 msgid "The main color of the site."
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:36
-msgid "Green"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:37
-msgid "Blue"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:38
-msgid "Red"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:39
-msgid "Pink"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:40
-msgid "Purple"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:41
-msgid "Orange"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:42
-msgid "Gray"
-msgstr ""
-
-#: inc/redux-framework/options/style-options.php:43
-msgid "Navy"
 msgstr ""
 
 #: inc/redux-framework/options/style-options.php:51
@@ -512,7 +927,7 @@ msgstr ""
 msgid "Edit menu item"
 msgstr ""
 
-#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:983
+#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1021
 msgid "Edit"
 msgstr ""
 
@@ -611,82 +1026,82 @@ msgstr ""
 msgid "WHO WE ARE"
 msgstr ""
 
-#: inc/template-tags/blog.php:306 inc/template-tags.php:62
+#: inc/template-tags/blog.php:305 inc/template-tags.php:62
 #. translators: used between list items, there is a space after the comma
 msgid ", "
 msgstr ""
 
-#: inc/template-tags/blog.php:321
+#: inc/template-tags/blog.php:320
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags/blog.php:321
+#: inc/template-tags/blog.php:320
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags/blog.php:321
+#: inc/template-tags/blog.php:320
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags/blog.php:336
+#: inc/template-tags/blog.php:335
 msgid "Read More"
 msgstr ""
 
-#: inc/template-tags/blog.php:404
+#: inc/template-tags/blog.php:424
 msgid "Continue reading %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:409 inc/template-tags/page.php:62
+#: inc/template-tags/blog.php:429 inc/template-tags/page.php:62
 msgid "Pages:"
 msgstr ""
 
-#: inc/template-tags/blog.php:591
+#: inc/template-tags/blog.php:612
 msgid "Popular posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:694
+#: inc/template-tags/blog.php:717
 msgid "About the author"
 msgstr ""
 
-#: inc/template-tags/blog.php:700
+#: inc/template-tags/blog.php:723
 msgid "All posts by %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:719
+#: inc/template-tags/blog.php:742
 msgid "Add me on Facebook"
 msgstr ""
 
-#: inc/template-tags/blog.php:726
+#: inc/template-tags/blog.php:749
 msgid "Add me on Google Plus"
 msgstr ""
 
-#: inc/template-tags/blog.php:732
+#: inc/template-tags/blog.php:755
 msgid "Follow me on Twitter"
 msgstr ""
 
-#: inc/template-tags/blog.php:783
+#: inc/template-tags/blog.php:806
 msgid "Next Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:794
+#: inc/template-tags/blog.php:817
 msgid "Previous Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:843
+#: inc/template-tags/blog.php:867
 msgid "Related posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:958
+#: inc/template-tags/blog.php:996
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags/blog.php:1012
+#: inc/template-tags/blog.php:1050
 msgid ""
 "This content is password protected. To view it please enter your password "
 "below:"
 msgstr ""
 
-#: inc/template-tags/blog.php:1014
+#: inc/template-tags/blog.php:1052
 msgid "Password:"
 msgstr ""
 
@@ -756,30 +1171,55 @@ msgstr ""
 msgid "MadrasThemes"
 msgstr ""
 
-#: comments.php:36
-#. translators: 1: number of comments, 2: post title
-msgctxt "comments title"
-msgid "%1$s comment on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
+#: classes/class-tgm-plugin-activation.php:1206
+#: classes/class-tgm-plugin-activation.php:3033
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2427
+#. translators: 1: install status, 2: update status
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: classes/class-tgm-plugin-activation.php:2473
+#. translators: 1: number of plugins.
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:115
+#: classes/class-tgm-plugin-activation.php:2567
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: comments.php:36
+#. translators: 1: number of comments, 2: post title
+msgctxt "comments title"
+msgid "%1$s comment %2$s"
+msgid_plural "%1$s comments %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:116
 msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:448
+#: inc/jetpack/reen-jetpack-template-functions.php:457
 msgctxt "Post custom field name"
 msgid "%s:"
 msgstr ""
 
-#: inc/template-tags/blog.php:532
+#: inc/template-tags/blog.php:552
 msgctxt "Next post"
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags/blog.php:533
+#: inc/template-tags/blog.php:553
 msgctxt "Previous post"
 msgid "Prev"
 msgstr ""

@@ -671,9 +671,10 @@ if ( ! class_exists( 'Reen' ) ) :
                 array(
                     'name'                  => esc_html__( 'Reen Gutenberg Blocks', 'reen' ),
                     'slug'                  => 'reen-gutenberg-blocks',
-                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
+                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/
+                    reen-gutenberg-blocks.zip',
                     // 'version'               => $reen_version,
-                    'version'               => '0.0.23',
+                    'version'               => '0.0.24',
                     'force_activation'      => false,
                     'force_deactivation'    => false,
                     'required'              => true
