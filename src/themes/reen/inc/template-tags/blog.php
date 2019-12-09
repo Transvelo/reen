@@ -960,7 +960,8 @@ if ( ! function_exists( 'reen_comment' ) ) {
             $tag       = 'li';
             $add_below = 'div-comment';
         }
-        $comment_author_url = get_comment_author_url();
+        $comment_author_url = get_comment_author_url($comment);
+
         ?>
         <<?php echo esc_attr( $tag ); ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID(); ?>">
         <?php if ( 'comment' === get_comment_type() ) : ?>
@@ -977,7 +978,16 @@ if ( ! function_exists( 'reen_comment' ) ) {
         <?php endif; ?>
         <div class="comment-body commentbody">
             <div class="author comment-author vcard">
-                <?php printf( wp_kses_post( '<h3 class="fn">%s</h3>', 'reen' ), get_comment_author_link() ); ?>
+                <h3 class="fn">
+                    <?php if ( ! empty( $comment_author_url ) ) : ?>
+                       <a href="<?php echo esc_url( $comment_author_url ); ?>">
+                    <?php endif; ?>
+                       <?php echo get_comment_author( $comment ); ?>
+                    <?php if ( ! empty( $comment_author_url ) ) : ?>
+                       </a>
+                    <?php endif; ?>
+                </h3>
+
                 <div class="meta">
                     <a href="<?php echo esc_url( htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ); ?>" class="comment-date date">
                         <?php echo '<time datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>'; ?>

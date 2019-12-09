@@ -129,7 +129,7 @@ if ( ! function_exists( 'reen_footer_logo' ) ) :
             if ( apply_filters( 'reen_use_footer_svg_logo_with_site_title', true ) ) {
                 ?>
                 <?php the_custom_logo(); ?>
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.svg" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.svg" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a>
                 <?php
             } 
         }

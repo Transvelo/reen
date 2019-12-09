@@ -58,7 +58,7 @@
                     <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
                         <?php the_custom_logo(); ?>
                     <?php else : ?> 
-                        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a>
                     <?php endif; ?>
                     <?php if( apply_filters( 'reen_handheld_offcanvas_menu', true ) ) : ?>
                         <a class="navbar-toggler btn responsive-menu float-right" data-toggle="collapse" data-target=".navbar-collapse"><i class='<?php echo esc_attr( apply_filters( 'reen_handheld_offcanvas_menu_icon_class', 'icon-menu-1' ) ); ?>'></i></a>
@@ -72,7 +72,7 @@
                         <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) : ?>
                         <?php the_custom_logo(); ?>
                         <?php else : ?> 
-                            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" height="40px" /></a>
+                            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a>
                         <?php endif; ?>
                         <?php
                         wp_nav_menu( array(
