@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.399
+Version:           0.0.4
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -13462,15 +13462,15 @@ p a.txt-btn {
 .site-footer .sidebar .widget_product_search form.search {
   margin: 0; }
 
-.site-footer ul li:not(.footer-menu),
-.site-footer ul li:not(.contacts),
+.site-footer ul:not(.footer-menu) li,
+.site-footer ul:not(.contacts) li,
 .site-footer ol li,
 .site-footer .widget__title + ul li,
 .site-footer .menu li {
   margin-bottom: 5px; }
 
-.site-footer ul li:not(.footer-menu):before,
-.site-footer ul li:not(.contacts):before,
+.site-footer ul:not(.footer-menu) li:before,
+.site-footer ul:not(.contacts) li:before,
 .site-footer ol li:before,
 .site-footer .widget__title + ul li:before,
 .site-footer .menu li:before {

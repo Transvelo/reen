@@ -149,16 +149,16 @@
 	}
 
 
-	ul li:not(.footer-menu ),
-	ul li:not(.contacts ),
+	ul:not(.footer-menu ) li,
+	ul:not(.contacts ) li,
 	ol li,
 	.widget__title + ul li, 
 	.menu li {
 		margin-bottom: 5px;
 	}
 
-	ul li:not(.footer-menu ):before,
-	ul li:not(.contacts ):before,
+	ul:not(.footer-menu ) li:before,
+	ul:not(.contacts ) li:before,
 	ol li:before,
 	.widget__title + ul li:before, 
 	.menu li:before {
