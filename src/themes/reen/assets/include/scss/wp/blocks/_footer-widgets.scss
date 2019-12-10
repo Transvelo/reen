@@ -149,27 +149,25 @@
 	}
 
 
-	ul:not(.footer-menu ) li,
-	ul:not(.contacts ) li,
+	ul:not(.footer-menu):not(.contacts) li,
 	ol li,
 	.widget__title + ul li, 
 	.menu li {
 		margin-bottom: 5px;
 	}
 
-	ul:not(.footer-menu ) li:before,
-	ul:not(.contacts ) li:before,
-	ol li:before,
-	.widget__title + ul li:before, 
-	.menu li:before {
-	    font-family: 'fontello-circle';
-	    content: '\e800';
-	    font-size: 8px;
-	    font-weight: normal;
-	    padding-top: 1px;
-		margin-left: -20px;
-	    vertical-align: top;
-		position: absolute;
-	}
+ //    ul:not(.footer-menu):not(.contacts) li:before,
+	// ol li:before,
+	// .widget__title + ul li:before, 
+	// .menu li:before {
+	//     font-family: 'fontello-circle';
+	//     content: '\e800';
+	//     font-size: 8px;
+	//     font-weight: normal;
+	//     padding-top: 1px;
+	// 	margin-left: -20px;
+	//     vertical-align: top;
+	// 	position: absolute;
+	// }
 
 }
