@@ -237,7 +237,8 @@ footer ul.contacts li {
 	height: 80px;
 	font-size: 20px;
 }
-#hero h1 {
+#hero h1 ,
+#section-hero h1 {
 	font-size: 78px;
 	line-height: 110%;
 	font-weight: 900;
@@ -259,7 +260,8 @@ footer ul.contacts li {
 	font-size: 33px;
 	line-height: 120%;
 }
-#hero p {
+#hero p,
+#section-hero p {
 	font-size: 24px;
 	line-height: 150%;
 	font-weight: 400;
@@ -5630,12 +5632,14 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
 	#owl-main.height-lg .item {
 		height: 88vh;
 	}
-	#hero h1 {
+	#hero h1,
+	#section-hero h1 {
 		font-size: 38px;
 		line-height: 115%;
 		letter-spacing: 0.031em;
 	}
-	#hero p {
+	#hero p,
+	#section-hero p {
 		font-size: 20px;
 		line-height: 135%;
 		margin-top: 15px;
@@ -6105,11 +6109,13 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
 	#owl-main .item {
 		height: 480px;
 	}
-	#hero h1 {
+	#hero h1,
+	#section-hero h1 {
 		font-size: 60px;
 		line-height: 115%;
 	}
-	#hero p {
+	#hero p,
+	#section-hero p {
 		font-size: 22px;
 		line-height: 135%;
 		margin-top: 17px;
