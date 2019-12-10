@@ -622,7 +622,7 @@ function debounce(func, wait, immediate) {
             });
         }
 
-        function heroCarouselOptions() {
+        function heroCarouselOptions( currentObj ) {
             const defaultCarouselOptions = {
                 animateIn: 'fadeIn',
                 autoplay: true,
@@ -639,7 +639,7 @@ function debounce(func, wait, immediate) {
                 navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
             }
 
-            const carouselJson = $(this).data('data-owl-carousel');
+            const carouselJson = currentObj.attr('data-owl-carousel');
 
             const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
 
@@ -752,7 +752,7 @@ function debounce(func, wait, immediate) {
             if( $(this).hasClass('owl-loaded') ) {
                 $(this).find('.owl-nav, .owl-dots').unwrap();
             }
-            $(this).owlCarousel(heroCarouselOptions());
+            $(this).owlCarousel(heroCarouselOptions($(this)));
         });
 
         $('#transitionType li a').click(function() {
@@ -766,7 +766,7 @@ function debounce(func, wait, immediate) {
                 $(owlElementID).find('.owl-nav, .owl-dots').unwrap();
                 $(owlElementID).trigger('destroy.owl.carousel');
                 $(owlElementID).html($(owlElementID).find('.owl-stage-outer').html()).removeClass('owl-loaded');
-                $(owlElementID).owlCarousel({ ...heroCarouselOptions(), animateIn: newValue });
+                $(owlElementID).owlCarousel({ ...heroCarouselOptions($(this)), animateIn: newValue });
                 $(owlElementID).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
                 $(owlElementID).trigger('next.owl.carousel');
                 $(owlElementID).trigger('prev.owl.carousel');
