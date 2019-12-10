@@ -118,20 +118,21 @@ if ( ! function_exists( 'reen_footer_logo' ) ) :
      *
      */
     function reen_footer_logo() {
-        $seperate_logo = apply_filters( 'reen_separate_footer_logo', '' );
-        if( apply_filters( 'reen_enable_seperate_footer_logo', true ) && !empty( $seperate_logo ) ) {
-            ?><a class="mb-3 d-inline-block" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php
-                echo wp_get_attachment_image( $seperate_logo['id'], array( get_theme_support( 'custom-logo', 'width' ), get_theme_support( 'custom-logo', 'height' ) ) );
-            ?></a><?php
-        } elseif( has_custom_logo() ) {
-            the_custom_logo();
-        } elseif ( apply_filters( 'reen_use_footer_svg_logo', true ) ) {
-            if ( apply_filters( 'reen_use_footer_svg_logo_with_site_title', true ) ) {
-                ?>
-                <?php the_custom_logo(); ?>
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.svg" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a>
-                <?php
-            } 
+
+        if (current_theme_supports('custom-logo') && has_custom_logo() ) {
+           the_custom_logo(); 
+        } elseif ( function_exists( 'jetpack_has_site_logo' ) && jetpack_has_site_logo() ) {
+            jetpack_the_site_logo();
+        } elseif ( apply_filters( 'reen_site_logo_svg', false ) ) { ?>
+           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.svg" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a><?php
+        } else {
+            echo '<span class="logo-text navbar-brand">';
+            ?>
+            <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+            <?php if ( '' != get_bloginfo( 'description' ) ) : ?>
+                <p class="site-description sr-only"><?php bloginfo( 'description' ); ?></p>
+            <?php endif;
+            echo '</span>';
         }
     }
 endif;
@@ -140,7 +141,7 @@ if ( ! function_exists( 'reen_footer_site_description' ) ) {
     function reen_footer_site_description() {
         $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ), 'reen' ) );
         ?>
-            <?php echo wp_kses_post( $footer_site_description ); ?>
+            <p><?php echo wp_kses_post( $footer_site_description ); ?></p>
         <?php
     }
 }    

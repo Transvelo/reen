@@ -47,8 +47,7 @@ function reen_get_project_types( $portfolio_id ) {
 function reen_show_jetpack_share() {
     if ( function_exists( 'sharing_display' ) ) {
         sharing_display( '', true );
-    }
-    
+    }  
 }
 
 function reen_show_jetpack_likes() {

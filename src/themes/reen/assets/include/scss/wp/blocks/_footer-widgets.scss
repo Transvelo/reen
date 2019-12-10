@@ -156,6 +156,11 @@
 		margin-bottom: 5px;
 	}
 
+	ul,
+	ol {
+		padding-left: 0;
+	}
+
  //    ul:not(.footer-menu):not(.contacts) li:before,
 	// ol li:before,
 	// .widget__title + ul li:before, 
