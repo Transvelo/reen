@@ -75,35 +75,26 @@ if ( ! class_exists( 'Reen' ) ) :
              * @link https://codex.wordpress.org/Theme_Logo
              */
 
-            add_theme_support(
-                'custom-logo', apply_filters(
-                    'reen_custom_logo_args', array(
-                        'height'      => 250,
-                        'width'       => 250,
-                        'flex-width'  => true,
-                        'flex-height' => true,
-                    )
-                )
-            );
+            add_theme_support( 'custom-logo', apply_filters( 'reen_custom_logo_args', array(
+                'height'      => 40,
+                'width'       => 160,
+                'flex-width'  => true,
+            ) ) );
 
 
             /*
              * Enable support for Post Formats.
             */
-            add_theme_support(
-                'post-formats',
-                array(
-                    'aside',
-                    'image',
-                    'gallery',
-                    'video',
-                    'audio',
-                    'quote',
-                    'link',
-                    'status',
-                    
-                )
-            );
+            add_theme_support( 'post-formats', apply_filters( 'reen_post_format_supports', array(
+                'aside',
+                'image',
+                'gallery',
+                'video',
+                'audio',
+                'quote',
+                'link',
+                'status',
+            ) ) );
 
 
             // Declare WooCommerce support.
@@ -126,33 +117,25 @@ if ( ! class_exists( 'Reen' ) ) :
              */
 
              // This theme uses wp_nav_menu() in one location.
-            register_nav_menus(
-                apply_filters(
-                    'reen_register_nav_menus', array(
-						'primary' => esc_html__( 'Primary', 'reen' ),
-                        'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
-                        'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
-                        'footer_menu' => esc_html__( 'Footer Menu', 'reen' ),
-                    )
-                )
-            );
+            register_nav_menus( apply_filters( 'reen_register_nav_menus', array(
+				'primary' => esc_html__( 'Primary', 'reen' ),
+                'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
+                'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
+                'footer_menu' => esc_html__( 'Footer Menu', 'reen' ),
+            ) ) );
 
             /*
              * Switch default core markup for search form, comment form, comments, galleries, captions and widgets
              * to output valid HTML5.
              */
-            add_theme_support(
-                'html5', apply_filters(
-                    'reen_html5_args', array(
-                        'search-form',
-                        'comment-form',
-                        'comment-list',
-                        'gallery',
-                        'caption',
-                        'widgets',
-                    )
-                )
-            );
+            add_theme_support( 'html5', apply_filters( 'reen_html5_args', array(
+                'search-form',
+                'comment-form',
+                'comment-list',
+                'gallery',
+                'caption',
+                'widgets',
+            ) ) );
 
             /**
              * Declare support for title theme feature.
@@ -671,10 +654,9 @@ if ( ! class_exists( 'Reen' ) ) :
                 array(
                     'name'                  => esc_html__( 'Reen Gutenberg Blocks', 'reen' ),
                     'slug'                  => 'reen-gutenberg-blocks',
-                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/
-                    reen-gutenberg-blocks.zip',
+                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
                     // 'version'               => $reen_version,
-                    'version'               => '0.0.24',
+                    'version'               => '0.0.241',
                     'force_activation'      => false,
                     'force_deactivation'    => false,
                     'required'              => true

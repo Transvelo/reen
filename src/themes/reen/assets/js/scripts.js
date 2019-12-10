@@ -49,6 +49,66 @@ function debounce(func, wait, immediate) {
     }
 }
 
+// Scroll Up / Scroll to Top Function
+! function(a, b, c) {
+    a.fn.scrollUp = function(b) {
+        a.data(c.body, "scrollUp") || (a.data(c.body, "scrollUp", !0), a.fn.scrollUp.init(b))
+    }, a.fn.scrollUp.init = function(d) {
+        var e = a.fn.scrollUp.settings = a.extend({}, a.fn.scrollUp.defaults, d),
+            f = e.scrollTitle ? e.scrollTitle : e.scrollText,
+            g = a("<a/>", {
+                id: e.scrollName,
+                href: "#top"
+                /*,
+                                title: f*/
+            }).appendTo("body");
+        e.scrollImg || g.html(e.scrollText), g.css({
+            display: "none",
+            position: "fixed",
+            zIndex: e.zIndex
+        }), e.activeOverlay && a("<div/>", {
+            id: e.scrollName + "-active"
+        }).css({
+            position: "absolute",
+            top: e.scrollDistance + "px",
+            width: "100%",
+            borderTop: "1px dotted" + e.activeOverlay,
+            zIndex: e.zIndex
+        }).appendTo("body"), scrollEvent = a(b).scroll(function() {
+            switch (scrollDis = "top" === e.scrollFrom ? e.scrollDistance : a(c).height() - a(b).height() - e.scrollDistance, e.animation) {
+                case "fade":
+                    a(a(b).scrollTop() > scrollDis ? g.fadeIn(e.animationInSpeed) : g.fadeOut(e.animationOutSpeed));
+                    break;
+                case "slide":
+                    a(a(b).scrollTop() > scrollDis ? g.slideDown(e.animationInSpeed) : g.slideUp(e.animationOutSpeed));
+                    break;
+                default:
+                    a(a(b).scrollTop() > scrollDis ? g.show(0) : g.hide(0))
+            }
+        }), g.click(function(b) {
+            b.preventDefault(), a("html, body").animate({
+                scrollTop: 0
+            }, e.scrollSpeed, e.easingType)
+        })
+    }, a.fn.scrollUp.defaults = {
+        scrollName: "scrollUp",
+        scrollDistance: 300,
+        scrollFrom: "top",
+        scrollSpeed: 300,
+        easingType: "linear",
+        animation: "fade",
+        animationInSpeed: 200,
+        animationOutSpeed: 200,
+        scrollText: "Scroll to top",
+        scrollTitle: !1,
+        scrollImg: !1,
+        activeOverlay: !1,
+        zIndex: 2147483647
+    }, a.fn.scrollUp.destroy = function(d) {
+        a.removeData(c.body, "scrollUp"), a("#" + a.fn.scrollUp.settings.scrollName).remove(), a("#" + a.fn.scrollUp.settings.scrollName + "-active").remove(), a.fn.jquery.split(".")[1] >= 7 ? a(b).off("scroll", d) : a(b).unbind("scroll", d)
+    }, a.scrollUp = a.fn.scrollUp
+}(jQuery, window, document);
+
 (function($, window) {
 
     // Call Resize Function
@@ -183,15 +243,16 @@ function debounce(func, wait, immediate) {
     /*  FIXED NAVIGATION (BOOTSTRAP AFFIX)
     /*===================================================================================*/
     $(document).ready(function() {
-        var affixElementDesktop = '.navbar-collapse',
-            affixElementDesktopHeight = affixElementDesktop,
-            affixElementDesktopOffset = '.navbar-header',
-            affixElementMobile = '.navbar',
-            affixElementMobileHeight = '.navbar-header',
-            affixElementMobileNav = '.navbar-nav',
-            affixElementMobileNavBtn = '.navbar-toggler',
-            bodyScrollDisableClass = 'body-scroll-disabled';
 
+        var affixElementDesktop         = '.navbar-collapse',
+            affixElementDesktopHeight   = affixElementDesktop,
+            affixElementDesktopOffset   = '.navbar-header',
+            affixElementMobile          = '.navbar',
+            affixElementMobileHeight    = '.navbar-header',
+            affixElementMobileNav       = '.navbar-nav',
+            affixElementMobileNavBtn    = '.navbar-toggler',
+            bodyScrollDisableClass      = 'body-scroll-disabled';
+        
         function affixNav(el, elHeight, elOffset) {
             $(window).off('.affix');
             $('.affix, .affix-top').unwrap();
@@ -199,30 +260,14 @@ function debounce(func, wait, immediate) {
                 .removeData('bs.affix')
                 .removeClass('affix affix-top');
 
-            $(el).affix({
-                offset: {
-                    top: $(elOffset).outerHeight(true) || 0
-                }
-            });
+            $(el).affix({ offset: { top: $(elOffset).outerHeight(true) || 0 } });
 
             $('.affix, .affix-top')
                 .wrap('<div class="affix-wrapper"></div>')
                 .parent().css('min-height', $(elHeight).outerHeight(true) || 0);
         }
-
-        if (cssBreakpoint('md')) {
-            if (switchedBreakpoint()) {
-                affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
-            }
-        } else if (cssBreakpoint('xs')) {
-            var $affixElementMobileNavHeight = screen.height - $(affixElementMobileHeight).outerHeight(true);
-            if ($('#wpadminbar').outerHeight(true)) {
-                $affixElementMobileNavHeight -= $('#wpadminbar').outerHeight(true);
-            }
-            $(affixElementMobileNav).css('height', $affixElementMobileNavHeight || 0);
-        }
-
-        $(window).resize(debounce(function() {
+        
+        $(window).resize(debounce(function () {
             if (cssBreakpoint('md')) {
                 if (switchedBreakpoint()) {
                     $(affixElementMobileNav).css('height', '');
@@ -232,7 +277,8 @@ function debounce(func, wait, immediate) {
                         $('html').removeClass(bodyScrollDisableClass);
                     }
                 }
-            } else if (cssBreakpoint('xs')) {
+            }
+            else if (cssBreakpoint('xs')) {
                 if (switchedBreakpoint()) {
                     affixNav(affixElementMobile, affixElementMobileHeight);
                     if ($(affixElementDesktop).hasClass('show')) {
@@ -244,12 +290,12 @@ function debounce(func, wait, immediate) {
             }
         })).resize();
 
-        $(affixElementDesktop).on('show.bs.collapse', function() {
+        $(affixElementDesktop).on('show.bs.collapse', function(){
             enableSelectedScroll(true, affixElementMobileNav);
             $('html').addClass(bodyScrollDisableClass);
         });
 
-        $(affixElementDesktop).on('hide.bs.collapse', function() {
+        $(affixElementDesktop).on('hide.bs.collapse', function(){
             enableSelectedScroll(false, affixElementMobileNav);
             $('html').removeClass(bodyScrollDisableClass);
         });
@@ -261,48 +307,49 @@ function debounce(func, wait, immediate) {
     /*  HEADER RESIZE
     /*===================================================================================*/
     $(document).ready(function() {
+
         // Settings
-        var topHeaderHeight = $('.navbar-header').outerHeight(true), // ------- Get Height of Element that is not fixed and not being changed — used for Delay before Element starts changing
-            objectStyles = {
-                navbarPadTop: { // -------------------------------------------- Custom Element/Object Name — type what you want
-                    element: '.navbar .navbar-collapse', // ------------------  CSS Class of Element that is being changed
-                    style: 'padding-top', // -------------------------------    CSS Style that is being changed
-                    start: 'currentValueFromCSS', // -----------------------    Change from e.g. 30 (Pixels) — if a String/Text is entered then the current Value from CSS File is being taken
-                    end: 0, // -------------------------------------------  Change to e.g. 0 (Pixels)
-                    distance: 300, // ----------------------------------------- Element is being resized for e.g. 300 (Pixels) scrolled
-                    delay: topHeaderHeight // ------------------------------    Delay before Element starts changing e.g. 50 (Pixels)
+        var topHeaderHeight     = $('.navbar-header').outerHeight(true), // ------- Get Height of Element that is not fixed and not being changed — used for Delay before Element starts changing
+            objectStyles        = {
+                navbarPadTop    : { // -------------------------------------------- Custom Element/Object Name — type what you want
+                    element     : '.navbar .navbar-collapse', // ------------------ CSS Class of Element that is being changed
+                    style       : 'padding-top', // ------------------------------- CSS Style that is being changed
+                    start       : 'currentValueFromCSS', // ----------------------- Change from e.g. 30 (Pixels) — if a String/Text is entered then the current Value from CSS File is being taken
+                    end         : 0, // ------------------------------------------- Change to e.g. 0 (Pixels)
+                    distance    : 300, // ----------------------------------------- Element is being resized for e.g. 300 (Pixels) scrolled
+                    delay       : topHeaderHeight // ------------------------------ Delay before Element starts changing e.g. 50 (Pixels)
                 },
-                navbarPadBot: {
-                    element: '.navbar .navbar-collapse',
-                    style: 'padding-bottom',
-                    start: 'currentValueFromCSS',
-                    end: 0,
-                    distance: 300,
-                    delay: topHeaderHeight
+                navbarPadBot    : {
+                    element     : '.navbar .navbar-collapse',
+                    style       : 'padding-bottom',
+                    start       : 'currentValueFromCSS',
+                    end         : 0,
+                    distance    : 300,
+                    delay       : topHeaderHeight
                 },
-                navbarLogoH: {
-                    element: '.navbar-brand img',
-                    style: 'height',
-                    start: 'currentValueFromCSS',
-                    end: 20,
-                    distance: 300,
-                    delay: topHeaderHeight
+                navbarLogoH     : {
+                    element     : '.navbar-brand img',
+                    style       : 'height',
+                    start       : 'currentValueFromCSS',
+                    end         : 20,
+                    distance    : 300,
+                    delay       : topHeaderHeight
                 }
             },
-            scrolledFromTop = 0,
-            running = false;
-
+            scrolledFromTop     = 0,
+            running             = false;
+        
         function initialize() {
             $.each(objectStyles, function(obj, prop) {
-                prop.start = typeof prop.start === 'string' ? parseInt($(prop.element).css(prop.style), 10) : prop.start;
-                prop.maxChange = prop.start - prop.end;
-                prop.scrollRatio = prop.maxChange / prop.distance;
-                prop.animTriggered = false;
-                prop.animFinished = false;
+                prop.start              = typeof prop.start === 'string' ? parseInt($(prop.element).css(prop.style), 10) : prop.start;
+                prop.maxChange          = prop.start - prop.end;
+                prop.scrollRatio        = prop.maxChange / prop.distance;
+                prop.animTriggered      = false;
+                prop.animFinished       = false;
                 $(prop.element).addClass('animate');
             });
         }
-
+        
         function destroy() {
             $.each(objectStyles, function(obj, prop) {
                 $(prop.element)
@@ -310,10 +357,10 @@ function debounce(func, wait, immediate) {
                     .removeClass('animate animate-after');
             });
         }
-
+        
         function resizeHeader() {
-            scrolledFromTop = $(document).scrollTop();
-            running = false;
+            scrolledFromTop     = $(document).scrollTop();
+            running             = false;
             $.each(objectStyles, function(obj, prop) {
                 if (scrolledFromTop > prop.delay) {
                     if (!prop.animTriggered) prop.animTriggered = true;
@@ -325,42 +372,42 @@ function debounce(func, wait, immediate) {
                             prop.animFinished = false;
                             $(prop.element).removeClass('animate-after');
                         }
-                    } else if (!prop.animFinished) {
+                    }
+                    else if (!prop.animFinished) {
                         prop.animFinished = true;
                         $(prop.element)
                             .css(prop.style, prop.end + 'px')
                             .addClass('animate-after');
                     }
-                } else if (prop.animTriggered) {
+                }
+                else if (prop.animTriggered) {
                     prop.animTriggered = false;
                     $(prop.element).css(prop.style, prop.start + 'px');
                 }
             });
         }
-
+        
         if (cssBreakpoint('md')) {
             initialize();
             var initialized = true;
-        } else var initialized = false;
-
-        $(window).resize(debounce(function() {
+        }
+        else var initialized = false;
+        
+        $(window).resize(debounce(function () {
             if (cssBreakpoint('md') && !initialized) {
                 initialize();
                 resizeHeader();
                 initialized = true;
-            } else if (cssBreakpoint('xs') && initialized) {
+            }
+            else if (cssBreakpoint('xs') && initialized) {
                 destroy();
                 initialized = false;
             }
         }));
-
-        $(window).scroll(function() {
+        
+        $(window).scroll(function () {
             if (cssBreakpoint('md') && !running) window.requestAnimationFrame(resizeHeader);
             running = true;
-        });
-
-        $(document).scroll(function() {
-            if (cssBreakpoint('md') && !running) resizeHeader();
         });
 
     });
@@ -739,133 +786,6 @@ function debounce(func, wait, immediate) {
             pagination: false
         });
 
-        // $('#transitionType li a').click(function () {
-
-        //     $('#transitionType li a').removeClass('active');
-        //     $(this).addClass('active');
-
-        //     var newValue = $(this).attr('data-animation');
-
-        //     $(owlElementID).attr("data-owl-carousel").animateOut(newValue);
-        //     $(owlElementID).trigger("owl.next");
-
-        //     return false;
-
-        // });
-
-
-        // $("#owl-testimonials").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  singleItem: true,
-        //  addClassActive: true,
-        //  autoHeight: true,
-        //  animateOut: "fadeInAfterOut",
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-
-        // $("#owl-featured-works").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  singleItem: true,
-        //  addClassActive: true,
-        //  autoHeight: true,
-        //  animateOut: "slideInDown",
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-
-        // $("#owl-projects").owlCarousel({
-        //  navigation: false,
-        //  autoHeight: true,
-        //  slideSpeed: 300,
-        //  paginationSpeed: 400,
-        //  rewindNav: false,
-        //  singleItem: true,
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-latest-works").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  items: 4,
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-videos").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  items: 5,
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-audio").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  items: 5,
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-
-        // $("#hero-carousel").owlCarousel({
-        //     autoplay           :true,
-        //        autoplayTimeout    : 5000,
-        //        autoplayHoverPause  : true,
-        //        nav: true,
-        //        dots: true,
-        //        rewind: true,
-        //        items: 5,
-        //        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-
-        // var clientsCarousel = $('#owl-clients');
-
-        // clientsCarousel.owlCarousel({
-
-        //     autoplay           :true,
-        //     autoplayTimeout    : 5000,
-        //     autoplayHoverPause  : true,
-        //     nav: true,
-        //     dots: true,
-        //     rewind: true,
-        //     items: 8,
-        //     navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
-        //     responsive:{
-        //         0:{
-        //             items:1
-        //         },
-        //         480:{
-        //             items:2
-        //         },
-        //         768:{
-        //             items:3
-        //         },
-        //         1199:{
-        //             items:4
-        //         }
-        //     }
-        // });
-
-        // Wrap around nav & dots
-        // clientsCarousel.each(function(index) {
-        //     $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
-        // });
-
         var reenCarousel = $('.owl-carousel');
 
         reenCarousel.each(function(index) {
@@ -891,131 +811,6 @@ function debounce(func, wait, immediate) {
             $(this).owlCarousel(newCarouselOptions);
             $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
         });
-
-        // var reenCarousel = $('.owl-carousel');
-        // // Wrap around nav & dots
-        // reenCarousel.each(function(index) {
-        //     $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
-        // });
-
-        // var reenPostCarousel = $('#owl-post-carousel');
-
-        //    reenPostCarousel.each(function(index) {
-        //  const defaultCarouselOptions = {
-        //      autoplay :true,
-        //         autoplayTimeout : 5000,
-        //         autoplayHoverPause : true,
-        //         nav: true,
-        //         dots: true,
-        //         rewind: true,
-        //         items: 5,
-        //         mouseDrag: false,
-        //         navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
-        //         responsive:{
-        //             0:{
-        //                 items:1
-        //             },
-        //             480:{
-        //                 items:2
-        //             },
-        //             768:{
-        //                 items:2
-        //             },
-        //             1199:{
-        //                 items:4
-        //             }
-        //         }
-        //     }
-        //     const carouselJson = $(this).attr( 'data-owl-carousel' );
-        //        const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
-        //        const newCarouselOptions = {...defaultCarouselOptions, ...currentCarouselOptions}
-        //        $(this).owlCarousel( newCarouselOptions );
-        //        $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
-        //    });
-
-
-        // $("#owl-related-posts").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  items: 2,
-        //  itemsDesktopSmall: [1199, 2],
-        //  itemsTablet: [977, 2],
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-sliders").owlCarousel({
-
-        //  animateOut: 'slideInDown',
-        //  autoplay: true,
-        //        autoplayTimeout: 5000,
-        //  stopOnHover: true,
-        //        nav: true,
-        //  dots: true,
-        //  items: 1,
-        //  loop: true,
-        //  navRewind: true,
-        //  addClassActive: true,
-        //        lazyLoad: true,
-        //        stagePadding: 0,
-        //        navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
-
-        // });
-
-        // $("#owl-work-samples").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  items: 3,
-        //  itemsDesktopSmall: [1199, 3],
-        //  itemsTablet: [977, 2],
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-work-samples-big").owlCarousel({
-        //  autoPlay: 5000,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  singleItem: true,
-        //  transitionStyle: "fadeUp",
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-work, [id*='owl-work-modal']").owlCarousel({
-        //  autoPlay: 5000,
-        //  slideSpeed: 200,
-        //  paginationSpeed: 600,
-        //  rewindSpeed: 800,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  singleItem: true,
-        //  autoHeight: true,
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
-        // $("#owl-office").owlCarousel({
-        //  autoPlay: 5000,
-        //  slideSpeed: 200,
-        //  paginationSpeed: 600,
-        //  rewindSpeed: 800,
-        //  stopOnHover: true,
-        //  navigation: true,
-        //  pagination: true,
-        //  rewindNav: true,
-        //  singleItem: true,
-        //  autoHeight: true,
-        //  transitionStyle: "fade",
-        //  navigationText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"]
-        // });
-
 
         $(".slider-next").click(function() {
             owl.trigger('owl.next');
@@ -1152,69 +947,9 @@ function debounce(func, wait, immediate) {
         }
     });
 
-
     /*===================================================================================*/
-    /*  GO TO TOP / SCROLL UP
+    /*  Initialize GO TO TOP / SCROLL UP
     /*===================================================================================*/
-
-    ! function(a, b, c) {
-        a.fn.scrollUp = function(b) {
-            a.data(c.body, "scrollUp") || (a.data(c.body, "scrollUp", !0), a.fn.scrollUp.init(b))
-        }, a.fn.scrollUp.init = function(d) {
-            var e = a.fn.scrollUp.settings = a.extend({}, a.fn.scrollUp.defaults, d),
-                f = e.scrollTitle ? e.scrollTitle : e.scrollText,
-                g = a("<a/>", {
-                    id: e.scrollName,
-                    href: "#top"
-                    /*,
-                                    title: f*/
-                }).appendTo("body");
-            e.scrollImg || g.html(e.scrollText), g.css({
-                display: "none",
-                position: "fixed",
-                zIndex: e.zIndex
-            }), e.activeOverlay && a("<div/>", {
-                id: e.scrollName + "-active"
-            }).css({
-                position: "absolute",
-                top: e.scrollDistance + "px",
-                width: "100%",
-                borderTop: "1px dotted" + e.activeOverlay,
-                zIndex: e.zIndex
-            }).appendTo("body"), scrollEvent = a(b).scroll(function() {
-                switch (scrollDis = "top" === e.scrollFrom ? e.scrollDistance : a(c).height() - a(b).height() - e.scrollDistance, e.animation) {
-                    case "fade":
-                        a(a(b).scrollTop() > scrollDis ? g.fadeIn(e.animationInSpeed) : g.fadeOut(e.animationOutSpeed));
-                        break;
-                    case "slide":
-                        a(a(b).scrollTop() > scrollDis ? g.slideDown(e.animationInSpeed) : g.slideUp(e.animationOutSpeed));
-                        break;
-                    default:
-                        a(a(b).scrollTop() > scrollDis ? g.show(0) : g.hide(0))
-                }
-            }), g.click(function(b) {
-                b.preventDefault(), a("html, body").animate({
-                    scrollTop: 0
-                }, e.scrollSpeed, e.easingType)
-            })
-        }, a.fn.scrollUp.defaults = {
-            scrollName: "scrollUp",
-            scrollDistance: 300,
-            scrollFrom: "top",
-            scrollSpeed: 300,
-            easingType: "linear",
-            animation: "fade",
-            animationInSpeed: 200,
-            animationOutSpeed: 200,
-            scrollText: "Scroll to top",
-            scrollTitle: !1,
-            scrollImg: !1,
-            activeOverlay: !1,
-            zIndex: 2147483647
-        }, a.fn.scrollUp.destroy = function(d) {
-            a.removeData(c.body, "scrollUp"), a("#" + a.fn.scrollUp.settings.scrollName).remove(), a("#" + a.fn.scrollUp.settings.scrollName + "-active").remove(), a.fn.jquery.split(".")[1] >= 7 ? a(b).off("scroll", d) : a(b).unbind("scroll", d)
-        }, a.scrollUp = a.fn.scrollUp
-    }(jQuery, window, document);
 
     $(document).ready(function() {
         $.scrollUp({
@@ -1331,9 +1066,9 @@ function debounce(func, wait, immediate) {
     /*  CONVERTING iOS SAFARI VIEWPORT UNITS (BUGGY) INTO PIXELS
     /*===================================================================================*/
 
-    // $(document).ready(function () {
-    //  window.viewportUnitsBuggyfill.init();
-    // });
+    $(document).ready(function () {
+        window.viewportUnitsBuggyfill.init();
+    });
 
 
     /*===================================================================================*/
@@ -1398,20 +1133,20 @@ function debounce(func, wait, immediate) {
 
     // });
 
-    /**
-     * Initialize Tooltip
-     */
+    /*===================================================================================*/
+    /*  Initialize Tooltip
+    /*===================================================================================*/
     if ($("[rel=tooltip]").length) {
         $("[rel=tooltip]").tooltip();
     }
 
-    /**
-     * Owl carousel
-     */
+    /*===================================================================================*/
+    /*  Initialize Owl carousel
+    /*===================================================================================*/
     $('[data-ride="owl-carousel"]').each(function() {
         var $owlElement = $(this),
             owlCarouselParams = $owlElement.data('owlparams');
         $owlElement.owlCarousel(owlCarouselParams);
     });
 
-})(jQuery);
+})(jQuery, window, document);
