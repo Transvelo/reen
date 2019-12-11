@@ -32,7 +32,6 @@ function reen_ocdi_import_files() {
                     'option_name' => 'reen_options',
                 ),
             ),
-            'import_preview_image_url'     => 'https://transvelo.github.io/front/assets/images/screenshots/crypto.jpg',
             'import_notice'                => esc_html__( 'Import process may take 3-5 minutes. If you facing any issues please contact our support.', 'reen' ),
             'preview_url'                  => 'https://demo2.madrasthemes.com/reen/',
         ),
@@ -102,5 +101,6 @@ function reen_wp_import_post_data_processed( $postdata, $data ) {
         $postdata = str_replace( $plugin_dist_find_url, $plugin_dist_url, $postdata );
     }
 
-    return wp_slash( $postdata );
+    $postdata['post_content'] = json_decode( str_replace( '\u00', 'u00', json_encode( $postdata['post_content'] ) ) );
+    return wp_slash($postdata);
 }
