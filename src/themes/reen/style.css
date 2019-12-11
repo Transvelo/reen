@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.48
+Version:           0.0.49
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -9507,11 +9507,11 @@ blockquote:before {
 .panel-title > a:hover span {
   color: inherit; }
 
-.text-center .panel-title > a:hover span {
+.text-center .panel-title > a:hover span:not(.no-arrow) {
   top: .5em;
   color: transparent; }
 
-.panel-title > a span:after {
+.panel-title > a span:not(.no-arrow):after {
   font-family: "fontello";
   content: "\e849";
   position: absolute;
@@ -9531,10 +9531,10 @@ blockquote:before {
   left: 0;
   opacity: 0; }
 
-.panel-title > a.collapsed span:after {
+.panel-title > a.collapsed span:not(.no-arrow):after {
   content: "\e84c"; }
 
-.text-center .panel-title > a:hover span:after {
+.text-center .panel-title > a:hover span:not(.no-arrow):after {
   top: -.5em;
   opacity: 1; }
 
@@ -11361,9 +11361,15 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
 #comments .comment-list .children,
 .wp-block-latest-comments > li.wp-block-latest-comments__comment .children,
 .wp-block-latest-posts li .children {
-  padding-left: 80px;
+  padding-left: 20px;
   list-style: none;
   margin-top: 0; }
+  @media (min-width: 1200px) {
+    #comments .commentlist .children,
+    #comments .comment-list .children,
+    .wp-block-latest-comments > li.wp-block-latest-comments__comment .children,
+    .wp-block-latest-posts li .children {
+      padding-left: 80px; } }
 
 #comments .comment-list .children .comment,
 #comments .comment-list .children .pingback,
@@ -12929,7 +12935,8 @@ blockquote > p:last-child:not(footer) a,
 
 figure.reen-image-block figcaption {
   text-align: left;
-  margin-top: 0; }
+  margin-top: 0;
+  margin-bottom: 0; }
 
 .format-link p a {
   border: none; }

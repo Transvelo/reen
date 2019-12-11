@@ -2553,7 +2553,7 @@ blockquote:before {
 		 -o-transition: all 200ms ease-out;
 			transition: all 200ms ease-out;
 }
-.text-right .panel-title > a span {
+.text-right .panel-title > a span{
 	padding-left: 25px;
 	padding-right: 0;
 }
@@ -2564,11 +2564,11 @@ blockquote:before {
 .panel-title > a:hover span {
 	color: inherit;
 }
-.text-center .panel-title > a:hover span {
+.text-center .panel-title > a:hover span:not(.no-arrow) {
 	top: .5em;
 	color: transparent;
 }
-.panel-title > a span:after {
+.panel-title > a span:not(.no-arrow):after {
 	font-family: "fontello";
 	content: "\e849";
 	position: absolute;
@@ -2588,10 +2588,10 @@ blockquote:before {
 	left: 0;
 	opacity: 0;
 }
-.panel-title > a.collapsed span:after {
+.panel-title > a.collapsed span:not(.no-arrow):after {
 	content: "\e84c";
 }
-.text-center .panel-title > a:hover span:after {
+.text-center .panel-title > a:hover span:not(.no-arrow):after {
 	//color: #1ABB9C;
 	top: -.5em;
 	opacity: 1;
@@ -4541,9 +4541,13 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
 #comments .comment-list .children,
 .wp-block-latest-comments > li.wp-block-latest-comments__comment .children,
 .wp-block-latest-posts li .children {
-	padding-left: 80px;
+	padding-left: 20px;
     list-style: none;
     margin-top: 0;
+    
+    @media (min-width: 1200px) { 
+    	padding-left: 80px;
+    }
 }
 #comments .comment-list .children .comment,
 #comments .comment-list .children .pingback,
