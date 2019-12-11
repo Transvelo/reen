@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: REEN 0.0.41\n"
+"Project-Id-Version: REEN 0.0.50\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-09 14:41:36+00:00\n"
+"POT-Creation-Date: 2019-12-11 15:56:18+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -432,107 +432,107 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: inc/class-reen.php:132
+#: inc/class-reen.php:121
 msgid "Primary"
 msgstr ""
 
-#: inc/class-reen.php:133
+#: inc/class-reen.php:122
 msgid "Tob Right Menu"
 msgstr ""
 
-#: inc/class-reen.php:134
+#: inc/class-reen.php:123
 msgid "Top Left Menu"
 msgstr ""
 
-#: inc/class-reen.php:135
+#: inc/class-reen.php:124
 msgid "Footer Menu"
 msgstr ""
 
-#: inc/class-reen.php:187 inc/redux-framework/options/style-options.php:36
+#: inc/class-reen.php:170 inc/redux-framework/options/style-options.php:36
 msgid "Green"
 msgstr ""
 
-#: inc/class-reen.php:192 inc/redux-framework/options/style-options.php:37
+#: inc/class-reen.php:175 inc/redux-framework/options/style-options.php:37
 msgid "Blue"
 msgstr ""
 
-#: inc/class-reen.php:197 inc/redux-framework/options/style-options.php:38
+#: inc/class-reen.php:180 inc/redux-framework/options/style-options.php:38
 msgid "Red"
 msgstr ""
 
-#: inc/class-reen.php:202 inc/redux-framework/options/style-options.php:41
+#: inc/class-reen.php:185 inc/redux-framework/options/style-options.php:41
 msgid "Orange"
 msgstr ""
 
-#: inc/class-reen.php:207 inc/redux-framework/options/style-options.php:40
+#: inc/class-reen.php:190 inc/redux-framework/options/style-options.php:40
 msgid "Purple"
 msgstr ""
 
-#: inc/class-reen.php:212 inc/redux-framework/options/style-options.php:39
+#: inc/class-reen.php:195 inc/redux-framework/options/style-options.php:39
 msgid "Pink"
 msgstr ""
 
-#: inc/class-reen.php:217 inc/redux-framework/options/style-options.php:43
+#: inc/class-reen.php:200 inc/redux-framework/options/style-options.php:43
 msgid "Navy"
 msgstr ""
 
-#: inc/class-reen.php:222 inc/redux-framework/options/style-options.php:42
+#: inc/class-reen.php:205 inc/redux-framework/options/style-options.php:42
 msgid "Gray"
 msgstr ""
 
-#: inc/class-reen.php:286
+#: inc/class-reen.php:269
 msgid "Blog Sidebar"
 msgstr ""
 
-#: inc/class-reen.php:288
+#: inc/class-reen.php:271
 msgid "Add widgets here."
 msgstr ""
 
-#: inc/class-reen.php:304
+#: inc/class-reen.php:287
 msgid "Footer Column %1$d"
 msgstr ""
 
-#: inc/class-reen.php:305
+#: inc/class-reen.php:288
 msgid "Widgets added here will appear in column %1$d of the footer."
 msgstr ""
 
-#: inc/class-reen.php:307
+#: inc/class-reen.php:290
 msgid "Footer Row %1$d - Column %2$d"
 msgstr ""
 
-#: inc/class-reen.php:308
+#: inc/class-reen.php:291
 msgid "Widgets added here will appear in column %1$d of footer row %2$d."
 msgstr ""
 
-#: inc/class-reen.php:615
+#: inc/class-reen.php:599
 msgid "Envato Market"
 msgstr ""
 
-#: inc/class-reen.php:626
+#: inc/class-reen.php:610
 msgid "Jetpack by WordPress.com"
 msgstr ""
 
-#: inc/class-reen.php:635
+#: inc/class-reen.php:619
 msgid "MAS Static Content"
 msgstr ""
 
-#: inc/class-reen.php:644
+#: inc/class-reen.php:628
 msgid "One Click Demo Import"
 msgstr ""
 
-#: inc/class-reen.php:653
+#: inc/class-reen.php:637
 msgid "Redux Framework"
 msgstr ""
 
-#: inc/class-reen.php:662
+#: inc/class-reen.php:646
 msgid "Reen Extensions"
 msgstr ""
 
-#: inc/class-reen.php:672
+#: inc/class-reen.php:656
 msgid "Reen Gutenberg Blocks"
 msgstr ""
 
-#: inc/class-reen.php:684
+#: inc/class-reen.php:667
 msgid "WPForms Lite"
 msgstr ""
 
@@ -544,11 +544,11 @@ msgstr ""
 msgid "More Videos"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:691
+#: inc/jetpack/reen-jetpack-template-functions.php:700
 msgid "More Audio"
 msgstr ""
 
-#: inc/ocdi/functions.php:36
+#: inc/ocdi/functions.php:35
 msgid ""
 "Import process may take 3-5 minutes. If you facing any issues please "
 "contact our support."
@@ -633,9 +633,9 @@ msgstr ""
 #: inc/redux-framework/options/blog-options.php:92
 #: inc/redux-framework/options/blog-options.php:101
 #: inc/redux-framework/options/footer-options.php:25
-#: inc/redux-framework/options/header-options.php:20
-#: inc/redux-framework/options/header-options.php:30
-#: inc/redux-framework/options/header-options.php:41
+#: inc/redux-framework/options/header-options.php:44
+#: inc/redux-framework/options/header-options.php:54
+#: inc/redux-framework/options/header-options.php:65
 #: inc/redux-framework/options/style-options.php:23
 msgid "Yes"
 msgstr ""
@@ -646,9 +646,9 @@ msgstr ""
 #: inc/redux-framework/options/blog-options.php:93
 #: inc/redux-framework/options/blog-options.php:102
 #: inc/redux-framework/options/footer-options.php:26
-#: inc/redux-framework/options/header-options.php:21
-#: inc/redux-framework/options/header-options.php:31
-#: inc/redux-framework/options/header-options.php:42
+#: inc/redux-framework/options/header-options.php:45
+#: inc/redux-framework/options/header-options.php:55
+#: inc/redux-framework/options/header-options.php:66
 #: inc/redux-framework/options/style-options.php:24
 msgid "No"
 msgstr ""
@@ -761,10 +761,14 @@ msgid "Scroll To Top"
 msgstr ""
 
 #: inc/redux-framework/options/general-options.php:15
+#: inc/redux-framework/options/header-options.php:22
+#: inc/redux-framework/options/header-options.php:84
 msgid "Enabled"
 msgstr ""
 
 #: inc/redux-framework/options/general-options.php:16
+#: inc/redux-framework/options/header-options.php:23
+#: inc/redux-framework/options/header-options.php:85
 msgid "Disabled"
 msgstr ""
 
@@ -777,31 +781,56 @@ msgid "Options available for your header"
 msgstr ""
 
 #: inc/redux-framework/options/header-options.php:10
-msgid "Topbar"
+msgid "Logo"
 msgstr ""
 
 #: inc/redux-framework/options/header-options.php:17
-msgid "Enable Topbar"
+msgid "Site Logo"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:18
+msgid "Enable to display logo instead of site title."
 msgstr ""
 
 #: inc/redux-framework/options/header-options.php:19
+msgid "This will not work when you use site logo in customizer."
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:34
+msgid "Topbar"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:41
+msgid "Enable Topbar"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:43
 msgid "Enable to display top bar in header"
 msgstr ""
 
-#: inc/redux-framework/options/header-options.php:27
+#: inc/redux-framework/options/header-options.php:51
 msgid "Enable Topbar Left"
 msgstr ""
 
-#: inc/redux-framework/options/header-options.php:29
+#: inc/redux-framework/options/header-options.php:53
 msgid "Enable to display top bar left in header"
 msgstr ""
 
-#: inc/redux-framework/options/header-options.php:38
+#: inc/redux-framework/options/header-options.php:62
 msgid "Enable Topbar Right"
 msgstr ""
 
-#: inc/redux-framework/options/header-options.php:40
+#: inc/redux-framework/options/header-options.php:64
 msgid "Enable to display top bar right in header"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:73
+#: inc/redux-framework/options/header-options.php:80
+msgid "Sticky Header"
+msgstr ""
+
+#: inc/redux-framework/options/header-options.php:81
+msgid "Enable to stick the header top on scroll."
 msgstr ""
 
 #: inc/redux-framework/options/portfolio-options.php:8
@@ -927,7 +956,7 @@ msgstr ""
 msgid "Edit menu item"
 msgstr ""
 
-#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1021
+#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1031
 msgid "Edit"
 msgstr ""
 
@@ -1026,82 +1055,82 @@ msgstr ""
 msgid "WHO WE ARE"
 msgstr ""
 
-#: inc/template-tags/blog.php:305 inc/template-tags.php:62
+#: inc/template-tags/blog.php:315 inc/template-tags.php:62
 #. translators: used between list items, there is a space after the comma
 msgid ", "
 msgstr ""
 
-#: inc/template-tags/blog.php:320
+#: inc/template-tags/blog.php:330
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags/blog.php:320
+#: inc/template-tags/blog.php:330
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags/blog.php:320
+#: inc/template-tags/blog.php:330
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags/blog.php:335
+#: inc/template-tags/blog.php:345
 msgid "Read More"
 msgstr ""
 
-#: inc/template-tags/blog.php:424
+#: inc/template-tags/blog.php:434
 msgid "Continue reading %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:429 inc/template-tags/page.php:62
+#: inc/template-tags/blog.php:439 inc/template-tags/page.php:62
 msgid "Pages:"
 msgstr ""
 
-#: inc/template-tags/blog.php:612
+#: inc/template-tags/blog.php:622
 msgid "Popular posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:717
+#: inc/template-tags/blog.php:727
 msgid "About the author"
 msgstr ""
 
-#: inc/template-tags/blog.php:723
+#: inc/template-tags/blog.php:733
 msgid "All posts by %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:742
+#: inc/template-tags/blog.php:752
 msgid "Add me on Facebook"
 msgstr ""
 
-#: inc/template-tags/blog.php:749
+#: inc/template-tags/blog.php:759
 msgid "Add me on Google Plus"
 msgstr ""
 
-#: inc/template-tags/blog.php:755
+#: inc/template-tags/blog.php:765
 msgid "Follow me on Twitter"
 msgstr ""
 
-#: inc/template-tags/blog.php:806
+#: inc/template-tags/blog.php:816
 msgid "Next Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:817
+#: inc/template-tags/blog.php:827
 msgid "Previous Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:867
+#: inc/template-tags/blog.php:877
 msgid "Related posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:996
+#: inc/template-tags/blog.php:1006
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags/blog.php:1050
+#: inc/template-tags/blog.php:1060
 msgid ""
 "This content is password protected. To view it please enter your password "
 "below:"
 msgstr ""
 
-#: inc/template-tags/blog.php:1052
+#: inc/template-tags/blog.php:1062
 msgid "Password:"
 msgstr ""
 
@@ -1214,12 +1243,12 @@ msgctxt "Post custom field name"
 msgid "%s:"
 msgstr ""
 
-#: inc/template-tags/blog.php:552
+#: inc/template-tags/blog.php:562
 msgctxt "Next post"
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags/blog.php:553
+#: inc/template-tags/blog.php:563
 msgctxt "Previous post"
 msgid "Prev"
 msgstr ""
