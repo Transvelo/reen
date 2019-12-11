@@ -458,12 +458,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'bootstrap-bundle', get_template_directory_uri() . '/assets/js/bootstrap.bundle' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'jquery-form', get_template_directory_uri() . '/assets/js/jquery.form.js', array( 'jquery' ), $reen_version, true );
-
             wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/assets/js/jquery.easing' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
-
-            wp_enqueue_script( 'jquery.validate', get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
-
 
             wp_enqueue_script( 'affix', get_template_directory_uri() . '/assets/js/affix.js', array( 'jquery' ), $reen_version, true );
 
@@ -479,15 +474,21 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'viewport-units-buggyfill', get_template_directory_uri() . '/assets/js/viewport-units-buggyfill' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-             wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll.js', array( 'jquery' ), $reen_version, true );
-
+            wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll.js', array( 'jquery' ), $reen_version, true );
 
 
             if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
                 wp_enqueue_script( 'comment-reply' );
             }
 
-             wp_enqueue_script( 'reen-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'reen-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $reen_version, true );
+
+            $reen_js_options = apply_filters( 'reen_localize_script_data', array(
+                'enableScrollUp'        => apply_filters( 'reen_enable_scrollup', false ),
+                'enableStickyHeader'    => apply_filters( 'reen_enable_sticky_header', false ),
+            ) );
+
+            wp_localize_script( 'reen-scripts', 'reen_options', $reen_js_options );
 
         }
 
