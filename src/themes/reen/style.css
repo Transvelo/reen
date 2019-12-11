@@ -11075,6 +11075,18 @@ input:focus:-ms-input-placeholder {
   margin-left: 0;
   margin-right: 0; }
 
+.grid-blog.col-2-custom .post-content > *:first-child,
+.grid-blog.col-2-custom .post-media + *,
+.grid-blog.col-3-custom.no-sidebar .post-content > *:first-child,
+.grid-blog.col-3-custom.no-sidebar .post-media + * {
+  margin-top: 40px; }
+
+.grid-blog.col-2-custom .post-content > .post-media:first-child,
+.grid-blog.col-2-custom .owl-carousel.post-media + *,
+.grid-blog.col-3-custom.no-sidebar .post-content > .post-media:first-child,
+.grid-blog.col-3-custom.no-sidebar .owl-carousel.post-media + * {
+  margin-top: 0; }
+
 .grid-blog.col-2-custom .post-title,
 .grid-blog.col-3-custom.no-sidebar .post-title {
   font-size: 30px; }
@@ -12028,6 +12040,24 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
     position: fixed;
     top: 0;
     width: 100%; }
+  .admin-bar .navbar.affix-top {
+    top: 46px; } }
+
+@media (max-width: 1024px) and (min-width: 783px) {
+  .admin-bar .navbar.affix-top {
+    top: 32px; } }
+
+@media (max-width: 1024px) and (min-width: 600px) {
+  .admin-bar .navbar.affix {
+    top: 46px; } }
+
+@media (max-width: 1024px) and (min-width: 783px) {
+  .admin-bar .navbar.affix {
+    top: 32px; } }
+
+@media (max-width: 1024px) {
+  .admin-bar .navbar-collapse.collapse.affix {
+    top: 32px; }
   .navbar .container {
     display: block; }
   .navbar .social,
@@ -13160,6 +13190,9 @@ ul.page-numbers > li:last-child > a {
 .owl-carousel.owl-ui-md .owl-next i,
 .owl-carousel.owl-ui-md .owl-next span {
   font-size: 45px; }
+
+.owl-one-item #owl-main .owl-controls {
+  display: none; }
 
 .owl-inner-pagination .owl-dots,
 .owl-inner-pagination .owl-prev,
