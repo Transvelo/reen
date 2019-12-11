@@ -603,13 +603,22 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                             wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                                 $owl_params = apply_filters( 'owl-videos_params', array(
-                                                    'autoPlay'        => 5000,
-                                                    'stopOnHover'     => true,
+                                                    'autoplay'            => true,
+                                                    'autoplayTimeout'     => 5000,
+                                                    'autoplayHoverPause'  => true,
+                                                    'smartSpeed'          => 200,
+                                                    'rewind'              => true,
                                                     'nav'             => true,
                                                     'dots'            => true,
-                                                    'rewindNav'       => true,
                                                     'items'           => 5,
-                                                    'navText'         => array( '<i class="it-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                                    'navText'         => array( '<i class="it-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                    'responsive'        => array(
+                                                        '0'     => array( 'items'   => 1 ),
+                                                        '480'   => array( 'items'   => 2 ),
+                                                        '768'   => array( 'items'   => 2 ),
+                                                        '992'   => array( 'items'   => 4 ),
+                                                        '1200'  => array( 'items'   => 5 ),
+                                                    )
                                                 ) ); ?>
 
                                             <div id="owl-videos" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
@@ -699,13 +708,22 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                         wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                             $owl_params = apply_filters( 'owl-audio_params', array(
-                                                'autoPlay'        => 5000,
-                                                'stopOnHover'     => true,
+                                                'autoplay'            => true,
+                                                'autoplayTimeout'     => 5000,
+                                                'autoplayHoverPause'  => true,
+                                                'smartSpeed'          => 200,
+                                                'rewind'              => true,
                                                 'nav'             => true,
                                                 'dots'            => true,
-                                                'rewindNav'       => true,
                                                 'items'           => 5,
-                                                'navText'         => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                                'navText'         => array( '<i class="it-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                'responsive'        => array(
+                                                    '0'     => array( 'items'   => 1 ),
+                                                    '480'   => array( 'items'   => 2 ),
+                                                    '768'   => array( 'items'   => 2 ),
+                                                    '992'   => array( 'items'   => 4 ),
+                                                    '1200'  => array( 'items'   => 5 ),
+                                                )
                                             ) ); ?>
                                             <div id="owl-audio" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
                                             <?php while ( $more_audio->have_posts() ) : $more_audio->the_post(); ?> 
