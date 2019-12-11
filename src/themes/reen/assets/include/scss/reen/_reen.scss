@@ -3413,10 +3413,11 @@ blockquote:before {
 #owl-main .caption div {
 	position: relative;
 }
-#owl-main .caption h1 span {
+#owl-main .caption h1 span:not(.has-inline-color) {
 	padding: .250em 0;
 	line-height: 180%;
 }
+
 #owl-main .caption .light-bg,
 #owl-main .caption .medium-bg,
 #owl-main .caption .dark-bg,

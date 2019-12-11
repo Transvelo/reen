@@ -161,18 +161,13 @@
 		padding-left: 0;
 	}
 
- //    ul:not(.footer-menu):not(.contacts) li:before,
-	// ol li:before,
-	// .widget__title + ul li:before, 
-	// .menu li:before {
-	//     font-family: 'fontello-circle';
-	//     content: '\e800';
-	//     font-size: 8px;
-	//     font-weight: normal;
-	//     padding-top: 1px;
-	// 	margin-left: -20px;
-	//     vertical-align: top;
-	// 	position: absolute;
-	// }
+	p {
+		a.txt-btn {
+			margin-top: 15px;
+		    display: block;
+		    text-decoration: none;
+		    border: none;
+		}
+	}
 
 }

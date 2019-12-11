@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.45
+Version:           0.0.46
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -10319,7 +10319,7 @@ blockquote:before {
 #owl-main .caption div {
   position: relative; }
 
-#owl-main .caption h1 span, #owl-main .caption .h1 span {
+#owl-main .caption h1 span:not(.has-inline-color), #owl-main .caption .h1 span:not(.has-inline-color) {
   padding: .250em 0;
   line-height: 180%; }
 
@@ -13493,6 +13493,12 @@ p a.txt-btn {
 .site-footer ul,
 .site-footer ol {
   padding-left: 0; }
+
+.site-footer p a.txt-btn {
+  margin-top: 15px;
+  display: block;
+  text-decoration: none;
+  border: none; }
 
 .aligncenter {
   clear: both;
