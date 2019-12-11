@@ -12909,7 +12909,6 @@ article.post ul, article.post ol {
 figure {
   max-width: 100%; }
 
-.classic-blog .post__content-inner figure + *,
 figure.post-media + * {
   padding-top: 0; }
 
