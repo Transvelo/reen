@@ -244,61 +244,63 @@ function debounce(func, wait, immediate) {
     /*===================================================================================*/
     $(document).ready(function() {
 
-        var affixElementDesktop         = '.navbar-collapse',
-            affixElementDesktopHeight   = affixElementDesktop,
-            affixElementDesktopOffset   = '.navbar-header',
-            affixElementMobile          = '.navbar',
-            affixElementMobileHeight    = '.navbar-header',
-            affixElementMobileNav       = '.navbar-nav',
-            affixElementMobileNavBtn    = '.navbar-toggler',
-            bodyScrollDisableClass      = 'body-scroll-disabled';
-        
-        function affixNav(el, elHeight, elOffset) {
-            $(window).off('.affix');
-            $('.affix, .affix-top').unwrap();
-            $(affixElementDesktop + ', ' + affixElementMobile)
-                .removeData('bs.affix')
-                .removeClass('affix affix-top');
+        if( reen_options.enableStickyHeader ) {
+            var affixElementDesktop         = '.navbar-collapse',
+                affixElementDesktopHeight   = affixElementDesktop,
+                affixElementDesktopOffset   = '.navbar-header',
+                affixElementMobile          = '.navbar',
+                affixElementMobileHeight    = '.navbar-header',
+                affixElementMobileNav       = '.navbar-nav',
+                affixElementMobileNavBtn    = '.navbar-toggler',
+                bodyScrollDisableClass      = 'body-scroll-disabled';
+            
+            function affixNav(el, elHeight, elOffset) {
+                $(window).off('.affix');
+                $('.affix, .affix-top').unwrap();
+                $(affixElementDesktop + ', ' + affixElementMobile)
+                    .removeData('bs.affix')
+                    .removeClass('affix affix-top');
 
-            $(el).affix({ offset: { top: $(elOffset).outerHeight(true) || 0 } });
+                $(el).affix({ offset: { top: $(elOffset).outerHeight(true) || 0 } });
 
-            $('.affix, .affix-top')
-                .wrap('<div class="affix-wrapper"></div>')
-                .parent().css('min-height', $(elHeight).outerHeight(true) || 0);
+                $('.affix, .affix-top')
+                    .wrap('<div class="affix-wrapper"></div>')
+                    .parent().css('min-height', $(elHeight).outerHeight(true) || 0);
+            }
+            
+            $(window).resize(debounce(function () {
+                if (cssBreakpoint('md')) {
+                    if (switchedBreakpoint()) {
+                        $(affixElementMobileNav).css('height', '');
+                        affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
+                        if ($(affixElementDesktop).hasClass('show')) {
+                            enableSelectedScroll(false, affixElementMobileNav);
+                            $('html').removeClass(bodyScrollDisableClass);
+                        }
+                    }
+                }
+                else if (cssBreakpoint('xs')) {
+                    if (switchedBreakpoint()) {
+                        affixNav(affixElementMobile, affixElementMobileHeight);
+                        if ($(affixElementDesktop).hasClass('show')) {
+                            enableSelectedScroll(true, affixElementMobileNav);
+                            $('html').addClass(bodyScrollDisableClass);
+                        }
+                    }
+                    $(affixElementMobileNav).css('height', window.innerHeight - $(affixElementMobileHeight).outerHeight(true) || 0);
+                }
+            })).resize();
+
+            $(affixElementDesktop).on('show.bs.collapse', function(){
+                enableSelectedScroll(true, affixElementMobileNav);
+                $('html').addClass(bodyScrollDisableClass);
+            });
+
+            $(affixElementDesktop).on('hide.bs.collapse', function(){
+                enableSelectedScroll(false, affixElementMobileNav);
+                $('html').removeClass(bodyScrollDisableClass);
+            });
         }
-        
-        $(window).resize(debounce(function () {
-            if (cssBreakpoint('md')) {
-                if (switchedBreakpoint()) {
-                    $(affixElementMobileNav).css('height', '');
-                    affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
-                    if ($(affixElementDesktop).hasClass('show')) {
-                        enableSelectedScroll(false, affixElementMobileNav);
-                        $('html').removeClass(bodyScrollDisableClass);
-                    }
-                }
-            }
-            else if (cssBreakpoint('xs')) {
-                if (switchedBreakpoint()) {
-                    affixNav(affixElementMobile, affixElementMobileHeight);
-                    if ($(affixElementDesktop).hasClass('show')) {
-                        enableSelectedScroll(true, affixElementMobileNav);
-                        $('html').addClass(bodyScrollDisableClass);
-                    }
-                }
-                $(affixElementMobileNav).css('height', window.innerHeight - $(affixElementMobileHeight).outerHeight(true) || 0);
-            }
-        })).resize();
-
-        $(affixElementDesktop).on('show.bs.collapse', function(){
-            enableSelectedScroll(true, affixElementMobileNav);
-            $('html').addClass(bodyScrollDisableClass);
-        });
-
-        $(affixElementDesktop).on('hide.bs.collapse', function(){
-            enableSelectedScroll(false, affixElementMobileNav);
-            $('html').removeClass(bodyScrollDisableClass);
-        });
 
     });
 
@@ -952,21 +954,25 @@ function debounce(func, wait, immediate) {
     /*===================================================================================*/
 
     $(document).ready(function() {
-        $.scrollUp({
-            scrollName: "scrollUp", // Element ID
-            scrollDistance: 700, // Distance from top/bottom before showing element (px)
-            scrollFrom: "top", // "top" or "bottom"
-            scrollSpeed: 1000, // Speed back to top (ms)
-            easingType: "easeInOutCubic", // Scroll to top easing (see http://easings.net/)
-            animation: "fade", // Fade, slide, none
-            animationInSpeed: 200, // Animation in speed (ms)
-            animationOutSpeed: 200, // Animation out speed (ms)
-            scrollText: "<i class='icon-up-open-mini'></i>", // Text for element, can contain HTML
-            scrollTitle: " ", // Set a custom <a> title if required. Defaults to scrollText
-            scrollImg: 0, // Set true to use image
-            activeOverlay: 0, // Set CSS color to display scrollUp active point, e.g "#00FFFF"
-            zIndex: 1001 // Z-Index for the overlay
-        });
+
+        if( reen_options.enableScrollUp ) {
+            $.scrollUp({
+                scrollName: "scrollUp", // Element ID
+                scrollDistance: 700, // Distance from top/bottom before showing element (px)
+                scrollFrom: "top", // "top" or "bottom"
+                scrollSpeed: 1000, // Speed back to top (ms)
+                easingType: "easeInOutCubic", // Scroll to top easing (see http://easings.net/)
+                animation: "fade", // Fade, slide, none
+                animationInSpeed: 200, // Animation in speed (ms)
+                animationOutSpeed: 200, // Animation out speed (ms)
+                scrollText: "<i class='icon-up-open-mini'></i>", // Text for element, can contain HTML
+                scrollTitle: " ", // Set a custom <a> title if required. Defaults to scrollText
+                scrollImg: 0, // Set true to use image
+                activeOverlay: 0, // Set CSS color to display scrollUp active point, e.g "#00FFFF"
+                zIndex: 1001 // Z-Index for the overlay
+            });
+        }
+
     });
 
 
@@ -1070,68 +1076,6 @@ function debounce(func, wait, immediate) {
         window.viewportUnitsBuggyfill.init();
     });
 
-
-    /*===================================================================================*/
-    /*  FORM VALIDATION
-    /*===================================================================================*/
-
-    // $(document).ready(function() {
-
-    //  $('#contactform, #commentform').validate({
-
-    //      errorPlacement: function(error, element) {  
-    //          $(element).attr({
-    //              'placeholder' : error.html()
-    //          });
-    //      },
-
-    //      focusInvalid: false,
-
-    //      rules: {
-    //          name: {
-    //              required: true,
-    //              minlength: 2
-    //          },
-    //          email: {
-    //              required: true,
-    //              email: true
-    //          },
-    //          message: {
-    //              required: true,
-    //              minlength: 10
-    //          }
-    //      },
-
-    //      messages: {
-    //          name: {
-    //              required: 'Please enter your name!',
-    //              minlength: 'Name requires at least 2 characters!'
-    //          },
-    //          email: {
-    //              required: 'Please enter your email!',
-    //              email: 'Please enter a valid email!'
-    //          },
-    //          message: {
-    //              required: 'Please enter a message!',
-    //              minlength: 'Message requires at least 10 characters!'
-    //          }
-    //      },
-
-    //      submitHandler: function(form) {
-    //          $('#contactform .btn-submit').html('Sending message ...');
-    //          $('#commentform .btn-submit').html('Sending comment ...');
-    //          $(form).ajaxSubmit({
-    //              success: function(responseText, statusText, xhr, $form) {
-    //                  $(form).delay(1300).slideUp('fast');
-    //                  $('#response').html(responseText).hide().delay(1300).slideDown('fast');
-    //              }
-    //          });
-    //          return false;
-    //      }
-
-    //  });
-
-    // });
 
     /*===================================================================================*/
     /*  Initialize Tooltip

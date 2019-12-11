@@ -59,3 +59,17 @@ if ( ! function_exists( 'redux_toggle_topbar_right' ) ) {
         return $header_enable_topbar_right;
     }
 }
+
+if ( ! function_exists( 'redux_toggle_sticky_header' ) ) {
+    function redux_toggle_sticky_header( $sticky_header ) {
+        global $reen_options;
+
+        if ( isset( $reen_options['sticky_header'] ) && $reen_options['sticky_header'] ) {
+            $sticky_header = true;
+        } else {
+            $sticky_header = false;
+        }
+
+        return $sticky_header;
+    }
+}

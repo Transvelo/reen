@@ -70,6 +70,29 @@ $header_options = apply_filters( 'reen_header_options_args', array(
         ),
 
         array(
+            'title'     => esc_html__( 'Sticky Header', 'reen' ),
+            'id'        => 'sticky_header_start',
+            'type'      => 'section',
+            'indent'    => true
+        ),
+
+        array(
+            'title'     => esc_html__( 'Sticky Header', 'reen' ),
+            'subtitle'  => esc_html__( 'Enable to stick the header top on scroll.', 'reen' ),
+            'id'        => 'sticky_header',
+            'type'      => 'switch',
+            'on'        => esc_html__( 'Enabled', 'reen' ),
+            'off'       => esc_html__( 'Disabled', 'reen' ),
+            'default'   => true,
+        ),
+
+        array(
+            'id'        => 'sticky_header_end',
+            'type'      => 'section',
+            'indent'    => false
+        ),
+
+        array(
             'id'        => 'header_topbar_section_end',
             'type'      => 'section',
             'indent'    => false,

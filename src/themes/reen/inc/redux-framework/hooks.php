@@ -39,10 +39,11 @@ add_filter( 'reen_enable_related_posts', 'redux_toggle_related_posts'          )
 /**
  * Header Filters
  */
-add_filter( 'reen_topbar_view', 'redux_toggle_topbar_view'      );
-add_filter( 'reen_topbar_right', 'redux_toggle_topbar_right'    );
-add_filter( 'reen_topbar_left', 'redux_toggle_topbar_left'      );
-add_filter( 'reen_site_logo_svg',  'redux_toggle_logo_svg'      );
+add_filter( 'reen_topbar_view', 'redux_toggle_topbar_view' );
+add_filter( 'reen_topbar_right', 'redux_toggle_topbar_right' );
+add_filter( 'reen_topbar_left', 'redux_toggle_topbar_left' );
+add_filter( 'reen_site_logo_svg',  'redux_toggle_logo_svg' );
+add_filter( 'reen_enable_sticky_header',  'redux_toggle_sticky_header' );
 
 // Footer Filters
 add_filter( 'reen_footer_enable_copyright_info',  'redux_toggle_footer_copyright_info'   );
