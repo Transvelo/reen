@@ -244,7 +244,7 @@ function debounce(func, wait, immediate) {
     /*===================================================================================*/
     $(document).ready(function() {
 
-        if( reen_options.enableStickyHeader ) {
+        if( typeof reen_options !== 'undefined' && reen_options.enableStickyHeader ) {
             var affixElementDesktop         = '.navbar-collapse',
                 affixElementDesktopHeight   = affixElementDesktop,
                 affixElementDesktopOffset   = '.navbar-header',
@@ -955,7 +955,7 @@ function debounce(func, wait, immediate) {
 
     $(document).ready(function() {
 
-        if( reen_options.enableScrollUp ) {
+        if( typeof reen_options !== 'undefined' && reen_options.enableScrollUp ) {
             $.scrollUp({
                 scrollName: "scrollUp", // Element ID
                 scrollDistance: 700, // Distance from top/bottom before showing element (px)

@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.49
+Version:           0.0.50
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -13318,6 +13318,11 @@ ul.page-numbers > li:last-child > a {
 .post-navigation .nav-links a .post-title {
   hyphens: auto; }
 
+.wpforms-field-small::placeholder, .wpforms-field-medium::placeholder, .wpforms-field-large::placeholder {
+  color: #c2c7cc; }
+  .dark-bg .wpforms-field-small::placeholder, .dark-bg .wpforms-field-medium::placeholder, .dark-bg .wpforms-field-large::placeholder {
+    color: #828e99; }
+
 .wpforms-form {
   position: relative;
   padding: 0;
@@ -13341,9 +13346,6 @@ ul.page-numbers > li:last-child > a {
 .wpforms-container .wpforms-field select.user-invalid {
   border-color: #d99898; }
 
-.wpforms-field-small::placeholder, .wpforms-field-medium::placeholder, .wpforms-field-large::placeholder {
-  color: #c2c7cc; }
-
 .wpforms-container .wpforms-field-container .wpforms-field-small:not(textarea) {
   max-width: 100%; }
   @media (min-width: 768px) {
@@ -13355,9 +13357,6 @@ ul.page-numbers > li:last-child > a {
   @media (min-width: 768px) {
     .wpforms-container .wpforms-field-container .wpforms-field-medium:not(textarea) {
       max-width: 50%; } }
-
-.dark-bg .wpforms-field-small::-webkit-input-placeholder, .dark-bg .wpforms-field-small::-moz-placeholder, .dark-bg .wpforms-field-small:-moz-placeholder, .dark-bg .wpforms-field-small:-ms-input-placeholder, .dark-bg .wpforms-field-medium::-webkit-input-placeholder, .dark-bg .wpforms-field-medium::-moz-placeholder, .dark-bg .wpforms-field-medium:-moz-placeholder, .dark-bg .wpforms-field-medium:-ms-input-placeholder, .dark-bg .wpforms-field-large::-webkit-input-placeholder, .dark-bg .wpforms-field-large::-moz-placeholder, .dark-bg .wpforms-field-large:-moz-placeholder, .dark-bg .wpforms-field-large:-ms-input-placeholder {
-  color: #828E99; }
 
 .wpforms-submit {
   margin-bottom: 0; }
@@ -13377,6 +13376,22 @@ ul.page-numbers > li:last-child > a {
 
 .wpforms-has-error label.wpforms-error {
   display: none !important; }
+
+.newsletter.wpforms-container .wpforms-form {
+  position: relative;
+  width: 100%; }
+  .newsletter.wpforms-container .wpforms-form .wpforms-submit-container {
+    position: static; }
+
+.newsletter.wpforms-container input[type="email"] {
+  background: rgba(255, 255, 255, 0.15);
+  padding-right: 100px;
+  border-radius: 3px;
+  border: none;
+  color: #FFF !important; }
+
+.newsletter.wpforms-container input[type="email"]:focus {
+  background: rgba(255, 255, 255, 0.2); }
 
 img {
   max-width: 100%;
@@ -13501,6 +13516,9 @@ table {
 
 .site-footer .widget + .widget {
   margin-top: 60px; }
+
+.site-footer .widget_custom_html + .wpforms-widget {
+  margin-top: 15px; }
 
 .site-footer #wp-calendar {
   width: 100%; }
