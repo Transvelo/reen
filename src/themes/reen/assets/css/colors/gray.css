@@ -76,7 +76,7 @@ ul.page-numbers > li > a, ul.page-numbers > li > span,
 .page-links-inner .page-link,
 .owl-dots .owl-dot.active span,
 .owl-dots .owl-dot:hover span,
-.wp-block-button:not(.is-style-squared) .wp-block-button__link {
+.wp-block-button:not(.is-style-outline) .wp-block-button__link {
   background-color: #95A5A6; }
 
 ul.page-numbers > li > a.current,
@@ -99,9 +99,9 @@ ul.page-numbers > li > span:hover,
 .pagination > .active > span:hover,
 .pagination > li > a:hover,
 .pagination > li > a:focus,
-.wp-block-button:not(.is-style-squared) .wp-block-button__link:hover,
-.wp-block-button:not(.is-style-squared) .wp-block-button__link:focus,
-.wp-block-button:not(.is-style-squared) .wp-block-button__link:active {
+.wp-block-button .wp-block-button__link:hover,
+.wp-block-button .wp-block-button__link:focus,
+.wp-block-button .wp-block-button__link:active {
   background-color: #87999a; }
 
 .icon-overlay a .icn-more,
@@ -116,7 +116,8 @@ ul.page-numbers > li > span:hover,
 .tabs-circle-top .tab.active a,
 .tabs-circle-top .tab a:hover,
 .tabs-side .tab a:hover,
-.tabs-top .tab a:hover {
+.tabs-top .tab a:hover,
+.wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
   border-color: #95A5A6; }
 
 .bs-tooltip-auto[x-placement^=bottom] .arrow::before,

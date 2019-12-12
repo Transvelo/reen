@@ -56,13 +56,14 @@ if ( ! function_exists( 'reen_page_content' ) ) {
             <div class="page__content">
                 <?php the_content(); ?>
             </div>
+
             <?php
-                wp_link_pages(
-                    array(
-                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'reen' ),
-                        'after'  => '</div>',
-                    )
-                );
+                wp_link_pages( array(
+                    'before'      => '<div class="page-links">' . esc_html__( 'Pages:', 'reen' ) . '<div class="page-links-inner">',
+                    'after'       => '</div></div>',
+                    'link_before' => '<span class="page-link">',
+                    'link_after'  => '</span>'
+                ) );
             ?>
         </div><!-- .entry-content --><?php
     }

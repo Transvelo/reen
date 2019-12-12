@@ -1063,7 +1063,7 @@ if ( ! function_exists( 'reen_post_protected_password_form' ) ) :
                 <input name="post_password" id="<?php echo esc_attr( $label ); ?>" type="password">
             </div>
 
-            <input type="submit" name="Submit" class="btn" value="<?php echo esc_attr( "Submit" ); ?>" style="margin-top:30px;margin-left: 15px;"/>
+            <input type="submit" name="Submit" class="btn" value="<?php echo esc_attr( "Submit" ); ?>"/>
         </form><?php
     }
 endif;
