@@ -66,4 +66,4 @@ add_action( 'wp_head',                                      'redux_apply_custom_
 add_action( 'wp_enqueue_scripts',                           'redux_load_external_custom_css',               20 );
 //add_action( 'enqueue_block_editor_assets',                  'redux_apply_custom_color_css',                 100 );
 add_action( 'enqueue_block_editor_assets',                  'redux_load_external_custom_css',               20 );
-add_filter( 'uneno_should_add_custom_css_page',             'redux_toggle_custom_css_page',                 10 );
+add_filter( 'reen_should_add_custom_css_page',             'redux_toggle_custom_css_page',                 10 );

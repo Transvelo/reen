@@ -157,7 +157,8 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		ul.page-numbers > li > a, ul.page-numbers > li > span, 
 		.page-links-inner .page-link,
 		.owl-dots .owl-dot.active span, 
-		.owl-dots .owl-dot:hover span {
+		.owl-dots .owl-dot:hover span,
+		.wp-block-button:not(.is-style-outline) .wp-block-button__link  {
 			background-color: ' . $primary_color . ';
 		}
 
@@ -180,7 +181,10 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.pagination > .active > a:hover,
 		.pagination > .active > span:hover,
 		.pagination > li > a:hover,
-		.pagination > li > a:focus {
+		.pagination > li > a:focus,
+		.wp-block-button .wp-block-button__link:hover,
+		.wp-block-button .wp-block-button__link:focus,
+		.wp-block-button .wp-block-button__link:active {
 			background-color: ' . sass_darken( $primary_color, '5%' ) . ';
 		}
 
@@ -197,7 +201,8 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.tabs-circle-top .tab.active a,
 		.tabs-circle-top .tab a:hover,
 		.tabs-side .tab a:hover,
-		.tabs-top .tab a:hover {
+		.tabs-top .tab a:hover,
+		.wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
 			border-color: ' . $primary_color . ';
 		}
 

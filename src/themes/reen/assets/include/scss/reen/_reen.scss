@@ -16,7 +16,8 @@ figure {
     margin: 0;
     padding: 0;
 }
-figure img {
+
+figure:not(.wp-block-image):not(.alignleft):not(.alignright) img{
     width: 100%;
     height: auto;
 }
@@ -534,7 +535,9 @@ hr {
     border: 0;
     border-bottom: 1px solid #CED7E0;
     margin: 60px 0;
+    opacity: 1;
 }
+
 .map iframe {
     display: block;
     max-width: 100%;
@@ -4525,8 +4528,8 @@ visibility: visible; }
 #comments .comment-list > .pingback:first-child,
 #comments .comment-list > .trackback:first-child,
 .wp-block-latest-comments > li.wp-block-latest-comments__comment:first-child,
-.wp-block-latest-comments:not(.is-grid) > li:first-child
-.wp-block-latest-posts > li:first-child {
+.wp-block-latest-comments:not(.is-grid) > li:first-child,
+.wp-block-latest-posts:not(.is-grid) > li:first-child {
     border-top: none;
     padding-top: 0;
 }
