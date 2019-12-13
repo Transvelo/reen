@@ -118,8 +118,12 @@ if ( ! function_exists( 'reen_footer_logo' ) ) :
      *
      */
     function reen_footer_logo() {
-
-        if (current_theme_supports('custom-logo') && has_custom_logo() ) {
+        $seperate_logo = apply_filters( 'reen_separate_footer_logo', '' );
+        if( apply_filters( 'reen_enable_seperate_footer_logo', true ) && !empty( $seperate_logo ) ) {
+            ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php
+                echo wp_get_attachment_image( $seperate_logo['id'], array( get_theme_support( 'custom-logo', 'width' ), get_theme_support( 'custom-logo', 'height' ) ) );
+            ?></a><?php
+        } elseif (current_theme_supports('custom-logo') && has_custom_logo() ) {
            the_custom_logo(); 
         } elseif ( function_exists( 'jetpack_has_site_logo' ) && jetpack_has_site_logo() ) {
             jetpack_the_site_logo();

@@ -13461,6 +13461,13 @@ table {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch; } }
 
+.article__page {
+  padding-bottom: 120px; }
+
+.home.page-template-default .article__page,
+.article-bottom-0 .article__page {
+  padding-bottom: 0; }
+
 #portfolio-post .article {
   margin-bottom: 0; }
 

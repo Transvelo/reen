@@ -51,8 +51,6 @@ add_filter( 'reen_footer_copyright_text',         'redux_apply_footer_copyright_
 
 add_filter( 'reen_enable_seperate_footer_logo', 'reen_redux_toggle_separate_footer_logo' );
 add_filter( 'reen_separate_footer_logo', 'reen_redux_apply_separate_footer_logo'         );
-add_filter( 'reen_use_footer_svg_logo_light', 'reen_redux_toggle_svg_logo_light'         );
-
 
 add_filter( 'reen_footer_site_title_info', 'reen_redux_apply_footer_site_title'           );
 add_filter( 'reen_footer_site_description_info', 'reen_redux_apply_footer_site_description'     );

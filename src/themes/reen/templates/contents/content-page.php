@@ -6,8 +6,8 @@
  *
  * @package REEN
  */
-$additional_class = '';
-$additional_class .= ' article__page inner-bottom';
+
+$additional_class = 'article__page';
 
 ?>
 
