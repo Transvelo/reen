@@ -312,7 +312,7 @@ if ( ! function_exists( 'reen_post_side_meta' ) ) {
 
 if ( ! function_exists( 'reen_post_categories' ) ) {
     function reen_post_categories() {
-        $categories_list = get_the_category_list( esc_html__( ', ', 'reen' ) );
+        $categories_list = get_the_category_list( ', ' );
             if ( $categories_list ) : ?>
                 <span class="article__cat-links">
                     <?php
@@ -518,7 +518,8 @@ if ( ! function_exists( 'reen_post_audio' ) ) {
             if( !empty($embed_audio) ) {
                 ?><div class="post-media"><?php 
                 // run oEmbed for known sources to generate embed code from audio links
-                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+                // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+                echo apply_filters( 'the_content', $embed_audio )
 
                 ?></div><!-- .article__attachment--video --><?php
             }
@@ -541,7 +542,8 @@ if ( ! function_exists( 'reen_post_video' ) ) {
             if( !empty($embed_video) ) {
                 ?><div class="video-container post-media"><?php 
                 // run oEmbed for known sources to generate embed code from audio links
-                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                echo apply_filters( 'the_content', $embed_video )
 
                 ?></div><!-- .article__attachment--video --><?php
             }
@@ -657,10 +659,9 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                                             </figcaption>
                                                             <?php if ( has_post_thumbnail() ) {
                                                                 the_post_thumbnail();
-                                                                } else { ?>
-                                                            
-                                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
-                                                                <?php } ?>
+                                                            } else { ?>
+                                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="reen-placeholder" />
+                                                            <?php } ?>
                                                         </figure>
                                                    
                                                     </div><!-- /.item -->
@@ -702,7 +703,7 @@ if ( ! function_exists( 'reen_single_post_author_name' ) ) {
         if( apply_filters( 'reen_show_author_name', true ) ) :
             $current_user_id = get_current_user_id(); 
             ?>
-            <p class="author"><a href="#" title="" data-rel="tooltip" data-placement="left" data-original-title="Post author"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
+            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title=<?php esc_html_e( "Post author", 'reen' ); ?>><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
         <?php
         endif;
 
@@ -725,11 +726,11 @@ if ( ! function_exists( 'reen_post_author' ) ) {
 
                     <div class="author-details">
                         <h3><?php echo esc_html__( 'About the author', 'reen' ); ?></h3>
-                        <p><a href="#"><?php the_author_meta( 'display_name', $current_user_id );?></a><span> <?php echo the_author_meta( 'description' );?></span></p>
+                        <p><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author_meta( 'display_name', $current_user_id );?></a><span> <?php echo the_author_meta( 'description' );?></span></p>
 
                         <ul class="meta">
                             <li class="author-posts">
-                                <a class="author-link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+                                <a class="author-link" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" rel="author">
                                     <?php echo sprintf( esc_html__( 'All posts by %s', 'reen' ), esc_html( get_the_author() ) ); ?>
                                 </a>
                             </li>
@@ -911,10 +912,9 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                                                 <div class="icon-overlay icn-link">
                                                     <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                                                         <?php if ( has_post_thumbnail() ) {
-                                                        the_post_thumbnail();
+                                                            the_post_thumbnail();
                                                         } else { ?>
-                                                    
-                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="" />
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="reen-placeholder" />
                                                        <?php } ?>
                                                     </a>
                                                 </div>                              
@@ -970,7 +970,8 @@ if ( ! function_exists( 'reen_comment' ) ) {
             $tag       = 'li';
             $add_below = 'div-comment';
         }
-        $comment_author_url = get_comment_author_url($comment);
+
+        $comment_author_url = $comment->user_id > 0 ? get_author_posts_url( $comment->user_id ) : false;
 
         ?>
         <<?php echo esc_attr( $tag ); ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID(); ?>">

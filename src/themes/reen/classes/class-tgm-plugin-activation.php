@@ -3583,7 +3583,7 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
                             $this->upgrader->strings['skin_before_update_header'] = esc_html__( 'Updating Plugin %1$s (%2$d/%3$d)', 'reen' );
                         } else {
                             /* translators: 1: plugin name, 2: error message. */
-                            $this->upgrader->strings['skin_update_failed_error'] = esc_html__( 'An error occurred while installing %1$s: <strong>%2$s</strong>.', 'reen' );
+                            $this->upgrader->strings['skin_update_failed_error'] = wp_kses_post( __( 'An error occurred while installing %1$s: <strong>%2$s</strong>.', 'reen' ) );
                             /* translators: 1: plugin name. */
                             $this->upgrader->strings['skin_update_failed'] = esc_html__( 'The installation of %1$s failed.', 'reen' );
                             if ( $this->tgmpa->is_automatic ) {
