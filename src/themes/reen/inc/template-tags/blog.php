@@ -970,7 +970,7 @@ if ( ! function_exists( 'reen_comment' ) ) {
             $tag       = 'li';
             $add_below = 'div-comment';
         }
-        $comment_author_url = get_comment_author_url($comment);
+        $comment_author_url = get_comment_author_url(get_comment_ID());
 
         ?>
         <<?php echo esc_attr( $tag ); ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID(); ?>">
