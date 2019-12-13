@@ -251,3 +251,15 @@ figure.wp-block-audio {
 .inner-top-rxs {
 	padding-top: 15px;
 }
+
+.bypostauthor {
+    .comment-author {
+        h3:after {
+            font-family: "Font Awesome\ 5 Free";
+            font-weight: 400;
+            margin: 0 0 0 5px;
+            content: "\f02e";
+            font-size: 13px;
+        }
+    }
+}

@@ -6,7 +6,9 @@
  *
  * @package REEN
  */
-$additional_class = ' article__page inner-bottom';
+$additional_class = '';
+$additional_class .= ' article__page inner-bottom';
+
 ?>
 
  <article id="post-<?php the_ID(); ?>" <?php post_class( $additional_class ); ?>>
