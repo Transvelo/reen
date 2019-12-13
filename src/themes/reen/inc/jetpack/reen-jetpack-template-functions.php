@@ -185,7 +185,8 @@ if ( ! function_exists( 'reen_portfolio_post_audio' ) ) {
             if( !empty($embed_audio) ) {
                 ?><div class="col-lg-8 inner-left-xs"><?php
                 // run oEmbed for known sources to generate embed code from audio links
-                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+                // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+                echo apply_filters( 'the_content', $embed_audio );
 
                 ?></div><?php
             }
@@ -223,7 +224,8 @@ if ( ! function_exists( 'reen_portfolio_post_video' ) ) {
                     <div class="col-md-12">
                         <div class="video-container"><?php 
                             // run oEmbed for known sources to generate embed code from audio links
-                                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                            // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                            echo apply_filters( 'the_content', $embed_video );
                         ?></div>
                     </div>
                 </div><?php

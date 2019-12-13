@@ -158,13 +158,13 @@ function reen_ocdi_import_wpforms() {
 
     $forms = [
         [
-            'file' => get_template_directory() . '/assets/dummy-data/wpforms-contact.json',
-            'file' => get_template_directory() . '/assets/dummy-data/wpforms-newsletter.json'
+            'file' => 'wpforms-contact.json',
+            'file' => 'wpforms-newsletter.json'
         ]
     ];
 
     foreach ( $forms as $form ) {
-        $form_data = json_decode( file_get_contents( $form['file'] ), true );
+        $form_data = json_decode( reen_get_template( $form['file'], array(), 'assets/dummy-data/' ), true );
 
         if ( empty( $form_data[0] ) ) {
             continue;
