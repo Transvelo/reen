@@ -563,7 +563,9 @@ h2 + .panel-group,
 p + .panel-group {
 	padding-top: 20px;
 }
-figure figcaption {
+figure figcaption,
+figure .wp-caption-text,
+figure.gallery-item .gallery-caption {
 	font-size: 14px;
 	line-height: 150%;
 }
@@ -1474,7 +1476,9 @@ aside .thumb figure {
 	border: 1px solid rgba(255,255,255,0);
 	border-radius: 3px;
 	bottom: -1px;
-	z-index: 2;
+	@media (max-width: 1024px) { 
+		z-index: 2;
+	}
 }
 .navbar-nav > li.dropdown > a {
 	border-bottom: none;
@@ -1491,9 +1495,6 @@ aside .thumb figure {
 	position: relative;
 	display: block;
 }
-// .nav > li.active > a {
-//     color: #1ABB9C;
-// }
 .nav > li > a:focus {
     background-color: transparent;
     border-color: transparent;
@@ -1501,7 +1502,6 @@ aside .thumb figure {
 .nav > li > a:hover {
     background-color: #F5F7FA;
     border-color: #E6E9ED;
-    //color: #1ABB9C;
 }
 .navbar .dropdown-menu {
     padding: 0;
@@ -1546,7 +1546,6 @@ aside .thumb figure {
 .navbar .dropdown-menu:not(.yamm-dropdown-menu) li a.active {
     filter: none;
     background-color: #F5F7FA;
-    //color: #1ABB9C;
 }
 .navbar .nav .open > a,
 .navbar .nav .open > a:hover,
@@ -1570,7 +1569,6 @@ aside .thumb figure {
 .navbar .dropdown-menu:not(.yamm-dropdown-menu) > .active > a,
 .navbar .dropdown-menu:not(.yamm-dropdown-menu) > .active > a:hover,
 .navbar .dropdown-menu:not(.yamm-dropdown-menu) > .active > a:focus {
-    //background: #1ABB9C;
     color: #FFF !important;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
@@ -1586,9 +1584,6 @@ aside .thumb figure {
     font-size: 12px;
     color: #73879C;
 }
-// .navbar-header .info a:hover {
-//     color: #1ABB9C;
-// }
 .navbar-header .social {
 	margin-left: auto;
 }
@@ -1603,6 +1598,19 @@ aside .thumb figure {
     font-size: 15px;
     padding: 0;
     margin: 0;
+}
+
+@media (min-width: 1025px) { 
+	.navbar-nav {
+		flex-basis: 0;
+		z-index: 1;
+	}
+}
+
+@media (min-width: 1025px) { 
+	.navbar-nav .dropdown-menu {
+		z-index: 3;
+	}
 }
 
 
