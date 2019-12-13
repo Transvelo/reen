@@ -1419,7 +1419,8 @@ aside .thumb figure {
 .navbar-brand img.animate {
 	-moz-transition: none;
 }
-.navbar-header .navbar-brand {
+.navbar-header .navbar-brand,
+.navbar-header .custom-logo-link {
 	display: none;
 }
 .navbar-header {
@@ -1646,6 +1647,12 @@ aside .thumb figure {
     padding: 30px 40px;
 	margin-left: -20px;
 	margin-right: -20px;
+}
+
+@include media-breakpoint-only(lg) {
+	.yamm .yamm-content.menu-item-object-mas_static_content {
+		margin: 0;
+	}
 }
 .yamm .yamm-content .inner {
 	padding: 0 20px;
@@ -5336,10 +5343,12 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.navbar-header .navbar-brand {
+	.navbar-header .navbar-brand,
+	.navbar-header .custom-logo-link {
 		display: inline-block;
 	}
-	.navbar-collapse .navbar-brand {
+	.navbar-collapse .navbar-brand,
+	.navbar-collapse .custom-logo-link {
 		display: none;
 	}
 	.navbar-collapse.collapse {
