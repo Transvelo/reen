@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: REEN 0.0.50\n"
+"Project-Id-Version: REEN 0.0.51\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-11 15:56:18+00:00\n"
+"POT-Creation-Date: 2019-12-12 16:02:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -480,59 +480,59 @@ msgstr ""
 msgid "Gray"
 msgstr ""
 
-#: inc/class-reen.php:269
+#: inc/class-reen.php:274
 msgid "Blog Sidebar"
 msgstr ""
 
-#: inc/class-reen.php:271
+#: inc/class-reen.php:276
 msgid "Add widgets here."
 msgstr ""
 
-#: inc/class-reen.php:287
+#: inc/class-reen.php:292
 msgid "Footer Column %1$d"
 msgstr ""
 
-#: inc/class-reen.php:288
+#: inc/class-reen.php:293
 msgid "Widgets added here will appear in column %1$d of the footer."
 msgstr ""
 
-#: inc/class-reen.php:290
+#: inc/class-reen.php:295
 msgid "Footer Row %1$d - Column %2$d"
 msgstr ""
 
-#: inc/class-reen.php:291
+#: inc/class-reen.php:296
 msgid "Widgets added here will appear in column %1$d of footer row %2$d."
 msgstr ""
 
-#: inc/class-reen.php:599
+#: inc/class-reen.php:604
 msgid "Envato Market"
 msgstr ""
 
-#: inc/class-reen.php:610
+#: inc/class-reen.php:615
 msgid "Jetpack by WordPress.com"
 msgstr ""
 
-#: inc/class-reen.php:619
+#: inc/class-reen.php:624
 msgid "MAS Static Content"
 msgstr ""
 
-#: inc/class-reen.php:628
+#: inc/class-reen.php:633
 msgid "One Click Demo Import"
 msgstr ""
 
-#: inc/class-reen.php:637
+#: inc/class-reen.php:642
 msgid "Redux Framework"
 msgstr ""
 
-#: inc/class-reen.php:646
+#: inc/class-reen.php:651
 msgid "Reen Extensions"
 msgstr ""
 
-#: inc/class-reen.php:656
+#: inc/class-reen.php:661
 msgid "Reen Gutenberg Blocks"
 msgstr ""
 
-#: inc/class-reen.php:667
+#: inc/class-reen.php:672
 msgid "WPForms Lite"
 msgstr ""
 
@@ -548,10 +548,20 @@ msgstr ""
 msgid "More Audio"
 msgstr ""
 
-#: inc/ocdi/functions.php:35
+#: inc/ocdi/functions.php:22
 msgid ""
 "Import process may take 3-5 minutes. If you facing any issues please "
 "contact our support."
+msgstr ""
+
+#: inc/ocdi/functions.php:24
+msgid ""
+"Make sure all the required plugins are activated and check Testimonial & "
+"Portfolio enabled in Jetpack > Settings > Writing."
+msgstr ""
+
+#: inc/ocdi/functions.php:26
+msgid "Make sure Testimonial and Portfolio enabled in Jetpack > Settings > Writing."
 msgstr ""
 
 #: inc/redux-framework/options/blog-options.php:8
