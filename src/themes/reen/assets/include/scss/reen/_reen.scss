@@ -183,10 +183,21 @@ ol {
 	padding-left: 22px;
 }
 ul {
-    list-style: none;
+	list-style: disc;
 	position: relative;
 	padding-left: 22px;
 }
+
+ul.arrowed,
+ul.circled,
+.sidebox .widget__title + ul, 
+.sidebox .menu,
+ul.footer-menu,
+ul.contacts,
+footer.site-footer ul {
+	list-style: none;
+}
+
 ul.arrowed li,
 ul.circled li,
 ol li,
