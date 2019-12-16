@@ -1527,7 +1527,7 @@ aside .thumb figure {
 .navbar .dropdown.open .dropdown-menu {
 	z-index: 1;
 }
-.navbar .dropdown-menu:not(.yamm-dropdown-menu) li {
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) li  {
     background: transparent;
     border: none;
     border-top: 1px solid #E6E9ED;
@@ -1609,8 +1609,9 @@ aside .thumb figure {
 }
 
 @media (min-width: 1025px) { 
-	.navbar-nav .dropdown-menu {
-		z-index: 3;
+	.navbar-nav > li > a:hover,
+	.navbar-nav > li.open > a {
+		z-index: 2;
 	}
 }
 

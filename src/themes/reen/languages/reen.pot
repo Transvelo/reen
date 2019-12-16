@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: REEN 0.0.51\n"
+"Project-Id-Version: REEN 0.0.53\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-12 16:02:07+00:00\n"
+"POT-Creation-Date: 2019-12-16 06:51:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -536,15 +536,15 @@ msgstr ""
 msgid "WPForms Lite"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:515
+#: inc/jetpack/reen-jetpack-template-functions.php:517
 msgid "More projects"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:595
+#: inc/jetpack/reen-jetpack-template-functions.php:597
 msgid "More Videos"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:700
+#: inc/jetpack/reen-jetpack-template-functions.php:702
 msgid "More Audio"
 msgstr ""
 
@@ -1065,11 +1065,6 @@ msgstr ""
 msgid "WHO WE ARE"
 msgstr ""
 
-#: inc/template-tags/blog.php:315 inc/template-tags.php:62
-#. translators: used between list items, there is a space after the comma
-msgid ", "
-msgstr ""
-
 #: inc/template-tags/blog.php:330
 msgid "Leave a comment"
 msgstr ""
@@ -1094,39 +1089,43 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: inc/template-tags/blog.php:622
+#: inc/template-tags/blog.php:624
 msgid "Popular posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:727
+#: inc/template-tags/blog.php:706
+msgid "Post author"
+msgstr ""
+
+#: inc/template-tags/blog.php:728
 msgid "About the author"
 msgstr ""
 
-#: inc/template-tags/blog.php:733
+#: inc/template-tags/blog.php:734
 msgid "All posts by %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:752
+#: inc/template-tags/blog.php:753
 msgid "Add me on Facebook"
 msgstr ""
 
-#: inc/template-tags/blog.php:759
+#: inc/template-tags/blog.php:760
 msgid "Add me on Google Plus"
 msgstr ""
 
-#: inc/template-tags/blog.php:765
+#: inc/template-tags/blog.php:766
 msgid "Follow me on Twitter"
 msgstr ""
 
-#: inc/template-tags/blog.php:816
+#: inc/template-tags/blog.php:817
 msgid "Next Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:827
+#: inc/template-tags/blog.php:828
 msgid "Previous Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:877
+#: inc/template-tags/blog.php:878
 msgid "Related posts"
 msgstr ""
 
@@ -1248,17 +1247,17 @@ msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:457
+#: inc/jetpack/reen-jetpack-template-functions.php:459
 msgctxt "Post custom field name"
 msgid "%s:"
 msgstr ""
 
-#: inc/template-tags/blog.php:562
+#: inc/template-tags/blog.php:564
 msgctxt "Next post"
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags/blog.php:563
+#: inc/template-tags/blog.php:565
 msgctxt "Previous post"
 msgid "Prev"
 msgstr ""
