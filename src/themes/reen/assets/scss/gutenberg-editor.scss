@@ -23,3 +23,62 @@ body {
         width: 100%;
     }
 }
+
+.wp-block-table {
+
+    td, th {
+        border: none;
+        border-top: 1px solid #dee2e6;
+    }
+}
+
+ul, ol {
+    margin-left: 0;
+}
+
+blockquote .wp-block-quote__citation,
+.wp-block-pullquote .wp-block-pullquote__citation{
+    color: #506A85;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 700;
+    font-style: italic;
+    margin-top: 2em;
+    text-transform: none;
+
+    &:before,
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 1px;
+        background-color: #506A85;
+        margin-bottom: .28em;
+    }
+
+    &:before {
+        margin-right: 10px;
+    }
+
+    &:after {
+        margin-left: 10px;
+    }
+}
+
+.wp-block-pullquote {
+    border: none;
+}
+
+.wp-block-audio figcaption {
+    text-align: left;
+}
+
+.edit-post-visual-editor .editor-block-list__block .editor-block-list__block-edit,
+ul.wp-block-categories__list,
+ul.wp-block-archives-list {
+    clear: both;
+}
+
+.wp-block-quote.has-text-align-right {
+    border: none;
+}
