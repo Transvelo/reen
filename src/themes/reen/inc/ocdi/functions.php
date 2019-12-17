@@ -165,20 +165,48 @@ function reen_ocdi_import_wpforms() {
 
     $forms = [
         [
-            'file' => 'wpforms-contact.json',
+            'file' => 'wpforms-contact.json'
+        ],
+        [
             'file' => 'wpforms-newsletter.json'
         ]
     ];
 
     foreach ( $forms as $form ) {
-        $form_data = json_decode( reen_get_template( $form['file'], array(), 'assets/dummy-data/' ), true );
+        ob_start();
+        reen_get_template( $form['file'], array(), 'assets/dummy-data/' );
+        $form_json = ob_get_clean();
+        $form_data = json_decode( $form_json, true );
 
         if ( empty( $form_data[0] ) ) {
             continue;
         }
         $form_data = $form_data[0];
-        // Create initial form to get the form ID.
-        $form_id   = wpforms()->form->add( $form_data['settings']['form_title'] );
+        $form_title = $form_data['settings']['form_title'];
+
+        if( !empty( $form_data['id'] ) ) {
+            $form_content = array(
+                'field_id' => '0',
+                'settings' => array(
+                    'form_title' => sanitize_text_field( $form_title ),
+                    'form_desc'  => '',
+                ),
+            );
+
+            // Merge args and create the form.
+            $form = array(
+                'import_id'     => (int) $form_data['id'],
+                'post_title'    => esc_html( $form_title ),
+                'post_status'   => 'publish',
+                'post_type'     => 'wpforms',
+                'post_content'  => wpforms_encode( $form_content ),
+            );
+
+            $form_id = wp_insert_post( $form );
+        } else {
+            // Create initial form to get the form ID.
+            $form_id   = wpforms()->form->add( $form_title );
+        }
 
         if ( empty( $form_id ) ) {
             continue;
