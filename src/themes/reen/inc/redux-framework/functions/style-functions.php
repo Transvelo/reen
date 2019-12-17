@@ -202,7 +202,7 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.tabs-circle-top .tab a:hover,
 		.tabs-side .tab a:hover,
 		.tabs-top .tab a:hover,
-		.wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
+		.wp-block-button.is-style-outline .wp-block-button__link {
 			border-color: ' . $primary_color . ';
 		}
 

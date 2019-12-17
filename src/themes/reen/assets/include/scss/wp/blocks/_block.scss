@@ -4,10 +4,13 @@
 
 .is-style-outline .wp-block-button__link:not(:hover) {
     background: transparent;
-    border-width: 2px;
-    border-style: solid;
     box-shadow: none;
     color: #32373c !important;
+}
+
+.is-style-outline .wp-block-button__link {
+    border-width: 2px;
+    border-style: solid;
 }
 
 .is-style-squared .wp-block-button__link {
@@ -193,9 +196,18 @@ iframe {
 
 .wp-block-archives-list,
 .wp-block-categories-list{
+    clear: both;
 
     li {
         margin-bottom: 5px;
+    }
+
+    &.aligncenter {
+        text-align: center;
+    }
+
+    & + hr.wp-block-separator {
+        clear: both;
     }
 }
 
@@ -230,3 +242,18 @@ img.alignleft {
     max-width: 100%;
 }
 
+figure + hr {
+    padding-top: 0;
+}
+
+.wp-block-pullquote cite {
+    font-size: 15px;
+}
+
+.wp-block-image + p + hr.wp-block-separator {
+    clear: both;
+}
+
+figure.wp-block-image + p {
+    padding-top: 20px;
+}

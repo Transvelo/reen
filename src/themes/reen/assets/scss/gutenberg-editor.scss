@@ -37,7 +37,7 @@ ul, ol {
 }
 
 blockquote .wp-block-quote__citation,
-.wp-block-pullquote .wp-block-pullquote__citation{
+.wp-block-pullquote .wp-block-pullquote__citation {
     color: #506A85;
     font-size: 14px;
     line-height: 150%;
@@ -65,8 +65,23 @@ blockquote .wp-block-quote__citation,
     }
 }
 
+blockquote.wp-block-quote.is-large .wp-block-quote__citation, 
+blockquote.wp-block-quote.is-style-large .wp-block-quote__citation {
+    font-size: 18px;
+    margin-top: 1.5rem;
+}
+
 .wp-block-pullquote {
     border: none;
+     p {
+        font-size: 28px;
+        line-height: 1.6;
+        font-style: italic;
+     }
+
+     .wp-block-pullquote__citation {
+        font-size: 15px;
+     }
 }
 
 .wp-block-audio figcaption {
@@ -81,4 +96,31 @@ ul.wp-block-archives-list {
 
 .wp-block-quote.has-text-align-right {
     border: none;
+}
+
+pre.wp-block-verse,
+.wp-block-audio figcaption,
+.wp-block-pullquote p,
+.wp-block-pullquote .wp-block-pullquote__citation,
+blockquote:before,
+.blocks-gallery-caption, 
+.wp-block-embed figcaption, 
+.wp-block-image figcaption {
+    color: #73879C;
+}
+
+hr.wp-block-separator {
+    clear: both;
+}
+.wp-block-pullquote.alignleft p, 
+.wp-block-pullquote.alignright p {
+    font-size: 20px;
+}
+
+.wp-block-cover.alignleft.has-background-dim,
+.wp-block-cover.aligncenter.has-background-dim,
+.wp-block-cover.alignright.has-background-dim {
+    position: relative;
+    display: flex;
+    align-items: center;
 }

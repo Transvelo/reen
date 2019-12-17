@@ -117,7 +117,7 @@ ul.page-numbers > li > span:hover,
 .tabs-circle-top .tab a:hover,
 .tabs-side .tab a:hover,
 .tabs-top .tab a:hover,
-.wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
+.wp-block-button.is-style-outline .wp-block-button__link {
   border-color: #D487BE; }
 
 .bs-tooltip-auto[x-placement^=bottom] .arrow::before,

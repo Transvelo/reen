@@ -188,6 +188,11 @@ ul {
 	padding-left: 22px;
 }
 
+ul ul,
+ol ul {
+	list-style-type: circle;
+}
+
 ul.arrowed,
 ul.circled,
 .sidebox .widget__title + ul, 
@@ -201,6 +206,10 @@ ul.social,
 ul.filter,
 ul.etabs {
 	list-style: none;
+
+	ul {
+		list-style: none;
+	}
 }
 
 ul.arrowed li,
