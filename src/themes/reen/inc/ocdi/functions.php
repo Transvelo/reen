@@ -75,7 +75,7 @@ function reen_ocdi_import_files() {
                 ),
             ),
             'import_notice'                => reen_ocdi_get_import_notice(),
-            'preview_url'                  => 'https://demo2.madrasthemes.com/reen/',
+            'preview_url'                  => 'https://demo.madrasthemes.com/reen/',
         ),
     ) );
 }
@@ -136,19 +136,26 @@ function reen_ocdi_before_widgets_import() {
 }
 
 function reen_wp_import_post_data_processed( $postdata, $data ) {
-    $theme_content_find_url = 'https://demo2.madrasthemes.com/reen/wp-content/themes/reen/';
-    $theme_content_url = content_url( '/themes/reen/' );
-    $postdata = str_replace( $theme_content_find_url, $theme_content_url, $postdata );
+    $upload_dir = wp_get_upload_dir();
+    $postdata = str_replace( 'https://demo.madrasthemes.com/reen/wp-content/uploads/sites/62/2019/12', $upload_dir['url'], $postdata );
+    $postdata = str_replace( 'https://demo.madrasthemes.com/reen/wp-content/', content_url( '/' ), $postdata );
 
     if ( defined( 'REENGB_FILE' ) ) {
-        $plugin_dist_find_url = 'https://demo2.madrasthemes.com/reen/wp-content/plugins/reen-gutenberg-blocks/';
+        $plugin_dist_find_url = 'https://demo.madrasthemes.com/reen/wp-content/plugins/reen-gutenberg-blocks/';
         $plugin_dist_url = untrailingslashit( plugins_url( '/', REENGB_FILE ) ) . '/';
         $postdata = str_replace( $plugin_dist_find_url, $plugin_dist_url, $postdata );
     }
 
-    $postdata = str_replace( 'https://demo2.madrasthemes.com/reen/', home_url('/'), $postdata );
+    $postdata = str_replace( 'https://demo.madrasthemes.com/reen/', home_url('/'), $postdata );
 
     return wp_slash($postdata);
+}
+
+function reen_wp_import_post_meta_data_processed( $meta_item, $post_id ) {
+    if( isset( $meta_item['value'] ) ) {
+        $meta_item['value'] = str_replace( 'https://demo.madrasthemes.com/reen/', home_url('/'), $meta_item['value'] );
+    }
+    return $meta_item;
 }
 
 function reen_ocdi_import_wpforms() {
