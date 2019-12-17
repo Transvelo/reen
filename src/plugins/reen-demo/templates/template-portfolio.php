@@ -21,7 +21,7 @@ global $wp_query;
 $_wp_query        = $wp_query;
 $portfolio_view   = ( get_query_var( 'portfolio-view') ) ? get_query_var( 'portfolio-view' ) : 'grid';
 $grid_columns = ( get_query_var( 'grid-columns') ) ? get_query_var( 'grid-columns' ) : '3';
-$portfolio_page = ( get_query_var( 'portfolio-post-per-page') ) ? get_query_var( 'portfolio-post-per-page' ) : '2';
+$portfolio_page = ( get_query_var( 'portfolio-post-per-page') ) ? get_query_var( 'portfolio-post-per-page' ) : '16';
 $portfolio_title = ( get_query_var( 'portfolio-title') ) ? get_query_var( 'portfolio-title' ) : '3 Columns details grid portfolio';
 $portfolio_tag    = $portfolio_view;
 $wp_query         = new WP_Query( array( 
