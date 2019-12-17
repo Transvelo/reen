@@ -7156,7 +7156,12 @@ ul.circled,
 .sidebox .menu,
 ul.footer-menu,
 ul.contacts,
-footer.site-footer ul {
+footer.site-footer ul,
+ul.sidenav,
+ul.features,
+ul.social,
+ul.filter,
+ul.etabs {
   list-style: none; }
 
 ul.arrowed li,

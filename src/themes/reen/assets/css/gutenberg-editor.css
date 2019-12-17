@@ -27,7 +27,8 @@ blockquote .wp-block-quote__citation,
   line-height: 150%;
   font-weight: 700;
   font-style: italic;
-  margin-top: 2em; }
+  margin-top: 2em;
+  text-transform: none; }
   blockquote .wp-block-quote__citation:before, blockquote .wp-block-quote__citation:after,
   .wp-block-pullquote .wp-block-pullquote__citation:before,
   .wp-block-pullquote .wp-block-pullquote__citation:after {
