@@ -105,7 +105,7 @@ if ( ! function_exists( 'reen_footer_site_title' ) ) {
         $footer_site_title = apply_filters( 'reen_footer_site_title_info', wp_kses_post( sprintf( __( 'WHO WE ARE', 'reen' ), get_bloginfo( 'name' ) ) ) );
         if( apply_filters( 'reen_footer_enable_site_title', true ) && ! empty( $footer_site_title ) ) {
             ?>
-                <?php echo wp_kses_post( $footer_site_title ); ?>
+            <h4><?php echo wp_kses_post( $footer_site_title ); ?></h4>
             <?php
         }
     }
@@ -144,9 +144,11 @@ endif;
 if ( ! function_exists( 'reen_footer_site_description' ) ) {
     function reen_footer_site_description() {
         $footer_site_description = apply_filters( 'reen_footer_site_description_info', esc_html__( get_bloginfo( 'description' ), 'reen' ) );
-        ?>
+        if( apply_filters( 'reen_footer_enable_site_description', true ) && ! empty( $footer_site_description ) ) {
+            ?>
             <p><?php echo wp_kses_post( $footer_site_description ); ?></p>
-        <?php
+            <?php
+        }
     }
 }    
 
