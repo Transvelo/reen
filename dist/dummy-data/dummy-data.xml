@@ -10594,9 +10594,9 @@
 
 <!-- wp:rgb/column {"className":"inner-left-md border-left","lgColumns":9} -->
 <div class="rgb-single-column col-sm-12 col-md-12 col-lg-9 inner-left-md border-left"><!-- wp:rgb/group-block {"sectionId":"hero","className":"inner-bottom-xs"} -->
-<section id="hero" class="inner-bottom-xs group-block"><!-- wp:rgb/block-header {"title":"DESIGN \u0026amp; USER EXPERIENCE","enableDescription":false} -->
-<header class="wp-block-rgb-block-header block-header-block"><h1 class="title">DESIGN &amp; USER EXPERIENCE</h1></header>
-<!-- /wp:rgb/block-header --></section>
+<section id="hero" class="inner-bottom-xs group-block"><!-- wp:rgb/section-block {"title":"DESIGN \u0026amp; USER EXPERIENCE","enableDescription":false,"sectionId":"hero","align":"text-left","columnClass":"","enableInnerblock":false} -->
+<section id="hero" class="section-header-block"><div class="section-inner container"><div class="row"><div class="col-md-9 col-lg-8 col-sm-12 text-left"><header><h1 class="title">DESIGN &amp; USER EXPERIENCE</h1></header></div></div></div></section>
+<!-- /wp:rgb/section-block --></section>
 <!-- /wp:rgb/group-block -->
 
 <!-- wp:rgb/group-block {"sectionId":"content","className":"border-top-lg"} -->
