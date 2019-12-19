@@ -30,6 +30,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'enqueue_block_editor_assets',  array( $this, 'block_editor_assets' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
+            add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
             add_filter( 'body_class', array( $this, 'body_classes' ) );
         }
 
@@ -74,35 +75,26 @@ if ( ! class_exists( 'Reen' ) ) :
              * @link https://codex.wordpress.org/Theme_Logo
              */
 
-            add_theme_support(
-                'custom-logo', apply_filters(
-                    'reen_custom_logo_args', array(
-                        'height'      => 250,
-                        'width'       => 250,
-                        'flex-width'  => true,
-                        'flex-height' => true,
-                    )
-                )
-            );
+            add_theme_support( 'custom-logo', apply_filters( 'reen_custom_logo_args', array(
+                'height'      => 40,
+                'width'       => 160,
+                'flex-width'  => true,
+            ) ) );
 
 
             /*
              * Enable support for Post Formats.
             */
-            add_theme_support(
-                'post-formats',
-                array(
-                    'aside',
-                    'image',
-                    'gallery',
-                    'video',
-                    'audio',
-                    'quote',
-                    'link',
-                    'status',
-                    
-                )
-            );
+            add_theme_support( 'post-formats', apply_filters( 'reen_post_format_supports', array(
+                'aside',
+                'image',
+                'gallery',
+                'video',
+                'audio',
+                'quote',
+                'link',
+                'status',
+            ) ) );
 
 
             // Declare WooCommerce support.
@@ -125,33 +117,25 @@ if ( ! class_exists( 'Reen' ) ) :
              */
 
              // This theme uses wp_nav_menu() in one location.
-            register_nav_menus(
-                apply_filters(
-                    'reen_register_nav_menus', array(
-						'primary' => esc_html__( 'Primary', 'reen' ),
-                        'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
-                        'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
-                        'footer_menu' => esc_html__( 'Footer Menu', 'reen' ),
-                    )
-                )
-            );
+            register_nav_menus( apply_filters( 'reen_register_nav_menus', array(
+				'primary' => esc_html__( 'Primary', 'reen' ),
+                'topbar_right' => esc_html__( 'Tob Right Menu', 'reen' ),
+                'topbar_left' => esc_html__( 'Top Left Menu', 'reen' ),
+                'footer_menu' => esc_html__( 'Footer Menu', 'reen' ),
+            ) ) );
 
             /*
              * Switch default core markup for search form, comment form, comments, galleries, captions and widgets
              * to output valid HTML5.
              */
-            add_theme_support(
-                'html5', apply_filters(
-                    'reen_html5_args', array(
-                        'search-form',
-                        'comment-form',
-                        'comment-list',
-                        'gallery',
-                        'caption',
-                        'widgets',
-                    )
-                )
-            );
+            add_theme_support( 'html5', apply_filters( 'reen_html5_args', array(
+                'search-form',
+                'comment-form',
+                'comment-list',
+                'gallery',
+                'caption',
+                'widgets',
+            ) ) );
 
             /**
              * Declare support for title theme feature.
@@ -164,14 +148,80 @@ if ( ! class_exists( 'Reen' ) ) :
             add_theme_support( 'customize-selective-refresh-widgets' );
 
             /**
+             * Add support for full and wide align images.
+             */
+            add_theme_support( 'align-wide' );
+
+            /**
              * Declare support for editor styles.
              */
             add_theme_support( 'editor-styles' );
 
             /**
+             * Add support for disable editor custom colors.
+             */
+            add_theme_support( 'disable-custom-colors' );
+
+            /**
+             * Add support for editor color palette.
+             */
+            add_theme_support( 'editor-color-palette', apply_filters( 'reen_editor_color_palette_options', array(
+                array(
+                    'name'  => esc_html__( 'Green', 'reen' ),
+                    'slug'  => 'green',
+                    'color' => '#1abb9c',
+                ),
+                array(
+                    'name'  => esc_html__( 'Blue', 'reen' ),
+                    'slug'  => 'blue',
+                    'color' => '#3f8dbf',
+                ),
+                array(
+                    'name'  => esc_html__( 'Red', 'reen' ),
+                    'slug'  => 'red',
+                    'color' => '#fa6c65',
+                ),
+                array(
+                    'name'  => esc_html__( 'Orange', 'reen' ),
+                    'slug'  => 'orange',
+                    'color' => '#f27a24',
+                ),
+                array(
+                    'name'  => esc_html__( 'Purple', 'reen' ),
+                    'slug'  => 'purple',
+                    'color' => '#9b59b6',
+                ),
+                array(
+                    'name'  => esc_html__( 'Pink', 'reen' ),
+                    'slug'  => 'pink',
+                    'color' => '#d487be',
+                ),
+                array(
+                    'name'  => esc_html__( 'Navy', 'reen' ),
+                    'slug'  => 'navy',
+                    'color' => '#34495e',
+                ),
+                array(
+                    'name'  => esc_html__( 'Gray', 'reen' ),
+                    'slug'  => 'gray',
+                    'color' => '#95a5a6',
+                ),
+            ) ) );
+
+            /**
              * Enqueue editor styles.
              */
-            add_editor_style( array( get_template_directory_uri() . '/assets/css/gutenberg-editor.css', get_template_directory_uri() . '/style.css', $this->google_fonts() ) );
+            $editor_styles = array(
+                get_template_directory_uri() . '/assets/css/gutenberg-editor.css',
+                get_template_directory_uri() . '/style.css', $this->google_fonts()
+            );
+
+            if ( apply_filters( 'reen_use_predefined_colors', true ) ) {
+                $color_css_file = apply_filters( 'reen_primary_color', 'green' );
+                $editor_styles[] = get_template_directory_uri() . '/assets/css/colors/' . $color_css_file . '.css';
+            }
+            add_editor_style( $editor_styles );
+
         }
 
          /**
@@ -189,6 +239,11 @@ if ( ! class_exists( 'Reen' ) ) :
                 if ( isset( $body_class_meta_values ) && $body_class_meta_values ) {
                     $classes[] = $body_class_meta_values;
                 }
+            }
+
+            // Add class if align-wide is supported.
+            if ( current_theme_supports( 'align-wide' ) ) {
+                $classes[] = 'reen-align-wide';
             }
 
             return $classes;
@@ -278,7 +333,7 @@ if ( ! class_exists( 'Reen' ) ) :
         }
 
         /**
-         * Get all Front scripts.
+         * Get all Reen scripts.
          */
         private static function get_theme_scripts() {
             $reen_get_theme_script = apply_filters( 'reen_theme_script', array(
@@ -389,6 +444,11 @@ if ( ! class_exists( 'Reen' ) ) :
             wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
             wp_style_add_data( 'reen-icons', 'rtl', 'replace' );
 
+            if ( apply_filters( 'reen_use_predefined_colors', true ) ) {
+                $color_css_file = apply_filters( 'reen_primary_color', 'green' );
+                wp_enqueue_style( 'reen-color', get_template_directory_uri() . '/assets/css/colors/' . $color_css_file . '.css', '', $reen_version );
+            }
+
             /**
              * Fonts
              */
@@ -403,12 +463,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'bootstrap-bundle', get_template_directory_uri() . '/assets/js/bootstrap.bundle' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'jquery-form', get_template_directory_uri() . '/assets/js/jquery.form.js', array( 'jquery' ), $reen_version, true );
-
             wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/assets/js/jquery.easing' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
-
-            wp_enqueue_script( 'jquery.validate', get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
-
 
             wp_enqueue_script( 'affix', get_template_directory_uri() . '/assets/js/affix.js', array( 'jquery' ), $reen_version, true );
 
@@ -424,13 +479,21 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_script( 'viewport-units-buggyfill', get_template_directory_uri() . '/assets/js/viewport-units-buggyfill' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
 
-            wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll.js', array( 'jquery' ), $reen_version, true );
+
 
             if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
                 wp_enqueue_script( 'comment-reply' );
             }
 
-             wp_enqueue_script( 'reen-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'reen-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $reen_version, true );
+
+            $reen_js_options = apply_filters( 'reen_localize_script_data', array(
+                'enableScrollUp'        => apply_filters( 'reen_enable_scrollup', false ),
+                'enableStickyHeader'    => apply_filters( 'reen_enable_sticky_header', false ),
+            ) );
+
+            wp_localize_script( 'reen-scripts', 'reen_options', $reen_js_options );
 
         }
 
@@ -450,7 +513,7 @@ if ( ! class_exists( 'Reen' ) ) :
             );
 
             $query_args = array(
-                'family' => implode( '|', $google_fonts ),
+                'family' => implode( '%7c', $google_fonts ),
                 'subset' => rawurlencode( 'latin,latin-ext' ),
             );
 
@@ -485,6 +548,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/vendor/font-awesome/css/fontawesome-all.min.css', '', $reen_version );
 
+            
             // Scripts
             $theme_scripts = self::get_theme_scripts();
             foreach ( $theme_scripts as $handle => $props ) {
@@ -520,6 +584,113 @@ if ( ! class_exists( 'Reen' ) ) :
                     define( 'REEN_TEMPLATE_DEBUG_MODE', false );
                 }
             }
+        }
+
+        /**
+         * Register the required plugins for this theme.
+         *
+         * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
+         */
+        public function register_required_plugins() {
+            /*
+             * Array of plugin arrays. Required keys are name and slug.
+             * If the source is NOT from the .org repo, then source is also required.
+             */
+            global $reen_version;
+
+            $plugins = array(
+
+                array(
+                    'name'                  => esc_html__( 'Envato Market', 'reen' ),
+                    'slug'                  => 'envato-market',
+                    'source'                => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip',
+                    'required'              => false,
+                    'version'               => '2.0.3',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'external_url'          => '',
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Jetpack by WordPress.com', 'reen' ),
+                    'slug'                  => 'jetpack',
+                    'version'               => '8.0',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => false,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'MAS Static Content', 'reen' ),
+                    'slug'                  => 'mas-static-content',
+                    'version'               => '1.0.1',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => true,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'One Click Demo Import', 'reen' ),
+                    'slug'                  => 'one-click-demo-import',
+                    'version'               => '2.5.2',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => false,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Redux Framework', 'reen' ),
+                    'slug'                  => 'redux-framework',
+                    'version'               => '3.6.16',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => false,
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Reen Extensions', 'reen' ),
+                    'slug'                  => 'reen-extensions',
+                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-extensions.zip',
+                    'version'               => $reen_version,
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => true
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'Reen Gutenberg Blocks', 'reen' ),
+                    'slug'                  => 'reen-gutenberg-blocks',
+                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
+                    // 'version'               => $reen_version,
+                    'version'               => '0.0.247',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'required'              => true
+                ),
+
+                array(
+                    'name'                  => esc_html__( 'WPForms Lite', 'reen' ),
+                    'slug'                  => 'wpforms-lite',
+                    'required'              => false,
+                    'version'               => '1.5.6.2',
+                    'force_activation'      => false,
+                    'force_deactivation'    => false,
+                    'external_url'          => '',
+                ),
+            );
+
+            $config = array(
+                'id'           => 'reen',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+                'default_path' => '',                      // Default absolute path to bundled plugins.
+                'menu'         => 'tgmpa-install-plugins', // Menu slug.
+                'has_notices'  => true,                    // Show admin notices or not.
+                'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+                'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+                'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+                'message'      => '',                      // Message to output right before the plugins table.
+            );
+
+            tgmpa( $plugins, $config );
         }
     }
 endif;

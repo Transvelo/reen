@@ -52,6 +52,25 @@ if ( ! function_exists( 'reen_redux_change_single_blog_layout' ) ) {
     }
 }
 
+if ( ! function_exists( 'redux_toggle_popular_posts' ) ) {
+    function redux_toggle_popular_posts( $enable ) {
+        global $reen_options;
+
+        if ( ! isset( $reen_options['enable_popular_posts'] ) ) {
+            $reen_options['enable_popular_posts'] = true;
+        }
+
+        if ( $reen_options['enable_popular_posts'] ) {
+            $enable = true;
+        } else {
+            $enable = false;
+        }
+        
+        return $enable;
+    }
+}
+
+
 if ( ! function_exists( 'redux_toggle_related_posts' ) ) {
     function redux_toggle_related_posts( $enable ) {
         global $reen_options;
@@ -79,6 +98,24 @@ if ( ! function_exists( 'redux_toggle_author_info' ) ) {
         }
 
         if ( $reen_options['show_blog_post_author_info'] ) {
+            $enable = true;
+        } else {
+            $enable = false;
+        }
+        
+        return $enable;
+    }
+}
+
+if ( ! function_exists( 'redux_toggle_post_nav' ) ) {
+    function redux_toggle_post_nav( $enable ) {
+        global $reen_options;
+
+        if ( ! isset( $reen_options['show_post_nav'] ) ) {
+            $reen_options['show_post_nav'] = true;
+        }
+
+        if ( $reen_options['show_post_nav'] ) {
             $enable = true;
         } else {
             $enable = false;

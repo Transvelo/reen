@@ -1,3 +1,30 @@
 .dropdown.searchbox .menu-text {
 	display: none;
 }
+
+
+.social  {
+    i:after {
+        background-color: rgba(26,187,156,0.9);
+        transition: all 200ms ease-out;
+    }
+}
+
+.member .text-overlay .social li a:hover i {
+    color: #506A85;
+}
+
+.logo-text .site-title {
+	margin-bottom: 0;
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 80%;
+    letter-spacing: 0;
+
+    @include media-breakpoint-up(xl) {
+        font-size: 55px;
+        
+    }
+}

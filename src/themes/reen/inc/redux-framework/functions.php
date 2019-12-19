@@ -31,7 +31,9 @@ function redux_queue_font_awesome() {
     wp_enqueue_style( 'redux-fontawesome' );
 }
 
+require_once get_template_directory() . '/inc/redux-framework/functions/general-functions.php';
 require_once get_template_directory() . '/inc/redux-framework/functions/header-functions.php';
 require_once get_template_directory() . '/inc/redux-framework/functions/footer-functions.php';
 require_once get_template_directory() . '/inc/redux-framework/functions/blog-functions.php';
 require_once get_template_directory() . '/inc/redux-framework/functions/portfolio-functions.php';
+require_once get_template_directory() . '/inc/redux-framework/functions/style-functions.php';

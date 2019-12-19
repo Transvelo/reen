@@ -59,7 +59,7 @@ if ( ! function_exists( 'reen_entry_footer' ) ) :
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'reen' ) );
+			$categories_list = get_the_category_list( ', ' );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
 				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'reen' ) . '</span>', $categories_list ); // WPCS: XSS OK.

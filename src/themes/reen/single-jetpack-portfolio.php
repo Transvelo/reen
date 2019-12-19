@@ -33,7 +33,8 @@ get_header(); ?>
 
 	        endwhile; // End of the loop.
 	        do_action( 'reen_after_portfolio' );  ?>
-
+	</main><!-- #main -->
+</div><!-- #primary -->
 
 <?php
 get_footer();

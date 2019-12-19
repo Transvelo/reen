@@ -1,0 +1,71 @@
+# Copyright (C) 2019 MadrasThemes
+# This file is distributed under the same license as the Reen Extensions package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Reen Extensions 0.0.55\n"
+"Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
+"POT-Creation-Date: 2019-12-16 14:18:11+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: POT <support@madrasthemes.freshdesk.com>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: includes/widgets/class-reen-featured-posts-widget.php:13
+msgid "Display Featured Posts."
+msgstr ""
+
+#: includes/widgets/class-reen-featured-posts-widget.php:16
+msgid "REEN Featured Posts"
+msgstr ""
+
+#: includes/widgets/class-reen-featured-posts-widget.php:70
+msgid ", "
+msgstr ""
+
+#: includes/widgets/class-reen-featured-posts-widget.php:104
+#: includes/widgets/class-reen-random-posts-widget.php:94
+msgid "Title"
+msgstr ""
+
+#: includes/widgets/class-reen-featured-posts-widget.php:109
+#: includes/widgets/class-reen-random-posts-widget.php:99
+msgid "Number of posts to show:"
+msgstr ""
+
+#: includes/widgets/class-reen-random-posts-widget.php:13
+msgid "Display Random Posts."
+msgstr ""
+
+#: includes/widgets/class-reen-random-posts-widget.php:16
+msgid "REEN Random Posts"
+msgstr ""
+
+#: reen-extensions.php:144 reen-extensions.php:153
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Reen Extensions"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://madrasthemes.com/reen"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This selection of extensions compliment our lean and mean theme for "
+"WooCommerce, reen. Please note: they don’t work with any WordPress theme, "
+"just reen."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "MadrasThemes"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://madrasthemes.com/"
+msgstr ""

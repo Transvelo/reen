@@ -1,0 +1,111 @@
+.wpforms-field {
+    &-small,
+    &-medium,
+    &-large {
+        &::placeholder {
+            color: #c2c7cc;
+
+            .dark-bg & {
+                color: #828e99;
+            }
+        }
+    }
+}
+
+.wpforms {
+    &-form {
+        position: relative;
+        padding: 0;
+        width: 100%;
+
+        input:not(.btn):not([type="submit"]):focus,
+        textarea:focus,
+        select:focus {
+            background-color: #fff;
+        }
+    }
+
+    &-field {
+        &-hp {
+            display: none;
+        }
+
+        .wpforms-container .wpforms-field-container & {
+            padding: 0;
+        }
+
+        .wpforms-container & {
+            input.wpforms-error, 
+            input.user-invalid, 
+            textarea.wpforms-error, 
+            textarea.user-invalid, 
+            select.wpforms-error, 
+            select.user-invalid {
+                border-color: #d99898;
+            }
+        }
+
+        &-small:not( textarea ) {
+            .wpforms-container .wpforms-field-container & {
+                max-width: 100%;
+
+                @include media-breakpoint-up(md) {
+                    max-width: 25%;
+                }
+            }
+        }
+
+        &-medium:not( textarea ) {
+            .wpforms-container .wpforms-field-container & {
+                max-width: 100%;
+
+                @include media-breakpoint-up(md) {
+                    max-width: 50%;
+                }
+            }
+        }
+    }
+
+    &-submit {
+        margin-bottom: 0;
+
+        &-container {
+            .wpforms-container .wpforms-form & {
+                padding: 0;
+            }
+        }
+    }
+
+    &-label-hide {
+        @include sr-only;
+    }
+
+    &-has-error {
+        label.wpforms-error {
+            display: none !important;
+        }
+    }
+}
+
+.newsletter.wpforms-container {
+    .wpforms-form {
+        position: relative;
+        width: 100%;
+
+        .wpforms-submit-container {
+            position: static;
+        }
+    }
+
+    input[type="email"] {
+        background: rgba(255,255,255,0.15);
+        padding-right: 100px;
+        border-radius: 3px;
+        border: none;
+        color: #FFF !important;
+    }
+
+    input[type="email"]:focus {
+        background: rgba(255,255,255,0.20);
+    }
+}

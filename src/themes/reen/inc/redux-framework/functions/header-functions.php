@@ -2,6 +2,20 @@
 /**
  * Filter functions for Header of Theme Options
  */
+if( ! function_exists( 'redux_toggle_logo_svg' ) ) {
+    function redux_toggle_logo_svg() {
+        global $reen_options;
+
+        if( isset( $reen_options['logo_svg'] ) && $reen_options['logo_svg'] == '1' ) {
+            $logo_svg = true;
+        } else {
+            $logo_svg = false;
+        }
+
+        return $logo_svg;
+    }
+}
+
 if ( ! function_exists( 'redux_toggle_topbar_view' ) ) {
     function redux_toggle_topbar_view( $enable_topbar_view ) {
         global $reen_options;
@@ -43,5 +57,19 @@ if ( ! function_exists( 'redux_toggle_topbar_right' ) ) {
         }
 
         return $header_enable_topbar_right;
+    }
+}
+
+if ( ! function_exists( 'redux_toggle_sticky_header' ) ) {
+    function redux_toggle_sticky_header( $sticky_header ) {
+        global $reen_options;
+
+        if ( isset( $reen_options['sticky_header'] ) && $reen_options['sticky_header'] ) {
+            $sticky_header = true;
+        } else {
+            $sticky_header = false;
+        }
+
+        return $sticky_header;
     }
 }

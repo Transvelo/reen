@@ -31,10 +31,10 @@
 			transition: all 200ms ease-out;
 }
 
-.owl-dots .owl-dot.active span,
-.owl-dots .owl-dot:hover span {
-	background: #1ABB9C;
-}
+// .owl-dots .owl-dot.active span,
+// .owl-dots .owl-dot:hover span {
+// 	background: #1ABB9C;
+// }
 
 .owl-carousel {
 	.owl-prev,
@@ -71,7 +71,7 @@
 	}
 }
 
-// .owl-carousel.post-media + * {
-// 	margin-top: 60px;
-// }
+.owl-one-item #owl-main .owl-controls {
+	display: none;
+}		
 

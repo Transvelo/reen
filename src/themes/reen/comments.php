@@ -33,10 +33,11 @@ if ( post_password_required() ) {
             <?php
                 printf( // WPCS: XSS OK.
                     /* translators: 1: number of comments, 2: post title */
-                    esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'reen' ) ),
+                    esc_html( _nx( '%1$s comment %2$s', '%1$s comments %2$s', get_comments_number(), 'comments title', 'reen' ) ),
                     number_format_i18n( get_comments_number() ),
-                    '<span>' . get_the_title() . '</span>'
+                    '<span class="screen-reader-text">on ' . get_the_title() . '</span>'
                 );
+
             ?>
         </h2>
 
@@ -112,7 +113,7 @@ $args = apply_filters(
         'class_submit'       => 'btn btn-submit submit',
         'fields'             => apply_filters( 'comment_form_default_fields', $fields ),
         'submit_field'       => '<div class="form-submit">%1$s %2$s</div>',
-        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
+        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun', 'reen' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
     )
 );
 

@@ -75,9 +75,17 @@ module.exports = function( grunt ) {
                 files: [{
                     '<%= dirs.theme %>/style.css': '<%= dirs.theme %>/style.scss',
                     // '<%= dirs.theme %>/style-editor.css': '<%= dirs.theme %>/style-editor.scss',
-                    // '<%= dirs.themeCSS %>/colors/green.css': '<%= dirs.themeSASS %>/colors/green.scss',
+                    '<%= dirs.themeCSS %>/colors/green.css': '<%= dirs.themeSASS %>/colors/green.scss',
+                    '<%= dirs.themeCSS %>/colors/blue.css': '<%= dirs.themeSASS %>/colors/blue.scss',
+                    '<%= dirs.themeCSS %>/colors/blue.css': '<%= dirs.themeSASS %>/colors/blue.scss',
+                    '<%= dirs.themeCSS %>/colors/red.css': '<%= dirs.themeSASS %>/colors/red.scss',
+                    '<%= dirs.themeCSS %>/colors/pink.css': '<%= dirs.themeSASS %>/colors/pink.scss',
+                    '<%= dirs.themeCSS %>/colors/orange.css': '<%= dirs.themeSASS %>/colors/orange.scss',
+                    '<%= dirs.themeCSS %>/colors/purple.css': '<%= dirs.themeSASS %>/colors/purple.scss',
+                    '<%= dirs.themeCSS %>/colors/gray.css': '<%= dirs.themeSASS %>/colors/gray.scss',
+                    '<%= dirs.themeCSS %>/colors/navy.css': '<%= dirs.themeSASS %>/colors/navy.scss',
                     // '<%= dirs.themeCSS %>/jetpack/jetpack.css': '<%= dirs.themeSASS %>/jetpack.scss',
-                     '<%= dirs.themeCSS %>/gutenberg-editor.css': '<%= dirs.themeSASS %>/gutenberg-editor.scss',
+                    '<%= dirs.themeCSS %>/gutenberg-editor.css': '<%= dirs.themeSASS %>/gutenberg-editor.scss',
                     // '<%= dirs.extensionsCSS %>/admin/admin.css': '<%= dirs.extensionsSASS %>/admin.scss',
                 }]
             }
@@ -171,7 +179,8 @@ module.exports = function( grunt ) {
                     branch: 'theme',
                 },
                 src: ['**']
-            }
+            },
+
         },
 
         version: {
@@ -343,7 +352,7 @@ module.exports = function( grunt ) {
         copy: {
             main: {
                 files: [
-                    { src: ['<%= pkg.name %>-extensions.zip'], dest: '<%= dirs.theme %>/assets/plugins/'},
+                    { src: ['<%= pkg.name %>-extensions.zip'], dest: 'gh-pages/assets/plugins/'},
                     { src: ['<%= pkg.name %>-demo.zip'], dest: '<%= dirs.theme %>/assets/plugins/'}
                 ]
             },

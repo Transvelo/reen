@@ -17,6 +17,10 @@ function reen_mas_static_content_jetpack_sharing_remove_filters() {
     if( function_exists( 'sharing_display' ) ) {
         remove_filter( 'the_content', 'sharing_display', 19 );
     }
+
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+    }
 }
 
 add_action( 'mas_static_content_before_shortcode_content', 'reen_mas_static_content_jetpack_sharing_remove_filters' );
@@ -24,6 +28,10 @@ add_action( 'mas_static_content_before_shortcode_content', 'reen_mas_static_cont
 function reen_mas_static_content_jetpack_sharing_add_filters() {
     if( function_exists( 'sharing_display' ) ) {
         add_filter( 'the_content', 'sharing_display', 19 );
+    }
+
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
     }
 }
 
@@ -35,6 +43,10 @@ if ( ! function_exists( 'reen_jetpack_sharing_remove_filters' ) ) {
         if( function_exists( 'sharing_display' ) ) {
             remove_filter( 'the_content', 'sharing_display', 19 );
             remove_filter( 'the_excerpt', 'sharing_display', 19 );
+        }
+
+        if ( class_exists( 'Jetpack_Likes' ) ) {
+            remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
         }
     }
 }

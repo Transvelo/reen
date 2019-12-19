@@ -15,7 +15,7 @@ if ( ! class_exists( 'REEN_Options' ) ) {
 
         public function load_config() {
 
-            $options = array( 'header', 'footer', 'blog', 'portfolio',  );
+            $options = array( 'general', 'header', 'footer', 'blog', 'portfolio', 'style',  );
             $options_dir    = get_template_directory() . '/inc/redux-framework/options';
             
             foreach ( $options as $option ) {
@@ -23,7 +23,7 @@ if ( ! class_exists( 'REEN_Options' ) ) {
                 require_once $options_dir . '/' . $options_file ;
             }
 
-            $sections   = apply_filters( 'reen_options_sections_args', array( $header_options, $footer_options, $blog_options, $portfolio_options  ) );
+            $sections   = apply_filters( 'reen_options_sections_args', array( $general_options, $header_options, $footer_options, $blog_options, $portfolio_options, $style_options  ) );
             $theme      = wp_get_theme();
             $args       = array(
                 'opt_name'          => 'reen_options',

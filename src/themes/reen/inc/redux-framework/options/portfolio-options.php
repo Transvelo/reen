@@ -39,8 +39,8 @@
      array(
             'id'        => 'reen_portfolio_posts_per_page',
             'type'      => 'slider',
-            'title'     => esc_html__( 'Projects per page', 'front' ),
-            'subtitle'  => esc_html__( 'How many projects should be shown per page?', 'front' ),
+            'title'     => esc_html__( 'Projects per page', 'reen' ),
+            'subtitle'  => esc_html__( 'How many projects should be shown per page?', 'reen' ),
             'min'       => 4,
             'max'       => 32,
             'default'   => '16'
@@ -50,7 +50,7 @@
 
             'type'         => 'text',
             'id'           => 'reen_portfolio_page_title',
-            'title'        => esc_html__( 'Portfolio', 'reen' ),
+            'title'        => esc_html__( 'Portfolio Title', 'reen' ),
             'subtitle'     => esc_html__( 'Title for portfolio page', 'reen' ),
             'default'      => '3 Columns grid portfolio'
         ),
@@ -59,7 +59,7 @@
 
             'type'         => 'text',
             'id'           => 'reen_portfolio_page_description',
-            'title'        => esc_html__( 'Portfolio', 'reen' ),
+            'title'        => esc_html__( 'Portfolio Description', 'reen' ),
             'subtitle'     => esc_html__( 'Description for portfolio page', 'reen' ),
             'default'      => 'Magnis modipsae voloratati andigen daepeditem quiate re porem que aut labor. Laceaque eictemperum quiae sitiorem rest non restibusaes.'
         ),

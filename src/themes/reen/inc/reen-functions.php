@@ -5,6 +5,15 @@
  * @package Reen
  */
 
+if( ! function_exists( 'reen_is_ocdi_activated' ) ) {
+    /**
+     * Check if One Click Demo Import is activated
+     */
+    function reen_is_ocdi_activated() {
+        return class_exists( 'OCDI_Plugin' ) ? true : false;
+    }
+}
+
 if ( ! function_exists( 'reen_is_jetpack_activated' ) ) {
     /**
      * Query JetPack activation
