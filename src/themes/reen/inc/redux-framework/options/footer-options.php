@@ -54,7 +54,14 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
             'id'           => 'footer_site_title',
             'title'        => esc_html__( 'Footer Site Title', 'reen' ),
             'subtitle'     => esc_html__( 'Enter the footer site Title', 'reen' ),
-            'required'  => array( 'footer_footer_site_title_enable', 'equals', true ),
+            'required'     => array( 'footer_footer_site_title_enable', 'equals', true ),
+        ),
+
+        array(
+            'id'        => 'footer_footer_site_description_enable',
+            'type'      => 'switch',
+            'title'     => esc_html__( 'Enable Footer Site Description', 'reen' ),
+            'default'   => 1,
         ),
 
         array(
@@ -62,6 +69,7 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
             'id'           => 'footer_site_description',
             'title'        => esc_html__( 'Footer Site Description', 'reen' ),
             'subtitle'     => esc_html__( 'Enter the footer site description', 'reen' ),
+            'required'     => array( 'footer_footer_site_description_enable', 'equals', true ),
         ),
 
         array(

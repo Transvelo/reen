@@ -12,30 +12,36 @@
         <div class="container inner">
             <div class="row">
                 <div class="col-lg-3 col-md-6 inner">
-                <h4><?php reen_footer_site_title(); ?></h4>
-                <?php reen_footer_logo(); ?>
-                <?php reen_footer_site_description(); ?>
+                    <?php reen_footer_site_title(); ?>
+                    <?php if( apply_filters( 'reen_footer_logo', true  ) ):
+                        reen_footer_logo(); 
+                     endif; ?>
+                    <?php reen_footer_site_description(); ?>
+                    <?php dynamic_sidebar( 'footer-1' ); ?>
                 </div>
-                <?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
-                <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
-                <div class="col-lg-3 col-md-6 inner">
-                    <?php dynamic_sidebar( 'footer-2' ); ?>
-                </div>
-                <?php endif; ?>
 
-                <?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
-                <div class="col-lg-3 col-md-6 inner">
-                    <?php dynamic_sidebar( 'footer-3' ); ?>
-                </div>
-                <?php endif; ?>
+                <?php if ( is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
+                    <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
+                        <div class="col-lg-3 col-md-6 inner">
+                            <?php dynamic_sidebar( 'footer-2' ); ?>
+                        </div>
+                    <?php endif; ?>
 
-                <?php if ( is_active_sidebar( 'footer-4' ) ) : ?>
-                <div class="col-lg-3 col-md-6 inner">
-                    <?php dynamic_sidebar( 'footer-4' ); ?>
-                </div>
+                    <?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
+                        <div class="col-lg-3 col-md-6 inner">
+                            <?php dynamic_sidebar( 'footer-3' ); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ( is_active_sidebar( 'footer-4' ) ) : ?>
+                        <div class="col-lg-3 col-md-6 inner">
+                            <?php dynamic_sidebar( 'footer-4' ); ?>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
+
         <div class="footer-bottom">
             <div class="container inner clearfix">
                 <?php reen_footer_bottom_bar(); ?>
@@ -51,7 +57,6 @@
                 ?>
             </div>
         </div>
-        <?php endif; ?>
     </footer>
 
 </div><!-- #page -->

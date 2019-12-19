@@ -56,6 +56,7 @@ add_filter( 'reen_footer_site_title_info', 'reen_redux_apply_footer_site_title' 
 add_filter( 'reen_footer_site_description_info', 'reen_redux_apply_footer_site_description'     );
 
 add_filter( 'reen_footer_enable_site_title',  'redux_toggle_footer_site_title'   );
+add_filter( 'reen_footer_enable_site_description',  'redux_toggle_footer_site_description'   );
 
 // Style Filters
 add_filter( 'reen_use_predefined_colors',                   'redux_toggle_use_predefined_colors' );

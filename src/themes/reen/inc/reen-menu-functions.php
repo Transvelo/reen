@@ -300,22 +300,6 @@ if ( ! function_exists( 'reen_wp_nav_menu_item_custom_fields' ) ) {
                     <?php esc_html_e( 'Has Megamenu ?', 'reen' ); ?>
                 </label>
             </p>
-            <p class="field-custom description description-thin">
-                <label for="edit-menu-item-megamenu-max-width-<?php echo esc_attr( $item_id ); ?>">
-                    <?php esc_html_e( 'Megamenu Max Width', 'reen' ); ?><br />
-                    <input type="text" id="edit-menu-item-megamenu-max-width-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-megamenu-max-width[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->megamenu_max_width ); ?>" />
-                </label>
-            </p>
-            <p class="field-custom description description-thin">
-                <label for="edit-menu-item-megamenu-position-<?php echo esc_attr( $item_id ); ?>">
-                    <?php esc_html_e( 'Megamenu Position', 'reen' ); ?><br />
-                    <select id="edit-menu-item-megamenu-position-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-megamenu-position[<?php echo esc_attr( $item_id ); ?>]">
-                        <?php foreach ( array( 'left' => esc_html__( 'Left', 'reen' ), 'right' => esc_html__( 'Right', 'reen' ) ) as $key => $value ) : ?>
-                            <option value="<?php echo esc_attr( $key ); ?>" <?php selected( esc_attr( $item->megamenu_position ), esc_attr( $key ) ); ?>><?php echo esc_html( $value ); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </label>
-            </p>
         <?php endif;
     }
 }
@@ -345,16 +329,6 @@ if ( ! function_exists( 'reen_update_custom_nav_fields' ) ) {
         } else {
             update_post_meta( $menu_item_db_id, '_menu_item_has_megamenu', false );
         }
-
-        if ( isset( $_POST['menu-item-megamenu-max-width'] ) && is_array( $_POST['menu-item-megamenu-max-width'] ) && isset( $_POST['menu-item-megamenu-max-width'][$menu_item_db_id] ) ) {
-            $megamenu_max_width = $_POST['menu-item-megamenu-max-width'][$menu_item_db_id];
-            update_post_meta( $menu_item_db_id, '_menu_item_megamenu_max_width', $megamenu_max_width );
-        }
-
-        if ( isset( $_POST['menu-item-megamenu-position'] ) && is_array( $_POST['menu-item-megamenu-position'] ) && isset( $_POST['menu-item-megamenu-position'][$menu_item_db_id] ) ) {
-            $megamenu_position = $_POST['menu-item-megamenu-position'][$menu_item_db_id];
-            update_post_meta( $menu_item_db_id, '_menu_item_megamenu_position', $megamenu_position );
-        }
     }
 }
 
@@ -366,8 +340,6 @@ if ( ! function_exists( 'reen_add_custom_nav_fields' ) ) {
 
         $menu_item->icon = get_post_meta( $menu_item->ID, '_menu_item_icon', true );
         $menu_item->has_megamenu = get_post_meta( $menu_item->ID, '_menu_item_has_megamenu', true );
-        $menu_item->megamenu_max_width = get_post_meta( $menu_item->ID, '_menu_item_megamenu_max_width', true );
-        $menu_item->megamenu_position = get_post_meta( $menu_item->ID, '_menu_item_megamenu_position', true );
 
         return $menu_item;
     }

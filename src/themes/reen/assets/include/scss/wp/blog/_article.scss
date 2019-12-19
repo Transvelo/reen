@@ -86,27 +86,6 @@ article.post,
 		.sd-content ul li[class*='share-'] div.option a:hover {
 			opacity: 1;
 		}
-
-		// .sd-social-icon-text .sd-content ul a {
-		// 	span {
-		// 		position: absolute;
-		// 	    height: 1.1em;
-		// 	    font-family: 'Lato',sans-serif;
-		// 	    line-height: 100%;
-		// 	    color: #FFF;
-		// 	    margin: auto;
-		// 	    opacity: 0;
-		// 	    left: 25px;
-		// 	    top: 20px;
-		// 	    font-size: 18px;
-		// 	}
-
-		// 	&:hover {
-		// 		span {
-		// 			opacity: 1;
-		// 		}
-		// 	}
-		// }
 	}
 }
 
@@ -193,13 +172,9 @@ figure {
 	max-width: 100%;
 }
 
- figure.post-media + * {
+figure.post-media + * {
  	padding-top: 0;
- }
-
- // .classic-blog .post__content-inner figure {
- // 	padding-bottom: 30px;
- // }
+}
 
 .alert.no-comments {
     padding: .75rem 1.25rem !important;
