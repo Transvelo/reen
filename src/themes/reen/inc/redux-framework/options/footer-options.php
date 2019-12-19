@@ -54,7 +54,7 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
             'id'           => 'footer_site_title',
             'title'        => esc_html__( 'Footer Site Title', 'reen' ),
             'subtitle'     => esc_html__( 'Enter the footer site Title', 'reen' ),
-            'required'  => array( 'footer_footer_site_title_enable', 'equals', true ),
+            'required'     => array( 'footer_footer_site_title_enable', 'equals', true ),
         ),
 
         array(
