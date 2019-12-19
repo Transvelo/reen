@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.57
+Version:           0.0.58
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -8882,7 +8882,6 @@ aside .thumb figure {
 .btn-share-md,
 .btn-share-sm,
 .btn-share-xs {
-  /*display: table;*/
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -8896,8 +8895,6 @@ aside .thumb figure {
 .btn-share-md i,
 .btn-share-sm i,
 .btn-share-xs i {
-  /*display: table-cell;
-	vertical-align: middle;*/
   -ms-flex-item-align: center;
   align-self: center;
   margin-left: auto;
@@ -8943,12 +8940,6 @@ aside .thumb figure {
   -o-transition: all 200ms ease-out;
   transition: all 200ms ease-out; }
 
-/*.btn-share-lg:hover i:after,
-.btn-share-md:hover i:after,
-.btn-share-sm:hover i:after,
-.btn-share-xs:hover i:after {
-	height: 100%;
-}*/
 .btn-share-lg:hover .icon-s-facebook:after,
 .btn-share-md:hover .icon-s-facebook:after,
 .btn-share-sm:hover .icon-s-facebook:after,
@@ -9320,7 +9311,6 @@ p .wp-block-button .wp-block-button__link,
   margin: -10px 0 5px; }
 
 .tabs-circle-top .tab a:hover {
-  /*border: 4px solid #1ABB9C;*/
   background-color: #F5F7FA;
   border-color: #CED7E0 !important; }
 
@@ -9630,7 +9620,6 @@ blockquote:before {
 .light-bg .blank .panel-title > a,
 .light-bg .panel-title > a:hover,
 .light-bg .blank .panel-title > a:hover {
-  /*background: #E6E9ED;*/
   background: #FFF; }
 
 .dark-bg .panel-group .panel,
@@ -9645,7 +9634,6 @@ blockquote:before {
 
 .dark-bg .panel-title > a,
 .dark-bg .panel-title > a:hover {
-  /*background: #E6E9ED;*/
   background: #485867; }
 
 .dark-bg .panel-title > a,
@@ -9767,7 +9755,6 @@ blockquote:before {
 
 .items.fullscreen li img {
   display: block;
-  /*position: relative;*/
   width: 100%;
   height: auto; }
 
@@ -9840,7 +9827,6 @@ blockquote:before {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   line-height: 22px;
-  /*color: #FFF;*/
   text-align: center; }
 
 .items li .text-overlay .info h2, .items li .text-overlay .info .h2,
@@ -10555,7 +10541,6 @@ blockquote:before {
 
 .pricing .plan .features li {
   padding: 15px 0;
-  /*border-top: 1px solid #CED7E0;*/
   border-top: 1px solid #BCC7D1; }
 
 .pricing .plan .features li:first-child {
@@ -10935,13 +10920,6 @@ input:focus:-ms-input-placeholder {
 .meta li.categories:before {
   margin-right: 0; }
 
-/*.meta li.categories:before {
-	content: "\e70d";
-	-webkit-transition: all 200ms ease-out;
-	   -moz-transition: all 200ms ease-out;
-		 -o-transition: all 200ms ease-out;
-			transition: all 200ms ease-out;
-}*/
 .meta li.categories:hover:before {
   cursor: pointer; }
 
@@ -10962,7 +10940,6 @@ input:focus:-ms-input-placeholder {
   margin-left: 4px; }
 
 .meta li:after {
-  /*content: "\0399";*/
   content: "|";
   margin-left: 12px; }
 
@@ -10987,9 +10964,7 @@ input:focus:-ms-input-placeholder {
   flex-direction: column;
   line-height: 1;
   width: 55px;
-  /*60px;*/
   height: 55px;
-  /*60px;*/
   -webkit-border-radius: 50%;
   border-radius: 50%;
   font-weight: bold;
@@ -11481,13 +11456,11 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
 
 #comments .author .meta {
   display: inline-block;
-  /*opacity: .5;*/
   color: #BCC7D1;
   margin: 0; }
 
 #comments .message .meta {
   text-align: right;
-  /*opacity: .5;*/
   color: #BCC7D1;
   padding-left: 0; }
 
@@ -11611,13 +11584,6 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
   transform: scale(1);
   opacity: 1; }
 
-/*.modal.fade .modal-dialog {
-	-webkit-transform: translate(0);
-	    -ms-transform: translate(0);
-	        transform: translate(0);
-	-webkit-transition: none;
-	        transition: none;
-}*/
 .modal-open .modal {
   overflow: hidden; }
 
@@ -11903,9 +11869,6 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
     margin-left: 10px; } }
 
 @media (min-width: 1025px) and (max-width: 1199px) {
-  /*br {
-		display: none;
-	}*/
   #team .inner-left {
     padding-left: 40px; }
   #team .inner-right {
@@ -12185,8 +12148,7 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
     left: inherit;
     top: inherit;
     float: none;
-    width: 100%;
-    /* display: block !important;*/ }
+    width: 100%; }
   .yamm .yamm-content {
     padding: 12px 0;
     font-size: 13px; }
@@ -12293,9 +12255,6 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
     margin-bottom: 18px; } }
 
 @media (max-width: 767px) {
-  /*body {
-		height: 100vh;
-	}*/
   h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     letter-spacing: .0125em; }
   h1, .h1 {
@@ -12320,12 +12279,6 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
   #share .page-template-default.page .comment-form-wrapper, .page-template-default.page #share .comment-form-wrapper {
     max-width: 100%;
     padding: 0; }
-  /*.owl-controls {
-		display: inline;
-	}
-	.owl-dots {
-		top: 0 !important;
-	}*/
   .last-bottom {
     padding-bottom: 20px !important; }
   .last-bottom + .last-bottom {
@@ -12709,8 +12662,7 @@ li.wp-block-latest-comments__comment *:last-child:not(.form-control),
   .filter li a:before {
     display: none; }
   .items {
-    margin-left: 0 !important;
-    /*margin-bottom: -20px !important;*/ }
+    margin-left: 0 !important; }
   .items li {
     width: 100% !important;
     margin-left: 0 !important;
@@ -12830,20 +12782,10 @@ body:before {
   content: 'xs';
   display: none; }
 
-/*@media (min-width: 768px) {
-	body:before {
-		content: 'sm';
-	}
-}*/
 @media (min-width: 1025px) {
   body:before {
     content: 'md'; } }
 
-/*@media (min-width: 1200px) {
-	body:before {
-		content: 'lg';
-	}
-}*/
 /*===================================================================================*/
 /*	DEMO ONLY
 /*===================================================================================*/
