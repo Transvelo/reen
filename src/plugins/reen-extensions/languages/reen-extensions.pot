@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Reen Extensions package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Reen Extensions 0.0.55\n"
+"Project-Id-Version: Reen Extensions 0.0.62\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-16 14:18:11+00:00\n"
+"POT-Creation-Date: 2019-12-19 13:40:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "REEN Random Posts"
 msgstr ""
 
-#: reen-extensions.php:144 reen-extensions.php:153
+#: reen-extensions.php:143 reen-extensions.php:152
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 

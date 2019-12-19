@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: REEN 0.0.55\n"
+"Project-Id-Version: REEN 0.0.62\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-16 14:18:11+00:00\n"
+"POT-Creation-Date: 2019-12-19 13:40:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -536,15 +536,15 @@ msgstr ""
 msgid "WPForms Lite"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:517
+#: inc/jetpack/reen-jetpack-template-functions.php:519
 msgid "More projects"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:597
+#: inc/jetpack/reen-jetpack-template-functions.php:599
 msgid "More Videos"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:702
+#: inc/jetpack/reen-jetpack-template-functions.php:705
 msgid "More Audio"
 msgstr ""
 
@@ -734,30 +734,34 @@ msgid "Enter the footer site Title"
 msgstr ""
 
 #: inc/redux-framework/options/footer-options.php:63
+msgid "Enable Footer Site Description"
+msgstr ""
+
+#: inc/redux-framework/options/footer-options.php:70
 msgid "Footer Site Description"
 msgstr ""
 
-#: inc/redux-framework/options/footer-options.php:64
+#: inc/redux-framework/options/footer-options.php:71
 msgid "Enter the footer site description"
 msgstr ""
 
-#: inc/redux-framework/options/footer-options.php:71
+#: inc/redux-framework/options/footer-options.php:79
 msgid "Footer Bottom Bar"
 msgstr ""
 
-#: inc/redux-framework/options/footer-options.php:72
+#: inc/redux-framework/options/footer-options.php:80
 msgid "The Footer Bottom Bar is available bottom of Footer."
 msgstr ""
 
-#: inc/redux-framework/options/footer-options.php:78
+#: inc/redux-framework/options/footer-options.php:86
 msgid "Enable Footer Copyright"
 msgstr ""
 
-#: inc/redux-framework/options/footer-options.php:85
+#: inc/redux-framework/options/footer-options.php:93
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: inc/redux-framework/options/footer-options.php:86
+#: inc/redux-framework/options/footer-options.php:94
 msgid "&copy; %s REEN. All Rights Reserved."
 msgstr ""
 
@@ -845,8 +849,6 @@ msgstr ""
 
 #: inc/redux-framework/options/portfolio-options.php:8
 #: inc/redux-framework/options/portfolio-options.php:16
-#: inc/redux-framework/options/portfolio-options.php:53
-#: inc/redux-framework/options/portfolio-options.php:62
 msgid "Portfolio"
 msgstr ""
 
@@ -878,8 +880,16 @@ msgstr ""
 msgid "How many projects should be shown per page?"
 msgstr ""
 
+#: inc/redux-framework/options/portfolio-options.php:53
+msgid "Portfolio Page Title"
+msgstr ""
+
 #: inc/redux-framework/options/portfolio-options.php:54
 msgid "Title for portfolio page"
+msgstr ""
+
+#: inc/redux-framework/options/portfolio-options.php:62
+msgid "Portfolio Page Description"
 msgstr ""
 
 #: inc/redux-framework/options/portfolio-options.php:63
@@ -966,7 +976,7 @@ msgstr ""
 msgid "Edit menu item"
 msgstr ""
 
-#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1031
+#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1033
 msgid "Edit"
 msgstr ""
 
@@ -1041,22 +1051,6 @@ msgstr ""
 msgid "Has Megamenu ?"
 msgstr ""
 
-#: inc/reen-menu-functions.php:305
-msgid "Megamenu Max Width"
-msgstr ""
-
-#: inc/reen-menu-functions.php:311
-msgid "Megamenu Position"
-msgstr ""
-
-#: inc/reen-menu-functions.php:313
-msgid "Left"
-msgstr ""
-
-#: inc/reen-menu-functions.php:313
-msgid "Right"
-msgstr ""
-
 #: inc/template-functions.php:94
 msgid "&copy;2019All Rights Reserved."
 msgstr ""
@@ -1093,53 +1087,53 @@ msgstr ""
 msgid "Popular posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:706
+#: inc/template-tags/blog.php:707
 msgid "Post author"
 msgstr ""
 
-#: inc/template-tags/blog.php:728
+#: inc/template-tags/blog.php:729
 msgid "About the author"
 msgstr ""
 
-#: inc/template-tags/blog.php:734
+#: inc/template-tags/blog.php:735
 msgid "All posts by %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:753
+#: inc/template-tags/blog.php:754
 msgid "Add me on Facebook"
 msgstr ""
 
-#: inc/template-tags/blog.php:760
+#: inc/template-tags/blog.php:761
 msgid "Add me on Google Plus"
 msgstr ""
 
-#: inc/template-tags/blog.php:766
+#: inc/template-tags/blog.php:767
 msgid "Follow me on Twitter"
 msgstr ""
 
-#: inc/template-tags/blog.php:817
+#: inc/template-tags/blog.php:818
 msgid "Next Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:828
+#: inc/template-tags/blog.php:829
 msgid "Previous Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:878
+#: inc/template-tags/blog.php:879
 msgid "Related posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:1006
+#: inc/template-tags/blog.php:1008
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags/blog.php:1060
+#: inc/template-tags/blog.php:1062
 msgid ""
 "This content is password protected. To view it please enter your password "
 "below:"
 msgstr ""
 
-#: inc/template-tags/blog.php:1062
+#: inc/template-tags/blog.php:1064
 msgid "Password:"
 msgstr ""
 
@@ -1251,7 +1245,7 @@ msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: inc/jetpack/reen-jetpack-template-functions.php:459
+#: inc/jetpack/reen-jetpack-template-functions.php:461
 msgctxt "Post custom field name"
 msgid "%s:"
 msgstr ""
