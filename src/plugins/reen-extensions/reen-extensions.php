@@ -8,7 +8,6 @@
  * Version:         0.0.60
  * Text Domain:     Reen-extensions
  * Domain Path:     /languages
- * WC tested up to: 3.6.1
  */
 
 // Exit if accessed directly

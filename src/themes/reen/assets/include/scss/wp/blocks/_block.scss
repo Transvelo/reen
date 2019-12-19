@@ -29,14 +29,20 @@
     max-width: 1000%;
     clear: both;
 
-    @include media-breakpoint-up(lg) {
+    
+    @media (min-width: 992px) and (max-width: 1024px) {
         margin-left: calc(50% - 50vw - 45px);
         margin-right: calc(50% - 50vw + 40px );
     }
 
+    @include media-breakpoint-up(lg) {
+        margin-left: calc(50% - 50vw - 3px);
+        margin-right: calc(50% - 50vw + 25px );
+    }
+
     @include media-breakpoint-up(xl) {
-        margin-left: calc(50% - 50vw - 38px);
-        margin-right: calc(50% - 50vw + 52.5px);
+        margin-left: calc(50% - 50vw - 7.5px);
+        margin-right: calc(50% - 50vw + 22.5px);
     }
 }
 

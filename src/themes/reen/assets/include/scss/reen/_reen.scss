@@ -2039,6 +2039,11 @@ p .btn {
        -moz-transition: all 200ms ease-out;
          -o-transition: all 200ms ease-out;
             transition: all 200ms ease-out;
+
+            [dir="rtl"] & {
+            	margin-right: 7px;
+            	margin-left: 0;
+            }
 }
 .txt-btn:hover:after {
 	margin-left: 12px;

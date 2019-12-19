@@ -131,6 +131,26 @@ module.exports = function( grunt ) {
             }
         },
 
+        // RTLCSS
+        rtlcss: {
+            options: {
+                config: {
+                    swapLeftRightInUrl: false,
+                    swapLtrRtlInUrl: false,
+                    autoRename: false,
+                    preserveDirectives: true
+                }
+            },
+            main: {
+                expand: true,
+                ext: '-rtl.css',
+                src: [
+                    '<%= dirs.theme %>/style.css',
+                    '<%= dirs.themeCSS %>/gutenberg-editor.css',
+                ]
+            }
+        },
+
         // Generate POT files.
         makepot: {
             options: {
@@ -374,7 +394,8 @@ module.exports = function( grunt ) {
         cssmin: {
             main: {
                 files: {
-                    '<%= dirs.theme %>/style.min.css': ['<%= dirs.theme %>/style.css']
+                    '<%= dirs.theme %>/style.min.css': ['<%= dirs.theme %>/style.css'],
+                    '<%= dirs.theme %>/style.min-rtl.css': ['<%= dirs.theme %>/style-rtl.css']
                 }
             }
         }
@@ -407,9 +428,9 @@ module.exports = function( grunt ) {
 
     grunt.registerTask( 'css', [
         'sass',
-        // 'rtlcss',
-        // 'postcss',
-        // 'cssmin'
+        'rtlcss',
+        'postcss',
+        'cssmin'
     ]);
 
     grunt.registerTask( 'publish', [

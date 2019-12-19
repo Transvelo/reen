@@ -485,8 +485,8 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
                 'rewind'              => true,
                 'nav'                 => true,
                 'dots'                => true,
-                //'autoHeight'          => true,
-                'navText'             => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                'rtl'                 => is_rtl() ? true : false,
+                'navText'             => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
             ));
 
             ?><div id="owl-work" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>" class="owl-carousel post-gallery-carousel owl-inner-pagination owl-inner-nav post-media"><?php 
@@ -636,7 +636,8 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                                 'items'        => 5,
                                                 'nav'          => true,
                                                 'dots'         => true,
-                                                'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                'rtl'          => is_rtl() ? true : false,
+                                                'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
                                                 'responsive'        => array(
                                                     '0'     => array( 'items'   => 1 ),
                                                     '480'   => array( 'items'   => 2 ),
@@ -891,7 +892,8 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                                         'items'        => 2,
                                         'nav'          => true,
                                         'dots'         => true,
-                                        'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                        'rtl'          => is_rtl() ? true : false,
+                                        'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
                                         'responsive'        => array(
                                             '0'     => array( 'items'   => 1 ),
                                             '480'   => array( 'items'   => 2 ),

@@ -638,7 +638,9 @@ function debounce(func, wait, immediate) {
                 addClassActive: true,
                 lazyLoad: true,
                 stagePadding: 0,
-                navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+                rtl: $('body,html').hasClass('rtl'),
+                //navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+                navText: $('body,html').hasClass('rtl') ? ["<i class='icon-right-open-mini'></i>", "<i class='icon-left-open-mini'></i>" ] : ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
             }
 
             const carouselJson = currentObj.attr('data-owl-carousel');
@@ -800,7 +802,8 @@ function debounce(func, wait, immediate) {
                 rewind: true,
                 items: 1,
                 mouseDrag: false,
-                navText: ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
+                rtl: $('body,html').hasClass('rtl'),
+                navText: $('body,html').hasClass('rtl') ? ["<i class='icon-right-open-mini'></i>", "<i class='icon-left-open-mini'></i>" ] : ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
 
             }
 

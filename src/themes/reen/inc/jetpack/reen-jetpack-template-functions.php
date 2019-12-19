@@ -290,7 +290,8 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
                 'rewindNav'       => true,
                 'items'           => 1,
                 'autoHeight'      => true,
-                'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                'rtl'             => is_rtl() ? true : false,
+                'navText'         => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
             ) );
 
         if ( ! empty( $attachments ) ) :
@@ -341,7 +342,8 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
             'rewindNav'       => true,
             'items'           => 1,
             'autoHeight'      => true,
-            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+            'rtl'             => is_rtl() ? true : false,
+            'navText'         => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
         ) );
 
         if ( ! empty( $attachments ) ) :
@@ -613,7 +615,8 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                                     'nav'             => true,
                                                     'dots'            => true,
                                                     'items'           => 5,
-                                                    'navText'         => array( '<i class="it-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                    'rtl'          => is_rtl() ? true : false,
+                                                    'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
                                                     'responsive'        => array(
                                                         '0'     => array( 'items'   => 1 ),
                                                         '480'   => array( 'items'   => 2 ),
@@ -718,7 +721,8 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                                 'nav'             => true,
                                                 'dots'            => true,
                                                 'items'           => 5,
-                                                'navText'         => array( '<i class="it-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                'rtl'          => is_rtl() ? true : false,
+                                                'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
                                                 'responsive'        => array(
                                                     '0'     => array( 'items'   => 1 ),
                                                     '480'   => array( 'items'   => 2 ),

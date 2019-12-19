@@ -442,7 +442,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
 
             wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
-            wp_style_add_data( 'reen-icons', 'rtl', 'replace' );
+            //wp_style_add_data( 'reen-icons', 'rtl', 'replace' );
 
             if ( apply_filters( 'reen_use_predefined_colors', true ) ) {
                 $color_css_file = apply_filters( 'reen_primary_color', 'green' );

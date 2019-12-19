@@ -8,7 +8,6 @@
  * Version:         0.0.60
  * Text Domain:     reen-demo
  * Domain Path:     /languages
- * WC tested up to: 3.5.0
  */
 
 // Exit if accessed directly
