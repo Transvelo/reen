@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.64
+Version:           0.0.65
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -13851,35 +13851,20 @@ table {
 .article-bottom-0 .article__page {
   padding-bottom: 0; }
 
-.error404 form.search {
-  margin: 0; }
-  .error404 form.search .search-field {
-    margin-bottom: 40px; }
-
-.error-404-content .widget + .widget {
-  margin-top: 40px; }
-
-.article__page {
-  padding-bottom: 120px; }
-
-.home.page-template-default .article__page,
-.article-bottom-0 .article__page {
-  padding-bottom: 0; }
-
-.error404 form.search,
+.error-404-content form.search,
 .search-no-results form.search {
   margin: 0; }
-  .error404 form.search .search-field,
+  .error-404-content form.search .search-field,
   .search-no-results form.search .search-field {
     margin-bottom: 40px;
     height: 60px;
     font-size: 15px;
     padding: 15px 60px 15px 15px; }
-  .error404 form.search .btn-submit,
+  .error-404-content form.search .btn-submit,
   .search-no-results form.search .btn-submit {
     width: 50px;
     height: 50px; }
-    .error404 form.search .btn-submit:before,
+    .error-404-content form.search .btn-submit:before,
     .search-no-results form.search .btn-submit:before {
       font-size: 20px; }
 
