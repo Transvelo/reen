@@ -35,3 +35,15 @@ table {
     padding-bottom: 0;
 }
 
+.error404 form.search {
+    margin: 0;
+
+    .search-field {
+        margin-bottom: 40px;
+    }
+}
+
+.error-404-content .widget + .widget {
+    margin-top: 40px;
+}
+

@@ -13445,6 +13445,14 @@ table {
 .article-bottom-0 .article__page {
   padding-bottom: 0; }
 
+.error404 form.search {
+  margin: 0; }
+  .error404 form.search .search-field {
+    margin-bottom: 40px; }
+
+.error-404-content .widget + .widget {
+  margin-top: 40px; }
+
 #portfolio-post .article {
   margin-bottom: 0; }
 
