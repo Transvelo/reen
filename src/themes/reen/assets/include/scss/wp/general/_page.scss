@@ -16,6 +16,12 @@
         height: 60px;
         font-size: 15px;
         padding: 15px 60px 15px 15px;
+        background: #F8FAFD;
+        border-radius: 3px;
+
+        &:focus {
+        	background: #fff;
+        }
     }
 
     .btn-submit {

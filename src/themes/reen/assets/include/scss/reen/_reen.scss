@@ -3824,7 +3824,7 @@ textarea.form-control {
 .forms input:not(.btn):not([type="submit"]),
 .forms textarea,
 .forms select,
-form input:not(.btn):not([type="submit"]),
+form input:not(.btn):not([type="submit"]):not([type="search"]),
 form textarea,
 form select {
     background: #F8FAFD;
@@ -3849,7 +3849,9 @@ form select {
 .newsletter {
     position: relative;
 }
-form.newsletter input[type="email"] {
+form.newsletter input[type="email"],
+form.wpforms-form input:not(.btn):not([type="submit"]):not([type="search"]),
+form.newsletter input:not(.btn):not([type="submit"]):not([type="search"]) {
     background: rgba(255,255,255,0.15);
 	padding-right: 100px;
     -webkit-border-radius: 3px;
@@ -3868,7 +3870,8 @@ form.newsletter input[type="email"]:focus {
 	margin: 15px;
 	margin-bottom: 0;
 }
-.search.search-no-results {
+.search.search-no-results,
+.search.search-results  {
 	margin: 0;
 }
 
