@@ -3863,11 +3863,15 @@ form.newsletter input[type="email"]:focus {
 .navbar .searchbox .dropdown-menu {
 	width: 270px;
 }
-.search:not(.search-results) {
+.search {
 	position: relative;
 	margin: 15px;
 	margin-bottom: 0;
 }
+.search.search-no-results {
+	margin: 0;
+}
+
 .search input[type="search"] {
     background: #FFF;
 	padding-right: 40px;

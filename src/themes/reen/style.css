@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.68
+Version:           0.0.70
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -11201,10 +11201,13 @@ form.newsletter input[type="email"]:focus {
 .navbar .searchbox .dropdown-menu {
   width: 270px; }
 
-.search:not(.search-results) {
+.search {
   position: relative;
   margin: 15px;
   margin-bottom: 0; }
+
+.search.search-no-results {
+  margin: 0; }
 
 .search input[type="search"] {
   background: #FFF;
@@ -13852,20 +13855,20 @@ table {
   padding-bottom: 0; }
 
 .error-404-content form.search,
-.search-no-results form.search {
+.search-no-results .no-results form.search {
   margin: 0; }
   .error-404-content form.search .search-field,
-  .search-no-results form.search .search-field {
+  .search-no-results .no-results form.search .search-field {
     margin-bottom: 40px;
     height: 60px;
     font-size: 15px;
     padding: 15px 60px 15px 15px; }
   .error-404-content form.search .btn-submit,
-  .search-no-results form.search .btn-submit {
+  .search-no-results .no-results form.search .btn-submit {
     width: 50px;
     height: 50px; }
     .error-404-content form.search .btn-submit:before,
-    .search-no-results form.search .btn-submit:before {
+    .search-no-results .no-results form.search .btn-submit:before {
       font-size: 20px; }
 
 .error-404-content .widget + .widget {
