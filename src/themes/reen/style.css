@@ -6,7 +6,7 @@ Author:            MadrasThemes
 Author URI:        https://themeforest.net/user/madrasthemes/portfolio
 Description:       Multipurpose Responsive Theme
 Requires at least: WordPress 4.9.6
-Version:           0.0.63
+Version:           0.0.64
 License:           GNU General Public License v2 or later
 License URI:       LICENSE
 Text Domain:       reen
@@ -11201,7 +11201,7 @@ form.newsletter input[type="email"]:focus {
 .navbar .searchbox .dropdown-menu {
   width: 270px; }
 
-.search {
+.search:not(.search-results) {
   position: relative;
   margin: 15px;
   margin-bottom: 0; }
@@ -11357,13 +11357,15 @@ input:focus:-ms-input-placeholder {
   border-left: 1px solid #CED7E0;
   margin-left: 30px; }
 
-.classic-blog .post .date-wrapper {
+.classic-blog .post .date-wrapper,
+.search-results .classic-blog .page .date-wrapper {
   text-align: center;
   display: table;
   float: left;
   margin-right: 20px; }
 
-.classic-blog .post .date {
+.classic-blog .post .date,
+.search-results .classic-blog .page .date {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -11379,12 +11381,14 @@ input:focus:-ms-input-placeholder {
   line-height: 1;
   text-transform: uppercase; }
 
-.classic-blog .post .date .day {
+.classic-blog .post .date .day,
+.search-results .classic-blog .page .date .day {
   font-size: 20px;
   margin-bottom: 1px;
   display: block; }
 
-.classic-blog .post .date .month {
+.classic-blog .post .date .month,
+.search-results .classic-blog .page .date .month {
   font-size: 12px;
   display: block; }
 
@@ -11400,7 +11404,8 @@ input:focus:-ms-input-placeholder {
   border-right: 1px solid #CED7E0;
   margin-right: 30px; }
 
-.classic-blog.sidebar-left .post .date-wrapper {
+.classic-blog.sidebar-left .post .date-wrapper,
+.search-results .classic-blog.sidebar-left .page .date-wrapper {
   margin-right: 0;
   margin-left: 20px; }
 
