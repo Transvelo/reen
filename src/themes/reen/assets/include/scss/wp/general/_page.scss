@@ -7,11 +7,24 @@
     padding-bottom: 0;
 }
 
-.error404 form.search {
+.error404 form.search,
+.search-no-results form.search {
     margin: 0;
 
     .search-field {
         margin-bottom: 40px;
+        height: 60px;
+        font-size: 15px;
+        padding: 15px 60px 15px 15px;
+    }
+
+    .btn-submit {
+    	width: 50px;
+    	height: 50px;
+
+    	&:before {
+    		font-size: 20px;
+    	}
     }
 }
 

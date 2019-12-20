@@ -8,12 +8,12 @@ if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
         $blog_layout = reen_get_blog_layout();
         $single_post_layout = reen_get_single_post_layout();
         $blog_style = reen_get_blog_style();
-
+        
         if ( is_single() ) {
             $container_class = !empty( $single_post_layout ) ? $single_post_layout : 'no-sidebar';
-        } elseif ( is_home() || ( 'post' == get_post_type() && ( is_category() || is_tag() || is_author() || is_date() || is_year() || is_month() || is_time() ) ) ) {
+        } elseif ( is_search() || is_home() || ( 'post' == get_post_type() && ( is_category() || is_tag() || is_author() || is_date() || is_year() || is_month() || is_time() ) ) ) {
             $container_class = !empty( $blog_layout ) ? $blog_layout : 'no-sidebar';
-        }
+        } 
 
         if ('classic-blog' === $blog_style) {
             $container_class .= ' classic-blog';

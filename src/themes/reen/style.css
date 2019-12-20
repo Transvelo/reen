@@ -13854,6 +13854,33 @@ table {
 .error-404-content .widget + .widget {
   margin-top: 40px; }
 
+.article__page {
+  padding-bottom: 120px; }
+
+.home.page-template-default .article__page,
+.article-bottom-0 .article__page {
+  padding-bottom: 0; }
+
+.error404 form.search,
+.search-no-results form.search {
+  margin: 0; }
+  .error404 form.search .search-field,
+  .search-no-results form.search .search-field {
+    margin-bottom: 40px;
+    height: 60px;
+    font-size: 15px;
+    padding: 15px 60px 15px 15px; }
+  .error404 form.search .btn-submit,
+  .search-no-results form.search .btn-submit {
+    width: 50px;
+    height: 50px; }
+    .error404 form.search .btn-submit:before,
+    .search-no-results form.search .btn-submit:before {
+      font-size: 20px; }
+
+.error-404-content .widget + .widget {
+  margin-top: 40px; }
+
 #portfolio-post .article {
   margin-bottom: 0; }
 
