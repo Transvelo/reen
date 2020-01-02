@@ -3850,7 +3850,6 @@ form select {
     position: relative;
 }
 form.newsletter input[type="email"],
-form.wpforms-form input:not(.btn):not([type="submit"]):not([type="search"]),
 form.newsletter input:not(.btn):not([type="submit"]):not([type="search"]) {
     background: rgba(255,255,255,0.15);
 	padding-right: 100px;

@@ -11189,7 +11189,6 @@ form select {
   position: relative; }
 
 form.newsletter input[type="email"],
-form.wpforms-form input:not(.btn):not([type="submit"]):not([type="search"]),
 form.newsletter input:not(.btn):not([type="submit"]):not([type="search"]) {
   background: rgba(255, 255, 255, 0.15);
   padding-right: 100px;
@@ -13802,7 +13801,7 @@ ul.page-numbers > li:last-child > a {
   .newsletter.wpforms-container .wpforms-form .wpforms-submit-container {
     position: static; }
 
-.newsletter.wpforms-container input[type="email"] {
+.newsletter.wpforms-container form input[type="email"] {
   background: rgba(255, 255, 255, 0.15);
   padding-right: 100px;
   border-radius: 3px;
