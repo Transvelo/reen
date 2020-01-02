@@ -1,14 +1,14 @@
-# Copyright (C) 2019 MadrasThemes
-# This file is distributed under the same license as the Reen Extensions package.
+# Copyright (C) 2020 MadrasThemes
+# This file is distributed under the same license as the REEN Extensions package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Reen Extensions 0.0.62\n"
+"Project-Id-Version: REEN Extensions 1.0.0\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2019-12-19 13:40:37+00:00\n"
+"POT-Creation-Date: 2020-01-02 13:37:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: POT <support@madrasthemes.freshdesk.com>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
@@ -48,7 +48,7 @@ msgid "Cheatin&#8217; huh?"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "Reen Extensions"
+msgid "REEN Extensions"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
