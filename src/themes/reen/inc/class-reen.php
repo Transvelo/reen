@@ -111,7 +111,7 @@ if ( ! class_exists( 'Reen' ) ) :
             // Declare WooCommerce support.
             add_theme_support( 'woocommerce' );
 
-     
+
             /**
              * Register menu locations.
              */
@@ -393,7 +393,7 @@ if ( ! class_exists( 'Reen' ) ) :
                     'src' => get_template_directory_uri() . '/assets/js/scripts.js',
                     'dep' => array( 'jquery' )
                 ),
-                
+
             ) );
             return $reen_get_theme_script;
 
@@ -548,7 +548,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
             wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/vendor/font-awesome/css/fontawesome-all.min.css', '', $reen_version );
 
-            
+
             // Scripts
             $theme_scripts = self::get_theme_scripts();
             foreach ( $theme_scripts as $handle => $props ) {
@@ -648,7 +648,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 ),
 
                 array(
-                    'name'                  => esc_html__( 'Reen Extensions', 'reen' ),
+                    'name'                  => esc_html__( 'REEN Extensions', 'reen' ),
                     'slug'                  => 'reen-extensions',
                     'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-extensions.zip',
                     'version'               => $reen_version,
@@ -658,7 +658,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 ),
 
                 array(
-                    'name'                  => esc_html__( 'Reen Gutenberg Blocks', 'reen' ),
+                    'name'                  => esc_html__( 'REEN Gutenberg Blocks', 'reen' ),
                     'slug'                  => 'reen-gutenberg-blocks',
                     'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
                     // 'version'               => $reen_version,
