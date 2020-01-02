@@ -137,7 +137,7 @@ function reen_ocdi_before_widgets_import() {
 
 function reen_wp_import_post_data_processed( $postdata, $data ) {
     $upload_dir = wp_get_upload_dir();
-    $postdata = str_replace( 'https://demo.madrasthemes.com/reen/wp-content/uploads/sites/62/2019/12', $upload_dir['url'], $postdata );
+    $postdata = str_replace( 'https://demo.madrasthemes.com/reen/wp-content/uploads/sites/62', $upload_dir['baseurl'], $postdata );
     $postdata = str_replace( 'https://demo.madrasthemes.com/reen/wp-content/', content_url( '/' ), $postdata );
 
     if ( defined( 'REENGB_FILE' ) ) {
