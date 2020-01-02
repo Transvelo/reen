@@ -132,7 +132,7 @@ if ( ! function_exists( 'reen_footer_logo' ) ) :
         } else {
             echo '<span class="logo-text navbar-brand">';
             ?>
-            <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><h1 class="site-title"><?php bloginfo( 'name' ); ?></h1></a>
             <?php if ( '' != get_bloginfo( 'description' ) ) : ?>
                 <p class="site-description sr-only"><?php bloginfo( 'description' ); ?></p>
             <?php endif;

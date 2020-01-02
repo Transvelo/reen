@@ -13001,6 +13001,9 @@ figure.wp-block-audio {
   content: "\f02e";
   font-size: 13px; }
 
+.sidebox .menu ul li > ul li > ul li > ul li > ul li > ul {
+  padding-right: 0px; }
+
 .popular-posts-carousel.owl-carousel:hover .owl-prev,
 .popular-posts-carousel.owl-carousel:hover .owl-next,
 .related-post-carousel.owl-carousel:hover .owl-prev,

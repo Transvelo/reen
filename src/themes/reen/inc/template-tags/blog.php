@@ -810,7 +810,7 @@ if ( ! function_exists( 'reen_post_social_sharing' ) ) {
 
 if ( ! function_exists( 'reen_post_nav' ) ) {
     function reen_post_nav() {
-        if( apply_filters( 'reen_show_post_nav', false ) ) {
+        if( apply_filters( 'reen_show_post_nav', true ) ) {
             ob_start();
             ?>
             <div class="reen-post-nav post-navigation__nav">

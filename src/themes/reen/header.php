@@ -77,8 +77,8 @@
             <div class="yamm">
                 <div class="navbar-collapse collapse">
                    <div class="container">
-                        <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) {
-                           the_custom_logo(); 
+                        <?php if (current_theme_supports('custom-logo') && has_custom_logo() ) { 
+                          the_custom_logo();
                         } elseif ( function_exists( 'jetpack_has_site_logo' ) && jetpack_has_site_logo() ) {
                             jetpack_the_site_logo();
                         } elseif ( apply_filters( 'reen_site_logo_svg', false ) ) { ?>
@@ -86,7 +86,7 @@
                         } else {
                             echo '<span class="logo-text navbar-brand">';
                             ?>
-                            <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><h1 class="site-title"><?php bloginfo( 'name' ); ?></h1></a>
                             <?php if ( '' != get_bloginfo( 'description' ) ) : ?>
                                 <p class="site-description sr-only"><?php bloginfo( 'description' ); ?></p>
                             <?php endif;
