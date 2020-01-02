@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Reen Demo
+ * Plugin Name:     REEN Demo
  * Plugin URI:      https://madrasthemes.com/reen
  * Description:     This selection of demo compliment our lean and mean theme for WooCommerce, Reen. Please note: they don’t work with any WordPress theme, just Reen.
  * Author:          MadrasThemes
@@ -56,7 +56,7 @@ if( ! class_exists( 'Reen_Demo' ) ) {
          */
         protected $templates;
 
-        
+
         /**
          * The cache key to used to retrieve page templates
          *
@@ -70,10 +70,10 @@ if( ! class_exists( 'Reen_Demo' ) ) {
          * @return  Reen
          */
         public function __construct () {
-            
+
             $this->token    = 'reen-demo';
             $this->version  = '1.0.4';
-            
+
             add_action( 'plugins_loaded', array( $this, 'setup_constants' ),        10 );
             add_action( 'plugins_loaded', array( $this, 'includes' ),               20 );
             add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ), 30 );
@@ -262,7 +262,7 @@ if( ! class_exists( 'Reen_Demo' ) ) {
             foreach( $this as $value ) {
                 Reen_Demo::delete_template( $value );
             }
-            
+
         } // end deactivate
 
          /*--------------------------------------------*
@@ -270,7 +270,7 @@ if( ! class_exists( 'Reen_Demo' ) ) {
          *---------------------------------------------*/
             public function delete_template( $filename ){
                 $theme_path = get_template_directory();
-                $template_path = $theme_path . '/' . $filename;  
+                $template_path = $theme_path . '/' . $filename;
                 if( file_exists( $template_path ) ) {
                     unlink( $template_path );
                 }

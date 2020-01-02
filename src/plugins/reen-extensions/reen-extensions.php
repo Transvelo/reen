@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Reen Extensions
+ * Plugin Name:     REEN Extensions
  * Plugin URI:      https://madrasthemes.com/reen
  * Description:     This selection of extensions compliment our lean and mean theme for WooCommerce, reen. Please note: they don’t work with any WordPress theme, just reen.
  * Author:          MadrasThemes
