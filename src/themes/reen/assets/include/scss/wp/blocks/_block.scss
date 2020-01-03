@@ -273,7 +273,7 @@ figure.wp-block-image + p {
 }
 
 .wp-block-cover.has-pale-pink-background-color,
-.wp-block-cover.has-background-dim.aligncenter {
+.wp-block-cover.has-background-dim {
     margin-bottom: 20px;
 }
 
@@ -285,4 +285,16 @@ figure.wp-block-image + p {
     height: 100%;
 }
 
+.wp-block-code {
+    padding: .8em 1em;
+    border: 1px solid #CED7E0;
+}
+
+.classic-blog figure + .wp-block-cover {
+    padding-top: 0;
+}
+
+.jetpack-video-wrapper iframe {
+    width: 100% !important;
+}
 

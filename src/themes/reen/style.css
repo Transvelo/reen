@@ -13216,8 +13216,11 @@ article.post table {
   article.post table .table {
     background-color: #fff; }
 
-article.post ul, article.post ol {
+article.post ul {
   list-style: disc; }
+
+article.post ul ul {
+  list-style-type: circle; }
 
 article.post::after,
 .article__page::after {
@@ -13284,7 +13287,7 @@ article.post::after,
   margin-bottom: 20px; }
   .comment-text table, .comment-text blockquote, .comment-text dl, .comment-text ol, .comment-text ul {
     margin-bottom: 20px; }
-  .comment-text ul, .comment-text ol {
+  .comment-text ul {
     list-style: disc; }
 
 .comment-content + .comment-respond {
@@ -14261,7 +14264,7 @@ figure.wp-block-image + p {
   color: #fff; }
 
 .wp-block-cover.has-pale-pink-background-color,
-.wp-block-cover.has-background-dim.aligncenter {
+.wp-block-cover.has-background-dim {
   margin-bottom: 20px; }
 
 .wp-block-cover-text a {
@@ -14269,6 +14272,16 @@ figure.wp-block-image + p {
 
 .wp-block-gallery.is-cropped .blocks-gallery-item figure img {
   height: 100%; }
+
+.wp-block-code {
+  padding: .8em 1em;
+  border: 1px solid #CED7E0; }
+
+.classic-blog figure + .wp-block-cover {
+  padding-top: 0; }
+
+.jetpack-video-wrapper iframe {
+  width: 100% !important; }
 
 .screen-reader-text {
   position: absolute !important;

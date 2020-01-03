@@ -19,9 +19,13 @@ article.post {
         @include make-table();
     }
 
-    ul, ol {
+    ul {
         list-style: disc;
     }
+
+    ul ul {
+		list-style-type: circle;
+	}
 } 
 
 article.post,
@@ -96,7 +100,7 @@ article.post,
         margin-bottom: 20px;
     }
 
-    ul, ol {
+    ul {
         list-style: disc;
     }
 }
