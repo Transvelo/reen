@@ -246,8 +246,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 if ( isset( $args->has_children ) && $args->has_children && 0 === $depth ) {
                     $atts['href']          = $item->url;
                     $atts['class'] = 'dropdown-toggle';
-
-
+                    $atts['data-toggle'] = 'dropdown';
                 } else {
                     $atts['href'] = ! empty( $item->url ) ? $item->url : '#';
                     // Items in dropdowns use .dropdown-item instead of .nav-link.
@@ -256,6 +255,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
                         if ( isset( $args->has_children ) && $args->has_children ) {
                             $atts['class'] .= ' u-header__sub-menu-nav-link-toggle';
+                            $atts['data-toggle'] = 'dropdown';
                         }
 
                     }
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
                 // if $args has 'echo' key and it's true echo, otherwise return.
                 if ( array_key_exists( 'echo', $args ) && $args['echo'] ) {
-                    echo $fallback_output; // WPCS: XSS OK.
+                    echo wp_kses_post( $fallback_output ); // WPCS: XSS OK.
                 } else {
                     return $fallback_output;
                 }

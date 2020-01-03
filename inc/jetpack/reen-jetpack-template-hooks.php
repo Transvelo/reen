@@ -8,6 +8,8 @@
 /**
 * Portfolio
 */
+add_action( 'pre_get_posts', 'reen_portfolio_set_posts_per_page', 20 );
+
 add_action( 'reen_loop_portfolio_before', 'reen_portfolio_header', 10 );
 add_action( 'reen_loop_portfolio_before', 'reen_loop_portfolio_wrap_start', 40 );
 
@@ -65,4 +67,4 @@ add_action( 'reen_portfolio_single_post_image_1_bottom', 'reen_more_works',     
 add_action( 'reen_portfolio_single_image_2', 'reen_portfolio_post_image_2_media',               10 );
 add_action( 'reen_portfolio_single_image_2', 'reen_portfolio_post_image_2_content',             20 );
 
-add_action( 'reen_portfolio_single_post_image_2_bottom', 'reen_more_works',                     10 );
+add_action( 'reen_portfolio_single_post_image_2_bottom', 'reen_more_works',                      10 );

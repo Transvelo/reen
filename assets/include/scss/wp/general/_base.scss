@@ -6,3 +6,25 @@ textarea,
 .navbar-form .form-control {
     width: 100%;
 }
+
+.article__content--page .sharedaddy {
+	display: none;
+}
+
+p a.txt-btn {
+	text-decoration: none;
+}
+
+table {
+    @include make-table();
+
+    @include media-breakpoint-down(sm) {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+

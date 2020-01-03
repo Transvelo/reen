@@ -62,8 +62,25 @@
                 'default'       => 'sidebar-right'
         ),
         array(
+            'title'     => esc_html__( 'Enable Popular Posts', 'reen' ),
+            'subtitle'  => esc_html__( 'Choose if you want to enable popular posts section in blog page', 'reen' ),
+            'id'        => 'enable_popular_posts',
+            'on'        => esc_html__( 'Yes', 'reen' ),
+            'off'       => esc_html__( 'No', 'reen' ),
+            'type'      => 'switch',
+            'default'   => false,
+        ),
+        array(
             'title'     => esc_html__( 'Blog Post Author Info', 'reen' ),
             'id'        => 'show_blog_post_author_info',
+            'on'        => esc_html__('Yes', 'reen'),
+            'off'       => esc_html__('No', 'reen'),
+            'type'      => 'switch',
+            'default'   => false,
+        ),
+        array(
+            'title'     => esc_html__( 'Enable Post Navigation', 'reen' ),
+            'id'        => 'show_post_nav',
             'on'        => esc_html__('Yes', 'reen'),
             'off'       => esc_html__('No', 'reen'),
             'type'      => 'switch',

@@ -1,5 +1,6 @@
 .portfolio-post-carousel {
-	margin-bottom: 14px;
+	//margin-bottom: 14px;
+	
 	&.owl-carousel {
 		.owl-nav button.owl-prev,
 		.owl-nav button.owl-next {
@@ -7,12 +8,5 @@
 				font-size: 45px !important;
 			}
 		}
-	}
-}
-
-.portfolio-post-carousel {
-	.owl-dots {
-		z-index: 5;
-		margin:0 !important;
 	}
 }

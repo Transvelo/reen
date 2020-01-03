@@ -31,11 +31,6 @@
 			transition: all 200ms ease-out;
 }
 
-.owl-dots .owl-dot.active span,
-.owl-dots .owl-dot:hover span {
-	background: #1ABB9C;
-}
-
 .owl-carousel {
 	.owl-prev,
 	.owl-next {
@@ -64,21 +59,14 @@
 	&.owl-ui-md {
 		.owl-prev,
 		.owl-next {
-			i {
+			i, span {
 				font-size: 45px;
 			}
 		}
 	}
 }
 
-.owl-carousel.post-media + * {
-	margin-top: 60px;
-}
+.owl-one-item #owl-main .owl-controls {
+	display: none;
+}		
 
-.owl-inner-nav.owl-ui-md {
-	&.owl-carousel {
-		.owl-dots {
-			margin-top: 40px;
-		}
-	}
-}

@@ -43,6 +43,12 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
                     <div class="col-md-12 portfolio"><?php
         }
 
+        if ( ( $portfolio_view === 'grid-detail' &&  $portfolio_columns == 3 ) || ( $portfolio_view === 'grid-detail' &&  $portfolio_columns == 4 ) )  {
+            $wrapper_class .= ' gap';
+        } else {
+
+        }
+
         $portfolio_cats = array();        
 
         while ( have_posts() ) : 
@@ -65,13 +71,18 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
             }
 
         endwhile; ?>
-
-        <ul class="filter text-center">
-            <li><a href="#" data-filter="*" class="active">All</a></li>
-            <?php foreach ( $portfolio_cats as $slug => $portfolio_cat ) : ?>
-            <li><a href="#" data-filter=".jetpack-portfolio-type-<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $portfolio_cat ); ?></a></li>
-            <?php endforeach; ?>
-        </ul>
+        <?php if ($portfolio_view === 'fullscreen' ) { ?>
+            <div class="container inner-bottom-xs">
+        <?php } ?>
+            <ul class="filter text-center">
+                <li><a href="#" data-filter="*" class="active">All</a></li>
+                <?php foreach ( $portfolio_cats as $slug => $portfolio_cat ) : ?>
+                <li><a href="#" data-filter=".jetpack-portfolio-type-<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $portfolio_cat ); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php if ($portfolio_view === 'fullscreen' ) { ?>
+            </div>
+        <?php } ?>
         <ul class="<?php echo esc_attr( $wrapper_class ); ?>"><?php
     }
 }
@@ -130,16 +141,14 @@ function reen_portfolio_thumbnail() {
 if ( ! function_exists( 'reen_loop_portfolio_wrap_end' ) ) {
     function reen_loop_portfolio_wrap_end() {
         $portfolio_view    = reen_get_portfolio_view();
-
+        ?></ul><?php
         if ( $portfolio_view === 'fullscreen' ) {
             ?></div><!-- /.portfolio --><?php
         } else {
-                ?></div><!-- /.portfolio -->
-            </div><!-- /.row -->
-        </div><!-- /.container --><?php
-    }
-
-        ?></ul><?php
+                    ?></div><!-- /.portfolio -->
+                </div><!-- /.row -->
+            </div><!-- /.container --><?php
+        }
     }
 }
 
@@ -176,7 +185,8 @@ if ( ! function_exists( 'reen_portfolio_post_audio' ) ) {
             if( !empty($embed_audio) ) {
                 ?><div class="col-lg-8 inner-left-xs"><?php
                 // run oEmbed for known sources to generate embed code from audio links
-                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+                // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
+                echo apply_filters( 'the_content', $embed_audio );
 
                 ?></div><?php
             }
@@ -214,7 +224,8 @@ if ( ! function_exists( 'reen_portfolio_post_video' ) ) {
                     <div class="col-md-12">
                         <div class="video-container"><?php 
                             // run oEmbed for known sources to generate embed code from audio links
-                                echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                            // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
+                            echo apply_filters( 'the_content', $embed_video );
                         ?></div>
                     </div>
                 </div><?php
@@ -279,7 +290,8 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
                 'rewindNav'       => true,
                 'items'           => 1,
                 'autoHeight'      => true,
-                'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                'rtl'             => is_rtl() ? true : false,
+                'navText'         => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
             ) );
 
         if ( ! empty( $attachments ) ) :
@@ -330,7 +342,8 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
             'rewindNav'       => true,
             'items'           => 1,
             'autoHeight'      => true,
-            'navText'  => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+            'rtl'             => is_rtl() ? true : false,
+            'navText'         => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
         ) );
 
         if ( ! empty( $attachments ) ) :
@@ -445,7 +458,7 @@ if ( ! function_exists( 'reen_portfolio_meta' ) ) :
                     "<li class='%s'><span class='post-meta-key'>%s</span>%s</li>\n",
                 
                     sanitize_title( $key ),
-                    sprintf( _x( '%s:', 'Post custom field name' ), $key ),
+                    sprintf( _x( '%s:', 'Post custom field name', 'reen' ), $key ),
                     $key == 'project-url' ?  '<a href="'. esc_url( $value ) .'">' . $value . '</a>' : wp_strip_all_tags( $value, true )
             );
             $li_html .= apply_filters( 'reen_meta_key', $html, $key, $value );
@@ -503,7 +516,7 @@ if ( ! function_exists( 'reen_more_works' ) ) {
                             <div class="panel-heading text-center">
                                 <h4 class="panel-title">
                                     <a class="panel-toggle collapsed" href="#content-more-works" data-toggle="collapse">
-                                        <span><?php echo esc_html__( 'More works', 'reen' ); ?></span>
+                                        <span><?php echo esc_html__( 'More projects', 'reen' ); ?></span>
                                     </a>
                                 </h4>
                             </div><!-- /.panel-heading -->
@@ -524,6 +537,7 @@ if ( ! function_exists( 'reen_more_works' ) ) {
                                                             <figcaption class="text-overlay">
                                                                 <div class="info">
                                                                     <h4><?php the_title(); ?></h4>
+                                                                    <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                                 </div><!-- /.info -->
                                                             </figcaption>
                                                                 <?php the_post_thumbnail()?>
@@ -552,6 +566,7 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
         $more_videos = new WP_Query( array( 
             'post_type'      => 'jetpack-portfolio',
             'posts_per_page' => '10',
+            'post__not_in'   => array( get_the_ID() ),
             'tax_query' => array(
                         'relation' => 'OR',
                         array(
@@ -592,15 +607,26 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                             wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                                 $owl_params = apply_filters( 'owl-videos_params', array(
-                                                    'autoPlay'               => 5000,
-                                                    'stopOnHover'            => true,
-                                                    'navigation'             => true,
-                                                    'pagination'             => true,
-                                                    'rewindNav'              => true,
-                                                    'items'                  => 5,
-                                                    'navigationText'         => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                                    'autoplay'            => true,
+                                                    'autoplayTimeout'     => 5000,
+                                                    'autoplayHoverPause'  => true,
+                                                    'smartSpeed'          => 200,
+                                                    'rewind'              => true,
+                                                    'nav'             => true,
+                                                    'dots'            => true,
+                                                    'items'           => 5,
+                                                    'rtl'          => is_rtl() ? true : false,
+                                                    'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                    'responsive'        => array(
+                                                        '0'     => array( 'items'   => 1 ),
+                                                        '480'   => array( 'items'   => 2 ),
+                                                        '768'   => array( 'items'   => 2 ),
+                                                        '992'   => array( 'items'   => 4 ),
+                                                        '1200'  => array( 'items'   => 5 ),
+                                                    )
                                                 ) ); ?>
-                                            <div id="owl-videos" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
+
+                                            <div id="owl-videos" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
                                             <?php while ( $more_videos->have_posts() ) : $more_videos->the_post(); ?> 
                                                 <div class="item">
                                                     <figure>
@@ -611,6 +637,7 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                                         <figcaption class="bordered no-top-border">
                                                             <div class="info">
                                                                 <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                             </div><!-- /.info -->
                                                         </figcaption>
                                                         
@@ -637,6 +664,7 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
         $more_audio = new WP_Query( array( 
             'post_type'      => 'jetpack-portfolio',
             'posts_per_page' => '10',
+            'post__not_in'   => array( get_the_ID() ),
             'tax_query' => array(
                 'relation' => 'OR',
                 array(
@@ -685,15 +713,25 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                         wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                             $owl_params = apply_filters( 'owl-audio_params', array(
-                                                'autoPlay'               => 5000,
-                                                'stopOnHover'            => true,
-                                                'navigation'             => true,
-                                                'pagination'             => true,
-                                                'rewindNav'              => true,
-                                                'items'                  => 5,
-                                                'navigationText'         => array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' )
+                                                'autoplay'            => true,
+                                                'autoplayTimeout'     => 5000,
+                                                'autoplayHoverPause'  => true,
+                                                'smartSpeed'          => 200,
+                                                'rewind'              => true,
+                                                'nav'             => true,
+                                                'dots'            => true,
+                                                'items'           => 5,
+                                                'rtl'          => is_rtl() ? true : false,
+                                                'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                'responsive'        => array(
+                                                    '0'     => array( 'items'   => 1 ),
+                                                    '480'   => array( 'items'   => 2 ),
+                                                    '768'   => array( 'items'   => 2 ),
+                                                    '992'   => array( 'items'   => 4 ),
+                                                    '1200'  => array( 'items'   => 5 ),
+                                                )
                                             ) ); ?>
-                                            <div id="owl-audio" data-ride="owl" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
+                                            <div id="owl-audio" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
                                             <?php while ( $more_audio->have_posts() ) : $more_audio->the_post(); ?> 
                                                 <div class="item">
                                                     <figure>
@@ -703,6 +741,7 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                                         <figcaption class="bordered no-top-border">
                                                             <div class="info">
                                                                 <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
                                                             </div><!-- /.info -->
                                                         </figcaption>
                                                     </figure>

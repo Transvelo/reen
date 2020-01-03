@@ -5,6 +5,15 @@
  * @package Reen
  */
 
+if( ! function_exists( 'reen_is_ocdi_activated' ) ) {
+    /**
+     * Check if One Click Demo Import is activated
+     */
+    function reen_is_ocdi_activated() {
+        return class_exists( 'OCDI_Plugin' ) ? true : false;
+    }
+}
+
 if ( ! function_exists( 'reen_is_jetpack_activated' ) ) {
     /**
      * Query JetPack activation
@@ -83,7 +92,9 @@ if ( ! function_exists( 'reen_get_single_post_layout' ) ) {
         $default_single_post_layout = 'sidebar-right';
         $single_post_layout         = apply_filters( 'reen_single_post_layout', $default_single_post_layout );
 
-        if ( ! in_array( $single_post_layout, $available_layouts ) ) {
+        if ( ! is_active_sidebar( 'sidebar-blog' ) ) {
+            $single_post_layout = 'no-sidebar';
+        } elseif ( ! in_array( $single_post_layout, $available_layouts ) ) {
             $single_post_layout = $default_single_post_layout;
         }
 

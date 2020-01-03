@@ -1,0 +1,95 @@
+body {
+  background-color: #fff !important; }
+
+.editor-writing-flow header + * {
+  margin-top: 35px !important; }
+
+/** === Content Width === */
+.wp-block {
+  width: calc(100vw - (2 * 1rem));
+  max-width: 100%; }
+  .wp-block .wp-block {
+    width: 100%; }
+  .wp-block .wp-block {
+    width: 100%; }
+
+.wp-block-table td, .wp-block-table th {
+  border: none;
+  border-top: 1px solid #dee2e6; }
+
+ul, ol {
+  margin-right: 0; }
+
+blockquote .wp-block-quote__citation,
+.wp-block-pullquote .wp-block-pullquote__citation {
+  color: #506A85;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 700;
+  font-style: italic;
+  margin-top: 2em;
+  text-transform: none; }
+  blockquote .wp-block-quote__citation:before, blockquote .wp-block-quote__citation:after,
+  .wp-block-pullquote .wp-block-pullquote__citation:before,
+  .wp-block-pullquote .wp-block-pullquote__citation:after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background-color: #506A85;
+    margin-bottom: .28em; }
+  blockquote .wp-block-quote__citation:before,
+  .wp-block-pullquote .wp-block-pullquote__citation:before {
+    margin-left: 10px; }
+  blockquote .wp-block-quote__citation:after,
+  .wp-block-pullquote .wp-block-pullquote__citation:after {
+    margin-right: 10px; }
+
+blockquote.wp-block-quote.is-large .wp-block-quote__citation,
+blockquote.wp-block-quote.is-style-large .wp-block-quote__citation {
+  font-size: 18px;
+  margin-top: 1.5rem; }
+
+.wp-block-pullquote {
+  border: none; }
+  .wp-block-pullquote p {
+    font-size: 28px;
+    line-height: 1.6;
+    font-style: italic; }
+  .wp-block-pullquote .wp-block-pullquote__citation {
+    font-size: 15px; }
+
+.wp-block-audio figcaption {
+  text-align: right; }
+
+.edit-post-visual-editor .editor-block-list__block .editor-block-list__block-edit,
+ul.wp-block-categories__list,
+ul.wp-block-archives-list {
+  clear: both; }
+
+.wp-block-quote.has-text-align-right {
+  border: none; }
+
+pre.wp-block-verse,
+.wp-block-audio figcaption,
+.wp-block-pullquote p,
+.wp-block-pullquote .wp-block-pullquote__citation,
+blockquote:before,
+.blocks-gallery-caption,
+.wp-block-embed figcaption,
+.wp-block-image figcaption {
+  color: #73879C; }
+
+hr.wp-block-separator {
+  clear: both; }
+
+.wp-block-pullquote.alignleft p,
+.wp-block-pullquote.alignright p {
+  font-size: 20px; }
+
+.wp-block-cover.alignleft.has-background-dim,
+.wp-block-cover.aligncenter.has-background-dim,
+.wp-block-cover.alignright.has-background-dim {
+  position: relative;
+  display: flex;
+  align-items: center; }

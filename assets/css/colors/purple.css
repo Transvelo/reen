@@ -1,0 +1,149 @@
+/**
+ * Purple color styles
+ */
+a:hover,
+a:focus,
+.bordered .info h3 a:hover,
+.bordered .info h4 a:hover,
+.icon i.icn,
+.meta a:hover,
+.meta li.categories:hover:before,
+.more:hover,
+.navbar.basic .nav > li > a:hover,
+.navbar.basic .nav > li > a:focus,
+.navbar.basic .nav .open > a,
+.navbar.basic .nav .open > a:hover,
+.navbar.basic .nav .open > a:focus,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) li a:hover,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) li a.active,
+.navbar-header .info a:hover,
+.nav > li > a:hover,
+.owl-carousel:hover .owl-next:hover,
+.owl-carousel:hover .owl-prev:hover,
+.panel-title > a:hover,
+#scrollUp:hover,
+.sidemeta .format-wrapper a,
+.tabs-side .tab.active a,
+.tabs-top .tab.active a,
+.text-center .panel-title > a:hover span:after,
+ul.arrowed li:before,
+ul.circled li:before,
+.yamm .yamm-content a:hover,
+ul.circled li:before, .sidebox .widget__title + ul li:before,
+.sidebox .menu li:before,
+.popular-posts-carousel.owl-carousel:hover .owl-prev:hover,
+.popular-posts-carousel.owl-carousel:hover .owl-next:hover,
+.related-post-carousel.owl-carousel:hover .owl-prev:hover,
+.related-post-carousel.owl-carousel:hover .owl-next:hover,
+nav > li.active > a {
+  color: #9B59B6; }
+
+.tint-bg .btn,
+.tint-color {
+  color: #9B59B6 !important; }
+
+.btn,
+.classic-blog .post .date,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) > .active > a,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) > .active > a:focus,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) > .active > a:hover,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) > li > a:focus,
+.navbar .dropdown-menu:not(.yamm-dropdown-menu) > li > a:hover,
+.navbar .dropdown-submenu:focus > a,
+.navbar .dropdown-submenu:hover > a,
+.owl-pagination .owl-page.active span,
+.owl-pagination .owl-page:hover span,
+#owl-main .caption h1 span.tint-bg,
+#owl-main .caption p span.tint-bg,
+.pagination > li > a,
+.pagination > li > span,
+.post.format-quote,
+.sidemeta .format-wrapper a:hover,
+.sidenav li a:hover,
+.tabs-circle-top .tab.active a,
+.tabs-side .tab a:hover,
+.tabs-top .tab a:hover,
+.tint-bg,
+.tint-bg.img-bg-soft:before,
+.tint-bg.img-bg-softer:before,
+.tooltip-inner,
+ul.page-numbers > li > a.current, ul.page-numbers > li > span.current,
+ul.page-numbers > li > a.current:hover, ul.page-numbers > li > span.current:hover,
+ul.page-numbers > li > a:hover, ul.page-numbers > li > a:focus,
+.post-page-numbers.current .page-link, .page-link:hover,
+ul.page-numbers > li > a:hover, ul.page-numbers > li > span:hover,
+ul.page-numbers > li > a, ul.page-numbers > li > span,
+.page-links-inner .page-link,
+.owl-dots .owl-dot.active span,
+.owl-dots .owl-dot:hover span,
+.wp-block-button:not(.is-style-outline) .wp-block-button__link {
+  background-color: #9B59B6; }
+
+ul.page-numbers > li > a.current,
+ul.page-numbers > li > span.current,
+ul.page-numbers > li > a.current:hover,
+ul.page-numbers > li > span.current:hover,
+ul.page-numbers > li > a:hover,
+ul.page-numbers > li > a:focus,
+.post-page-numbers.current .page-link,
+.page-link:hover,
+ul.page-numbers > li > a:hover,
+ul.page-numbers > li > span:hover,
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.wp-block-button .wp-block-button__link:hover,
+.wp-block-button .wp-block-button__link:focus,
+.wp-block-button .wp-block-button__link:active {
+  background-color: #8f4bab; }
+
+.icon-overlay a .icn-more,
+.items li .text-overlay,
+.owl-carousel .item .text-overlay,
+.thumbs .thumb .text-overlay {
+  background-color: #9B59B6e6; }
+
+.classic-blog .post .date,
+.icon.circle,
+.sidemeta .format-wrapper a,
+.tabs-circle-top .tab.active a,
+.tabs-circle-top .tab a:hover,
+.tabs-side .tab a:hover,
+.tabs-top .tab a:hover,
+.wp-block-button.is-style-outline .wp-block-button__link {
+  border-color: #9B59B6; }
+
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #9B59B6; }
+
+.bs-tooltip-auto[x-placement^=top] .arrow::before,
+.bs-tooltip-top .arrow::before,
+tabs-top .tab.active + .tab a:hover,
+.tabs-side .tab.active + .tab a:hover {
+  border-top-color: #9B59B6; }
+
+.bs-tooltip-auto[x-placement^=left] .arrow::before,
+.bs-tooltip-left .arrow::before {
+  border-left-color: #9B59B6; }
+
+.bs-tooltip-auto[x-placement^=right] .arrow::before,
+.bs-tooltip-right .arrow::before {
+  border-right-color: #9B59B6; }
+
+::selection {
+  background: #AAF2E4;
+  /* Safari */ }
+
+::-moz-selection {
+  background: #AAF2E4;
+  /* Firefox */ }
+
+/*# sourceMappingURL=purple.css.map */

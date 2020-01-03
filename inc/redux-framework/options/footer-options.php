@@ -4,8 +4,8 @@
  */
 
 $footer_options = apply_filters( 'reen_footer_options_args', array(
-    'title'     => esc_html__( 'Footer', 'REEN' ),
-    'desc'      => esc_html__( 'Options related to the footer section. The Footer has : Brands Slider, Footer Widgets, Footer Newsletter Section,Footer Contact Info Section, Footer Contact Block, Footer Bottom Wigets', 'REEN' ),
+    'title'     => esc_html__( 'Footer', 'reen' ),
+    'desc'      => esc_html__( 'Options related to the footer section. The Footer has : Brands Slider, Footer Widgets, Footer Newsletter Section,Footer Contact Info Section, Footer Contact Block, Footer Bottom Wigets', 'reen' ),
     'icon'      => 'far fa-arrow-alt-circle-down',
     'fields'    => array(
 
@@ -45,7 +45,7 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
         array(
             'id'        => 'footer_footer_site_title_enable',
             'type'      => 'switch',
-            'title'     => esc_html__( 'Enable Footer Site Title', 'REEN' ),
+            'title'     => esc_html__( 'Enable Footer Site Title', 'reen' ),
             'default'   => 1,
         ),
 
@@ -54,7 +54,14 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
             'id'           => 'footer_site_title',
             'title'        => esc_html__( 'Footer Site Title', 'reen' ),
             'subtitle'     => esc_html__( 'Enter the footer site Title', 'reen' ),
-            'required'  => array( 'footer_footer_site_title_enable', 'equals', true ),
+            'required'     => array( 'footer_footer_site_title_enable', 'equals', true ),
+        ),
+
+        array(
+            'id'        => 'footer_footer_site_description_enable',
+            'type'      => 'switch',
+            'title'     => esc_html__( 'Enable Footer Site Description', 'reen' ),
+            'default'   => 1,
         ),
 
         array(
@@ -62,28 +69,29 @@ $footer_options = apply_filters( 'reen_footer_options_args', array(
             'id'           => 'footer_site_description',
             'title'        => esc_html__( 'Footer Site Description', 'reen' ),
             'subtitle'     => esc_html__( 'Enter the footer site description', 'reen' ),
+            'required'     => array( 'footer_footer_site_description_enable', 'equals', true ),
         ),
 
         array(
             'id'        => 'footer_bottom_bar_start',
             'type'      => 'section',
             'indent'    => true,
-            'title'     => esc_html__( 'Footer Bottom Bar', 'REEN' ),
-            'subtitle'  => esc_html__( 'The Footer Bottom Bar is available bottom of Footer.', 'REEN' ),
+            'title'     => esc_html__( 'Footer Bottom Bar', 'reen' ),
+            'subtitle'  => esc_html__( 'The Footer Bottom Bar is available bottom of Footer.', 'reen' ),
         ),
 
         array(
             'id'        => 'footer_copyright_info_enable',
             'type'      => 'switch',
-            'title'     => esc_html__( 'Enable Footer Copyright', 'REEN' ),
+            'title'     => esc_html__( 'Enable Footer Copyright', 'reen' ),
             'default'   => 1,
         ),
 
         array(
             'id'        => 'footer_copyright_info',
             'type'      => 'textarea',
-            'title'     => esc_html__( 'Footer Copyright Text', 'REEN' ),
-            'default'   => wp_kses_post( sprintf( __( '&copy; %s REEN. All Rights Reserved.', 'REEN' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ),
+            'title'     => esc_html__( 'Footer Copyright Text', 'reen' ),
+            'default'   => wp_kses_post( sprintf( __( '&copy; %s REEN. All Rights Reserved.', 'reen' ), date('Y'), esc_url( home_url('/') ), get_bloginfo( 'name' ) ) ),
             'required'  => array( 'footer_copyright_info_enable', 'equals', 1 ),
         ),
 

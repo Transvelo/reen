@@ -1,0 +1,39 @@
+.article__page {
+    padding-bottom: 120px;
+}
+
+.home.page-template-default .article__page,
+.article-bottom-0 .article__page {
+    padding-bottom: 0;
+}
+
+.error-404-content form.search,
+.search-no-results .no-results form.search {
+    margin: 0;
+
+    .search-field {
+        margin-bottom: 40px;
+        height: 60px;
+        font-size: 15px;
+        padding: 15px 60px 15px 15px;
+        background: #F8FAFD;
+        border-radius: 3px;
+
+        &:focus {
+        	background: #fff;
+        }
+    }
+
+    .btn-submit {
+    	width: 50px;
+    	height: 50px;
+
+    	&:before {
+    		font-size: 20px;
+    	}
+    }
+}
+
+.error-404-content .widget + .widget {
+    margin-top: 40px;
+}
