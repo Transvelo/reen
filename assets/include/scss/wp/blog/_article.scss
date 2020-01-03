@@ -19,9 +19,13 @@ article.post {
         @include make-table();
     }
 
-    ul, ol {
+    ul {
         list-style: disc;
     }
+
+    ul ul {
+		list-style-type: circle;
+	}
 } 
 
 article.post,
@@ -96,7 +100,7 @@ article.post,
         margin-bottom: 20px;
     }
 
-    ul, ol {
+    ul {
         list-style: disc;
     }
 }
@@ -140,13 +144,13 @@ article.post,
  * Alignment
  */
 .alignleft {
-    display: inline;
+    //display: inline;
     float: left;
     margin-right: 25px;
 }
 
 .alignright {
-    display: inline;
+    //display: inline;
     float: right;
     margin-left: 25px;
 }
@@ -156,6 +160,15 @@ article.post,
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.wp-block-gallery.alignleft,
+.wp-block-gallery.alignright{
+    max-width: calc( 5 * (100vw / 12) );
+
+    @include media-breakpoint-up(lg) {
+        max-width: 50%;
+    }
 }
 
 .classic-blog figure.align-right + *,
@@ -237,6 +250,11 @@ figure.wp-block-audio {
             font-size: 13px;
         }
     }
+}
+
+.sidebox .widget__title + ul ul,
+.sidebox .menu ul {
+    margin-top: 5px;
 }
 
 .sidebox .menu ul li > ul li > ul li > ul li > ul li  > ul {

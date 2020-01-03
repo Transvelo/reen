@@ -11,6 +11,7 @@
 .is-style-outline .wp-block-button__link {
     border-width: 2px;
     border-style: solid;
+    padding: 10px 18px 10px;
 }
 
 .is-style-squared .wp-block-button__link {
@@ -263,3 +264,37 @@ figure + hr {
 figure.wp-block-image + p {
     padding-top: 20px;
 }
+
+.wp-block-cover-image .wp-block-cover-image-text, 
+.wp-block-cover-image .wp-block-cover-text,  
+.wp-block-cover .wp-block-cover-image-text, 
+.wp-block-cover p.wp-block-cover-text {
+    color: #fff;
+}
+
+.wp-block-cover.has-pale-pink-background-color,
+.wp-block-cover.has-background-dim {
+    margin-bottom: 20px;
+}
+
+.wp-block-cover-text a {
+    border-bottom: 1px solid #fff;
+}
+
+.wp-block-gallery.is-cropped .blocks-gallery-item figure img{
+    height: 100%;
+}
+
+.wp-block-code {
+    padding: .8em 1em;
+    border: 1px solid #CED7E0;
+}
+
+.classic-blog figure + .wp-block-cover {
+    padding-top: 0;
+}
+
+.jetpack-video-wrapper iframe {
+    width: 100% !important;
+}
+

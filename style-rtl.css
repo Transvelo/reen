@@ -12834,8 +12834,11 @@ article.post table {
   article.post table .table {
     background-color: #fff; }
 
-article.post ul, article.post ol {
+article.post ul {
   list-style: disc; }
+
+article.post ul ul {
+  list-style-type: circle; }
 
 article.post::after,
 .article__page::after {
@@ -12895,7 +12898,7 @@ article.post::after,
   margin-bottom: 20px; }
   .comment-text table, .comment-text blockquote, .comment-text dl, .comment-text ol, .comment-text ul {
     margin-bottom: 20px; }
-  .comment-text ul, .comment-text ol {
+  .comment-text ul {
     list-style: disc; }
 
 .comment-content + .comment-respond {
@@ -12927,12 +12930,10 @@ article.post::after,
  * Alignment
  */
 .alignleft {
-  display: inline;
   float: right;
   margin-left: 25px; }
 
 .alignright {
-  display: inline;
   float: left;
   margin-right: 25px; }
 
@@ -12941,6 +12942,14 @@ article.post::after,
   display: block;
   margin-right: auto;
   margin-left: auto; }
+
+.wp-block-gallery.alignleft,
+.wp-block-gallery.alignright {
+  max-width: calc( 5 * (100vw / 12)); }
+  @media (min-width: 992px) {
+    .wp-block-gallery.alignleft,
+    .wp-block-gallery.alignright {
+      max-width: 50%; } }
 
 .classic-blog figure.align-right + *,
 .classic-blog figure.alignleft + * {
@@ -12999,6 +13008,10 @@ figure.wp-block-audio {
   margin: 0 5px 0 0;
   content: "\f02e";
   font-size: 13px; }
+
+.sidebox .widget__title + ul ul,
+.sidebox .menu ul {
+  margin-top: 5px; }
 
 .sidebox .menu ul li > ul li > ul li > ul li > ul li > ul {
   padding-right: 0px; }
@@ -13671,7 +13684,8 @@ table {
 
 .is-style-outline .wp-block-button__link {
   border-width: 2px;
-  border-style: solid; }
+  border-style: solid;
+  padding: 10px 18px 10px; }
 
 .is-style-squared .wp-block-button__link {
   border-radius: 0; }
@@ -13839,6 +13853,32 @@ figure + hr {
 
 figure.wp-block-image + p {
   padding-top: 20px; }
+
+.wp-block-cover-image .wp-block-cover-image-text,
+.wp-block-cover-image .wp-block-cover-text,
+.wp-block-cover .wp-block-cover-image-text,
+.wp-block-cover p.wp-block-cover-text {
+  color: #fff; }
+
+.wp-block-cover.has-pale-pink-background-color,
+.wp-block-cover.has-background-dim {
+  margin-bottom: 20px; }
+
+.wp-block-cover-text a {
+  border-bottom: 1px solid #fff; }
+
+.wp-block-gallery.is-cropped .blocks-gallery-item figure img {
+  height: 100%; }
+
+.wp-block-code {
+  padding: .8em 1em;
+  border: 1px solid #CED7E0; }
+
+.classic-blog figure + .wp-block-cover {
+  padding-top: 0; }
+
+.jetpack-video-wrapper iframe {
+  width: 100% !important; }
 
 .screen-reader-text {
   position: absolute !important;

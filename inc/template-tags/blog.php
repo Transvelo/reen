@@ -238,6 +238,9 @@ if ( ! function_exists( 'reen_post_title' ) ) {
         if ( is_singular() ) :
             the_title( '<h1 class="post-title entry-title">', '</h1>' );
         else :
+            if( is_sticky() ) :
+                ?><span class="badge tint-bg"><?php echo esc_html__( 'Featured', 'reen' ); ?></span><?php
+            endif;
             the_title( sprintf( '<h2 class="post-title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
         endif;
     }
@@ -704,7 +707,7 @@ if ( ! function_exists( 'reen_single_post_author_name' ) ) {
         if( apply_filters( 'reen_show_author_name', true ) ) :
             $current_user_id = get_current_user_id(); 
             ?>
-            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title=<?php esc_html_e( "Post author", 'reen' ); ?>><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
+            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title="<?php esc_html_e( "Post author", 'reen' ); ?>"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
         <?php
         endif;
 
