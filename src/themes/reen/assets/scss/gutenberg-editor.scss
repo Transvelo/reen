@@ -105,7 +105,10 @@ pre.wp-block-verse,
 blockquote:before,
 .blocks-gallery-caption, 
 .wp-block-embed figcaption, 
-.wp-block-image figcaption {
+.wp-block-image figcaption,
+.wp-block-preformatted pre,
+.wp-block-verse pre, 
+pre.wp-block-verse {
     color: #73879C;
 }
 
@@ -133,4 +136,17 @@ hr.wp-block-separator {
     letter-spacing: 0.025em;
     color: #506A85;
     min-height: auto;
+}
+
+.block-library-list ol, 
+.block-library-list ul {
+    margin-left: 0;
+}
+
+.wp-block-table .wp-block-table__cell-content {
+    padding: 0;
+}
+
+.wp-block-latest-posts.is-grid li {
+    margin-top: 0;
 }
