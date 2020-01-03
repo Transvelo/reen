@@ -707,7 +707,7 @@ if ( ! function_exists( 'reen_single_post_author_name' ) ) {
         if( apply_filters( 'reen_show_author_name', true ) ) :
             $current_user_id = get_current_user_id(); 
             ?>
-            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title=<?php esc_html_e( "Post author", 'reen' ); ?>><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
+            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title="<?php esc_html_e( "Post author", 'reen' ); ?>"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
         <?php
         endif;
 
