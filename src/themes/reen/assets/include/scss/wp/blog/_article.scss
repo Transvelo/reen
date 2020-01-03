@@ -239,6 +239,11 @@ figure.wp-block-audio {
     }
 }
 
+.sidebox .widget__title + ul ul,
+.sidebox .menu ul {
+    margin-top: 5px;
+}
+
 .sidebox .menu ul li > ul li > ul li > ul li > ul li  > ul {
 	padding-left: 0px;
 }

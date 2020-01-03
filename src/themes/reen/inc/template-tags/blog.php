@@ -238,6 +238,9 @@ if ( ! function_exists( 'reen_post_title' ) ) {
         if ( is_singular() ) :
             the_title( '<h1 class="post-title entry-title">', '</h1>' );
         else :
+            if( is_sticky() ) :
+                ?><span class="badge tint-bg"><?php echo esc_html__( 'Featured', 'reen' ); ?></span><?php
+            endif;
             the_title( sprintf( '<h2 class="post-title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
         endif;
     }
