@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: REEN 1.0.0\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2020-01-02 13:37:32+00:00\n"
+"POT-Creation-Date: 2020-01-25 14:10:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -976,7 +976,7 @@ msgstr ""
 msgid "Edit menu item"
 msgstr ""
 
-#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1033
+#: inc/reen-menu-functions.php:169 inc/template-tags/blog.php:1036
 msgid "Edit"
 msgstr ""
 
@@ -1059,81 +1059,85 @@ msgstr ""
 msgid "WHO WE ARE"
 msgstr ""
 
-#: inc/template-tags/blog.php:330
+#: inc/template-tags/blog.php:242
+msgid "Featured"
+msgstr ""
+
+#: inc/template-tags/blog.php:333
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags/blog.php:330
+#: inc/template-tags/blog.php:333
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags/blog.php:330
+#: inc/template-tags/blog.php:333
 msgid "% Comments"
 msgstr ""
 
-#: inc/template-tags/blog.php:345
+#: inc/template-tags/blog.php:348
 msgid "Read More"
 msgstr ""
 
-#: inc/template-tags/blog.php:434
+#: inc/template-tags/blog.php:437
 msgid "Continue reading %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:439 inc/template-tags/page.php:62
+#: inc/template-tags/blog.php:442 inc/template-tags/page.php:62
 msgid "Pages:"
 msgstr ""
 
-#: inc/template-tags/blog.php:624
+#: inc/template-tags/blog.php:627
 msgid "Popular posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:707
+#: inc/template-tags/blog.php:710
 msgid "Post author"
 msgstr ""
 
-#: inc/template-tags/blog.php:729
+#: inc/template-tags/blog.php:732
 msgid "About the author"
 msgstr ""
 
-#: inc/template-tags/blog.php:735
+#: inc/template-tags/blog.php:738
 msgid "All posts by %s"
 msgstr ""
 
-#: inc/template-tags/blog.php:754
+#: inc/template-tags/blog.php:757
 msgid "Add me on Facebook"
 msgstr ""
 
-#: inc/template-tags/blog.php:761
+#: inc/template-tags/blog.php:764
 msgid "Add me on Google Plus"
 msgstr ""
 
-#: inc/template-tags/blog.php:767
+#: inc/template-tags/blog.php:770
 msgid "Follow me on Twitter"
 msgstr ""
 
-#: inc/template-tags/blog.php:818
+#: inc/template-tags/blog.php:821
 msgid "Next Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:829
+#: inc/template-tags/blog.php:832
 msgid "Previous Post"
 msgstr ""
 
-#: inc/template-tags/blog.php:879
+#: inc/template-tags/blog.php:882
 msgid "Related posts"
 msgstr ""
 
-#: inc/template-tags/blog.php:1008
+#: inc/template-tags/blog.php:1011
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags/blog.php:1062
+#: inc/template-tags/blog.php:1065
 msgid ""
 "This content is password protected. To view it please enter your password "
 "below:"
 msgstr ""
 
-#: inc/template-tags/blog.php:1064
+#: inc/template-tags/blog.php:1067
 msgid "Password:"
 msgstr ""
 
@@ -1203,7 +1207,7 @@ msgid "MadrasThemes"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://themeforest.net/user/madrasthemes/portfolio"
+msgid "https://madrasthemes.com/"
 msgstr ""
 
 #: classes/class-tgm-plugin-activation.php:1206
@@ -1249,12 +1253,12 @@ msgctxt "Post custom field name"
 msgid "%s:"
 msgstr ""
 
-#: inc/template-tags/blog.php:564
+#: inc/template-tags/blog.php:567
 msgctxt "Next post"
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags/blog.php:565
+#: inc/template-tags/blog.php:568
 msgctxt "Previous post"
 msgid "Prev"
 msgstr ""
