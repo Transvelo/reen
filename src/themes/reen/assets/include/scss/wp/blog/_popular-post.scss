@@ -1,11 +1,11 @@
 .popular-posts-carousel,
 .related-post-carousel {
 	&.owl-carousel {
-		
+
 		&:hover {
 			.owl-prev,
 			.owl-next {
-				cursor: pointor;
+				cursor: pointer;
 
 				&:hover {
 					opacity: 1;
@@ -24,7 +24,7 @@
 }
 
 .popular-posts-carousel {
-	
+
 	figure :not(.icon-overlay) a:hover,
 	figure:not(.icon-overlay) > a:hover {
 		opacity: 1;
@@ -57,9 +57,3 @@
 		}
 	}
 }
-
-
-
-
-
-
