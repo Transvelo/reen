@@ -601,17 +601,6 @@ if ( ! class_exists( 'Reen' ) ) :
             $plugins = array(
 
                 array(
-                    'name'                  => esc_html__( 'Envato Market', 'reen' ),
-                    'slug'                  => 'envato-market',
-                    'source'                => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip',
-                    'required'              => false,
-                    'version'               => '2.0.3',
-                    'force_activation'      => false,
-                    'force_deactivation'    => false,
-                    'external_url'          => '',
-                ),
-
-                array(
                     'name'                  => esc_html__( 'Jetpack by WordPress.com', 'reen' ),
                     'slug'                  => 'jetpack',
                     'version'               => '8.2.3',
