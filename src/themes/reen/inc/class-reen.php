@@ -614,7 +614,7 @@ if ( ! class_exists( 'Reen' ) ) :
                 array(
                     'name'                  => esc_html__( 'Jetpack by WordPress.com', 'reen' ),
                     'slug'                  => 'jetpack',
-                    'version'               => '8.0',
+                    'version'               => '8.2.3',
                     'force_activation'      => false,
                     'force_deactivation'    => false,
                     'required'              => false,
@@ -623,10 +623,10 @@ if ( ! class_exists( 'Reen' ) ) :
                 array(
                     'name'                  => esc_html__( 'MAS Static Content', 'reen' ),
                     'slug'                  => 'mas-static-content',
-                    'version'               => '1.0.1',
+                    'version'               => '1.0.2',
                     'force_activation'      => false,
                     'force_deactivation'    => false,
-                    'required'              => true,
+                    'required'              => false,
                 ),
 
                 array(
@@ -654,25 +654,24 @@ if ( ! class_exists( 'Reen' ) ) :
                     'version'               => $reen_version,
                     'force_activation'      => false,
                     'force_deactivation'    => false,
-                    'required'              => true
+                    'required'              => false
                 ),
 
                 array(
                     'name'                  => esc_html__( 'REEN Gutenberg Blocks', 'reen' ),
                     'slug'                  => 'reen-gutenberg-blocks',
                     'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
-                    // 'version'               => $reen_version,
-                    'version'               => '0.0.251',
+                    'version'               => '1.0.0',
                     'force_activation'      => false,
                     'force_deactivation'    => false,
-                    'required'              => true
+                    'required'              => false
                 ),
 
                 array(
                     'name'                  => esc_html__( 'WPForms Lite', 'reen' ),
                     'slug'                  => 'wpforms-lite',
                     'required'              => false,
-                    'version'               => '1.5.6.2',
+                    'version'               => '1.5.8.2',
                     'force_activation'      => false,
                     'force_deactivation'    => false,
                     'external_url'          => '',
