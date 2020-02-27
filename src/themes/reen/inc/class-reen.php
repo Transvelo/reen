@@ -619,15 +619,6 @@ if ( ! class_exists( 'Reen' ) ) :
                 ),
 
                 array(
-                    'name'                  => esc_html__( 'One Click Demo Import', 'reen' ),
-                    'slug'                  => 'one-click-demo-import',
-                    'version'               => '2.5.2',
-                    'force_activation'      => false,
-                    'force_deactivation'    => false,
-                    'required'              => false,
-                ),
-
-                array(
                     'name'                  => esc_html__( 'Redux Framework', 'reen' ),
                     'slug'                  => 'redux-framework',
                     'version'               => '3.6.16',

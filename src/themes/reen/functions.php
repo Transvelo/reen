@@ -83,11 +83,6 @@ require get_template_directory() . '/inc/custom-header.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-if ( reen_is_ocdi_activated() ) {
-    require get_template_directory() . '/inc/ocdi/functions.php';
-    require get_template_directory() . '/inc/ocdi/hooks.php';
-}
-
 /**
  * Load Jetpack compatibility file.
  */
