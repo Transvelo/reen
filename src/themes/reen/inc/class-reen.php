@@ -628,26 +628,6 @@ if ( ! class_exists( 'Reen' ) ) :
                 ),
 
                 array(
-                    'name'                  => esc_html__( 'REEN Extensions', 'reen' ),
-                    'slug'                  => 'reen-extensions',
-                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-extensions.zip',
-                    'version'               => $reen_version,
-                    'force_activation'      => false,
-                    'force_deactivation'    => false,
-                    'required'              => false
-                ),
-
-                array(
-                    'name'                  => esc_html__( 'REEN Gutenberg Blocks', 'reen' ),
-                    'slug'                  => 'reen-gutenberg-blocks',
-                    'source'                => 'https://transvelo.github.io/reen/assets/plugins/reen-gutenberg-blocks.zip',
-                    'version'               => '1.0.0',
-                    'force_activation'      => false,
-                    'force_deactivation'    => false,
-                    'required'              => false
-                ),
-
-                array(
                     'name'                  => esc_html__( 'WPForms Lite', 'reen' ),
                     'slug'                  => 'wpforms-lite',
                     'required'              => false,
