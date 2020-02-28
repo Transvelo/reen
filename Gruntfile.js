@@ -372,8 +372,7 @@ module.exports = function( grunt ) {
         copy: {
             main: {
                 files: [
-                    { src: ['<%= pkg.name %>-extensions.zip'], dest: 'gh-pages/assets/plugins/'},
-                    { src: ['<%= pkg.name %>-demo.zip'], dest: '<%= dirs.theme %>/assets/plugins/'}
+                    { src: ['<%= pkg.name %>-extensions.zip'], dest: 'gh-pages/assets/plugins/'}
                 ]
             },
             deploy: {
