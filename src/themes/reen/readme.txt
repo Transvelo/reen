@@ -1,6 +1,6 @@
 === REEN ===
 Contributors: madrasthemes
-Requires at least: 4.7
+Requires at least: 5.0
 Tested up to: 5.3.2
 Stable tag: 1.0.0
 Version: 1.0.0
@@ -8,11 +8,16 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, portfolio, two-columns, left-sidebar, right-sidebar, custom-logo, custom-menu, editor-style, featured-images, threaded-comments, rtl-language-support, footer-widgets, sticky-post, theme-options, translation-ready
 
-A starter theme called REEN.
+**[REEN - Creative Portfolio WordPress Gutenberg Theme](https://demo2.madrasthemes.com/reen/)** is a high quality theme for those who want a beautiful website in no time. Your content will look its absolute best. It is fully responsive and will adapt itself to any device. iPhone, iPad or Android, it doesn't matter.
 
 == Description ==
 
-Made for Designers
+**[REEN - Creative Portfolio WordPress Gutenberg Theme](https://demo2.madrasthemes.com/reen/)** is a high quality theme for those who want a beautiful website in no time. Your content will look its absolute best. It is fully responsive and will adapt itself to any device. iPhone, iPad or Android, it doesn't matter.
+
+You can also find lots of useful information in our online documentation.
+
+* REEN - Creative Porfolio WordPress Gutenberg Theme documentation : [https://docs.madrasthemes.com/reen](https://docs.madrasthemes.com/reen)
+* REEN Gutenberg Blocks documentation : [https://docs.madrasthemes.com/reen-gutenberg-blocks](https://docs.madrasthemes.com/reen-gutenberg-blocks)
 
 == Installation ==
 
@@ -32,5 +37,5 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 == Changelog ==
 
-= 1.0.0 - 2020-02-24 =
+= 1.0.0 - 2020-02-29 =
 * Initial release
