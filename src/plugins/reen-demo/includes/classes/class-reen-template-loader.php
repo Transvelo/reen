@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @version     1.0.0
  * @package     Reen
  * @category    Class
- * @author      MadrasThemes
+ * @author      CheThemes
  */
 
 class Reen_Template_Loader {

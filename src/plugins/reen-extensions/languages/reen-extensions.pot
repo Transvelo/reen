@@ -1,16 +1,16 @@
-# Copyright (C) 2020 MadrasThemes
+# Copyright (C) 2020 CheThemes
 # This file is distributed under the same license as the REEN Extensions package.
 msgid ""
 msgstr ""
 "Project-Id-Version: REEN Extensions 1.0.0\n"
-"Report-Msgid-Bugs-To: https://madrasthemes.freshdesk.com/\n"
-"POT-Creation-Date: 2020-02-28 14:20:12+00:00\n"
+"Report-Msgid-Bugs-To: https://chethemes.com/\n"
+"POT-Creation-Date: 2020-03-18 06:22:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: POT <support@madrasthemes.freshdesk.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
 #: includes/widgets/class-reen-featured-posts-widget.php:13
@@ -52,20 +52,20 @@ msgid "REEN Extensions"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://madrasthemes.com/reen"
+msgid "https://chethemes.com/reen"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
 "This selection of extensions compliment our lean and mean theme for "
-"WooCommerce, reen. Please note: they don’t work with any WordPress theme, "
+"Portfolio, reen. Please note: they don’t work with any WordPress theme, "
 "just reen."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "MadrasThemes"
+msgid "CheThemes"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://madrasthemes.com/"
+msgid "https://chethemes.com/"
 msgstr ""

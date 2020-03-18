@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:     REEN Demo
- * Plugin URI:      https://madrasthemes.com/reen
- * Description:     This selection of demo compliment our lean and mean theme for WooCommerce, Reen. Please note: they don’t work with any WordPress theme, just Reen.
- * Author:          MadrasThemes
- * Author URI:      https://madrasthemes.com/
+ * Plugin URI:      https://chethemes.com/reen
+ * Description:     This selection of demo compliment our lean and mean theme for Portfolio, Reen. Please note: they don’t work with any WordPress theme, just Reen.
+ * Author:          CheThemes
+ * Author URI:      https://chethemes.com/
  * Version:         1.0.0
  * Text Domain:     reen-demo
  * Domain Path:     /languages
