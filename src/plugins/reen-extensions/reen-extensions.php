@@ -5,7 +5,7 @@
  * Description:     This selection of extensions compliment our lean and mean theme for Portfolio, reen. Please note: they don’t work with any WordPress theme, just reen.
  * Author:          CheThemes
  * Author URI:      https://chethemes.com/
- * Version:         1.0.0
+ * Version:         1.0.1
  * Text Domain:     Reen-extensions
  * Domain Path:     /languages
  */

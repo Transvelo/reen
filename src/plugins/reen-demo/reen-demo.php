@@ -5,7 +5,7 @@
  * Description:     This selection of demo compliment our lean and mean theme for Portfolio, Reen. Please note: they don’t work with any WordPress theme, just Reen.
  * Author:          CheThemes
  * Author URI:      https://chethemes.com/
- * Version:         1.0.0
+ * Version:         1.0.1
  * Text Domain:     reen-demo
  * Domain Path:     /languages
  */
