@@ -664,7 +664,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                                             <?php if ( has_post_thumbnail() ) {
                                                                 the_post_thumbnail();
                                                             } else { ?>
-                                                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="reen-placeholder" />
+                                                                <img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/art/work01.jpg' ); ?>" alt="reen-placeholder" />
                                                             <?php } ?>
                                                         </figure>
                                                    
@@ -707,7 +707,7 @@ if ( ! function_exists( 'reen_single_post_author_name' ) ) {
         if( apply_filters( 'reen_show_author_name', true ) ) :
             $current_user_id = get_current_user_id(); 
             ?>
-            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title="<?php esc_html_e( "Post author", 'reen' ); ?>"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
+            <p class="author"><a href="#" data-rel="tooltip" data-placement="left" data-original-title="<?php esc_attr_e( "Post author", 'reen' ); ?>"><?php the_author_meta( 'display_name', $current_user_id ); ?></a></p>
         <?php
         endif;
 
@@ -919,7 +919,7 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                                                         <?php if ( has_post_thumbnail() ) {
                                                             the_post_thumbnail();
                                                         } else { ?>
-                                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/art/work01.jpg" alt="reen-placeholder" />
+                                                            <img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/art/work01.jpg' ); ?>" alt="reen-placeholder" />
                                                        <?php } ?>
                                                     </a>
                                                 </div>                              
@@ -1008,7 +1008,7 @@ if ( ! function_exists( 'reen_comment' ) ) {
                         <?php echo '<time datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>'; ?>
                     </a>
                     <?php if ( '0' === $comment->comment_approved ) : ?>
-                    <em class="comment-awaiting-moderation"><?php esc_attr_e( 'Your comment is awaiting moderation.', 'reen' ); ?></em>
+                    <em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'reen' ); ?></em>
                     <?php endif; ?>
                 </div>
             </div>

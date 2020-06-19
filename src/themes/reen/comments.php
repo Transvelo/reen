@@ -22,7 +22,7 @@ if ( post_password_required() ) {
 
 <?php if ( have_comments() || ( ! comments_open() && 0 !== intval( get_comments_number() ) && post_type_supports( get_post_type(), 'comments' ) ) ) : ?>
 
-<section id="comments" class="comments-area" aria-label="<?php esc_html_e( 'Post Comments', 'reen' ); ?>">
+<section id="comments" class="comments-area" aria-label="<?php esc_attr_e( 'Post Comments', 'reen' ); ?>">
 
 
 	<?php
@@ -70,7 +70,7 @@ if ( post_password_required() ) {
 <?php endif; ?>
 <?php 
 if ( have_comments() && get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through. ?>
-    <nav id="comment-nav-below" class="comment-navigation" role="navigation" aria-label="<?php esc_html_e( 'Comment Navigation Below', 'reen' ); ?>">
+    <nav id="comment-nav-below" class="comment-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Comment Navigation Below', 'reen' ); ?>">
         <span class="sr-only screen-reader-text"><?php esc_html_e( 'Comment navigation', 'reen' ); ?></span>
         <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'reen' ) ); ?></div>
         <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'reen' ) ); ?></div>
@@ -90,18 +90,18 @@ $fields =  array(
     '<div class="comment-form-author row"><div class="col-md-6 reen-form-group"><label class="sr-only" for="author">' . esc_html__( 'Name', 'reen' ) .
     ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
     '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-    '" size="30"' . $aria_req . ' placeholder="' . esc_attr( esc_html__( 'Name', 'reen' ) ) . ( $req ? esc_attr( esc_html__( ' (Required)', 'reen' ) ) : '' ) . '" /></div></div>',
+    '" size="30"' . $aria_req . ' placeholder="' . esc_attr__( 'Name', 'reen' ) . ( $req ? esc_attr__( ' (Required)', 'reen' ) : '' ) . '" /></div></div>',
 
   'email' =>
     '<div class="row comment-form-email"><div class="col-md-6 reen-form-group"><label class="sr-only" for="email">' . esc_html__( 'Email', 'reen' ) .
     ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
     '<input id="email" name="email" class="form-control" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-    '" size="30"' . $aria_req . ' placeholder="' . esc_attr( esc_html__( 'Email', 'reen' ) ) . ( $req ? esc_attr( esc_html__( ' (Required)', 'reen' ) ) : '' ) . '" /></div></div>',
+    '" size="30"' . $aria_req . ' placeholder="' . esc_attr__( 'Email', 'reen' ) . ( $req ? esc_attr__( ' (Required)', 'reen' ) : '' ) . '" /></div></div>',
 
   'url' =>
     '<div class="row comment-form-url"><div class="col-md-6 reen-form-group"><label class="sr-only" for="url">' . esc_html__( 'Website', 'reen' ) . '</label>' .
     '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
-    '" size="30" placeholder="' . esc_attr( esc_html__( 'Website', 'reen' ) ) .'" /></div></div>',
+    '" size="30" placeholder="' . esc_attr__( 'Website', 'reen' ) .'" /></div></div>',
 
 );
 
@@ -113,7 +113,7 @@ $args = apply_filters(
         'class_submit'       => 'btn btn-submit submit',
         'fields'             => apply_filters( 'comment_form_default_fields', $fields ),
         'submit_field'       => '<div class="form-submit">%1$s %2$s</div>',
-        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun', 'reen' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
+        'comment_field'      => '<div class="row comment-form-comment"><div class="col-md-12 reen-form-group"><label class="sr-only" for="comment">' . _x( 'Comment', 'noun', 'reen' ) . '</label><textarea id="comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true" placeholder="' . esc_attr__( 'Enter your comment ...', 'reen' ) . '"></textarea></div></div>',
     )
 );
 

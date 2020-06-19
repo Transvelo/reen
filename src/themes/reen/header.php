@@ -21,6 +21,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'reen' ); ?></a>
 
@@ -57,7 +58,7 @@
                         } elseif ( function_exists( 'jetpack_has_site_logo' ) && jetpack_has_site_logo() ) {
                             jetpack_the_site_logo();
                         } elseif ( apply_filters( 'reen_site_logo_svg', false ) ) { ?>
-                           <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a><?php
+                           <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/logo.svg' ); ?>" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a><?php
                         } else {
                             echo '<span class="logo-text navbar-brand">';
                             ?>
@@ -82,7 +83,7 @@
                         } elseif ( function_exists( 'jetpack_has_site_logo' ) && jetpack_has_site_logo() ) {
                             jetpack_the_site_logo();
                         } elseif ( apply_filters( 'reen_site_logo_svg', false ) ) { ?>
-                           <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a><?php
+                           <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/logo.svg' ); ?>" class="logo animate" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a><?php
                         } else {
                             echo '<span class="logo-text navbar-brand">';
                             ?>

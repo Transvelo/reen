@@ -69,7 +69,7 @@ module.exports = function( grunt ) {
         sass: {
             options: {
                 implementation: require('node-sass'),
-                sourceMap: true
+                sourceMap: false
             },
             dist: {
                 files: [{
