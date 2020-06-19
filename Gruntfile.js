@@ -155,7 +155,7 @@ module.exports = function( grunt ) {
         makepot: {
             options: {
                 potHeaders: {
-                    'report-msgid-bugs-to': 'https://chethemes.com/'
+                    'report-msgid-bugs-to': 'https://madrasthemes.com/'
                 }
             },
             frontend: {

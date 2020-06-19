@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:     REEN Extensions
- * Plugin URI:      https://chethemes.com/reen
+ * Plugin URI:      https://madrasthemes.com/reen
  * Description:     This selection of extensions compliment our lean and mean theme for Portfolio, reen. Please note: they don’t work with any WordPress theme, just reen.
- * Author:          CheThemes
- * Author URI:      https://chethemes.com/
+ * Author:          MadrasThemes
+ * Author URI:      https://madrasthemes.com/
  * Version:         1.0.1
  * Text Domain:     Reen-extensions
  * Domain Path:     /languages
@@ -23,7 +23,7 @@ if( ! class_exists( 'Reen_Extensions' ) ) {
      * @version 1.0.0
      * @since 1.0.0
      * @package reen
-     * @author CheThemes
+     * @author MadrasThemes
      */
     final class Reen_Extensions {
         /**

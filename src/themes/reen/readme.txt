@@ -1,5 +1,5 @@
 === REEN ===
-Contributors: chethemes
+Contributors: madrasthemes
 Requires at least: 5.0
 Tested up to: 5.4
 Stable tag: 1.0.1
@@ -8,11 +8,11 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, portfolio, two-columns, left-sidebar, right-sidebar, custom-logo, custom-menu, editor-style, featured-images, threaded-comments, rtl-language-support, footer-widgets, sticky-post, theme-options, translation-ready
 
-**[REEN - Creative Portfolio WordPress Gutenberg Theme](https://chethemes.com)** is a high quality theme for those who want a beautiful website in no time. Your content will look its absolute best. It is fully responsive and will adapt itself to any device. iPhone, iPad or Android, it doesn't matter.
+**[REEN - Creative Portfolio WordPress Gutenberg Theme](https://madrasthemes.com)** is a high quality theme for those who want a beautiful website in no time. Your content will look its absolute best. It is fully responsive and will adapt itself to any device. iPhone, iPad or Android, it doesn't matter.
 
 == Description ==
 
-**[REEN - Creative Portfolio WordPress Gutenberg Theme](https://chethemes.com)** is a high quality theme for those who want a beautiful website in no time. Your content will look its absolute best. It is fully responsive and will adapt itself to any device. iPhone, iPad or Android, it doesn't matter.
+**[REEN - Creative Portfolio WordPress Gutenberg Theme](https://madrasthemes.com)** is a high quality theme for those who want a beautiful website in no time. Your content will look its absolute best. It is fully responsive and will adapt itself to any device. iPhone, iPad or Android, it doesn't matter.
 
 You can also find lots of useful information in our online documentation.
 
@@ -37,5 +37,5 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 == Changelog ==
 
-= 1.0.1 - 2020-04-01 =
+= 1.0.1 - 2020-06-19 =
 * Initial release
