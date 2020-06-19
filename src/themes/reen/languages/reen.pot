@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: REEN 1.0.1\n"
 "Report-Msgid-Bugs-To: https://madrasthemes.com/\n"
-"POT-Creation-Date: 2020-06-19 12:04:46+00:00\n"
+"POT-Creation-Date: 2020-06-19 13:36:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -428,7 +428,7 @@ msgstr ""
 msgid "Enter your comment ..."
 msgstr ""
 
-#: header.php:25
+#: header.php:26
 msgid "Skip to content"
 msgstr ""
 
@@ -1156,6 +1156,10 @@ msgstr ""
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://demo2.madrasthemes.com/reen/"
 msgstr ""
 
 #. Description of the plugin/theme
