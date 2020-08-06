@@ -10,9 +10,8 @@
 /**
  * Assign the Reen version to a var
  */
-$theme = wp_get_theme( 'reen' );
-$reen_version = $theme['Version'];
-
+$reen_theme = wp_get_theme( 'reen' );
+$reen_version = $reen_theme['Version'];
 
 $reen = (object) array(
     'version'    => $reen_version,
