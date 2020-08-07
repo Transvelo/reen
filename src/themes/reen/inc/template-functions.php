@@ -128,11 +128,11 @@ if ( ! function_exists( 'reen_footer_logo' ) ) :
         } elseif ( function_exists( 'jetpack_has_site_logo' ) && jetpack_has_site_logo() ) {
             jetpack_the_site_logo();
         } elseif ( apply_filters( 'reen_site_logo_svg', false ) ) { ?>
-           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/logo-white.svg' ); ?>" class="logo img-intext" alt="<?php bloginfo( 'name' ); ?>" style="height: 40px" /></a><?php
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/logo-white.svg' ); ?>" class="logo img-intext" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" style="height: 40px" /></a><?php
         } else {
             echo '<span class="logo-text navbar-brand">';
             ?>
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><h1 class="site-title"><?php bloginfo( 'name' ); ?></h1></a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><h1 class="site-title"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h1></a>
             <?php if ( '' != get_bloginfo( 'description' ) ) : ?>
                 <p class="site-description sr-only"><?php bloginfo( 'description' ); ?></p>
             <?php endif;
