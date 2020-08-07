@@ -1075,13 +1075,19 @@ endif;
 
 
 if ( ! function_exists( 'reen_excerpt_length' ) ) {
-    function reen_excerpt_length() {
+    function reen_excerpt_length( $length ) {
+        if ( is_admin() ) {
+            return $length;
+        }
         return apply_filters( 'reen_excerpt_length', 30 );
     }
 }
 
 if ( ! function_exists( 'reen_excerpt_more' ) ) {
-    function reen_excerpt_more() {
+    function reen_excerpt_more( $more ) {
+        if ( is_admin() ) {
+            return $more;
+        }
         return apply_filters( 'reen_excerpt_more', '' );
     }
 }
