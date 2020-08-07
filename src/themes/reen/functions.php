@@ -78,11 +78,6 @@ require get_template_directory() . '/inc/reen-menu-functions.php';
 require get_template_directory() . '/inc/custom-header.php';
 
 /**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
