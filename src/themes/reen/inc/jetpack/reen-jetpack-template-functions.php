@@ -473,120 +473,118 @@ endif;
 
 if ( ! function_exists( 'reen_more_works' ) ) {
     function reen_more_works() {
-       
         $more_works = new WP_Query( array( 'post_type' => 'jetpack-portfolio','post_per_page' => '16', 'post__not_in' => array( get_the_ID() ), 'orderby' => 'rand' ) );
 
-        if ( ! $more_works->have_posts() ) {
-            return;
+        if ( $more_works->have_posts() ) {
+
+            $portfolio_cats = array();        
+
+            while ( $more_works->have_posts() ) : 
+
+                $more_works->the_post(); 
+
+                $portfolio_types = get_the_terms( get_the_ID(), 'jetpack-portfolio-type' );
+
+                if ( ! $portfolio_types || is_wp_error( $portfolio_types ) ) {
+                    $portfolio_types = array();
+                }
+
+                $portfolio_types = array_values( $portfolio_types );
+
+                foreach ( array_keys( $portfolio_types ) as $key ) {
+                   _make_cat_compat( $portfolio_types[ $key ] );           
+                }
+
+                foreach ( $portfolio_types as $portfolio_type ) {
+                    $portfolio_cats[ $portfolio_type->slug] = $portfolio_type->name;
+                }
+
+            endwhile;
+
+            ?>
+            <section id="more-works">
+                <div class="container inner-top-sm inner-bottom">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="accordion" class="panel-group blank">
+                                <div class="panel panel-default">              
+                                    <div class="panel-heading text-center">
+                                        <h4 class="panel-title">
+                                            <a class="panel-toggle collapsed" href="#content-more-works" data-toggle="collapse">
+                                                <span><?php echo esc_html__( 'More projects', 'reen' ); ?></span>
+                                            </a>
+                                        </h4>
+                                    </div><!-- /.panel-heading -->
+                                    <div id="content-more-works" class="panel-collapse collapse" data-parent="#accordion">
+                                        <div class="panel-body"> 
+                                            <div class="portfolio">
+                                                <ul class="filter text-center">
+                                                    <li><a href="#" data-filter="*" class="active">All</a></li>
+                                                    <?php foreach ( $portfolio_cats as $slug => $portfolio_cat ) : ?>
+                                                    <li><a href="#" data-filter=".jetpack-portfolio-type-<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $portfolio_cat ); ?></a></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                                <ul class="isotope items col-4-custom">
+                                                    <?php while ( $more_works->have_posts() ) : $more_works->the_post(); ?>
+                                                    <li <?php post_class( array( 'item', 'thumb' ) ); ?>>
+                                                        <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                                                            <figure>
+                                                                <figcaption class="text-overlay">
+                                                                    <div class="info">
+                                                                        <h4><?php the_title(); ?></h4>
+                                                                        <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
+                                                                    </div><!-- /.info -->
+                                                                </figcaption>
+                                                                    <?php the_post_thumbnail()?>
+                                                            </figure>
+                                                        </a>
+                                                    </li><!-- /.item -->
+                                                    <?php endwhile; ?>
+                                                </ul><!-- /.items -->
+                                            </div><!-- /.portfolio -->
+                                        </div><!-- /.panel-body -->
+                                    </div><!-- /.content -->        
+                                </div><!-- /.panel -->
+                            </div><!-- /.accordion -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section>
+            <?php
         }
 
-        $portfolio_cats = array();        
-
-        while ( $more_works->have_posts() ) : 
-
-            $more_works->the_post(); 
-
-            $portfolio_types = get_the_terms( get_the_ID(), 'jetpack-portfolio-type' );
-
-            if ( ! $portfolio_types || is_wp_error( $portfolio_types ) ) {
-                $portfolio_types = array();
-            }
-
-            $portfolio_types = array_values( $portfolio_types );
-
-            foreach ( array_keys( $portfolio_types ) as $key ) {
-               _make_cat_compat( $portfolio_types[ $key ] );           
-            }
-
-            foreach ( $portfolio_types as $portfolio_type ) {
-                $portfolio_cats[ $portfolio_type->slug] = $portfolio_type->name;
-            }
-
-        endwhile;
-        wp_reset_postdata(); 
-    
-    ?>
-
-    <section id="more-works">
-        <div class="container inner-top-sm inner-bottom">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="accordion" class="panel-group blank">
-                        <div class="panel panel-default">              
-                            <div class="panel-heading text-center">
-                                <h4 class="panel-title">
-                                    <a class="panel-toggle collapsed" href="#content-more-works" data-toggle="collapse">
-                                        <span><?php echo esc_html__( 'More projects', 'reen' ); ?></span>
-                                    </a>
-                                </h4>
-                            </div><!-- /.panel-heading -->
-                                <div id="content-more-works" class="panel-collapse collapse" data-parent="#accordion">
-                                    <div class="panel-body"> 
-                                        <div class="portfolio">
-                                            <ul class="filter text-center">
-                                                <li><a href="#" data-filter="*" class="active">All</a></li>
-                                                <?php foreach ( $portfolio_cats as $slug => $portfolio_cat ) : ?>
-                                                <li><a href="#" data-filter=".jetpack-portfolio-type-<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $portfolio_cat ); ?></a></li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                            <ul class="isotope items col-4-custom">
-                                                <?php while ( $more_works->have_posts() ) : $more_works->the_post(); ?>
-                                                <li <?php post_class( array( 'item', 'thumb' ) ); ?>>
-                                                    <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                                                        <figure>
-                                                            <figcaption class="text-overlay">
-                                                                <div class="info">
-                                                                    <h4><?php the_title(); ?></h4>
-                                                                    <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
-                                                                </div><!-- /.info -->
-                                                            </figcaption>
-                                                                <?php the_post_thumbnail()?>
-                                                        </figure>
-                                                    </a>
-                                                </li><!-- /.item -->
-                                                <?php endwhile; ?>
-                                            </ul><!-- /.items -->
-                                            <?php wp_reset_postdata(); ?> 
-                                        </div><!-- /.portfolio -->
-                                    </div><!-- /.panel-body -->
-                                </div><!-- /.content -->        
-                            </div><!-- /.panel -->
-                        </div><!-- /.accordion -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><?php
+        wp_reset_postdata();
     }
 }
 
-
 if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
     function reen_portfolio_more_videos() {
+        $more_videos = new WP_Query( array(
+            'post_type'         => 'jetpack-portfolio',
+            'posts_per_page'    => '10',
+            'post__not_in'      => array( get_the_ID() ),
+            'tax_query'         => array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'jetpack-portfolio-type',
+                    'field'    => 'slug',
+                    'terms'    => array( 'video' ),
+                ),
+                array(
+                    'taxonomy' => 'post_format',
+                    'field'    => 'slug',
+                    'terms'    => array( 'post-format-video' ),
+                ),
+                array(
+                    'taxonomy' => 'jetpack-portfolio-tag',
+                    'field'    => 'slug',
+                    'terms'    => array( 'video' ),
+                ),
+            ),
+        ) );
 
-        $more_videos = new WP_Query( array( 
-            'post_type'      => 'jetpack-portfolio',
-            'posts_per_page' => '10',
-            'post__not_in'   => array( get_the_ID() ),
-            'tax_query' => array(
-                        'relation' => 'OR',
-                        array(
-                            'taxonomy' => 'jetpack-portfolio-type',
-                            'field'    => 'slug',
-                            'terms'    => array( 'video' ),
-                        ),
-                        array(
-                            'taxonomy' => 'post_format',
-                            'field'    => 'slug',
-                            'terms'    => array( 'post-format-video' ),
-                        ),
-                        array(
-                            'taxonomy' => 'jetpack-portfolio-tag',
-                            'field'    => 'slug',
-                            'terms'    => array( 'video' ),
-                        ),
-                    ),
-        ) );        
-        if ( $more_videos->have_posts() ) : ?>
+        if ( $more_videos->have_posts() ) :
+            ?>
             <section id="more-videos">
                 <div class="container inner-top-md">
                     <div class="row">
@@ -601,10 +599,11 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                         </h4>
                                     </div><!-- /.panel-heading --> 
                                     <div id="content-more-videos" class="panel-collapse collapse" data-parent="#accordion">
-                                        <div class="panel-body"><?php
-                                            wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-                                            wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
-                                            wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
+                                        <div class="panel-body">
+                                            <?php
+                                                wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
+                                                wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
+                                                wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
                                                 $owl_params = apply_filters( 'owl-videos_params', array(
                                                     'autoplay'            => true,
@@ -624,27 +623,27 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                                         '992'   => array( 'items'   => 4 ),
                                                         '1200'  => array( 'items'   => 5 ),
                                                     )
-                                                ) ); ?>
+                                                ) );
+                                            ?>
 
                                             <div id="owl-videos" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
-                                            <?php while ( $more_videos->have_posts() ) : $more_videos->the_post(); ?> 
-                                                <div class="item">
-                                                    <figure>
-                                                        <div class="icon-overlay icn-link">
-                                                            <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail(); ?></a>
-                                                        </div><!-- /.icon-overlay -->
-                                                        
-                                                        <figcaption class="bordered no-top-border">
-                                                            <div class="info">
-                                                                <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
-                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
-                                                            </div><!-- /.info -->
-                                                        </figcaption>
-                                                        
-                                                    </figure>
-                                                </div><!-- /.item -->
+                                                <?php while ( $more_videos->have_posts() ) : $more_videos->the_post(); ?>
+                                                    <div class="item">
+                                                        <figure>
+                                                            <div class="icon-overlay icn-link">
+                                                                <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail(); ?></a>
+                                                            </div><!-- /.icon-overlay -->
+                                                            
+                                                            <figcaption class="bordered no-top-border">
+                                                                <div class="info">
+                                                                    <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                    <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
+                                                                </div><!-- /.info -->
+                                                            </figcaption>
+                                                            
+                                                        </figure>
+                                                    </div><!-- /.item -->
                                                 <?php endwhile; ?>
-                                                <?php wp_reset_postdata(); ?>
                                             </div><!-- /.owl-carousel -->
                                         </div><!-- /.panel-body -->
                                     </div><!-- /.content -->    
@@ -653,14 +652,16 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->
-            </section><?php
+            </section>
+            <?php
         endif;
-        }
+
+        wp_reset_postdata();
     }
+}
 
 if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
     function reen_portfolio_more_audio() {
-
         $more_audio = new WP_Query( array( 
             'post_type'      => 'jetpack-portfolio',
             'posts_per_page' => '10',
@@ -682,81 +683,79 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                     'field'    => 'slug',
                     'terms'    => array( 'audio' ),
                 ),
-
-                ),
-                array(
-                    'taxonomy' => 'jetpack-portfolio-tag',
-                    'field'    => 'slug',
-                    'terms'    => array( 'audio' ),
-                ),
-        
+            ),
         ) );
 
-        if ( $more_audio->have_posts() ) : ?>
-        <section id="more-audio">
-            <div class="container inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="accordion" class="panel-group blank">
-                            <div class="panel panel-default">             
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="panel-toggle collapsed" href="#content-more-audio" data-toggle="collapse">
-                                            <span><?php echo esc_html__( 'More Audio', 'reen' ); ?></span>
-                                        </a>
-                                    </h4>
-                                </div><!-- /.panel-heading --> 
-                                <div id="content-more-audio" class="panel-collapse collapse" data-parent="#accordion">
-                                    <div class="panel-body"><?php
-                                        wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
-                                        wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
-                                        wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
+        if ( $more_audio->have_posts() ) :
+            ?>
+            <section id="more-audio">
+                <div class="container inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="accordion" class="panel-group blank">
+                                <div class="panel panel-default">             
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="panel-toggle collapsed" href="#content-more-audio" data-toggle="collapse">
+                                                <span><?php echo esc_html__( 'More Audio', 'reen' ); ?></span>
+                                            </a>
+                                        </h4>
+                                    </div><!-- /.panel-heading --> 
+                                    <div id="content-more-audio" class="panel-collapse collapse" data-parent="#accordion">
+                                        <div class="panel-body">
+                                            <?php
+                                                wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css' );
+                                                wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
+                                                wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
-                                            $owl_params = apply_filters( 'owl-audio_params', array(
-                                                'autoplay'            => true,
-                                                'autoplayTimeout'     => 5000,
-                                                'autoplayHoverPause'  => true,
-                                                'smartSpeed'          => 200,
-                                                'rewind'              => true,
-                                                'nav'             => true,
-                                                'dots'            => true,
-                                                'items'           => 5,
-                                                'rtl'          => is_rtl() ? true : false,
-                                                'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
-                                                'responsive'        => array(
-                                                    '0'     => array( 'items'   => 1 ),
-                                                    '480'   => array( 'items'   => 2 ),
-                                                    '768'   => array( 'items'   => 2 ),
-                                                    '992'   => array( 'items'   => 4 ),
-                                                    '1200'  => array( 'items'   => 5 ),
-                                                )
-                                            ) ); ?>
+                                                $owl_params = apply_filters( 'owl-audio_params', array(
+                                                    'autoplay'            => true,
+                                                    'autoplayTimeout'     => 5000,
+                                                    'autoplayHoverPause'  => true,
+                                                    'smartSpeed'          => 200,
+                                                    'rewind'              => true,
+                                                    'nav'             => true,
+                                                    'dots'            => true,
+                                                    'items'           => 5,
+                                                    'rtl'          => is_rtl() ? true : false,
+                                                    'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                                    'responsive'        => array(
+                                                        '0'     => array( 'items'   => 1 ),
+                                                        '480'   => array( 'items'   => 2 ),
+                                                        '768'   => array( 'items'   => 2 ),
+                                                        '992'   => array( 'items'   => 4 ),
+                                                        '1200'  => array( 'items'   => 5 ),
+                                                    )
+                                                ) );
+                                            ?>
                                             <div id="owl-audio" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"   class="owl-carousel owl-item-gap">
-                                            <?php while ( $more_audio->have_posts() ) : $more_audio->the_post(); ?> 
-                                                <div class="item">
-                                                    <figure>
-                                                        <div class="icon-overlay icn-link">
-                                                            <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail(); ?></a>
-                                                        </div><!-- /.icon-overlay -->
-                                                        <figcaption class="bordered no-top-border">
-                                                            <div class="info">
-                                                                <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
-                                                                <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
-                                                            </div><!-- /.info -->
-                                                        </figcaption>
-                                                    </figure>
-                                                </div><!-- /.item -->
-                                            <?php endwhile; ?>
-                                            <?php wp_reset_postdata(); ?>
-                                        </div><!-- /.owl-carousel -->
-                                    </div><!-- /.panel-body -->
-                                </div><!-- /.content -->    
-                            </div><!-- /.panel -->
-                        </div><!-- /.accordion -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><?php
-    endif;
+                                                <?php while ( $more_audio->have_posts() ) : $more_audio->the_post(); ?> 
+                                                    <div class="item">
+                                                        <figure>
+                                                            <div class="icon-overlay icn-link">
+                                                                <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_post_thumbnail(); ?></a>
+                                                            </div><!-- /.icon-overlay -->
+                                                            <figcaption class="bordered no-top-border">
+                                                                <div class="info">
+                                                                    <h4><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h4>
+                                                                    <p><?php echo wp_strip_all_tags( get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '', '/' ), true)?></p>
+                                                                </div><!-- /.info -->
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div><!-- /.item -->
+                                                <?php endwhile; ?>
+                                            </div><!-- /.owl-carousel -->
+                                        </div><!-- /.panel-body -->
+                                    </div><!-- /.content -->    
+                                </div><!-- /.panel -->
+                            </div><!-- /.accordion -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section>
+            <?php
+        endif;
+
+        wp_reset_postdata();
     }
 }
