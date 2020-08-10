@@ -14,14 +14,14 @@ $header_options = apply_filters( 'reen_header_options_args', array(
         ),
 
         array(
-            'title'     => esc_html__( 'Site Logo', 'reen' ),
-            'subtitle'  => esc_html__( 'Enable to display logo instead of site title.', 'reen' ),
+            'title'     => esc_html__( 'Site SVG Logo', 'reen' ),
+            'subtitle'  => esc_html__( 'Enable to display SVG logo instead of site title.', 'reen' ),
             'desc'      => esc_html__( 'This will not work when you use site logo in customizer.', 'reen' ),
             'id'        => 'logo_svg',
             'type'      => 'switch',
             'on'        => esc_html__( 'Enabled', 'reen' ),
             'off'       => esc_html__( 'Disabled', 'reen' ),
-            'default'   => 1,
+            'default'   => true,
         ),
 
         array(

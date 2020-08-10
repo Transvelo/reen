@@ -130,13 +130,13 @@ if ( ! function_exists( 'reen_footer_logo' ) ) :
         } elseif ( apply_filters( 'reen_site_logo_svg', false ) ) { ?>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/images/logo-white.svg' ); ?>" class="logo img-intext" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" style="height: 40px" /></a><?php
         } else {
-            echo '<span class="logo-text navbar-brand">';
+            echo '<div class="logo-text navbar-brand">';
             ?>
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><h1 class="site-title"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h1></a>
+            <h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a></h2>
             <?php if ( '' != get_bloginfo( 'description' ) ) : ?>
                 <p class="site-description sr-only"><?php bloginfo( 'description' ); ?></p>
             <?php endif;
-            echo '</span>';
+            echo '</div>';
         }
     }
 endif;
@@ -150,5 +150,15 @@ if ( ! function_exists( 'reen_footer_site_description' ) ) {
             <?php
         }
     }
-}    
+}
 
+if ( ! function_exists( 'reen_custom_background_has_applied' ) ) {
+    function reen_custom_background_has_applied() {
+        $has_applied = false;
+        if ( current_theme_supports( 'custom-background' ) && ( get_background_color() !== get_theme_support( 'custom-background', 'default-color' ) || get_background_image() ) ) {
+            $has_applied = true;
+        }
+
+        return apply_filters( 'reen_custom_background_has_applied', $has_applied );
+    }
+}

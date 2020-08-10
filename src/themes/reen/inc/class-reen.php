@@ -32,6 +32,7 @@ if ( ! class_exists( 'Reen' ) ) :
             add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
             add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
             add_filter( 'body_class', array( $this, 'body_classes' ) );
+            add_action( 'customize_register', array( $this, 'customize_site_logo' ), 10 );
         }
 
         /**
@@ -74,17 +75,15 @@ if ( ! class_exists( 'Reen' ) ) :
              *
              * @link https://codex.wordpress.org/Theme_Logo
              */
-
             add_theme_support( 'custom-logo', apply_filters( 'reen_custom_logo_args', array(
                 'height'      => 40,
                 'width'       => 160,
                 'flex-width'  => true,
             ) ) );
 
-
             /*
              * Enable support for Post Formats.
-            */
+             */
             add_theme_support( 'post-formats', apply_filters( 'reen_post_format_supports', array(
                 'aside',
                 'image',
@@ -95,7 +94,6 @@ if ( ! class_exists( 'Reen' ) ) :
                 'link',
                 'status',
             ) ) );
-
 
             // Declare WooCommerce support.
             add_theme_support( 'woocommerce', apply_filters( 'reen_woocommerce_args', array(
@@ -224,7 +222,7 @@ if ( ! class_exists( 'Reen' ) ) :
 
         }
 
-         /**
+        /**
          * Adds custom classes to the array of body classes.
          *
          * @param array $classes Classes for the body element.
@@ -247,6 +245,19 @@ if ( ! class_exists( 'Reen' ) ) :
             }
 
             return $classes;
+        }
+
+        /**
+         * Customize site logo
+         *
+         * Logo located in title_tagline (Site Identity) section.
+         *
+         * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+         */
+        public function customize_site_logo( $wp_customize ) {
+            if( current_theme_supports( 'custom-logo' ) ) {
+                $wp_customize->get_setting( 'custom_logo' )->transport = 'refresh';
+            }
         }
 
         /**
