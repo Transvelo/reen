@@ -62,7 +62,7 @@ body {
 	word-wrap: break-word;
 }
 .navbar,
-main {
+body:not( .custom-background ) main {
 	background-color: #FFF;
 }
 // main:before {

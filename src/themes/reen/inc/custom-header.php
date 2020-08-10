@@ -19,7 +19,7 @@
 function reen_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'reen_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
+		'default-text-color'     => '506a85',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
@@ -62,7 +62,8 @@ if ( ! function_exists( 'reen_header_style' ) ) :
 		else :
 			?>
 			.site-title a,
-			.site-description {
+			.site-description,
+			.navbar-nav > li > a {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
 		<?php endif; ?>

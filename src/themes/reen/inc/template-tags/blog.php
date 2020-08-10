@@ -29,12 +29,12 @@ if ( ! function_exists( 'reen_loop_container_wrap_start' ) ) {
 
 if ( ! function_exists( 'reen_loop_section_wrap_start' ) ) {
     function reen_loop_section_wrap_start() { ?>
-        <section id="blog" class="light-bg"><?php
+        <section id="blog"<?php if( ! reen_custom_background_has_applied() ) echo esc_attr( ' class=light-bg' ); ?>><?php
     }
 }
 if ( ! function_exists( 'reen_single_loop_section_wrap_start' ) ) {
     function reen_single_loop_section_wrap_start() { ?>
-        <section id="blog-post" class="light-bg"><?php
+        <section id="blog-post"<?php if( ! reen_custom_background_has_applied() ) echo esc_attr( ' class=light-bg' ); ?>><?php
     }
 }
 
@@ -615,7 +615,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                 } else {
                     $collapse_class = 'show';
                 } ?>
-                <section id="popular-posts" class="light-bg">
+                <section id="popular-posts"<?php if( ! reen_custom_background_has_applied() ) echo esc_attr( ' class=light-bg' ); ?>>
                     <div class="container inner-top-md">
                         <div class="row">
                             <div class="col-md-12">
