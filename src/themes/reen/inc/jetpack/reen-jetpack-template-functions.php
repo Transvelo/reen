@@ -45,8 +45,6 @@ if ( ! function_exists( 'reen_loop_portfolio_wrap_start' ) ) {
 
         if ( ( $portfolio_view === 'grid-detail' &&  $portfolio_columns == 3 ) || ( $portfolio_view === 'grid-detail' &&  $portfolio_columns == 4 ) )  {
             $wrapper_class .= ' gap';
-        } else {
-
         }
 
         $portfolio_cats = array();        
@@ -186,7 +184,7 @@ if ( ! function_exists( 'reen_portfolio_post_audio' ) ) {
                 ?><div class="col-lg-8 inner-left-xs"><?php
                 // run oEmbed for known sources to generate embed code from audio links
                 // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
-                echo apply_filters( 'the_content', $embed_audio );
+                echo apply_filters( 'the_content', $embed_audio ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 ?></div><?php
             }
@@ -225,7 +223,7 @@ if ( ! function_exists( 'reen_portfolio_post_video' ) ) {
                         <div class="video-container"><?php 
                             // run oEmbed for known sources to generate embed code from audio links
                             // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
-                            echo apply_filters( 'the_content', $embed_video );
+                            echo apply_filters( 'the_content', $embed_video ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
                         ?></div>
                     </div>
                 </div><?php
@@ -279,7 +277,7 @@ if ( ! function_exists( 'reen_portfolio_post_slider_1' ) ) {
 
         $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_portfolio_gallery_images', true );
         $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
-            $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
+            $owl_params = apply_filters( 'reen_owl_carousel_portfolio_post_gallery_params', array(
                 'autoPlay'        => 5000,
                 'slideSpeed'      => 200,
                 'paginationSpeed' => 600,
@@ -331,7 +329,7 @@ if ( ! function_exists( 'reen_portfolio_post_slider_2' ) ) {
 
         $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_portfolio_gallery_images', true );
         $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
-        $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
+        $owl_params = apply_filters( 'reen_owl_carousel_portfolio_post_gallery_params', array(
             'autoPlay'        => 5000,
             'slideSpeed'      => 200,
             'paginationSpeed' => 600,
@@ -605,7 +603,7 @@ if ( ! function_exists( 'reen_portfolio_more_videos' ) ) {
                                                 wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
                                                 wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
-                                                $owl_params = apply_filters( 'owl-videos_params', array(
+                                                $owl_params = apply_filters( 'reen_portfolio_owl-videos_params', array(
                                                     'autoplay'            => true,
                                                     'autoplayTimeout'     => 5000,
                                                     'autoplayHoverPause'  => true,
@@ -708,7 +706,7 @@ if ( ! function_exists( 'reen_portfolio_more_audio' ) ) {
                                                 wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/assets/css/owl.transitions.css' );
                                                 wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array( 'jquery' ), true );
 
-                                                $owl_params = apply_filters( 'owl-audio_params', array(
+                                                $owl_params = apply_filters( 'reen_portfolio_owl-audio_params', array(
                                                     'autoplay'            => true,
                                                     'autoplayTimeout'     => 5000,
                                                     'autoplayHoverPause'  => true,

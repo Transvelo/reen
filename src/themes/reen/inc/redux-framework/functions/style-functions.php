@@ -3,8 +3,8 @@
  * Filter functions for Styling Section of Theme Options
  */
 
-if ( ! function_exists( 'redux_toggle_use_predefined_colors' ) ) {
-	function redux_toggle_use_predefined_colors( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_use_predefined_colors' ) ) {
+	function reen_redux_toggle_use_predefined_colors( $enable ) {
 		global $reen_options;
 
 		if ( isset( $reen_options['use_predefined_color'] ) && $reen_options['use_predefined_color'] ) {
@@ -17,8 +17,8 @@ if ( ! function_exists( 'redux_toggle_use_predefined_colors' ) ) {
 	}
 }
 
-if( ! function_exists( 'redux_apply_primary_color' ) ) {
-	function redux_apply_primary_color( $color ) {
+if( ! function_exists( 'reen_redux_apply_primary_color' ) ) {
+	function reen_redux_apply_primary_color( $color ) {
 		global $reen_options;
 
 		if ( isset( $reen_options['main_color'] ) ) {
@@ -29,8 +29,8 @@ if( ! function_exists( 'redux_apply_primary_color' ) ) {
 	}
 }
 
-if ( ! function_exists( 'sass_darken' ) ) {
-	function sass_darken( $hex, $percent ) {
+if ( ! function_exists( 'reen_sass_darken' ) ) {
+	function reen_sass_darken( $hex, $percent ) {
 		preg_match( '/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i', $hex, $primary_colors );
 		str_replace( '%', '', $percent );
 		$percent = (int) $percent;
@@ -46,8 +46,8 @@ if ( ! function_exists( 'sass_darken' ) ) {
 	}
 }
 
-if ( ! function_exists( 'redux_apply_custom_color_css' ) ) {
-	function redux_apply_custom_color_css() {
+if ( ! function_exists( 'reen_redux_apply_custom_color_css' ) ) {
+	function reen_redux_apply_custom_color_css() {
 		global $reen_options;
 
 		if ( isset( $reen_options['use_predefined_color'] ) && $reen_options['use_predefined_color'] ) {
@@ -60,20 +60,20 @@ if ( ! function_exists( 'redux_apply_custom_color_css' ) ) {
 			return;
 		}
 
-		?><style type="text/css"><?php echo redux_get_custom_color_css(); ?></style><?php
+		?><style type="text/css"><?php echo reen_redux_get_custom_color_css(); ?></style><?php
 	}
 }
 
-if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
-	function redux_get_custom_color_css() {
+if ( ! function_exists( 'reen_redux_get_custom_color_css' ) ) {
+	function reen_redux_get_custom_color_css() {
 		global $reen_options;
 
 		$primary_color      = isset( $reen_options['custom_primary_color'] ) ? $reen_options['custom_primary_color'] : '#0787ea';
 		$primary_text_color = isset( $reen_options['custom_primary_text_color'] ) ? $reen_options['custom_primary_text_color'] : '#fff';
 		$color_body         = '#333e48';
 
-		$active_background  = sass_darken( $primary_color, '100%' );
-		$active_border      = sass_darken( $primary_color, '100%' );
+		$active_background  = reen_sass_darken( $primary_color, '100%' );
+		$active_border      = reen_sass_darken( $primary_color, '100%' );
 
 		$styles 	        = '
 		 a:hover,
@@ -186,7 +186,7 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.wp-block-button .wp-block-button__link:hover,
 		.wp-block-button .wp-block-button__link:focus,
 		.wp-block-button .wp-block-button__link:active {
-			background-color: ' . sass_darken( $primary_color, '5%' ) . ';
+			background-color: ' . reen_sass_darken( $primary_color, '5%' ) . ';
 		}
 
 		.icon-overlay a .icn-more,
@@ -229,7 +229,7 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 	}
 }
 
-function redux_load_external_custom_css() {
+function reen_redux_load_external_custom_css() {
 	global $reen_options;
 
 	if ( isset( $reen_options['use_predefined_color'] ) && $reen_options['use_predefined_color'] ) {
@@ -249,7 +249,7 @@ function redux_load_external_custom_css() {
 	}
 }
 
-function redux_toggle_custom_css_page() {
+function reen_redux_toggle_custom_css_page() {
 	global $reen_options;
 
 	if ( isset( $reen_options['use_predefined_color'] ) && $reen_options['use_predefined_color'] ) {

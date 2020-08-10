@@ -26,7 +26,7 @@ function reen_redux_disable_dev_mode_and_remove_admin_notices( $redux ) {
  * 
  * @return void
  */
-function redux_queue_font_awesome() {
+function reen_redux_queue_font_awesome() {
     wp_register_style( 'redux-fontawesome', get_template_directory_uri() . '/assets/css/fontawesome-all.min.css', array(), time(), 'all' );
     wp_enqueue_style( 'redux-fontawesome' );
 }

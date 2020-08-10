@@ -3,7 +3,7 @@
  * Filter functions for Footer Section of Theme Options
  */
 
-$footer_options = apply_filters( 'reen_footer_options_args', array(
+$reen_footer_options = apply_filters( 'reen_footer_options_args', array(
     'title'     => esc_html__( 'Footer', 'reen' ),
     'desc'      => esc_html__( 'Options related to the footer section. The Footer has : Brands Slider, Footer Widgets, Footer Newsletter Section,Footer Contact Info Section, Footer Contact Block, Footer Bottom Wigets', 'reen' ),
     'icon'      => 'far fa-arrow-alt-circle-down',

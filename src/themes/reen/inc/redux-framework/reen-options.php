@@ -23,7 +23,7 @@ if ( ! class_exists( 'REEN_Options' ) ) {
                 require_once $options_dir . '/' . $options_file ;
             }
 
-            $sections   = apply_filters( 'reen_options_sections_args', array( $general_options, $header_options, $footer_options, $blog_options, $portfolio_options, $style_options  ) );
+            $sections   = apply_filters( 'reen_options_sections_args', array( $reen_general_options, $reen_header_options, $reen_footer_options, $reen_blog_options, $reen_portfolio_options, $reen_style_options  ) );
             $theme      = wp_get_theme();
             $args       = array(
                 'opt_name'          => 'reen_options',

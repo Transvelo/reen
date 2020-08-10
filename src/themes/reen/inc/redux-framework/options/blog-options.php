@@ -4,7 +4,7 @@
  * 
  */
 
- $blog_options = apply_filters( 'reen_blog_options_args', array(
+ $reen_blog_options = apply_filters( 'reen_blog_options_args', array(
     'title'  => esc_html__( 'Blog', 'reen' ),
     'icon'   => 'far fa-list-alt',
     'desc'   => esc_html__( 'Options available for your Blog', 'reen' ),

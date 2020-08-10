@@ -29,8 +29,8 @@ if ( ! function_exists( 'reen_redux_apply_separate_footer_logo' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_footer_copyright_info' ) ) {
-    function redux_toggle_footer_copyright_info( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_footer_copyright_info' ) ) {
+    function reen_redux_toggle_footer_copyright_info( $enable ) {
         global $reen_options;
 
         $reen_options['footer_copyright_info_enable'] = isset( $reen_options['footer_copyright_info_enable'] ) ? $reen_options['footer_copyright_info_enable'] : true;
@@ -45,8 +45,8 @@ if ( ! function_exists( 'redux_toggle_footer_copyright_info' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_apply_footer_copyright_text' ) ) {
-    function redux_apply_footer_copyright_text( $text ) {
+if ( ! function_exists( 'reen_redux_apply_footer_copyright_text' ) ) {
+    function reen_redux_apply_footer_copyright_text( $text ) {
         global $reen_options;
 
         if( isset( $reen_options['footer_copyright_info'] ) ) {
@@ -77,9 +77,8 @@ if ( ! function_exists( 'reen_redux_apply_footer_site_description' ) ) {
     }
 }
 
-
-if ( ! function_exists( 'redux_toggle_footer_site_title' ) ) {
-    function redux_toggle_footer_site_title( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_footer_site_title' ) ) {
+    function reen_redux_toggle_footer_site_title( $enable ) {
         global $reen_options;
 
         $reen_options['footer_footer_site_title_enable'] = isset( $reen_options['footer_footer_site_title_enable'] ) ? $reen_options['footer_footer_site_title_enable'] : true;
@@ -94,9 +93,8 @@ if ( ! function_exists( 'redux_toggle_footer_site_title' ) ) {
     }
 }
 
-
-if ( ! function_exists( 'redux_toggle_footer_site_description' ) ) {
-    function redux_toggle_footer_site_description( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_footer_site_description' ) ) {
+    function reen_redux_toggle_footer_site_description( $enable ) {
         global $reen_options;
 
         $reen_options['footer_footer_site_description_enable'] = isset( $reen_options['footer_footer_site_description_enable'] ) ? $reen_options['footer_footer_site_description_enable'] : true;
@@ -110,5 +108,3 @@ if ( ! function_exists( 'redux_toggle_footer_site_description' ) ) {
         return $enable;
     }
 }
-
-

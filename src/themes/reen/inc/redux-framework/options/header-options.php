@@ -1,6 +1,6 @@
 <?php
 
-$header_options = apply_filters( 'reen_header_options_args', array(
+$reen_header_options = apply_filters( 'reen_header_options_args', array(
     'title'  => esc_html__( 'Header', 'reen' ),
     'icon'      => 'far fa-arrow-alt-circle-up',
     'desc'   => esc_html__( 'Options available for your header', 'reen' ),

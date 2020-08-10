@@ -4,7 +4,7 @@
  * portfolio
  */
 
- $portfolio_options = apply_filters( 'reen_portfolio_options_args', array(
+ $reen_portfolio_options = apply_filters( 'reen_portfolio_options_args', array(
     'title'  => esc_html__( 'Portfolio', 'reen' ),
     'icon'   => 'far fa-list-alt',
     'desc'   => esc_html__( 'Options available for your portfolio', 'reen' ),

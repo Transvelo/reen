@@ -459,27 +459,9 @@ if ( ! function_exists( 'reen_post_gallery' ) ) {
         $clean_post_format_gallery_meta_values = get_post_meta( get_the_ID(), '_gallery_images', true );
         $attachments = json_decode( stripslashes( $clean_post_format_gallery_meta_values ), true );
 
-        //if there is a gallery block do this
-        // if ( has_block( 'gallery', $post->post_content ) ) {
-        //     $post_blocks = parse_blocks( $post->post_content );
-        //     if ( isset( $post_blocks[0]['attrs']['ids'] ) ) {
-        //         $attachments = $post_blocks[0]['attrs']['ids'];    
-        //     }
-        // } 
-        // if there is not a gallery block do this
-        // else {
-        //     // gets the gallery info
-        //     $gallery = get_post_gallery( $post->ID, false );
-            
-        //     if ( isset( $gallery['ids'] ) ) {
-        //         // makes an array of image ids
-        //         $attachments = explode ( ',', $gallery['ids'] );
-        //     }
-        // }
-
         if ( ! empty( $attachments ) ) :
 
-            $owl_params = apply_filters( 'owl_carousel_post_gallery_params', array(
+            $owl_params = apply_filters( 'reen_owl_carousel_post_gallery_params', array(
                 'items'               => 1,
                 'autoplay'            => true,
                 'autoplayTimeout'     => 5000,
@@ -510,19 +492,16 @@ if ( ! function_exists( 'reen_post_audio' ) ) {
      * Displays post audio when applicable
      */
     function reen_post_audio() {
-       // $content = apply_filters( 'the_content', get_the_content() );
-        //$audio   = false;
-
         $embed_audio  = get_post_meta( get_the_ID(), '_audio_field', true );
 
         if ( isset($embed_audio) && $embed_audio != '' ) {
             // Embed Audio
 
-            if( !empty($embed_audio) ) {
+            if( ! empty( $embed_audio ) ) {
                 ?><div class="post-media"><?php 
                 // run oEmbed for known sources to generate embed code from audio links
                 // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_audio ) ) );
-                echo apply_filters( 'the_content', $embed_audio )
+                echo apply_filters( 'the_content', $embed_audio ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 ?></div><!-- .article__attachment--video --><?php
             }
@@ -546,7 +525,7 @@ if ( ! function_exists( 'reen_post_video' ) ) {
                 ?><div class="video-container post-media"><?php 
                 // run oEmbed for known sources to generate embed code from audio links
                 // echo $GLOBALS['wp_embed']->autoembed( stripslashes( htmlspecialchars_decode( $embed_video ) ) );
-                echo apply_filters( 'the_content', $embed_video )
+                echo apply_filters( 'the_content', $embed_video ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 ?></div><!-- .article__attachment--video --><?php
             }
@@ -631,7 +610,7 @@ if ( ! function_exists( 'reen_popular_posts' ) ) {
                                         <div id="content-popular-posts" class="panel-collapse collapse <?php echo esc_html( $collapse_class); ?>" data-parent="#accordion-popular-posts">
                                         <div class="panel-body"><?php
      
-                                            $owl_params = apply_filters( 'owl-popular-posts_params', array(
+                                            $owl_params = apply_filters( 'reen_owl-popular-posts_params', array(
                                                 'autoplay' => true,
                                                 'autoplayTimeout' => 5000,
                                                 'autoplayHoverPause' => true,
@@ -743,7 +722,7 @@ if ( ! function_exists( 'reen_post_author' ) ) {
                             <?php endif; ?>
                         </ul><!-- /.meta -->
 
-                        <?php if ( apply_filters( 'enable_author_social_links', TRUE ) ) :
+                        <?php if ( apply_filters( 'reen_enable_author_social_links', true ) ) :
 
                             $twitter            = esc_attr( get_post_meta( get_the_ID(), '_twitter', true ) );
                             $facebook           = esc_attr( get_post_meta( get_the_ID(), '_facebook', true ) );
@@ -886,25 +865,24 @@ if ( ! function_exists( 'reen_related_posts' ) ) {
                         
                         <div id="content-related-posts" class="panel-collapse collapse show" data-parent="#accordion-related-posts">
                             <div class="panel-body"><?php
-                
-                                    $owl_params = apply_filters( 'owl-related-posts_params', array(
-                                        'autoplay' => true,
-                                        'autoplayTimeout' => 5000,
-                                        'autoplayHoverPause' => true,
-                                        'rewindNav'    => true,
-                                        'items'        => 2,
-                                        'nav'          => true,
-                                        'dots'         => true,
-                                        'rtl'          => is_rtl() ? true : false,
-                                        'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
-                                        'responsive'        => array(
-                                            '0'     => array( 'items'   => 1 ),
-                                            '480'   => array( 'items'   => 2 ),
-                                            '768'   => array( 'items'   => 2 ),
-                                            '992'   => array( 'items'   => 2 ),
-                                            '1200'  => array( 'items'   => 2 ),
-                                        )
-                                    ) );
+                                $owl_params = apply_filters( 'reen_owl-related-posts_params', array(
+                                    'autoplay' => true,
+                                    'autoplayTimeout' => 5000,
+                                    'autoplayHoverPause' => true,
+                                    'rewindNav'    => true,
+                                    'items'        => 2,
+                                    'nav'          => true,
+                                    'dots'         => true,
+                                    'rtl'          => is_rtl() ? true : false,
+                                    'navText'      => is_rtl() ? array( '<i class="icon-right-open-mini"></i>', '<i class="icon-left-open-mini"></i>' ) : array( '<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>' ),
+                                    'responsive'        => array(
+                                        '0'     => array( 'items'   => 1 ),
+                                        '480'   => array( 'items'   => 2 ),
+                                        '768'   => array( 'items'   => 2 ),
+                                        '992'   => array( 'items'   => 2 ),
+                                        '1200'  => array( 'items'   => 2 ),
+                                    )
+                                ) );
 
                                 ?><div id="owl-related-posts" data-ride="owl-carousel" data-owlparams="<?php echo esc_attr( json_encode( $owl_params ) ); ?>"  class="related-post-carousel owl-carousel owl-item-gap owl-theme">
 

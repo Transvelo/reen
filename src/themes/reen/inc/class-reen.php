@@ -271,7 +271,7 @@ if ( ! class_exists( 'Reen' ) ) :
             // This variable is intended to be overruled from themes.
             // Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
             // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-            $GLOBALS['content_width'] = apply_filters( 'reen_content_width', 640 );
+            $GLOBALS['content_width'] = apply_filters( 'reen_content_width', 640 ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedVariableFound
         }
 
          /**

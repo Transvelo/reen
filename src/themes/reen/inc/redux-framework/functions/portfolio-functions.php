@@ -1,42 +1,50 @@
 <?php
+if ( ! function_exists( 'reen_redux_change_portfolio_view' ) ) {
+    function reen_redux_change_portfolio_view( $view ) {
+        global $reen_options;
 
-function reen_redux_change_portfolio_view( $view ) {
-    global $reen_options;
+        if ( isset( $reen_options['portfolio_view'] ) ) {
+            $view = $reen_options['portfolio_view'];
+        }
 
-    if ( isset( $reen_options['portfolio_view'] ) ) {
-        $view = $reen_options['portfolio_view'];
+        return $view;
     }
-
-    return $view;
-}
-function reen_redux_change_portfolio_grid_columns( $columns ) {
-    global $reen_options;
-
-    if ( isset( $reen_options['portfolio_grid_columns'] ) ) {
-        $columns = $reen_options['portfolio_grid_columns'];
-    }
-
-    return $columns;
 }
 
-function reen_redux_change_portfolio_page_title( $title ) {
-    global $reen_options;
+if ( ! function_exists( 'reen_redux_change_portfolio_grid_columns' ) ) {
+    function reen_redux_change_portfolio_grid_columns( $columns ) {
+        global $reen_options;
 
-    if ( isset( $reen_options['reen_portfolio_page_title'] ) ) {
-        $title = $reen_options['reen_portfolio_page_title'];
+        if ( isset( $reen_options['portfolio_grid_columns'] ) ) {
+            $columns = $reen_options['portfolio_grid_columns'];
+        }
+
+        return $columns;
     }
-
-    return $title;
 }
 
-function reen_redux_change_portfolio_page_description( $description ) {
-    global $reen_options;
+if ( ! function_exists( 'reen_redux_change_portfolio_page_title' ) ) {
+    function reen_redux_change_portfolio_page_title( $title ) {
+        global $reen_options;
 
-    if ( isset( $reen_options['reen_portfolio_page_description'] ) ) {
-        $description = $reen_options['reen_portfolio_page_description'];
+        if ( isset( $reen_options['reen_portfolio_page_title'] ) ) {
+            $title = $reen_options['reen_portfolio_page_title'];
+        }
+
+        return $title;
     }
+}
 
-    return $description;
+if ( ! function_exists( 'reen_redux_change_portfolio_page_description' ) ) {
+    function reen_redux_change_portfolio_page_description( $description ) {
+        global $reen_options;
+
+        if ( isset( $reen_options['reen_portfolio_page_description'] ) ) {
+            $description = $reen_options['reen_portfolio_page_description'];
+        }
+
+        return $description;
+    }
 }
 
 if ( ! function_exists( 'reen_redux_apply_portfolio_posts_per_page' ) ) {

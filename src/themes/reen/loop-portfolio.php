@@ -17,12 +17,12 @@
         
         the_post();
 
-        $portfolio_view = reen_get_portfolio_view();
+        $reen_portfolio_view = reen_get_portfolio_view();
 
-        if ( $portfolio_view == 'grid-detail' ) {
-            $slug = 'portfolio-detail';
+        if ( $reen_portfolio_view == 'grid-detail' ) {
+            $reen_slug = 'portfolio-detail';
         } else {
-            $slug = 'portfolio';
+            $reen_slug = 'portfolio';
         }
 
         /**
@@ -31,7 +31,7 @@
          * called content-___.php (where ___ is the Post Format name) and that will be used instead.
          */
 
-        get_template_part( 'templates/portfolio/content', $slug );
+        get_template_part( 'templates/portfolio/content', $reen_slug );
 
     endwhile;
     /**

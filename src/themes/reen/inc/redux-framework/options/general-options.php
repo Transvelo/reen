@@ -4,7 +4,7 @@
  *
  */
 
-$general_options = apply_filters( 'reen_general_options_args', array(
+$reen_general_options = apply_filters( 'reen_general_options_args', array(
     'title'     => esc_html__( 'General', 'reen' ),
     'icon'      => 'far fa-dot-circle',
     'fields'    => array(

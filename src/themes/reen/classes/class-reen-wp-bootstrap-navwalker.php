@@ -64,7 +64,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                  * @param stdClass $args    An object of `wp_nav_menu()` arguments.
                  * @param int      $depth   Depth of menu item. Used for padding.
                  */
-                $class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
+                $class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
                 $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
                 /**
                  * The `.dropdown-menu` container needs to have a labelledby
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
             if( $depth > 0 && 'mas_static_content' == $item->object ) {
                 $classes = empty( $item->classes ) ? array() : (array) $item->classes;
                 $classes[] = 'dropdown-menu hs-mega-menu u-header__sub-menu';
-                $classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth );
+                $classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
                 $class_names = join( ' ', $classes );
                 $class_names = $class_names ? esc_attr( $class_names ) : '';
                 $output .= do_shortcode( '[mas_static_content id=' . $item->object_id . ' class="' . $class_names . '"]' );
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                  * @param WP_Post  $item  Menu item data object.
                  * @param int      $depth Depth of menu item. Used for padding.
                  */
-                $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
+                $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 // Add .dropdown or .active classes where they are needed.
                 if ( $depth === 0 && isset( $args->has_children ) && $args->has_children && isset( $item->has_megamenu ) && $item->has_megamenu == 'yes' ) {
@@ -186,7 +186,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 }
 
                 // Allow filtering the classes.
-                $classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth );
+                $classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 // Form a string of classes in format: class="class_names".
                 $class_names = join( ' ', $classes );
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                     }
                 }
 
-                $nav_item_data_atts = apply_filters( 'nav_item_data_atts', $nav_item_data_atts );
+                $nav_item_data_atts = apply_filters( 'nav_item_data_atts', $nav_item_data_atts ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 $output .= $indent . '<li' . $class_names  . '>';
 
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 // update atts of this item based on any custom linkmod classes.
                 $atts = self::update_atts_for_linkmod_type( $atts, $linkmod_classes );
                 // Allow filtering of the $atts array before using it.
-                $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+                $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 // Build a string of html containing all the atts for the item.
                 $attributes = '';
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 }
 
                 /** This filter is documented in wp-includes/post-template.php */
-                $title = apply_filters( 'the_title', $item->title, $item->ID );
+                $title = apply_filters( 'the_title', $item->title, $item->ID ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 /**
                  * Filters a menu item's title.
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                  * @param stdClass $args  An object of wp_nav_menu() arguments.
                  * @param int      $depth Depth of menu item. Used for padding.
                  */
-                $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+                $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
                 /**
                  * If the .sr-only class was set apply to the nav items text only.
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
                 /**
                  * END appending the internal item contents to the output.
                  */
-                $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+                $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
                 if ( $depth === 0 && isset( $args->has_children ) && $args->has_children && isset( $item->has_megamenu ) && $item->has_megamenu == 'yes' ) {
                     $output .= "%HAS_MEGAMENU%";
                 }

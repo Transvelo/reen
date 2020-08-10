@@ -50,7 +50,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
              * @param WP_Post  $item  Menu item data object.
              * @param int      $depth Depth of menu item. Used for padding.
              */
-            $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
+            $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
             /**
              * Filters the CSS classes applied to a menu item's list item element.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
              * @param stdClass $args    An object of wp_nav_menu() arguments.
              * @param int      $depth   Depth of menu item. Used for padding.
              */
-            $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+            $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
             $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
             /**
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
              * @param stdClass $args    An object of wp_nav_menu() arguments.
              * @param int      $depth   Depth of menu item. Used for padding.
              */
-            $id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
+            $id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
             $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
             $output .= $indent . '<li' . $id . $class_names . '>';
@@ -109,7 +109,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
              * @param stdClass $args  An object of wp_nav_menu() arguments.
              * @param int      $depth Depth of menu item. Used for padding.
              */
-            $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+            $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
             $attributes = '';
             foreach ( $atts as $attr => $value ) {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
             }
 
             /** This filter is documented in wp-includes/post-template.php */
-            $title = apply_filters( 'the_title', $item->title, $item->ID );
+            $title = apply_filters( 'the_title', $item->title, $item->ID ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
             /**
              * Filters a menu item's title.
@@ -132,7 +132,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
              * @param stdClass $args  An object of wp_nav_menu() arguments.
              * @param int      $depth Depth of menu item. Used for padding.
              */
-            $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+            $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
             $item_output  = $args->before;
             $item_output .= '<a' . $attributes . '>';
@@ -154,7 +154,7 @@ if ( ! class_exists( 'Reen_Topbar_Walker' ) ) :
              * @param int      $depth       Depth of menu item. Used for padding.
              * @param stdClass $args        An object of wp_nav_menu() arguments.
              */
-            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
         }
 
         /**

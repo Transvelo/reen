@@ -52,8 +52,8 @@ if ( ! function_exists( 'reen_redux_change_single_blog_layout' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_popular_posts' ) ) {
-    function redux_toggle_popular_posts( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_popular_posts' ) ) {
+    function reen_redux_toggle_popular_posts( $enable ) {
         global $reen_options;
 
         if ( ! isset( $reen_options['enable_popular_posts'] ) ) {
@@ -71,8 +71,8 @@ if ( ! function_exists( 'redux_toggle_popular_posts' ) ) {
 }
 
 
-if ( ! function_exists( 'redux_toggle_related_posts' ) ) {
-    function redux_toggle_related_posts( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_related_posts' ) ) {
+    function reen_redux_toggle_related_posts( $enable ) {
         global $reen_options;
 
         if ( ! isset( $reen_options['enable_related_posts'] ) ) {
@@ -89,8 +89,8 @@ if ( ! function_exists( 'redux_toggle_related_posts' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_author_info' ) ) {
-    function redux_toggle_author_info( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_author_info' ) ) {
+    function reen_redux_toggle_author_info( $enable ) {
         global $reen_options;
 
         if ( ! isset( $reen_options['show_blog_post_author_info'] ) ) {
@@ -107,8 +107,8 @@ if ( ! function_exists( 'redux_toggle_author_info' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_post_nav' ) ) {
-    function redux_toggle_post_nav( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_post_nav' ) ) {
+    function reen_redux_toggle_post_nav( $enable ) {
         global $reen_options;
 
         if ( ! isset( $reen_options['show_post_nav'] ) ) {
@@ -125,8 +125,8 @@ if ( ! function_exists( 'redux_toggle_post_nav' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_social_sharing' ) ) {
-    function redux_toggle_social_sharing( $enable ) {
+if ( ! function_exists( 'reen_redux_toggle_social_sharing' ) ) {
+    function reen_redux_toggle_social_sharing( $enable ) {
         global $reen_options;
 
         if ( ! isset( $reen_options['show_social_sharing'] ) ) {

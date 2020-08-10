@@ -2,8 +2,8 @@
 /**
  * Filter functions for Header of Theme Options
  */
-if( ! function_exists( 'redux_toggle_logo_svg' ) ) {
-    function redux_toggle_logo_svg() {
+if( ! function_exists( 'reen_redux_toggle_logo_svg' ) ) {
+    function reen_redux_toggle_logo_svg() {
         global $reen_options;
 
         if( isset( $reen_options['logo_svg'] ) && $reen_options['logo_svg'] == '1' ) {
@@ -16,8 +16,8 @@ if( ! function_exists( 'redux_toggle_logo_svg' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_topbar_view' ) ) {
-    function redux_toggle_topbar_view( $enable_topbar_view ) {
+if ( ! function_exists( 'reen_redux_toggle_topbar_view' ) ) {
+    function reen_redux_toggle_topbar_view( $enable_topbar_view ) {
         global $reen_options;
 
         if ( isset( $reen_options['enable_topbar_view'] ) && $reen_options['enable_topbar_view'] ) {
@@ -31,8 +31,8 @@ if ( ! function_exists( 'redux_toggle_topbar_view' ) ) {
 }
 
 
-if ( ! function_exists( 'redux_toggle_topbar_left' ) ) {
-    function redux_toggle_topbar_left( $header_enable_topbar_left ) {
+if ( ! function_exists( 'reen_redux_toggle_topbar_left' ) ) {
+    function reen_redux_toggle_topbar_left( $header_enable_topbar_left ) {
         global $reen_options;
 
         if ( isset( $reen_options['header_enable_topbar_left'] ) && $reen_options['header_enable_topbar_left'] ) {
@@ -46,8 +46,8 @@ if ( ! function_exists( 'redux_toggle_topbar_left' ) ) {
 }
 
 
-if ( ! function_exists( 'redux_toggle_topbar_right' ) ) {
-    function redux_toggle_topbar_right( $header_enable_topbar_right ) {
+if ( ! function_exists( 'reen_redux_toggle_topbar_right' ) ) {
+    function reen_redux_toggle_topbar_right( $header_enable_topbar_right ) {
         global $reen_options;
 
         if ( isset( $reen_options['header_enable_topbar_right'] ) && $reen_options['header_enable_topbar_right'] ) {
@@ -60,8 +60,8 @@ if ( ! function_exists( 'redux_toggle_topbar_right' ) ) {
     }
 }
 
-if ( ! function_exists( 'redux_toggle_sticky_header' ) ) {
-    function redux_toggle_sticky_header( $sticky_header ) {
+if ( ! function_exists( 'reen_redux_toggle_sticky_header' ) ) {
+    function reen_redux_toggle_sticky_header( $sticky_header ) {
         global $reen_options;
 
         if ( isset( $reen_options['sticky_header'] ) && $reen_options['sticky_header'] ) {

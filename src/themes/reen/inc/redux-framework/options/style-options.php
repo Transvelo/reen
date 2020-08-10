@@ -4,9 +4,9 @@
  *
  */
 
-$custom_css_page_link = '<a href="' . esc_url( add_query_arg( array( 'page' => 'custom-primary-color-css-page' ) ), admin_url( 'themes.php' ) ) . '">' . esc_html__( 'Custom Primary CSS', 'reen' ) . '</a>';
+$reen_custom_css_page_link = '<a href="' . esc_url( add_query_arg( array( 'page' => 'custom-primary-color-css-page' ) ), admin_url( 'themes.php' ) ) . '">' . esc_html__( 'Custom Primary CSS', 'reen' ) . '</a>';
 
-$style_options 	= apply_filters( 'reen_style_options_args', array(
+$reen_style_options 	= apply_filters( 'reen_style_options_args', array(
 	'title'		=> esc_html__( 'Styling', 'reen' ),
 	'icon'		=> 'fas fa-edit',
 	'fields'	=> array(
@@ -70,7 +70,7 @@ $style_options 	= apply_filters( 'reen_style_options_args', array(
 			'id'		=> 'external_file_css',
 			'type'      => 'raw',
 			'title'		=> esc_html__( 'Custom Primary Color CSS', 'reen' ),
-			'content'  	=> esc_html__( 'If you choose "External File", then please "Save Changes" and then click on ths link to get the custom color primary CSS: ', 'reen' ) . $custom_css_page_link,
+			'content'  	=> esc_html__( 'If you choose "External File", then please "Save Changes" and then click on ths link to get the custom color primary CSS: ', 'reen' ) . $reen_custom_css_page_link,
 			'required'	=> array( 'use_predefined_color', 'equals', 0 ),
 		),
 

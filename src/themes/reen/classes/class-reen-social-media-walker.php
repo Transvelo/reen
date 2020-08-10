@@ -60,7 +60,7 @@ if ( ! class_exists( 'Reen_SocialMedia_Walker' ) ) :
                 $icon_class_string .= ' ' . join( ' ', $args->icon_class );
             }
 
-            $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
+            $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
             $classes = ( isset( $args->item_class ) && is_array( $args->item_class ) ) ? $args->item_class : array() ;
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Reen_SocialMedia_Walker' ) ) :
             }
 
             // Allow filtering of the $atts array before using it.
-            $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+            $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 
             // Build a string of html containing all the atts for the item.
             $attributes = '';
@@ -129,7 +129,7 @@ if ( ! class_exists( 'Reen_SocialMedia_Walker' ) ) :
             /**
              * END appending the internal item contents to the output.
              */
-            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
         }
     }
 endif;
