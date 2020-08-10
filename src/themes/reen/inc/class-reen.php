@@ -347,6 +347,7 @@ if ( ! class_exists( 'Reen' ) ) :
          * Get all Reen scripts.
          */
         private static function get_theme_scripts() {
+            $suffix = '.min';
             $reen_get_theme_script = apply_filters( 'reen_theme_script', array(
                 'affix'             => array(
                     'src' => get_template_directory_uri() . '/assets/js/affix.js',
@@ -357,15 +358,15 @@ if ( ! class_exists( 'Reen' ) ) :
                     'dep' => array( 'jquery' )
                 ),
                 'bootstrap-bundle'         => array(
-                    'src' => get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js',
+                    'src' => get_template_directory_uri() . '/assets/js/bootstrap.bundle' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'jquery-easing' => array(
-                    'src' => get_template_directory_uri() . '/assets/js/jquery.easing.min.js',
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.easing' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'jquery-easytabs'           => array(
-                    'src' => get_template_directory_uri() . '/assets/js/jquery.easytabs.min.js',
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.easytabs' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'jquery-form'         => array(
@@ -373,15 +374,15 @@ if ( ! class_exists( 'Reen' ) ) :
                     'dep' => array( 'jquery' )
                 ),
                 'jquery-isotope'  => array(
-                    'src' => get_template_directory_uri() . '/assets/js/jquery.isotope.min.js',
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.isotope' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'jquery-validate'           => array(
-                    'src' => get_template_directory_uri() . '/assets/js/jquery.validate.min.js',
+                    'src' => get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'owl-carousel'      => array(
-                    'src' => get_template_directory_uri() . '/assets/js/owl.carousel.min.js',
+                    'src' => get_template_directory_uri() . '/assets/js/owl.carousel' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'selected-scroll' => array(
@@ -396,16 +397,12 @@ if ( ! class_exists( 'Reen' ) ) :
                     'src' => get_template_directory_uri() . '/assets/js/custom.js',
                     'dep' => array( 'jquery' )
                 ),
-                'images-loaded'   => array(
-                    'src' => get_template_directory_uri() . '/assets/js/imagesloaded.pkgd.min.js',
-                    'dep' => array( 'jquery-isotope' )
-                ),
                 'reen-scripts'   => array(
                     'src' => get_template_directory_uri() . '/assets/js/scripts.js',
                     'dep' => array( 'jquery' )
                 ),
-
             ) );
+
             return $reen_get_theme_script;
 
         }
@@ -453,7 +450,6 @@ if ( ! class_exists( 'Reen' ) ) :
 
 
             wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
-            //wp_style_add_data( 'reen-icons', 'rtl', 'replace' );
 
             if ( apply_filters( 'reen_use_predefined_colors', true ) ) {
                 $color_css_file = apply_filters( 'reen_primary_color', 'green' );
@@ -469,35 +465,32 @@ if ( ! class_exists( 'Reen' ) ) :
             /**
              * Scripts
              */
-            $suffix = '.min';
 
+            wp_enqueue_script( 'bootstrap-bundle' );
 
-            wp_enqueue_script( 'bootstrap-bundle', get_template_directory_uri() . '/assets/js/bootstrap.bundle' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'jquery-easing' );
 
-            wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/assets/js/jquery.easing' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'affix' );
 
-            wp_enqueue_script( 'affix', get_template_directory_uri() . '/assets/js/affix.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'aos' );
 
-            wp_enqueue_script( 'aos', get_template_directory_uri() . '/assets/js/aos.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'owl-carousel' );
 
-            wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'jquery-isotope' );
 
-            wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/assets/js/jquery.isotope' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'imagesloaded' );
 
-            wp_enqueue_script( 'imagesloaded-pkgd', get_template_directory_uri() . '/assets/js/imagesloaded.pkgd.min.js', array( 'jquery-isotope' ), $reen_version, true );
+            wp_enqueue_script( 'jquery-easytabs' );
 
-            wp_enqueue_script( 'jquery-easytabs', get_template_directory_uri() . '/assets/js/jquery.easytabs' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'viewport-units-buggyfill' );
 
-            wp_enqueue_script( 'viewport-units-buggyfill', get_template_directory_uri() . '/assets/js/viewport-units-buggyfill' . $suffix . '.js', array( 'jquery' ), $reen_version, true );
-
-            wp_enqueue_script( 'selected-scroll', get_template_directory_uri() . '/assets/js/selected-scroll.js', array( 'jquery' ), $reen_version, true );
-
+            wp_enqueue_script( 'selected-scroll' );
 
             if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
                 wp_enqueue_script( 'comment-reply' );
             }
 
-            wp_enqueue_script( 'reen-scripts', get_template_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ), $reen_version, true );
+            wp_enqueue_script( 'reen-scripts' );
 
             $reen_js_options = apply_filters( 'reen_localize_script_data', array(
                 'enableScrollUp'        => (bool) apply_filters( 'reen_enable_scrollup', false ),

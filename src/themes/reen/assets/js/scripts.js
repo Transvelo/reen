@@ -9,30 +9,30 @@
  */
 
 // Get Breakpoint set in main.css (at the end)
-function getCSSBreakpoint() {
+function reenGetCSSBreakpoint() {
     return window.getComputedStyle(document.querySelector('body'), ':before')
         .getPropertyValue('content')
         .replace(/\"/g, '');
 }
 
 // Checks if selected Breakpoint matches current
-function cssBreakpoint(bp) {
-    return getCSSBreakpoint() === bp && true;
+function reenCSSBreakpoint(bp) {
+    return reenGetCSSBreakpoint() === bp && true;
 }
 
 // Checks if Breakpoint has switched e.g. on Resize
-var switchedBreakpoint = (function() {
+var reenSwitchedBreakpoint = (function() {
     var lastBreakpoint;
     return function() {
-        if (getCSSBreakpoint() !== lastBreakpoint) {
-            lastBreakpoint = getCSSBreakpoint();
+        if (reenGetCSSBreakpoint() !== lastBreakpoint) {
+            lastBreakpoint = reenGetCSSBreakpoint();
             return true;
         } else return false;
     }
 })();
 
 // Debounce/Delay Window Resize Function for better Resize Performance
-function debounce(func, wait, immediate) {
+function reenDebounce(func, wait, immediate) {
     var timeout,
         wait = wait || 100; // Default Delay 100ms
     return function() {
@@ -51,10 +51,10 @@ function debounce(func, wait, immediate) {
 
 // Scroll Up / Scroll to Top Function
 ! function(a, b, c) {
-    a.fn.scrollUp = function(b) {
-        a.data(c.body, "scrollUp") || (a.data(c.body, "scrollUp", !0), a.fn.scrollUp.init(b))
-    }, a.fn.scrollUp.init = function(d) {
-        var e = a.fn.scrollUp.settings = a.extend({}, a.fn.scrollUp.defaults, d),
+    a.fn.reenScrollUp = function(b) {
+        a.data(c.body, "scrollUp") || (a.data(c.body, "scrollUp", !0), a.fn.reenScrollUp.init(b))
+    }, a.fn.reenScrollUp.init = function(d) {
+        var e = a.fn.reenScrollUp.settings = a.extend({}, a.fn.reenScrollUp.defaults, d),
             f = e.scrollTitle ? e.scrollTitle : e.scrollText,
             g = a("<a/>", {
                 id: e.scrollName,
@@ -90,7 +90,7 @@ function debounce(func, wait, immediate) {
                 scrollTop: 0
             }, e.scrollSpeed, e.easingType)
         })
-    }, a.fn.scrollUp.defaults = {
+    }, a.fn.reenScrollUp.defaults = {
         scrollName: "scrollUp",
         scrollDistance: 300,
         scrollFrom: "top",
@@ -104,16 +104,12 @@ function debounce(func, wait, immediate) {
         scrollImg: !1,
         activeOverlay: !1,
         zIndex: 2147483647
-    }, a.fn.scrollUp.destroy = function(d) {
-        a.removeData(c.body, "scrollUp"), a("#" + a.fn.scrollUp.settings.scrollName).remove(), a("#" + a.fn.scrollUp.settings.scrollName + "-active").remove(), a.fn.jquery.split(".")[1] >= 7 ? a(b).off("scroll", d) : a(b).unbind("scroll", d)
-    }, a.scrollUp = a.fn.scrollUp
+    }, a.fn.reenScrollUp.destroy = function(d) {
+        a.removeData(c.body, "scrollUp"), a("#" + a.fn.reenScrollUp.settings.scrollName).remove(), a("#" + a.fn.reenScrollUp.settings.scrollName + "-active").remove(), a.fn.jquery.split(".")[1] >= 7 ? a(b).off("scroll", d) : a(b).unbind("scroll", d)
+    }, a.reenScrollUp = a.fn.reenScrollUp
 }(jQuery, window, document);
 
 (function($, window) {
-
-    // Call Resize Function
-    // $(window).resize(debounce(function() { ... })); // Without custom Delay (Default is 100ms)
-    // $(window).on('resize', debounce(function() { ... }, 250)); // With custom Delay of 250ms and 'on' Event Handler e.g.
 
     /*===================================================================================*/
     /*  DROPDOWN ON HOVER (NAVIGATION)
@@ -121,7 +117,7 @@ function debounce(func, wait, immediate) {
 
     $(document).ready(function() {
 
-        function dropdownHover() {
+        function reenDropdownHover() {
             $('.dropdown, .dropdown-submenu').addClass('hover');
             $(document).on({
                 mouseenter: function() {
@@ -155,18 +151,18 @@ function debounce(func, wait, immediate) {
             event.stopPropagation();
         });
 
-        if (cssBreakpoint('md')) {
-            dropdownHover();
-            var dropdownHoverActive = true;
-        } else var dropdownHoverActive = false;
+        if (reenCSSBreakpoint('md')) {
+            reenDropdownHover();
+            var reenDropdownHoverActive = true;
+        } else var reenDropdownHoverActive = false;
 
-        $(window).resize(debounce(function() {
-            if (cssBreakpoint('md') && !dropdownHoverActive) {
-                dropdownHover();
-                dropdownHoverActive = true;
-            } else if (cssBreakpoint('xs') && dropdownHoverActive) {
+        $(window).resize(reenDebounce(function() {
+            if (reenCSSBreakpoint('md') && !reenDropdownHoverActive) {
+                reenDropdownHover();
+                reenDropdownHoverActive = true;
+            } else if (reenCSSBreakpoint('xs') && reenDropdownHoverActive) {
                 dropdownPress();
-                dropdownHoverActive = false;
+                reenDropdownHoverActive = false;
             }
         }));
 
@@ -189,11 +185,11 @@ function debounce(func, wait, immediate) {
     $(document).ready(function() {
 
         // Settings
-        var aosEnable = true, // ------------------------------------------------   Turn on/off AOS
-            aosMobileDisable = false, // -----------------------------------------------    Turn on/off AOS on Mobile
-            aosContainer = 'main', // ----------------------------------------------    Container (e.g. 'body' [with Footer] or '#main'/'main' [without Footer])
-            aosItems = '[class*="col-"]:not(.reen-form-group):not(.rgb-single-column.no-aos), .isotope .item, .posts .post', // -----   Add/remove Elements to be animated
-            aosAnimation = 'fade-up'; // -------------------------------------------    Animation type (More on: https://github.com/michalsnik/aos)
+        var reenAosEnable = true, // ------------------------------------------------   Turn on/off AOS
+            reenAosMobileDisable = false, // -----------------------------------------------    Turn on/off AOS on Mobile
+            reenAosContainer = 'main', // ----------------------------------------------    Container (e.g. 'body' [with Footer] or '#main'/'main' [without Footer])
+            reenAosItems = '[class*="col-"]:not(.reen-form-group):not(.rgb-single-column.no-aos), .isotope .item, .posts .post', // -----   Add/remove Elements to be animated
+            reenAosAnimation = 'fade-up'; // -------------------------------------------    Animation type (More on: https://github.com/michalsnik/aos)
 
         AOS.init({
             offset: 120, // ----------------------------------------------------------- Default: 120
@@ -201,39 +197,39 @@ function debounce(func, wait, immediate) {
             easing: 'ease-out-cubic', // ---------------------------------------------- Default: 'ease'
             delay: 0, // -------------------------------------------------------------  Default: 0
             once: true, // ----------------------------------------------------------   Default: false
-            disable: !aosEnable, // ----------------------------------------------------    Default: false (Set above)
+            disable: !reenAosEnable, // ----------------------------------------------------    Default: false (Set above)
             startEvent: 'DOMContentLoaded' // --------------------------------------------- Default: 'DOMContentLoaded'
         });
 
-        function enableAOS() {
-            $(aosContainer + ' ' + aosItems).attr({
-                'data-aos': aosAnimation
+        function reenEnableAOS() {
+            $(reenAosContainer + ' ' + reenAosItems).attr({
+                'data-aos': reenAosAnimation
             });
-            disableAOS($(aosContainer + ' .collapsed').parents(aosContainer + ' > *').next().find(aosItems), true);
-            aosEnabled = true;
+            disableAOS($(reenAosContainer + ' .collapsed').parents(reenAosContainer + ' > *').next().find(reenAosItems), true);
+            reenAosEnabled = true;
         }
 
         function disableAOS(aosItem, stayEnabled) {
             aosItem.removeAttr('data-aos');
-            aosEnabled = stayEnabled || false;
+            reenAosEnabled = stayEnabled || false;
         }
 
-        if (aosEnable && (!aosMobileDisable || cssBreakpoint('md')))
-            enableAOS();
+        if (reenAosEnable && (!reenAosMobileDisable || reenCSSBreakpoint('md')))
+            reenEnableAOS();
         else
-            aosEnabled = false;
+            reenAosEnabled = false;
 
-        $(window).resize(debounce(function() {
-            if (aosEnable && !aosEnabled && (!aosMobileDisable || cssBreakpoint('md'))) {
-                enableAOS();
-                $(aosContainer + ' ' + aosItems).addClass('aos-animate');
-            } else if (aosEnabled && aosMobileDisable && cssBreakpoint('xs'))
-                disableAOS($(aosItems));
+        $(window).resize(reenDebounce(function() {
+            if (reenAosEnable && !reenAosEnabled && (!reenAosMobileDisable || reenCSSBreakpoint('md'))) {
+                reenEnableAOS();
+                $(reenAosContainer + ' ' + reenAosItems).addClass('aos-animate');
+            } else if (reenAosEnabled && reenAosMobileDisable && reenCSSBreakpoint('xs'))
+                disableAOS($(reenAosItems));
         }));
 
         $('a[data-filter]').click(function() {
-            if (aosEnabled)
-                disableAOS($(aosItems));
+            if (reenAosEnabled)
+                disableAOS($(reenAosItems));
         });
 
     });
@@ -245,19 +241,19 @@ function debounce(func, wait, immediate) {
     $(document).ready(function() {
 
         if( typeof reen_options !== 'undefined' && reen_options.enableStickyHeader ) {
-            var affixElementDesktop         = '.navbar-collapse',
-                affixElementDesktopHeight   = affixElementDesktop,
-                affixElementDesktopOffset   = '.navbar-header',
-                affixElementMobile          = '.navbar',
-                affixElementMobileHeight    = '.navbar-header',
-                affixElementMobileNav       = '.navbar-nav',
-                affixElementMobileNavBtn    = '.navbar-toggler',
-                bodyScrollDisableClass      = 'body-scroll-disabled';
+            var reenAffixElementDesktop         = '.navbar-collapse',
+                reenAffixElementDesktopHeight   = reenAffixElementDesktop,
+                reenAffixElementDesktopOffset   = '.navbar-header',
+                reenAffixElementMobile          = '.navbar',
+                reenAffixElementMobileHeight    = '.navbar-header',
+                reenAffixElementMobileNav       = '.navbar-nav',
+                reenAffixElementMobileNavBtn    = '.navbar-toggler',
+                reenBodyScrollDisableClass      = 'body-scroll-disabled';
             
-            function affixNav(el, elHeight, elOffset) {
+            function reenAffixNav(el, elHeight, elOffset) {
                 $(window).off('.affix');
                 $('.affix, .affix-top').unwrap();
-                $(affixElementDesktop + ', ' + affixElementMobile)
+                $(reenAffixElementDesktop + ', ' + reenAffixElementMobile)
                     .removeData('bs.affix')
                     .removeClass('affix affix-top');
 
@@ -268,37 +264,37 @@ function debounce(func, wait, immediate) {
                     .parent().css('min-height', $(elHeight).outerHeight(true) || 0);
             }
             
-            $(window).resize(debounce(function () {
-                if (cssBreakpoint('md')) {
-                    if (switchedBreakpoint()) {
-                        $(affixElementMobileNav).css('height', '');
-                        affixNav(affixElementDesktop, affixElementDesktopHeight, affixElementDesktopOffset);
-                        if ($(affixElementDesktop).hasClass('show')) {
-                            enableSelectedScroll(false, affixElementMobileNav);
-                            $('html').removeClass(bodyScrollDisableClass);
+            $(window).resize(reenDebounce(function () {
+                if (reenCSSBreakpoint('md')) {
+                    if (reenSwitchedBreakpoint()) {
+                        $(reenAffixElementMobileNav).css('height', '');
+                        reenAffixNav(reenAffixElementDesktop, reenAffixElementDesktopHeight, reenAffixElementDesktopOffset);
+                        if ($(reenAffixElementDesktop).hasClass('show')) {
+                            reenEnableSelectedScroll(false, reenAffixElementMobileNav);
+                            $('html').removeClass(reenBodyScrollDisableClass);
                         }
                     }
                 }
-                else if (cssBreakpoint('xs')) {
-                    if (switchedBreakpoint()) {
-                        affixNav(affixElementMobile, affixElementMobileHeight);
-                        if ($(affixElementDesktop).hasClass('show')) {
-                            enableSelectedScroll(true, affixElementMobileNav);
-                            $('html').addClass(bodyScrollDisableClass);
+                else if (reenCSSBreakpoint('xs')) {
+                    if (reenSwitchedBreakpoint()) {
+                        reenAffixNav(reenAffixElementMobile, reenAffixElementMobileHeight);
+                        if ($(reenAffixElementDesktop).hasClass('show')) {
+                            reenEnableSelectedScroll(true, reenAffixElementMobileNav);
+                            $('html').addClass(reenBodyScrollDisableClass);
                         }
                     }
-                    $(affixElementMobileNav).css('height', window.innerHeight - $(affixElementMobileHeight).outerHeight(true) || 0);
+                    $(reenAffixElementMobileNav).css('height', window.innerHeight - $(reenAffixElementMobileHeight).outerHeight(true) || 0);
                 }
             })).resize();
 
-            $(affixElementDesktop).on('show.bs.collapse', function(){
-                enableSelectedScroll(true, affixElementMobileNav);
-                $('html').addClass(bodyScrollDisableClass);
+            $(reenAffixElementDesktop).on('show.bs.collapse', function(){
+                reenEnableSelectedScroll(true, reenAffixElementMobileNav);
+                $('html').addClass(reenBodyScrollDisableClass);
             });
 
-            $(affixElementDesktop).on('hide.bs.collapse', function(){
-                enableSelectedScroll(false, affixElementMobileNav);
-                $('html').removeClass(bodyScrollDisableClass);
+            $(reenAffixElementDesktop).on('hide.bs.collapse', function(){
+                reenEnableSelectedScroll(false, reenAffixElementMobileNav);
+                $('html').removeClass(reenBodyScrollDisableClass);
             });
         }
 
@@ -311,15 +307,15 @@ function debounce(func, wait, immediate) {
     $(document).ready(function() {
 
         // Settings
-        var topHeaderHeight     = $('.navbar-header').outerHeight(true), // ------- Get Height of Element that is not fixed and not being changed — used for Delay before Element starts changing
-            objectStyles        = {
+        var reenTopHeaderHeight     = $('.navbar-header').outerHeight(true), // ------- Get Height of Element that is not fixed and not being changed — used for Delay before Element starts changing
+            reenObjectStyles        = {
                 navbarPadTop    : { // -------------------------------------------- Custom Element/Object Name — type what you want
                     element     : '.navbar .navbar-collapse', // ------------------ CSS Class of Element that is being changed
                     style       : 'padding-top', // ------------------------------- CSS Style that is being changed
                     start       : 'currentValueFromCSS', // ----------------------- Change from e.g. 30 (Pixels) — if a String/Text is entered then the current Value from CSS File is being taken
                     end         : 0, // ------------------------------------------- Change to e.g. 0 (Pixels)
                     distance    : 300, // ----------------------------------------- Element is being resized for e.g. 300 (Pixels) scrolled
-                    delay       : topHeaderHeight // ------------------------------ Delay before Element starts changing e.g. 50 (Pixels)
+                    delay       : reenTopHeaderHeight // ------------------------------ Delay before Element starts changing e.g. 50 (Pixels)
                 },
                 navbarPadBot    : {
                     element     : '.navbar .navbar-collapse',
@@ -327,7 +323,7 @@ function debounce(func, wait, immediate) {
                     start       : 'currentValueFromCSS',
                     end         : 0,
                     distance    : 300,
-                    delay       : topHeaderHeight
+                    delay       : reenTopHeaderHeight
                 },
                 navbarLogoH     : {
                     element     : '.navbar-brand img',
@@ -335,14 +331,14 @@ function debounce(func, wait, immediate) {
                     start       : 'currentValueFromCSS',
                     end         : 20,
                     distance    : 300,
-                    delay       : topHeaderHeight
+                    delay       : reenTopHeaderHeight
                 }
             },
             scrolledFromTop     = 0,
             running             = false;
         
-        function initialize() {
-            $.each(objectStyles, function(obj, prop) {
+        function reenInitialize() {
+            $.each(reenObjectStyles, function(obj, prop) {
                 prop.start              = typeof prop.start === 'string' ? parseInt($(prop.element).css(prop.style), 10) : prop.start;
                 prop.maxChange          = prop.start - prop.end;
                 prop.scrollRatio        = prop.maxChange / prop.distance;
@@ -353,17 +349,17 @@ function debounce(func, wait, immediate) {
         }
         
         function destroy() {
-            $.each(objectStyles, function(obj, prop) {
+            $.each(reenObjectStyles, function(obj, prop) {
                 $(prop.element)
                     .css(prop.style, '')
                     .removeClass('animate animate-after');
             });
         }
-        
-        function resizeHeader() {
+
+        function reenResizeHeader() {
             scrolledFromTop     = $(document).scrollTop();
             running             = false;
-            $.each(objectStyles, function(obj, prop) {
+            $.each(reenObjectStyles, function(obj, prop) {
                 if (scrolledFromTop > prop.delay) {
                     if (!prop.animTriggered) prop.animTriggered = true;
                     prop.scrolled = scrolledFromTop - prop.delay;
@@ -388,27 +384,27 @@ function debounce(func, wait, immediate) {
                 }
             });
         }
-        
-        if (cssBreakpoint('md')) {
-            initialize();
-            var initialized = true;
+
+        if (reenCSSBreakpoint('md')) {
+            reenInitialize();
+            var reenInitializedResizeHeader = true;
         }
-        else var initialized = false;
+        else var reenInitializedResizeHeader = false;
         
-        $(window).resize(debounce(function () {
-            if (cssBreakpoint('md') && !initialized) {
-                initialize();
-                resizeHeader();
-                initialized = true;
+        $(window).resize(reenDebounce(function () {
+            if (reenCSSBreakpoint('md') && !reenInitializedResizeHeader) {
+                reenInitialize();
+                reenResizeHeader();
+                reenInitializedResizeHeader = true;
             }
-            else if (cssBreakpoint('xs') && initialized) {
+            else if (reenCSSBreakpoint('xs') && reenInitializedResizeHeader) {
                 destroy();
-                initialized = false;
+                reenInitializedResizeHeader = false;
             }
         }));
         
         $(window).scroll(function () {
-            if (cssBreakpoint('md') && !running) window.requestAnimationFrame(resizeHeader);
+            if (reenCSSBreakpoint('md') && !running) window.requestAnimationFrame(reenResizeHeader);
             running = true;
         });
 
@@ -421,27 +417,27 @@ function debounce(func, wait, immediate) {
 
     $(document).ready(function() {
 
-        var dragging = true;
-        var owlElementID = "#owl-main";
+        var reenDragging = true;
+        var reenOwlElementID = "#owl-main";
 
-        function fadeInReset() {
-            if (!dragging) {
-                $(owlElementID + " .caption .fadeIn-1, " + owlElementID + " .caption .fadeIn-2, " + owlElementID + " .caption .fadeIn-3").stop().delay(800).animate({
+        function reenFadeInReset() {
+            if (!reenDragging) {
+                $(reenOwlElementID + " .caption .fadeIn-1, " + reenOwlElementID + " .caption .fadeIn-2, " + reenOwlElementID + " .caption .fadeIn-3").stop().delay(800).animate({
                     opacity: 0
                 }, {
                     duration: 400,
                     easing: "easeInCubic"
                 });
             } else {
-                $(owlElementID + " .caption .fadeIn-1, " + owlElementID + " .caption .fadeIn-2, " + owlElementID + " .caption .fadeIn-3").css({
+                $(reenOwlElementID + " .caption .fadeIn-1, " + reenOwlElementID + " .caption .fadeIn-2, " + reenOwlElementID + " .caption .fadeIn-3").css({
                     opacity: 0
                 });
             }
         }
 
-        function fadeInDownReset() {
-            if (!dragging) {
-                $(owlElementID + " .caption .fadeInDown-1, " + owlElementID + " .caption .fadeInDown-2, " + owlElementID + " .caption .fadeInDown-3").stop().delay(800).animate({
+        function reenFadeInDownReset() {
+            if (!reenDragging) {
+                $(reenOwlElementID + " .caption .fadeInDown-1, " + reenOwlElementID + " .caption .fadeInDown-2, " + reenOwlElementID + " .caption .fadeInDown-3").stop().delay(800).animate({
                     opacity: 0,
                     top: "-15px"
                 }, {
@@ -449,16 +445,16 @@ function debounce(func, wait, immediate) {
                     easing: "easeInCubic"
                 });
             } else {
-                $(owlElementID + " .caption .fadeInDown-1, " + owlElementID + " .caption .fadeInDown-2, " + owlElementID + " .caption .fadeInDown-3").css({
+                $(reenOwlElementID + " .caption .fadeInDown-1, " + reenOwlElementID + " .caption .fadeInDown-2, " + reenOwlElementID + " .caption .fadeInDown-3").css({
                     opacity: 0,
                     top: "-15px"
                 });
             }
         }
 
-        function fadeInUpReset() {
-            if (!dragging) {
-                $(owlElementID + " .caption .fadeInUp-1, " + owlElementID + " .caption .fadeInUp-2, " + owlElementID + " .caption .fadeInUp-3").stop().delay(800).animate({
+        function reenFadeInUpReset() {
+            if (!reenDragging) {
+                $(reenOwlElementID + " .caption .fadeInUp-1, " + reenOwlElementID + " .caption .fadeInUp-2, " + reenOwlElementID + " .caption .fadeInUp-3").stop().delay(800).animate({
                     opacity: 0,
                     top: "15px"
                 }, {
@@ -466,16 +462,16 @@ function debounce(func, wait, immediate) {
                     easing: "easeInCubic"
                 });
             } else {
-                $(owlElementID + " .caption .fadeInUp-1, " + owlElementID + " .caption .fadeInUp-2, " + owlElementID + " .caption .fadeInUp-3").css({
+                $(reenOwlElementID + " .caption .fadeInUp-1, " + reenOwlElementID + " .caption .fadeInUp-2, " + reenOwlElementID + " .caption .fadeInUp-3").css({
                     opacity: 0,
                     top: "15px"
                 });
             }
         }
 
-        function fadeInLeftReset() {
-            if (!dragging) {
-                $(owlElementID + " .caption .fadeInLeft-1, " + owlElementID + " .caption .fadeInLeft-2, " + owlElementID + " .caption .fadeInLeft-3").stop().delay(800).animate({
+        function reenFadeInLeftReset() {
+            if (!reenDragging) {
+                $(reenOwlElementID + " .caption .fadeInLeft-1, " + reenOwlElementID + " .caption .fadeInLeft-2, " + reenOwlElementID + " .caption .fadeInLeft-3").stop().delay(800).animate({
                     opacity: 0,
                     left: "15px"
                 }, {
@@ -483,16 +479,16 @@ function debounce(func, wait, immediate) {
                     easing: "easeInCubic"
                 });
             } else {
-                $(owlElementID + " .caption .fadeInLeft-1, " + owlElementID + " .caption .fadeInLeft-2, " + owlElementID + " .caption .fadeInLeft-3").css({
+                $(reenOwlElementID + " .caption .fadeInLeft-1, " + reenOwlElementID + " .caption .fadeInLeft-2, " + reenOwlElementID + " .caption .fadeInLeft-3").css({
                     opacity: 0,
                     left: "15px"
                 });
             }
         }
 
-        function fadeInRightReset() {
-            if (!dragging) {
-                $(owlElementID + " .caption .fadeInRight-1, " + owlElementID + " .caption .fadeInRight-2, " + owlElementID + " .caption .fadeInRight-3").stop().delay(800).animate({
+        function reenFadeInRightReset() {
+            if (!reenDragging) {
+                $(reenOwlElementID + " .caption .fadeInRight-1, " + reenOwlElementID + " .caption .fadeInRight-2, " + reenOwlElementID + " .caption .fadeInRight-3").stop().delay(800).animate({
                     opacity: 0,
                     left: "-15px"
                 }, {
@@ -500,27 +496,27 @@ function debounce(func, wait, immediate) {
                     easing: "easeInCubic"
                 });
             } else {
-                $(owlElementID + " .caption .fadeInRight-1, " + owlElementID + " .caption .fadeInRight-2, " + owlElementID + " .caption .fadeInRight-3").css({
+                $(reenOwlElementID + " .caption .fadeInRight-1, " + reenOwlElementID + " .caption .fadeInRight-2, " + reenOwlElementID + " .caption .fadeInRight-3").css({
                     opacity: 0,
                     left: "-15px"
                 });
             }
         }
 
-        function fadeIn() {
-            $(owlElementID + " .active .caption .fadeIn-1").stop().delay(500).animate({
+        function reenFadeIn() {
+            $(reenOwlElementID + " .active .caption .fadeIn-1").stop().delay(500).animate({
                 opacity: 1
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeIn-2").stop().delay(700).animate({
+            $(reenOwlElementID + " .active .caption .fadeIn-2").stop().delay(700).animate({
                 opacity: 1
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeIn-3").stop().delay(1000).animate({
+            $(reenOwlElementID + " .active .caption .fadeIn-3").stop().delay(1000).animate({
                 opacity: 1
             }, {
                 duration: 800,
@@ -528,46 +524,22 @@ function debounce(func, wait, immediate) {
             });
         }
 
-        function fadeInDown() {
-            $(owlElementID + " .active .caption .fadeInDown-1").stop().delay(500).animate({
+        function reenFadeInDown() {
+            $(reenOwlElementID + " .active .caption .fadeInDown-1").stop().delay(500).animate({
                 opacity: 1,
                 top: "0"
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeInDown-2").stop().delay(700).animate({
+            $(reenOwlElementID + " .active .caption .fadeInDown-2").stop().delay(700).animate({
                 opacity: 1,
                 top: "0"
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeInDown-3").stop().delay(1000).animate({
-                opacity: 1,
-                top: "0"
-            }, {
-                duration: 800,
-                easing: "easeOutCubic"
-            });
-        }
-
-        function fadeInUp() {
-            $(owlElementID + " .active .caption .fadeInUp-1").stop().delay(500).animate({
-                opacity: 1,
-                top: "0"
-            }, {
-                duration: 800,
-                easing: "easeOutCubic"
-            });
-            $(owlElementID + " .active .caption .fadeInUp-2").stop().delay(700).animate({
-                opacity: 1,
-                top: "0"
-            }, {
-                duration: 800,
-                easing: "easeOutCubic"
-            });
-            $(owlElementID + " .active .caption .fadeInUp-3").stop().delay(1000).animate({
+            $(reenOwlElementID + " .active .caption .fadeInDown-3").stop().delay(1000).animate({
                 opacity: 1,
                 top: "0"
             }, {
@@ -576,22 +548,46 @@ function debounce(func, wait, immediate) {
             });
         }
 
-        function fadeInLeft() {
-            $(owlElementID + " .active .caption .fadeInLeft-1").stop().delay(500).animate({
+        function reenFadeInUp() {
+            $(reenOwlElementID + " .active .caption .fadeInUp-1").stop().delay(500).animate({
+                opacity: 1,
+                top: "0"
+            }, {
+                duration: 800,
+                easing: "easeOutCubic"
+            });
+            $(reenOwlElementID + " .active .caption .fadeInUp-2").stop().delay(700).animate({
+                opacity: 1,
+                top: "0"
+            }, {
+                duration: 800,
+                easing: "easeOutCubic"
+            });
+            $(reenOwlElementID + " .active .caption .fadeInUp-3").stop().delay(1000).animate({
+                opacity: 1,
+                top: "0"
+            }, {
+                duration: 800,
+                easing: "easeOutCubic"
+            });
+        }
+
+        function reenFadeInLeft() {
+            $(reenOwlElementID + " .active .caption .fadeInLeft-1").stop().delay(500).animate({
                 opacity: 1,
                 left: "0"
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeInLeft-2").stop().delay(700).animate({
+            $(reenOwlElementID + " .active .caption .fadeInLeft-2").stop().delay(700).animate({
                 opacity: 1,
                 left: "0"
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeInLeft-3").stop().delay(1000).animate({
+            $(reenOwlElementID + " .active .caption .fadeInLeft-3").stop().delay(1000).animate({
                 opacity: 1,
                 left: "0"
             }, {
@@ -600,22 +596,22 @@ function debounce(func, wait, immediate) {
             });
         }
 
-        function fadeInRight() {
-            $(owlElementID + " .active .caption .fadeInRight-1").stop().delay(500).animate({
+        function reenFadeInRight() {
+            $(reenOwlElementID + " .active .caption .fadeInRight-1").stop().delay(500).animate({
                 opacity: 1,
                 left: "0"
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeInRight-2").stop().delay(700).animate({
+            $(reenOwlElementID + " .active .caption .fadeInRight-2").stop().delay(700).animate({
                 opacity: 1,
                 left: "0"
             }, {
                 duration: 800,
                 easing: "easeOutCubic"
             });
-            $(owlElementID + " .active .caption .fadeInRight-3").stop().delay(1000).animate({
+            $(reenOwlElementID + " .active .caption .fadeInRight-3").stop().delay(1000).animate({
                 opacity: 1,
                 left: "0"
             }, {
@@ -624,8 +620,8 @@ function debounce(func, wait, immediate) {
             });
         }
 
-        function heroCarouselOptions( currentObj ) {
-            const defaultCarouselOptions = {
+        function reenHeroCarouselOptions( currentObj ) {
+            const reenDefaultCarouselOptions = {
                 animateIn: 'fadeIn',
                 autoplay: true,
                 autoplayTimeout: 5000,
@@ -643,120 +639,120 @@ function debounce(func, wait, immediate) {
                 navText: $('body,html').hasClass('rtl') ? ["<i class='icon-right-open-mini'></i>", "<i class='icon-left-open-mini'></i>" ] : ["<i class='icon-left-open-mini'></i>", "<i class='icon-right-open-mini'></i>"],
             }
 
-            const carouselJson = currentObj.attr('data-owl-carousel');
+            const reenCarouselJson = currentObj.attr('data-owl-carousel');
 
-            const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
+            const reenCurrentCarouselOptions = reenCarouselJson !== undefined ? JSON.parse(reenCarouselJson) : {};
 
             return {
-                ...defaultCarouselOptions,
-                ...currentCarouselOptions,
+                ...reenDefaultCarouselOptions,
+                ...reenCurrentCarouselOptions,
                 onInitialize: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onInitialized: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onResize: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onResized: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onRefresh: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onRefreshed: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onUpdate: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onUpdated: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onDrag: function() {
-                    dragging = true;
+                    reenDragging = true;
                 },
 
                 onTranslate: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
                 onTranslated: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onTo: function() {
-                    fadeIn();
-                    fadeInDown();
-                    fadeInUp();
-                    fadeInLeft();
-                    fadeInRight();
+                    reenFadeIn();
+                    reenFadeInDown();
+                    reenFadeInUp();
+                    reenFadeInLeft();
+                    reenFadeInRight();
                 },
 
                 onChanged: function() {
-                    fadeInReset();
-                    fadeInDownReset();
-                    fadeInUpReset();
-                    fadeInLeftReset();
-                    fadeInRightReset();
-                    dragging = false;
+                    reenFadeInReset();
+                    reenFadeInDownReset();
+                    reenFadeInUpReset();
+                    reenFadeInLeftReset();
+                    reenFadeInRightReset();
+                    reenDragging = false;
                 }
             }
         }
 
-        $(owlElementID).each(function(index) {
+        $(reenOwlElementID).each(function(index) {
             if( $(this).hasClass('owl-loaded') ) {
                 $(this).find('.owl-nav, .owl-dots').unwrap();
             }
-            $(this).owlCarousel(heroCarouselOptions($(this)));
+            $(this).owlCarousel(reenHeroCarouselOptions($(this)));
         });
 
         $('#transitionType li a').click(function() {
@@ -764,27 +760,27 @@ function debounce(func, wait, immediate) {
             $('#transitionType li a').removeClass('active');
             $(this).addClass('active');
 
-            var newValue = $(this).attr('data-animation');
+            var reenNewValue = $(this).attr('data-animation');
 
-            if( newValue ) {
-                $(owlElementID).find('.owl-nav, .owl-dots').unwrap();
-                $(owlElementID).trigger('destroy.owl.carousel');
-                $(owlElementID).html($(owlElementID).find('.owl-stage-outer').html()).removeClass('owl-loaded');
-                $(owlElementID).owlCarousel({ ...heroCarouselOptions($(this)), animateIn: newValue });
-                $(owlElementID).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
-                $(owlElementID).trigger('next.owl.carousel');
-                $(owlElementID).trigger('prev.owl.carousel');
+            if( reenNewValue ) {
+                $(reenOwlElementID).find('.owl-nav, .owl-dots').unwrap();
+                $(reenOwlElementID).trigger('destroy.owl.carousel');
+                $(reenOwlElementID).html($(reenOwlElementID).find('.owl-stage-outer').html()).removeClass('owl-loaded');
+                $(reenOwlElementID).owlCarousel({ ...reenHeroCarouselOptions($(this)), animateIn: reenNewValue });
+                $(reenOwlElementID).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
+                $(reenOwlElementID).trigger('next.owl.carousel');
+                $(reenOwlElementID).trigger('prev.owl.carousel');
             }
 
             return false;
 
         });
 
-        if ($(owlElementID).hasClass("owl-one-item")) {
-            $(owlElementID + ".owl-one-item").data('owlCarousel').destroy();
+        if ($(reenOwlElementID).hasClass("owl-one-item")) {
+            $(reenOwlElementID + ".owl-one-item").data('owlCarousel').destroy();
         }
 
-        $(owlElementID + ".owl-one-item").owlCarousel({
+        $(reenOwlElementID + ".owl-one-item").owlCarousel({
             singleItem: true,
             navigation: false,
             pagination: false
@@ -793,7 +789,7 @@ function debounce(func, wait, immediate) {
         var reenCarousel = $('.owl-carousel');
 
         reenCarousel.each(function(index) {
-            const defaultCarouselOptions = {
+            const reenDefaultCarouselOptions = {
                 autoplay: false,
                 autoplayTimeout: 5000,
                 autoplayHoverPause: true,
@@ -807,13 +803,13 @@ function debounce(func, wait, immediate) {
 
             }
 
-            const carouselJson = $(this).attr('data-owl-carousel');
-            const currentCarouselOptions = carouselJson !== undefined ? JSON.parse(carouselJson) : {};
-            const newCarouselOptions = {
-                ...defaultCarouselOptions,
-                ...currentCarouselOptions
+            const reenCarouselJson = $(this).attr('data-owl-carousel');
+            const reenCurrentCarouselOptions = reenCarouselJson !== undefined ? JSON.parse(reenCarouselJson) : {};
+            const reenNewCarouselOptions = {
+                ...reenDefaultCarouselOptions,
+                ...reenCurrentCarouselOptions
             }
-            $(this).owlCarousel(newCarouselOptions);
+            $(this).owlCarousel(reenNewCarouselOptions);
             $(this).find('.owl-nav, .owl-dots').wrapAll("<div class='owl-controls'></div>");
         });
 
@@ -833,28 +829,28 @@ function debounce(func, wait, immediate) {
 
     $(document).ready(function() {
 
-        var $container = $('.items');
+        var $reenContainer = $('.items');
 
-        $container.imagesLoaded(function() {
-            $container.isotope({
+        $reenContainer.imagesLoaded(function() {
+            $reenContainer.isotope({
                 itemSelector: '.item'
             });
         });
 
-        var resizeTimer;
+        var reenResizeTimer;
 
         function resizeFunction() {
-            $container.isotope();
+            $reenContainer.isotope();
         }
 
         $(window).resize(function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(resizeFunction, 100);
+            clearTimeout(reenResizeTimer);
+            reenResizeTimer = setTimeout(resizeFunction, 100);
         });
 
         $('a.panel-toggle.collapsed').click(function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(resizeFunction, 100);
+            clearTimeout(reenResizeTimer);
+            reenResizeTimer = setTimeout(resizeFunction, 100);
         });
 
         $('.portfolio .filter li a').click(function() {
@@ -862,10 +858,10 @@ function debounce(func, wait, immediate) {
             $('.portfolio .filter li a').removeClass('active');
             $(this).addClass('active');
 
-            var selector = $(this).attr('data-filter');
+            var reenSelector = $(this).attr('data-filter');
 
-            $container.isotope({
-                filter: selector
+            $reenContainer.isotope({
+                filter: reenSelector
             });
 
             return false;
@@ -881,35 +877,35 @@ function debounce(func, wait, immediate) {
 
     $(document).ready(function() {
 
-        var $container = $('.posts');
+        var $reenContainer = $('.posts');
 
-        $container.imagesLoaded(function() {
-            $container.isotope({
+        $reenContainer.imagesLoaded(function() {
+            $reenContainer.isotope({
                 itemSelector: '.post'
             });
         });
 
-        var resizeTimer;
+        var reenResizeTimer;
 
         function resizeFunction() {
-            $container.isotope();
+            $reenContainer.isotope();
         }
 
         $(window).resize(function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(resizeFunction, 100);
+            clearTimeout(reenResizeTimer);
+            reenResizeTimer = setTimeout(resizeFunction, 100);
         });
 
         $('.format-filter li a, .format-wrapper a').click(function() {
 
-            var selector = $(this).attr('data-filter');
+            var reenSelector = $(this).attr('data-filter');
 
-            $container.isotope({
-                filter: selector
+            $reenContainer.isotope({
+                filter: reenSelector
             });
 
             $('.format-filter li a').removeClass('active');
-            $('.format-filter li a[data-filter="' + selector + '"]').addClass('active');
+            $('.format-filter li a[data-filter="' + reenSelector + '"]').addClass('active');
 
             $('html, body').animate({
                 scrollTop: $('.format-filter').offset().top - 130
@@ -959,7 +955,7 @@ function debounce(func, wait, immediate) {
     $(document).ready(function() {
 
         if( typeof reen_options !== 'undefined' && reen_options.enableScrollUp ) {
-            $.scrollUp({
+            $.reenScrollUp({
                 scrollName: "scrollUp", // Element ID
                 scrollDistance: 700, // Distance from top/bottom before showing element (px)
                 scrollFrom: "top", // "top" or "bottom"
@@ -988,19 +984,19 @@ function debounce(func, wait, immediate) {
         $("a.scroll-to").click(function() {
 
             if ($(window).width() > 1024) {
-                var navbarHeight = 45;
+                var reenNavbarHeight = 45;
             } else {
-                var navbarHeight = 0;
+                var reenNavbarHeight = 0;
             }
 
             if ($(this).attr('data-anchor-offset') !== undefined) {
-                var anchorOffset = $(this).attr('data-anchor-offset');
+                var reenAnchorOffset = $(this).attr('data-anchor-offset');
             } else {
-                var anchorOffset = 0;
+                var reenAnchorOffset = 0;
             }
 
             $("html, body").animate({
-                scrollTop: $($(this).attr("href")).offset().top - navbarHeight - anchorOffset + "px"
+                scrollTop: $($(this).attr("href")).offset().top - reenNavbarHeight - reenAnchorOffset + "px"
             }, {
                 duration: 1000,
                 easing: "easeInOutCubic"
@@ -1091,9 +1087,9 @@ function debounce(func, wait, immediate) {
     /*  Initialize Owl carousel
     /*===================================================================================*/
     $('[data-ride="owl-carousel"]').each(function() {
-        var $owlElement = $(this),
-            owlCarouselParams = $owlElement.data('owlparams');
-        $owlElement.owlCarousel(owlCarouselParams);
+        var $reenOwlElement = $(this),
+            reenOwlCarouselParams = $reenOwlElement.data('owlparams');
+        $reenOwlElement.owlCarousel(reenOwlCarouselParams);
     });
 
 })(jQuery, window, document);
