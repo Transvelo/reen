@@ -93,6 +93,7 @@ if ( ! function_exists( 'redux_get_custom_color_css' ) ) {
 		.navbar .dropdown-menu:not(.yamm-dropdown-menu) li a.active,
 		.navbar-header .info a:hover,
 		.nav > li > a:hover,
+		.nav > li > a:focus,
 		.owl-carousel:hover .owl-next:hover,
 		.owl-carousel:hover .owl-prev:hover,
 		.panel-title > a:hover,
