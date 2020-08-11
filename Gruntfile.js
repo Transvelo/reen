@@ -9,10 +9,6 @@ module.exports = function( grunt ) {
         dirs: {
             demo: 'src/plugins/<%= pkg.name %>-demo',
             extensions: 'src/plugins/<%= pkg.name %>-extensions',
-            extensionsESNext: 'src/plugins/<%= pkg.name %>-extensions/assets/esnext',
-            extensionsJS: 'src/plugins/<%= pkg.name %>-extensions/assets/js',
-            extensionsCSS: 'src/plugins/<%= pkg.name %>-extensions/assets/css',
-            extensionsSASS: 'src/plugins/<%= pkg.name %>-extensions/assets/scss',
             theme: 'src/themes/<%= pkg.name %>',
             themeJS: 'src/themes/<%= pkg.name %>/assets/js',
             themeCSS: 'src/themes/<%= pkg.name %>/assets/css',
@@ -21,34 +17,21 @@ module.exports = function( grunt ) {
         },
 
         // Minify .js files.
-        uglify: {
+        terser: {
             options: {
-                preserveComments: 'some'
+                ecma: 5,
             },
-            admin: {
+            main: {
                 files: [{
                     expand: true,
-                    cwd: '<%= dirs.extensionsJS %>/admin/',
+                    cwd: '<%= dirs.themeJS %>/',
                     src: [
-                        '*.js',
-                        '!*.min.js'
+                        'scripts.js'
                     ],
-                    dest: '<%= dirs.extensionsJS %>/admin/',
+                    dest: '<%= dirs.themeJS %>',
                     ext: '.min.js'
                 }]
             },
-            blocks: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= dirs.extensionsJS %>/blocks/',
-                    src: [
-                        '*.js',
-                        '!*.min.js'
-                    ],
-                    dest: '<%= dirs.extensionsJS %>/blocks/',
-                    ext: '.min.js'
-                }]
-            }
         },
 
         // Autoprefixer.
@@ -74,7 +57,6 @@ module.exports = function( grunt ) {
             dist: {
                 files: [{
                     '<%= dirs.theme %>/style.css': '<%= dirs.theme %>/style.scss',
-                    // '<%= dirs.theme %>/style-editor.css': '<%= dirs.theme %>/style-editor.scss',
                     '<%= dirs.themeCSS %>/colors/green.css': '<%= dirs.themeSASS %>/colors/green.scss',
                     '<%= dirs.themeCSS %>/colors/blue.css': '<%= dirs.themeSASS %>/colors/blue.scss',
                     '<%= dirs.themeCSS %>/colors/blue.css': '<%= dirs.themeSASS %>/colors/blue.scss',
@@ -84,9 +66,7 @@ module.exports = function( grunt ) {
                     '<%= dirs.themeCSS %>/colors/purple.css': '<%= dirs.themeSASS %>/colors/purple.scss',
                     '<%= dirs.themeCSS %>/colors/gray.css': '<%= dirs.themeSASS %>/colors/gray.scss',
                     '<%= dirs.themeCSS %>/colors/navy.css': '<%= dirs.themeSASS %>/colors/navy.scss',
-                    // '<%= dirs.themeCSS %>/jetpack/jetpack.css': '<%= dirs.themeSASS %>/jetpack.scss',
                     '<%= dirs.themeCSS %>/gutenberg-editor.css': '<%= dirs.themeSASS %>/gutenberg-editor.scss',
-                    // '<%= dirs.extensionsCSS %>/admin/admin.css': '<%= dirs.extensionsSASS %>/admin.scss',
                 }]
             }
         },
@@ -401,7 +381,7 @@ module.exports = function( grunt ) {
 
     // Load NPM tasks to be used here
     grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-    grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks( 'grunt-terser' );
     grunt.loadNpmTasks( 'grunt-postcss' );
     grunt.loadNpmTasks( 'grunt-sass' );
     grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
@@ -414,14 +394,14 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-copy' );
     grunt.loadNpmTasks( 'grunt-contrib-compress' );
     grunt.loadNpmTasks( 'grunt-gh-pages' );
-    //grunt.loadNpmTasks( 'grunt-browserify' );
 
     grunt.registerTask( 'default', [
-        'css'
+        'css',
+        'js'
     ]);
 
     grunt.registerTask( 'js', [
-        'uglify'
+        'terser'
     ]);
 
     grunt.registerTask( 'css', [

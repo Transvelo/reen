@@ -347,14 +347,15 @@ if ( ! class_exists( 'Reen' ) ) :
          * Get all Reen scripts.
          */
         private static function get_theme_scripts() {
-            $suffix = '.min';
+            $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
             $reen_get_theme_script = apply_filters( 'reen_theme_script', array(
                 'affix'             => array(
-                    'src' => get_template_directory_uri() . '/assets/js/affix.js',
+                    'src' => get_template_directory_uri() . '/assets/js/affix' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'aos'        => array(
-                    'src' => get_template_directory_uri() . '/assets/js/aos.js',
+                    'src' => get_template_directory_uri() . '/assets/js/aos' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'bootstrap-bundle'         => array(
@@ -369,16 +370,8 @@ if ( ! class_exists( 'Reen' ) ) :
                     'src' => get_template_directory_uri() . '/assets/js/jquery.easytabs' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
-                'jquery-form'         => array(
-                    'src' => get_template_directory_uri() . '/assets/js/jquery.form.js',
-                    'dep' => array( 'jquery' )
-                ),
                 'jquery-isotope'  => array(
                     'src' => get_template_directory_uri() . '/assets/js/jquery.isotope' . $suffix . '.js',
-                    'dep' => array( 'jquery' )
-                ),
-                'jquery-validate'           => array(
-                    'src' => get_template_directory_uri() . '/assets/js/jquery.validate' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'owl-carousel'      => array(
@@ -386,19 +379,15 @@ if ( ! class_exists( 'Reen' ) ) :
                     'dep' => array( 'jquery' )
                 ),
                 'selected-scroll' => array(
-                    'src' => get_template_directory_uri() . '/assets/js/selected-scroll.js',
+                    'src' => get_template_directory_uri() . '/assets/js/selected-scroll' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'viewport-units-buggyfill'      => array(
-                    'src' => get_template_directory_uri() . '/assets/js/viewport-units-buggyfill.js',
-                    'dep' => array( 'jquery' )
-                ),
-                'custom'   => array(
-                    'src' => get_template_directory_uri() . '/assets/js/custom.js',
+                    'src' => get_template_directory_uri() . '/assets/js/viewport-units-buggyfill' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
                 'reen-scripts'   => array(
-                    'src' => get_template_directory_uri() . '/assets/js/scripts.js',
+                    'src' => get_template_directory_uri() . '/assets/js/scripts' . $suffix . '.js',
                     'dep' => array( 'jquery' )
                 ),
             ) );

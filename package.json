@@ -36,10 +36,12 @@
     "grunt-rtlcss": "~2.0.1",
     "grunt-sass": "^2.1.0",
     "grunt-stylelint": "~0.9.0",
+    "grunt-terser": "^1.0.0",
     "grunt-version": "~1.0.0",
     "grunt-wp-i18n": "^1.0.3",
     "node-sass": "^4.13.0",
-    "stylelint": "~8.2.0"
+    "stylelint": "~8.2.0",
+    "terser": "^5.0.0"
   },
   "dependencies": {
     "load-grunt-config": "^0.19.2",
