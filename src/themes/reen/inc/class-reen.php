@@ -529,7 +529,6 @@ if ( ! class_exists( 'Reen' ) ) :
                 'animate'                    => 'animate.css/animate.min.css',
                 'aos'                        => 'aos/aos.css',
                 'owl-carousel'               => 'owl-carousel/owl.carousel.css',
-                'fontello'                   => 'fontello/css/fontello.css',
             ) );
 
             foreach( $vendors as $key => $vendor ) {
@@ -537,9 +536,6 @@ if ( ! class_exists( 'Reen' ) ) :
             }
 
             wp_enqueue_style( 'reen-fontello', get_template_directory_uri() . '/assets/fonts/fontello.css', '', $reen_version );
-
-
-            wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/vendor/font-awesome/css/fontawesome-all.min.css', '', $reen_version );
 
 
             // Scripts

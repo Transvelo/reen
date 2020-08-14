@@ -831,42 +831,44 @@ function reenDebounce(func, wait, immediate) {
 
         var $reenContainer = $('.items');
 
-        $reenContainer.imagesLoaded(function() {
-            $reenContainer.isotope({
-                itemSelector: '.item'
+        if( $reenContainer.length > 0 ) {
+            $reenContainer.imagesLoaded(function() {
+                $reenContainer.isotope({
+                    itemSelector: '.item'
+                });
             });
-        });
 
-        var reenResizeTimer;
+            var reenResizeTimer;
 
-        function resizeFunction() {
-            $reenContainer.isotope();
+            function resizeFunction() {
+                $reenContainer.isotope();
+            }
+
+            $(window).resize(function() {
+                clearTimeout(reenResizeTimer);
+                reenResizeTimer = setTimeout(resizeFunction, 100);
+            });
+
+            $('a.panel-toggle.collapsed').click(function() {
+                clearTimeout(reenResizeTimer);
+                reenResizeTimer = setTimeout(resizeFunction, 100);
+            });
+
+            $('.portfolio .filter li a').click(function() {
+
+                $('.portfolio .filter li a').removeClass('active');
+                $(this).addClass('active');
+
+                var reenSelector = $(this).attr('data-filter');
+
+                $reenContainer.isotope({
+                    filter: reenSelector
+                });
+
+                return false;
+
+            });
         }
-
-        $(window).resize(function() {
-            clearTimeout(reenResizeTimer);
-            reenResizeTimer = setTimeout(resizeFunction, 100);
-        });
-
-        $('a.panel-toggle.collapsed').click(function() {
-            clearTimeout(reenResizeTimer);
-            reenResizeTimer = setTimeout(resizeFunction, 100);
-        });
-
-        $('.portfolio .filter li a').click(function() {
-
-            $('.portfolio .filter li a').removeClass('active');
-            $(this).addClass('active');
-
-            var reenSelector = $(this).attr('data-filter');
-
-            $reenContainer.isotope({
-                filter: reenSelector
-            });
-
-            return false;
-
-        });
 
     });
 
@@ -879,41 +881,43 @@ function reenDebounce(func, wait, immediate) {
 
         var $reenContainer = $('.posts');
 
-        $reenContainer.imagesLoaded(function() {
-            $reenContainer.isotope({
-                itemSelector: '.post'
+        if( $reenContainer.length > 0 ) {
+            $reenContainer.imagesLoaded(function() {
+                $reenContainer.isotope({
+                    itemSelector: '.post'
+                });
             });
-        });
 
-        var reenResizeTimer;
+            var reenResizeTimer;
 
-        function resizeFunction() {
-            $reenContainer.isotope();
+            function resizeFunction() {
+                $reenContainer.isotope();
+            }
+
+            $(window).resize(function() {
+                clearTimeout(reenResizeTimer);
+                reenResizeTimer = setTimeout(resizeFunction, 100);
+            });
+
+            $('.format-filter li a, .format-wrapper a').click(function() {
+
+                var reenSelector = $(this).attr('data-filter');
+
+                $reenContainer.isotope({
+                    filter: reenSelector
+                });
+
+                $('.format-filter li a').removeClass('active');
+                $('.format-filter li a[data-filter="' + reenSelector + '"]').addClass('active');
+
+                $('html, body').animate({
+                    scrollTop: $('.format-filter').offset().top - 130
+                }, 600);
+
+                return false;
+
+            });
         }
-
-        $(window).resize(function() {
-            clearTimeout(reenResizeTimer);
-            reenResizeTimer = setTimeout(resizeFunction, 100);
-        });
-
-        $('.format-filter li a, .format-wrapper a').click(function() {
-
-            var reenSelector = $(this).attr('data-filter');
-
-            $reenContainer.isotope({
-                filter: reenSelector
-            });
-
-            $('.format-filter li a').removeClass('active');
-            $('.format-filter li a[data-filter="' + reenSelector + '"]').addClass('active');
-
-            $('html, body').animate({
-                scrollTop: $('.format-filter').offset().top - 130
-            }, 600);
-
-            return false;
-
-        });
 
     });
 
@@ -1087,9 +1091,11 @@ function reenDebounce(func, wait, immediate) {
     /*  Initialize Owl carousel
     /*===================================================================================*/
     $('[data-ride="owl-carousel"]').each(function() {
-        var $reenOwlElement = $(this),
-            reenOwlCarouselParams = $reenOwlElement.data('owlparams');
-        $reenOwlElement.owlCarousel(reenOwlCarouselParams);
+        if( $(this).length > 0 ) {
+            var $reenOwlElement = $(this),
+                reenOwlCarouselParams = $reenOwlElement.data('owlparams');
+            $reenOwlElement.owlCarousel(reenOwlCarouselParams);
+        }
     });
 
 })(jQuery, window, document);
