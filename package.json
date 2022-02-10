@@ -39,7 +39,7 @@
     "grunt-terser": "^1.0.0",
     "grunt-version": "~1.0.0",
     "grunt-wp-i18n": "^1.0.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "stylelint": "~8.2.0",
     "terser": "^5.0.0"
   },
