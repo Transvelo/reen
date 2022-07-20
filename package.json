@@ -41,7 +41,7 @@
     "grunt-wp-i18n": "^1.0.3",
     "node-sass": "^4.13.1",
     "stylelint": "~8.2.0",
-    "terser": "^5.0.0"
+    "terser": "^5.14.2"
   },
   "dependencies": {
     "load-grunt-config": "^0.19.2",
